@@ -36,3 +36,4 @@ wget http://apache.claz.org/hadoop/common/hadoop-3.1.1/hadoop-3.1.1-src.tar.gz
 tar zxvf hadoop-3.1.1-src.tar.gz
 
 cd hadoop-3.1.1-src
+mvn package -Pdist,native -DskipTests -Dtar

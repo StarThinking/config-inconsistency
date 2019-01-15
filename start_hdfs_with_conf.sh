@@ -8,7 +8,7 @@ node=4
 
 echo "hdfs stopped"
 
-for i in 0 1 2 3 4
+for i in 1 2 3 4
 do
     scp ~/config-inconsistency/hdfs/etc/* node-"$i"-link-0:~/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/etc/hadoop
     ssh node-"$i"-link-0 "rm -rf /root/data; mkdir /root/data; rm ~/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/logs/*"
