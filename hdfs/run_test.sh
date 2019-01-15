@@ -5,6 +5,7 @@ property=$2
 node=4
 HDFS_HOME=~/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1
 SLEEP_TIME=10
+nodes=(0 1 2 3 4)
 
 if [ "$#" -ne 2 ]
 then
@@ -16,6 +17,7 @@ fi
 rm sample*
 $HDFS_HOME/bin/hdfs dfs -rm /sample*
 rm -rf $type/$property/node*
+rm -rf $type/$property/client*
 
 for i in $(seq 1 3)
 do
@@ -31,9 +33,9 @@ do
     sleep $SLEEP_TIME
 done
 
-for i in 1 2 3 4
+for i in ${nodes[@]}
 do
     mkdir $type/$property/node-"$i"-link-0
-    scp -r node-"$i"-link-0:~/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/logs $type/$property/node-"$i"-link-0
+    scp -r node-"$i"-link-0:$HDFS_HOME/logs $type/$property/node-"$i"-link-0
 done
 
