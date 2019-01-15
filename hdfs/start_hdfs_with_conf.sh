@@ -20,7 +20,7 @@ if [ "$#" -ne 2 ]
 then
     echo "configuration type property unset, start with default conf"
 else
-    scp ~/config-inconsistency/hdfs/$type/$property/hdfs-site.xml node-"$node"-link-0:~/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/etc/hadoop
+    scp ~/config-inconsistency/hdfs/$type/$property/hdfs-site.xml node-"$node"-link-0:~/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/etc/hadoop/hdfs-site.xml
 fi
 
 ~/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/bin/hdfs namenode -format
