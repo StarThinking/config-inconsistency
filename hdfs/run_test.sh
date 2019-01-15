@@ -15,11 +15,11 @@ fi
 # clear up
 rm sample*
 $HDFS_HOME/bin/hdfs dfs -rm /sample*
-rm -rf $type/$property/*
+rm -rf $type/$property/node*
 
-for i in $(seq 1 2)
+for i in $(seq 1 3)
 do
-    for j in $(seq 1 2)
+    for j in $(seq 1 5)
     do
 	dd if=/dev/urandom of=sample$j.txt.orignal bs=16M count=16
 	$HDFS_HOME/bin/hdfs dfs -copyFromLocal sample$j.txt.orignal /sample$j.txt
