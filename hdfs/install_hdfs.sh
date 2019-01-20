@@ -30,6 +30,7 @@ sudo apt-get -y install zstd
 
 sudo ldconfig
 echo "export JAVA_HOME=/usr/lib/jvm/java-8-oracle/" >> ~/.bashrc
+echo "export HADOOP_HOME=/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1" >> ~/.bashrc
 source ~/.bashrc
 
 wget http://apache.claz.org/hadoop/common/hadoop-3.1.1/hadoop-3.1.1-src.tar.gz

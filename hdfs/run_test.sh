@@ -19,6 +19,8 @@ $HDFS_HOME/bin/hdfs dfs -rm /sample*
 rm -rf $type/$property/node*
 rm -rf $type/$property/client*
 
+
+
 for i in $(seq 1 3)
 do
     for j in $(seq 1 5)

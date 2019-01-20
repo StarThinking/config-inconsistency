@@ -9,8 +9,10 @@ HADOOP_HOME=/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1
 
 source ~/.bashrc
 
+# copy default configuration to namenode
 scp ~/config-inconsistency/hdfs/etc/* node-"$namenode"-link-0:$HADOOP_HOME/etc/hadoop
 $HADOOP_HOME/sbin/stop-dfs.sh
+rm ~/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/logs/*
 
 echo "hdfs stopped"
 
