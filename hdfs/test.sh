@@ -24,7 +24,7 @@ do
     scp $TEST_HOME/etc/* node-"$i"-link-0:$HADOOP_HOME/etc/hadoop
     ssh node-"$i"-link-0  "mkdir /root/data"
 done
-
+:'
 # start with default configuration
 $HADOOP_HOME/bin/hdfs namenode -format
 $HADOOP_HOME/sbin/start-dfs.sh
@@ -92,6 +92,7 @@ $HADOOP_HOME/bin/hdfs dfs -rm -r /test/*
 $HADOOP_HOME/bin/hdfs dfs -rm -r /test
 $HADOOP_HOME/sbin/stop-dfs.sh
 
+
 rm -rf /tmp/hadoop-root
 rm -rf $HADOOP_HOME/logs/*
 for i in ${datanodes[@]}
@@ -100,3 +101,4 @@ do
 done
 
 rm -rf $TEST_HOME/tmp
+'
