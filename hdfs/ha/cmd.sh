@@ -1,19 +1,15 @@
 #!/bin/bash
 
-command=$1
-type=$2
-property=$3
-value=$4
-node_update=4
-namenodes=(0 1)
-datanodes=(2 3 4)
-jnodes=(2 3 4)
-znodes=(0 1 5)
-allnodes=(0 1 2 3 4 5)
-filenum=5
-TEST_HOME=/root/config-inconsistency/hdfs/ha
+if [ "$#" -ne 1 ]
+then
+    echo "e.g., ./test.sh [start|stop]"
+    exit
+fi
 
-source ~/.bashrc
+command=$1
+
+# load parameters
+. var.sh
 
 function start {
     # copy default configuration to all nodes
@@ -79,9 +75,6 @@ function start {
     $HADOOP_HOME/bin/hdfs haadmin -getAllServiceState
 }
 
-#function test {
-#}
-
 function stop {
     # stop and clear up everything
     echo "stop hdfs"
@@ -105,18 +98,10 @@ function stop {
     done
 }
 
-if [ "$#" -ne 1 ]
-then
-    echo "e.g., ./test.sh [start|stop|test]"
-    exit
-fi
-
 if [ $command = "start" ]; then
     start
 elif [ $command = "stop" ]; then
     stop
-elif [ $command = "test" ]; then
-    start; test; stop
 else
-    echo "wrong command, e.g., [start|stop|test]"
+    echo "wrong command, e.g., [start|stop]"
 fi
