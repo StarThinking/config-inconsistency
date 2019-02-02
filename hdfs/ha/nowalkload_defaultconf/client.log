@@ -1,0 +1,284 @@
+2019-02-02 07:32:17,238 INFO retry.RetryInvocationHandler: java.io.EOFException: End of File Exception between local host is: "clnode061.clemson.cloudlab.us/130.127.133.70"; destination host is: "node-0-link-0":8020; : java.io.EOFException; For more details see:  http://wiki.apache.org/hadoop/EOFException, while invoking ClientNamenodeProtocolTranslatorPB.addBlock over node-0-link-0/10.10.1.1:8020. Trying to failover immediately.
+2019-02-02 07:32:17,244 INFO retry.RetryInvocationHandler: org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.ipc.StandbyException): Operation category READ is not supported in state standby. Visit https://s.apache.org/sbnn-error
+	at org.apache.hadoop.hdfs.server.namenode.ha.StandbyState.checkOperation(StandbyState.java:88)
+	at org.apache.hadoop.hdfs.server.namenode.NameNode$NameNodeHAContext.checkOperation(NameNode.java:1952)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkOperation(FSNamesystem.java:1423)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.getAdditionalBlock(FSNamesystem.java:2674)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.addBlock(NameNodeRpcServer.java:875)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.addBlock(ClientNamenodeProtocolServerSideTranslatorPB.java:561)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:523)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:991)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:872)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:818)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.security.auth.Subject.doAs(Subject.java:422)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1729)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2678)
+, while invoking ClientNamenodeProtocolTranslatorPB.addBlock over node-1-link-0/10.10.1.4:8020 after 1 failover attempts. Trying to failover after sleeping for 809ms.
+22019-02-02 07:32:18,122 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode061.clemson.cloudlab.us/130.127.133.70 to node-0-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.addBlock over node-0-link-0/10.10.1.1:8020 after 2 failover attempts. Trying to failover after sleeping for 1905ms.Found 5 items
+-rw-r--r--   3 root supergroup  939524096 2019-02-02 07:32 /myfile1._COPYING_
+-rw-r--r--   3 root supergroup  939524096 2019-02-02 07:32 /myfile2._COPYING_
+-rw-r--r--   3 root supergroup 1073741824 2019-02-02 07:32 /myfile4
+-rw-r--r--   3 root supergroup 1073741824 2019-02-02 07:32 /myfile5._COPYING_
+-rw-r--r--   3 root supergroup 1073741824 2019-02-02 07:32 /myfile8._COPYING_
+file  has been put into HDFS
+file  has been got from HDFS
+rm: cannot remove './tmp.': No such file or directory
+2019-02-02 07:34:01,970 INFO retry.RetryInvocationHandler: org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.ipc.StandbyException): Operation category READ is not supported in state standby. Visit https://s.apache.org/sbnn-error
+	at org.apache.hadoop.hdfs.server.namenode.ha.StandbyState.checkOperation(StandbyState.java:88)
+	at org.apache.hadoop.hdfs.server.namenode.NameNode$NameNodeHAContext.checkOperation(NameNode.java:1952)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkOperation(FSNamesystem.java:1423)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.getFileInfo(FSNamesystem.java:3085)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.getFileInfo(NameNodeRpcServer.java:1154)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.getFileInfo(ClientNamenodeProtocolServerSideTranslatorPB.java:966)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:523)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:991)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:872)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:818)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.security.auth.Subject.doAs(Subject.java:422)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1729)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2678)
+, while invoking ClientNamenodeProtocolTranslatorPB.getFileInfo over node-1-link-0/10.10.1.4:8020 after 1 failover attempts. Trying to failover after sleeping for 927ms.
+2019-02-02 07:34:02,900 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode061.clemson.cloudlab.us/130.127.133.70 to node-0-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.getFileInfo over node-0-link-0/10.10.1.1:8020 after 2 failover attempts. Trying to failover after sleeping for 2303ms.
+Deleted /myfile4
+file  has been removed from HDFS
+2019-02-02 07:34:51,661 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode061.clemson.cloudlab.us/130.127.133.70 to node-1-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.renewLease over node-1-link-0/10.10.1.4:8020. Trying to failover immediately.
+2019-02-02 07:34:51,664 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode061.clemson.cloudlab.us/130.127.133.70 to node-0-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.renewLease over node-0-link-0/10.10.1.1:8020 after 1 failover attempts. Trying to failover after sleeping for 1078ms.
+2019-02-02 07:34:52,744 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call2019-02-02 07:35:01,415 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode061.clemson.cloudlab.us/130.127.133.70 to node-1-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.renewLease over node-1-link-0/10.10.1.4:8020. Trying to failover immediately.
+2019-02-02 07:35:01,417 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode061.clemson.cloudlab.us/130.127.133.70 to node-0-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.renewLease over node-0-link-0/10.10.1.1:8020 after 1 failover attempts. Trying to failover after sleeping for 880ms.
+2019-02-02 07:35:02,299 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode061.clemson.cloudlab.us/130.127.133.70 to node-1-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.renewLease over node-1-link-0/10.10.1.4:8020 after 2 failover attempts. Trying to failover after sleeping for 1628ms.
+2019-02-02 07:35:03,928 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode061.clemson.cloudlab.us/130.127.133.70 to node-0-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.renewLease over node-0-link-0/10.10.1.1:8020 after 3 failover attempt2019-02-02 07:35:09,595 INFO retry.RetryInvocatio2019-02-02 07:35:09,855 INFO retry.RetryInvocationHandler: org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.ipc.RetriableException): org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot renew lease for DFSClient_NONMAPREDUCE_381606186_1. Name node is in safe mode.
+The reported blocks 26 has reached the threshold 0.9990 of total blocks 26. The number of live datanodes 3 has reached the minimum number 0. In safe mode extension. Safe mode will be turned off automatically in 25 seconds. NamenodeHostName:node-1-link-0
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1441)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.renewLease(FSNamesystem.java:3744)
+	at org.apache.hadoop.hdf2019-02-02 07:35:11,539 INFO retry.RetryInvocationHandler: org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.ipc.RetriableException): org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot delete /myfile5. Name node is in safe mode.
+The reported blocks 26 has reached the threshold 0.9990 of total blocks 26. The number of live datanodes 3 has reached the minimum number 0. In safe mode extension. Safe mode will be turned off automatically in 23 seconds. NamenodeHostName:node-1-link-0
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1441)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.delete(FSNamesystem.java:2986)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.delete(NameNodeRpcServer.java:1095)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.delete(ClientNamenodeProtocolServerSideTranslatorPB.java:692)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:523)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:991)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:872)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:818)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.security.auth.Subject.doAs(Subject.java:422)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1729)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2678)
+Caused by: org.apache.hadoop.h2019-02-02 07:35:30,928 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode061.clemson.cloudlab.us/130.127.133.70 to node-1-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.renewLease over node-1-link-0/10.10.1.4:8020 after 6 failover attempts. Trying to failover after sleeping for 19042ms.
+2019-02-02 07:35:46,570 WARN hdfs.DataStreamer: Exception for BP-965679323-130.127.133.70-1549117899218:blk_1073741920_1096
+java.net.SocketTimeoutException: 75000 millis timeout while waiting for channel to be ready for read. ch : java.nio.channels.SocketChannel[connected local=/10.10.1.1:42252 remote=/10.10.1.2:9866]
+	at org.apache.hadoop.net.SocketIOWithTimeout.doIO(SocketIOWithTimeout.java:164)
+	at org.apache.hadoop.net.SocketInputStream.read(SocketInputStream.java:161)
+	at org.apache.hadoop.net.SocketInputStream.read(SocketInputStream.java:131)
+	at org.apache.hadoop.net.SocketInputStream.read(SocketInputStream.java:118)
+	at java.io.FilterInputStream.read(FilterInputStream.java:83)
+	at java.io.FilterInputStream.read(FilterInputStream.java:83)
+	at org.apache.hadoop.hdfs.protocolPB.PBHelperClient.vintPrefixed(PBHelperClient.java:547)
+	at org.apache.hadoop.hdfs.protocol.datatransfer.PipelineAck.readFields(PipelineAck.java:213)
+	at org.apache.hadoop.hdfs.DataStreamer$ResponseProcessor.run(DataStreamer.java:1086)
+2019-02-02 07:35:48,317 WARN hdfs.DataStreamer: DataStreamer Exception
+java.io.IOException: Connection reset by peer
+	at sun.nio.ch.FileDispatcherImpl.write0(Native Method)
+	at sun.nio.ch.SocketDispatcher.write(SocketDispatcher.java:47)
+	at sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:93)
+	at sun.nio.ch.IOUtil.write(IOUtil.java:65)
+	at sun.nio.ch.SocketChannelImpl.write(SocketChannelImpl.java:471)
+	at org.apache.hadoop.net.SocketOutputStream$Writer.performIO(SocketOutputStream.java:63)
+	at org.apache.hadoop.net.SocketIOWithTimeout.doIO(SocketIOWithTimeout.java:142)
+	at org.apache.hadoop.net.SocketOutputStream.write(SocketOutputStream.java:159)
+	at org.apache.hadoop.net.SocketOutputStream.write(SocketOutputStream.java:117)
+	at java.io.BufferedOutputStream.write(BufferedOutputStream.java:122)
+	at java.io.DataOutputStream.write(DataOutputStream.java:107)
+	at org.apache.hadoop.hdfs.DFSPacket.writeTo(DFSPacket.java:194)
+	at org.apache.hadoop.hdfs.DataStreamer.run(DataStreamer.java:774)
+2019-02-02 07:35:48,318 WARN hdfs.DataStreamer: Error Recovery for BP-965679323-130.127.133.70-1549117899218:blk_1073741920_1096 in pipeline [DatanodeInfoWithStorage[10.10.1.2:9866,DS-ddae77d5-9d24-4b5c-aa44-1f73e0eb7f01,DISK], DatanodeIn2019-02-02 07:35:52,617 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode061.clemson.cloudlab.us/130.127.133.70 to node-0-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.getFileInfo over node-0-link-0/10.10.1.1:8020 after 8 failover attempts. Trying to failover after sleeping for 15298ms.
+2019-02-02 07:36:08,044 INFO retry.RetryInvocationHandler: org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.ipc.RetriableException): org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot create file/myfile3._COPYING_. Name node is in safe mode.
+The reported blocks 26 has reached the threshold 0.9990 of total blocks 26. The number of live datanodes 3 has reached the minimum number 0. In safe mode extension. Safe mode will be turned off automatically in 6 seconds. NamenodeHostName:node-1-link-0
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1441)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.startFileInt(FSNamesystem.java:2401)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.startFile(FSNamesystem.java:2347)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.create(NameNodeRpcServer.java:774)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.create(ClientNamenodeProtocolServerSideTranslatorPB.java:462)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:523)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:991)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:872)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:818)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.security.auth.Subject.doAs(Subject.java:422)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1729)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2678)
+Caused by: org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot create file/myfile3._COPYING_. Name node is in safe mode.
+The reported blocks 26 has reached the threshold 0.9990 of total blocks 26. The number of live datanodes 3 has reached the minimum number 0. In safe mode extension. Safe mode will be turned off automatically in 6 seconds. NamenodeHostName:node-1-link-0
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.newSafemodeException(FSNamesystem.java:1450)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1437)
+	... 13 more
+, while invoking ClientNamenodeProtocolTranslatorPB.create over node-1-link-0/10.10.1.4:8020. Retrying immediately.
+2019-02-02 07:36:08,047 INFO retry.RetryInvocationHandler: org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.ipc.RetriableException): org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot create file/myfile3._COPYING_. Name node is in safe mode.
+The reported blocks 26 has reached the threshold 0.9990 of total blocks 26. The number of live datanodes 3 has reached the minimum number 0. In safe mode extension. Safe mode will be turned off automatically in 6 seconds. NamenodeHostName:node-1-link-0
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1441)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.startFileInt(FSNamesystem.java:2401)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.startFile(FSNamesystem.java:2347)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.create(NameNodeRpcServer.java:774)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.create(ClientNamenodeProtocolServerSideTranslatorPB.java:462)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:523)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:991)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:872)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:818)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.security.auth.Subject.doAs(Subject.java:422)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1729)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2678)
+Caused by: org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot create file/myfile3._COPYING_. Name node is in safe mode.
+The reported blocks 26 has reached the threshold 0.9990 of total blocks 26. The number of live datanodes 3 has reached the minimum number 0. In safe mode extension. Safe mode will be turned off automatically in 6 seconds. NamenodeHostName:node-1-link-0
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.newSafemodeException(FSNamesystem.java:1450)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1437)
+	... 13 more
+, while invoking ClientNamenodeProtocolTranslatorPB.create over node-1-link-0/10.10.1.4:8020. Retrying after sleeping for 1469ms.
+2019-02-02 07:36:09,519 INFO retry.RetryInvocationHandler: org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.ipc.RetriableException): org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot create file/myfile3._COPYING_. Name node is in safe mode.
+The reported blocks 26 has reached the threshold 0.9990 of total blocks 26. The number of live datanodes 3 has reached the minimum number 0. In safe mode extension. Safe mode will be turned off automatically in 5 seconds. NamenodeHostName:node-1-link-0
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1441)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.startFileInt(FSNamesystem.java:2401)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.startFile(FSNamesystem.java:2347)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.create(NameNodeRpcServer.java:774)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.create(ClientNamenodeProtocolServerSideTranslatorPB.java:462)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:523)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:991)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:872)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:818)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.security.auth.Subject.doAs(Subject.java:422)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1729)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2678)
+Caused by: org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot create file/myfile3._COPYING_. Name node is in safe mode.
+The reported blocks 26 has reached the threshold 0.9990 of total blocks 26. The number of live datanodes 3 has reached the minimum number 0. In safe mode extension. Safe mode will be turned off auto2019-02-02 07:36:11,531 WARN retry.RetryInvocationHandler: A failover has occurred since the start of call #7 ClientNamenodeProtocolTranslatorPB.renewLease over node-1-link-0/10.10.1.4:8020
+2019-02-02 07:36:11,535 INFO retry.RetryInvocationHandler: org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.ipc.RetriableException): org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot renew 2019-02-02 07:36:11,938 INFO retry.RetryInvocationHandler: org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.ipc.RetriableException): org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot create file/myfile3._COPYING_. Name node is in safe mode.
+The reported blocks 26 has reached the threshold 0.9990 of total blocks 26. The number of live datanodes 3 has reached the minimum number 0. In safe mode extension. Safe mode will be turned off automatically in 3 seconds. NamenodeHostName:node-1-link-0
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1441)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.startFileInt(FSNamesystem.java:2401)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.startFile(FSNamesystem.java:2347)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.create(NameNodeRpcServer.java:774)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.create(ClientNamenodeProtocolServerSideTranslatorPB.java:462)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:523)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:991)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:872)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:818)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.security.auth.Subject.doAs(Subject.java:422)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1729)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2678)
+Caused by: org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot create file/myfile3._COPYING_. Name node is in safe mode.
+The reported blocks 26 has reached the threshold 0.9990 of total blocks 26. The number of live datanodes 3 has reached the minimum number 0. In safe mode extension. Safe mode will be turned off automatically in 3 seconds. NamenodeHostName:node-1-link-0
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.newSafemodeException(FSNamesystem.java:1450)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1437)
+	... 13 more
+, while invoking ClientNamenodeProtocolTranslatorPB.create over node-1-link-0/10.10.1.4:8020. Retrying after sleeping for 2732ms.
+2019-02-02 07:36:14,672 INFO retry.RetryInvocationHandler: org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.ipc.RetriableException): org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot create file/myfile3._COPYING_. Name node is in safe mode.
+The reported blocks 26 has reached the threshold 0.9990 of total blocks 26. The number of live datanodes 3 has reached the minimum number 0. In safe mode extension. Safe mode will be turned off automatically in 0 seconds. NamenodeHostName:node-1-link-0
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1441)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.startFileInt(FSNamesystem.java:2401)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.startFile(FSNamesystem.java:2347)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.create(NameNodeRpcServer.java:774)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.create(ClientNamenodeProtocolServerSideTranslatorPB.java:462)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:523)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:991)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:872)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:818)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.security.auth.Subject.doAs(Subject.java:422)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1729)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2678)
+Caused by: org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot create file/myfile3._COPYING_. Name node is in safe mode.
+The reported blocks 26 has reached the threshold 0.9990 of total blocks 26. The number of live datanodes 3 has reached the minimum number 0. In safe mode extension. Safe mode will be turned off automatically in 0 seconds. NamenodeHostName:node-1-link-0
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesDeleted /myfile5
+file  has been removed from HDFS
+2019-02-02 07:37:40,258 WARN hdfs.DataStreamer: Exception for BP-965679323-130.127.133.70-1549117899218:blk_1073741967_1148
+java.io.IOException: Connection reset by peer
+	at sun.nio.ch.FileDispatcherImpl.read0(Native Method)
+	at sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:39)
+	at sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:223)
+	at sun.nio.ch.IOUtil.read(IOUtil.java:197)
+	at sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:380)
+	at org.apache.hadoop.net.SocketInputStream$Reader.performIO(SocketInputStream.java:57)
+	at org.apache.hadoop.net.SocketIOWithTimeout.doIO(SocketIOWithTimeout.java:142)
+	at org.apache.hadoop.net.SocketInputStream.read(SocketInputStream.java:161)
+	at org.apache.hadoop.net.SocketInputStream.read(SocketInputStream.java:131)
+	at org.apache.hadoop.net.SocketInputStream.read(SocketInputStream.java:118)
+	at java.io.FilterInputStream.read(FilterInputStream.java:83)
+	at java.io.FilterInputStream.read(FilterInputStream.java:83)
+	at org.apache.hadoop.hdfs.protocolPB.PBHelperClient.vintPrefixed(PBHelperClient.java:547)
+	at org.apache.hadoop.hdfs.protocol.datatransfer.PipelineAck.readFields(PipelineAck.java:213)
+	at org.apache.hadoop.hdfs.DataStreamer$ResponseProcessor.run(DataStreamer.java:1086)
+2019-02-02 07:37:40,262 WARN hdfs.DataStreamer: Error Recovery for BP-965679323-130.127.133.70-1549117899218:blk_1073741967_1148 in pipeline [DatanodeInfoWithStorage[10.10.1.5:9866,DS-cdb2635a-9962-406f-b680-6727d7f8ae21,DISK], DatanodeInfoWithStorage[10.10.1.2:9866,DS-ddae77d5-9d24-4b5c-aa44-1f73e0eb7f01,DISK], DatanodeInfoWithStorage[10.10.1.3:9866,DS-7e6a07da-e3d1-4af5-8769-dd392ec323e2,DISK]]: datanode 0(DatanodeInfoWithStorage[10.10.1.5:9866,DS-cdb2635a-9962-406f-b680-6727d7f8ae21,DISK]) is bad.
+2019-02-02 07:37:40,267 INFO retry.RetryInvocationHandler: java.io.EOFException: End of File Exception between local host is: "clnode061.clemson.cloudlab.us/130.127.133.70"; destination host is: "node-1-link-0":8020; : java.io.EOFException; For more details see:  http://wiki.apache.org/hadoop/EOFException, while invoking ClientNamenodeProtocolTranslatorPB.updateBlockForPipeline over node-1-link-0/10.10.1.4:8020. Trying to failover immediately.
+2019-02-02 07:37:40,268 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode061.clemson.cloudlab.us/130.127.133.70 to node-0-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.updateBlockForPipeline over node-0-link-0/10.10.1.1:8020 after 1 failover attempts. Trying to failover after sleeping for 1067ms.
+2019-02-02 07:37:41,337 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode061.clemson.cloudlab.us/130.127.133.70 to node-1-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.updateBlockForPipeline over node-1-link-0/10.10.1.4:8020 after 2 failover attempts. Trying to failover after sleeping for 2073ms.
+2019-02-02 07:37:43,412 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode061.clemson.cloudlab.us/130.127.133.70 to node-0-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.updateBlockForPipeline over node-0-link-0/10.10.1.1:8020 after 3 failover attempts. Trying to failover after sleeping for 4035ms.
+2019-02-02 07:37:47,449 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode061.clemson.cloudlab.us/130.127.133.70 to node-1-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.updateBlockForPipeline over node-1-link-0/10.10.1.4:8020 after 4 failover attempts. Trying to failover after sleeping for 10469ms.
+2019-02-02 07:37:57,920 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode061.clemson.cloudlab.us/130.127.133.70 to node-0-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.updateBlockForPipeline over node-0-link-0/10.10.1.1:8020 after 5 failover attempts. Trying to failover after sleeping for 20405ms.
+2019-02-02 07:38:06,154 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode061.clemson.cloudlab.us/130.127.133.70 to node-0-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.renewLease over node-0-link-0/10.10.1.1:8020. Trying to failover immediately.
+2019-02-02 07:38:06,156 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode061.clemson.cloudlab.us/130.127.133.70 to node-1-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.renewLease over node-1-link-0/10.10.1.4:8020 after 1 failover attempts. Trying to failover after sleeping for 1196ms.
+2019-02-02 07:38:07,353 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode061.clemson.cloudlab.us/130.127.133.70 to node-0-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.renewLease over node-0-link-0/10.10.1.1:8020 after 2 failover attempts. Trying to failover after sleeping for 2391ms.
+2019-02-02 07:38:09,746 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode061.clemson.cloudlab.us/130.127.133.70 to node-1-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.renewLease over node-1-link-0/10.10.1.4:8020 after 3 failover attempts. Trying to failover after sleeping for 4567ms.
+2019-02-02 07:38:14,315 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode061.clemson.cloudlab.us/130.127.133.70 to node-0-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.renewLease over node-0-link-0/10.10.1.1:8020 after 4 failover attempts. Trying to failover after sleeping for 10402ms.
+2019-02-02 07:38:18,326 WARN retry.RetryInvocationHandler: A failover has occurred since the start of call #16 ClientNamenodeProtocolTranslatorPB.updateBlockForPipeline over node-0-link-0/10.10.1.1:8020
+2019-02-02 07:38:18,327 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode061.clemson.cloudlab.us/130.127.133.70 to node-0-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.updateBlockForPipeline over node-0-link-0/10.10.1.1:8020 after 6 failover attempts. Trying to failover after sleeping for 18550ms.
+2019-02-02 07:38:24,720 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode061.clemson.cloudlab.us/130.127.133.70 to node-1-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.renewLease over node-1-link-0/10.10.1.4:8020 after 5 failover attempts. Trying to failover after sleeping for 9950ms.
+2019-02-02 07:38:34,672 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode061.clemson.cloudlab.us/130.127.133.70 to node-0-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.renewLease over node-0-link-0/10.10.1.1:8020 after 6 failover attempts. Trying to failover after sleeping for 13045ms.
+2019-02-02 07:38:36,878 WARN retry.RetryInvocationHandler: A failover has occurred since the start of call #16 ClientNamenodeProtocolTranslatorPB.updateBlockForPipeline over node-0-link-0/10.10.1.1:8020
+2019-02-02 07:38:36,879 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode061.clemson.cloudlab.us/130.127.133.70 to node-0-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.updateBlockForPipeline over node-0-link-0/10.10.1.1:8020 after 7 failover attempts. Trying to failover after sleeping for 7861ms.
+2019-02-02 07:38:44,744 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode061.clemson.cloudlab.us/130.127.133.70 to node-1-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.updateBlockForPipeline over node-1-link-0/10.10.1.4:8020 after 8 failover attempts. Trying to failover after sleeping for 18054ms.
+2019-02-02 07:38:47,717 WARN retry.RetryInvocationHandler: A failover has occurred since the start of call #17 ClientNamenodeProtocolTranslatorPB.renewLease over node-1-link-0/10.10.1.4:8020
+2019-02-02 07:38:47,720 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode061.clemson.cloudlab.us/130.127.133.70 to node-1-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.renewLease over node-1-link-0/10.10.1.4:8020 after 7 failover attempts. Trying to failover after sleeping for 19408ms.
+./benchmark.sh: line 24: 97815 Killed                  $HADOOP_HOME/bin/hdfs dfs -put "$large_file_dir"/myfile"$id" /myfile"$id"
+signal TERM catched and let quit gracefully
+2019-02-02 07:38:51,470 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode061.clemson.cloudlab.us/130.127.133.70 to node-1-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.getFileInfo over node-1-link-0/10.10.1.4:8020 after 1 failover attempts. Trying to failover after sleeping for 787ms.
+2019-02-02 07:38:52,260 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode061.clemson.cloudlab.us/130.127.133.70 to node-0-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.getFileInfo over node-0-link-0/10.10.1.1:8020 after 2 failover attempts. Trying to failover after sleeping for 1483ms.
+2019-02-02 07:38:53,745 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode061.clemson.cloudlab.us/130.127.133.70 to node-1-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.getFileInfo over node-1-link-0/10.10.1.4:8020 after 3 failover attempts. Trying to failover after sleeping for 3343ms.
+2019-02-02 07:38:57,090 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode061.clemson.cloudlab.us/130.127.133.70 to node-0-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.getFileInfo over node-0-link-0/10.10.1.1:8020 after 4 failover attempts. Trying to failover after sleeping for 7872ms.
+2019-02-02 07:39:04,967 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode061.clemson.cloudlab.us/130.127.133.70 to node-1-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.getFileInfo over node-1-link-0/10.10.1.4:8020 after 5 failover attempts. Trying to failover after sleeping for 7522ms.
+2019-02-02 07:39:12,492 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode061.clemson.cloudlab.us/130.127.133.70 to node-0-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.getFileInfo over node-0-link-0/10.10.1.1:8020 after 6 failover attempts. Trying to failover after sleeping for 20438ms.
+2019-02-02 07:39:32,932 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode061.clemson.cloudlab.us/130.127.133.70 to node-1-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.getFileInfo over node-1-link-0/10.10.1.4:8020 after 7 failover attempts. Trying to failover after sleeping for 20469ms.
+2019-02-02 07:39:53,404 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode061.clemson.cloudlab.us/130.127.133.70 to node-0-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.getFileInfo over node-0-link-0/10.10.1.1:8020 after 8 failover attempts. Trying to failover after sleeping for 10655ms.
+2019-02-02 07:40:04,061 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode061.clemson.cloudlab.us/130.127.133.70 to node-1-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.getFileInfo over node-1-link-0/10.10.1.4:8020 after 9 failover attempts. Trying to failover after sleeping for 19566ms.
+2019-02-02 07:40:23,630 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode061.clemson.cloudlab.us/130.127.133.70 to node-0-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.getFileInfo over node-0-link-0/10.10.1.1:8020 after 10 failover attempts. Trying to failover after sleeping for 21645ms.
+tionRefused, while invoking ClientNamenodeProtocolTranslatorPB.getFileInfo over node-1-link-0/10.10.1.4:8020 after 9 failover attempts. Trying to failover after sleeping for 10061ms.
+2019-02-02 07:40:07,335 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode061.clemson.cloudlab.us/130.127.133.70 to node-0-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.getFileInfo over node-0-link-0/10.10.1.1:8020 after 10 failover attempts. Trying to failover after sleeping for 19077ms.
+2019-02-02 07:40:26,415 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode061.clemson.cloudlab.us/130.127.133.70 to node-1-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.getFileInfo over node-1-link-0/10.10.1.4:8020 after 11 failover attempts. Trying to failover after sleeping for 18057ms.
+pts. Trying to failover after sleeping for 12822ms.
+./benchmark.sh: line 24: 98710 Killed                  $HADOOP_HOME/bin/hdfs dfs -put "$large_file_dir"/myfile"$id" /myfile"$id"
+signal TERM catched and let quit gracefully
+2019-02-02 07:38:55,582 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode061.clemson.cloudlab.us/130.127.133.70 to node-1-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.getFileInfo over node-1-link-0/10.10.1.4:8020 after 1 failover attempts. Trying to failover after sleeping for 1246ms.
+2019-02-02 07:38:56,830 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode061.clemson.cloudlab.us/130.127.133.70 to node-0-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.getFileInfo over node-0-link-0/10.10.1.1:8020 after 2 failover attempts. Trying to failover after sleeping for 2252ms.
+2019-02-02 07:38:59,085 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode061.clemson.cloudlab.us/130.127.133.70 to node-1-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.getFileInfo over node-1-link-0/10.10.1.4:8020 after 3 failover attempts. Trying to failover after sleeping for 5344ms.
+2019-02-02 07:39:04,434 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode061.clemson.cloudlab.us/130.127.133.70 to node-0-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.getFileInfo over node-0-link-0/10.10.1.1:8020 after 4 failover attempts. Trying to failover after sleeping for 5027ms.
+2019-02-02 07:39:09,463 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode061.clemson.cloudlab.us/130.127.133.70 to node-1-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.getFileInfo over node-1-link-0/10.10.1.4:8020 after 5 failover attempts. Trying to failover after sleeping for 8887ms.
+2019-02-02 07:39:18,353 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode061.clemson.cloudlab.us/130.127.133.70 to node-0-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.getFileInfo over node-0-link-0/10.10.1.1:8020 after 6 failover attem2019-02-02 07:39:23,404 INFO retry.RetryInvocationHa2019-02-02 07:39:36,309 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode061.clemson.cloudlab.us/130.127.133.70 to node-1-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.getFileInfo over node-1-link-0/10.10.1.4:8020 after 7 failover attem2019-02-02 07:39:44,860 INFO retry.RetryInvocationHa2019-02-02 07:39:51,856 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode061.clemson.cloudlab.us/130.127.133.70 to node-0-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.getFileInfo over node-0-link-0/10.10.1.1:8020 after 8 failover attem2019-02-02 07:40:06,363 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode061.clemson.cloudlab.us/130.127.133.70 to node-0-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.getFileInfo over node-0-link-0/10.10.1.1:8020 after 8 failover attempts. Trying to failover after sleeping for 8413ms.
+2019-02-02 07:40:14,778 INFO retry.RetryInvocationHan2019-02-02 07:40:23,838 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode061.clemson.cloudlab.us/130.127.133.70 to node-0-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.getFileInfo over node-0-link-0/10.10.1.1:8020 after 10 failover att2019-02-02 07:40:28,864 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode061.clemson.cloudlab.us/130.127.133.70 to node-0-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.getFileInfo over node-0-link-0/10.10.1.1:8020 after 10 failover attempts. Trying to failover after sleeping for 9139ms.
+2019-02-02 07:40:38,005 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode061.clemson.cloudlab.us/130.127.133.70 to node-1-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.getFileInfo over node-1-link-0/10.10.1.4:8020 after 11 failover attempts. Trying to failover after sleeping for 11532ms.
+loudlab.us/130.127.133.70 to node-0-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.abandonBlock over node-0-link-0/10.10.1.1:8020 after 2 failover attempts. Trying to failover after sleeping for 1293ms.
+2019-02-02 07:38:41,052 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode061.clemson.cloudlab.us/130.127.133.70 to node-1-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.abandonBlock over node-1-link-0/10.10.1.4:8020 after 3 failover attempts. Trying to failover after sleeping for 3085ms.
+2019-02-02 07:38:44,140 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode061.clemson.cloudlab.us/130.127.133.70 to node-0-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.abandonBlock over node-0-link-0/10.10.1.1:8020 after 4 failover attempts. Trying to failover after sleeping for 6780ms.
+2019-02-02 07:38:45,342 WARN retry.RetryInvocationHandler: A failover has occurred since the start of call #7 ClientNamenodeProtocolTranslatorPB.renewLease over node-0-link-0/10.10.1.1:8020
+2019-02-02 07:38:45,343 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode061.clemson.cloudlab.us/130.127.133.70 to node-0-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.renewLease over node-0-link-0/10.10.1.1:8020 after 8 failover attempts. Trying to failover after sleeping for 15684ms.
+2019-02-02 07:38:50,927 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode061.clemson.cloudlab.us/130.127.133.70 to node-1-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.abandonBlock over node-1-link-0/10.10.1.4:8020 after 5 failover attempts. Trying to failover after sleeping for 10855ms.
+./benchmark.sh: line 24: 99820 Killed                  $HADOOP_HOME/bin/hdfs dfs -put "$large_file_dir"/myfile"$id" /myfile"$id"
+signal TERM catched and let quit gracefully
+2019-02-02 07:38:59,120 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode061.clemson.cloudlab.us/130.127.133.70 to node-1-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.getFileInfo over node-1-link-0/10.10.1.4:8020 after 1 failover attempts. Trying to failover after sleeping for 500ms.
+2019-02-02 07:38:59,623 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode061.clemson.cloudlab.us/130.127.133.70 to node-0-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.getFileInfo over node-0-link-0/10.10.1.1:8020 after 2 failover attempts. Trying to failover after sleeping for 2978ms.
+2019-02-02 07:39:02,602 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode061.clemson.cloudlab.us/130.127.133.70 to node-1-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.getFileInfo over node-1-link-0/10.10.1.4:8020 after 3 failover attempts. Trying to failover after sleeping for 3300ms.
+2019-02-02 07:39:05,905 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode061.clemson.cloudlab.us/130.127.133.70 to node-0-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.getFileInfo over node-0-link-0/10.10.1.1:8020 after 4 failover attempts. Trying to failover after sleeping for 10835ms.
+2019-02-02 07:39:16,745 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode061.clemson.cloudlab.us/130.127.133.70 to node-1-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.getFileInfo over node-1-link-0/10.10.1.4:8020 after 5 failover attempts. Trying to failover after sleeping for 12622ms.
+2019-02-02 07:39:29,370 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode061.clemson.cloudlab.us/130.127.133.70 to node-0-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.getFileInfo over node-0-link-0/10.10.1.1:8020 after 6 failover attempts. Trying to failover after sleeping for 11204ms.
+2019-02-02 07:39:40,577 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode061.clemson.cloudlab.us/130.127.133.70 to node-1-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.getFileInfo over node-1-link-0/10.10.1.4:8020 after 7 failover attempts. Trying to failover after sleeping for 8224ms.
+2019-02-02 07:39:48,803 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode061.clemson.cloudlab.us/130.127.133.70 to node-0-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.getFileInfo over node-0-link-0/10.10.1.1:8020 after 8 failover attempts. Trying to failover after sleeping for 21146ms.
+2019-02-02 07:40:09,952 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode061.clemson.cloudlab.us/130.127.133.70 to node-1-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.getFileInfo over node-1-link-0/10.10.1.4:8020 after 9 failover attempts. Trying to failover after sleeping for 19072ms.

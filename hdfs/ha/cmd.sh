@@ -1,12 +1,12 @@
 #!/bin/bash
-
-if [ "$#" -ne 1 ]
+if [ "$#" -lt 1 ]
 then
-    echo "e.g., ./test.sh [start|stop]"
+    echo "e.g., ./cmd.sh [start|stop|collectlog]"
     exit
 fi
 
 command=$1
+shift 1
 
 # load parameters
 . var.sh
@@ -98,10 +98,41 @@ function stop {
     done
 }
 
+function collectlog {
+    local test=$1
+    echo "collect logs for test $test"
+    mkdir $test/all_logs
+    mkdir $test/all_logs/namenodes
+    mkdir $test/all_logs/datanodes
+    mkdir $test/all_logs/jnodes
+    mkdir $test/all_logs/clients
+    
+    for i in ${namenodes[@]}
+    do
+        scp node-"$i"-link-0:$HADOOP_HOME/logs/hadoop-root-namenode* $test/all_logs/namenodes
+    done
+    
+    for i in ${datanodes[@]}
+    do
+        scp node-"$i"-link-0:$HADOOP_HOME/logs/hadoop-root-datanode* $test/all_logs/datanodes
+    done
+    
+    for i in ${jnodes[@]}
+    do
+        scp node-"$i"-link-0:$HADOOP_HOME/logs/hadoop-root-journalnode* $test/all_logs/jnodes
+    done
+}
+
 if [ $command = "start" ]; then
     start
 elif [ $command = "stop" ]; then
     stop
+elif [ $command = "collectlog" ]; then
+    if [ "$#" -lt 1 ]; then
+        echo "wrong command, e.g., ./cmd.sh collect TEST_DIR"
+    else
+        collectlog $1
+    fi
 else
-    echo "wrong command, e.g., [start|stop]"
+    echo "wrong command, e.g., ./cmd.sh [start|stop|collectlog]"
 fi

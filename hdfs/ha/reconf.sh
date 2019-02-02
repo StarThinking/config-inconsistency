@@ -20,7 +20,8 @@ function switch_active {
     sleep 15
     
     # change configuration to file xxx
-    # ...
+    scp $new_conf $active:$HADOOP_HOME/etc/hadoop
+    echo "change $new_conf configuration as $new_conf"
     
     
     # reboot namenode which should be become standby namenode
@@ -31,7 +32,7 @@ function switch_active {
     
     # confirm active and standby namenodes are switched
     active=$($HADOOP_HOME/bin/hdfs haadmin -getAllServiceState | grep active | cut -d':' -f1)
-    if [ $active != $old_standby ]
+    if [ "$active" != "$old_standby" ]
     then
         echo "Error: standby namenode failed to turn active."
         exit
