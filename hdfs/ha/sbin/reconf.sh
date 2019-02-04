@@ -2,7 +2,7 @@
 
 if [ "$#" -ne 1 ]
 then
-    echo "e.g., ./test.sh [start|stop]"
+    echo "e.g., ./reconf.sh [config_file]"
     exit
 fi
 

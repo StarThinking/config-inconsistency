@@ -2,7 +2,7 @@
 
 #. ./benchmark.sh
 
-./benchmark.sh 123 & 
+./benchmark.sh 123 2>&1 1>tmp.txt & 
 pid=$!
 
 sleep 10

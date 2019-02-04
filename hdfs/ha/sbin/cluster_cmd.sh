@@ -1,15 +1,16 @@
 #!/bin/bash
+
+# load parameters
+. ./global_var.sh
+
 if [ "$#" -lt 1 ]
 then
-    echo "e.g., ./cmd.sh [start|stop|collectlog]"
+    echo "e.g., ./cluster_cmd.sh [start|stop|collectlog]"
     exit
 fi
 
 command=$1
 shift 1
-
-# load parameters
-. var.sh
 
 function start {
     # copy default configuration to all nodes
@@ -121,6 +122,8 @@ function collectlog {
     do
         scp node-"$i"-link-0:$HADOOP_HOME/logs/hadoop-root-journalnode* $test/all_logs/jnodes
     done
+   
+    mv $test/client* $test/all_logs/clients
 }
 
 if [ $command = "start" ]; then
@@ -128,11 +131,11 @@ if [ $command = "start" ]; then
 elif [ $command = "stop" ]; then
     stop
 elif [ $command = "collectlog" ]; then
-    if [ "$#" -lt 1 ]; then
-        echo "wrong command, e.g., ./cmd.sh collect TEST_DIR"
+    if [ "$#" -ne 1 ]; then
+        echo "wrong command, e.g., ./cluster_cmd.sh collectlog TEST_DIR"
     else
         collectlog $1
     fi
 else
-    echo "wrong command, e.g., ./cmd.sh [start|stop|collectlog]"
+    echo "wrong command, e.g., ./cluster_cmd.sh [start|stop|collectlog]"
 fi
