@@ -1,5 +1,5 @@
 #!/bin/bash
-:'
+
 sudo apt-get update
 sudo apt-get -y upgrade
 sudo apt-get -y install vim
@@ -43,6 +43,22 @@ mvn package -Pdist,native -DskipTests -Dtar
 cd ~
 wget http://ftp.wayne.edu/apache/zookeeper/zookeeper-3.4.13/zookeeper-3.4.13.tar.gz
 tar zxvf zookeeper-3.4.13.tar.gz 
-'
+
 echo "export ZOOKEEPER_HOME=/root/zookeeper-3.4.13" >> ~/.bashrc
+TEST_HOME=/root/config-inconsistency/hdfs/ha
+echo "export TEST_HOME=$TEST_HOME" >> ~/.bashrc
 source ~/.bashrc
+
+# mkfs for datanode
+. $TEST_HOME/sbin/global_var.sh
+for i in ${datanodes[@]}
+do
+    ssh node-$i-link-0 "printf "%s\n" n '' '' '' '' w | fdisk /dev/sdb"
+    ssh node-$i-link-0 "mkfs.ext4 /dev/sdb1"
+    ssh node-$i-link-0 "mkdir $hadoop_data_dir; mount /dev/sdb1 $hadoop_data_dir"
+done
+
+# mkfs for client
+ssh node-$clientnode-link-0 "printf "%s\n" n '' '' '' '' w | fdisk /dev/sdb"
+ssh node-$clientnode-link-0 "mkfs.ext4 /dev/sdb1"
+ssh node-$clientnode-link-0 "mkdir $large_file_dir; mount /dev/sdb1 $large_file_dir; mkdir $large_file_dir_tmp"

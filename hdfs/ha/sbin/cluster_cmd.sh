@@ -1,7 +1,8 @@
 #!/bin/bash
 
-# load parameters
-. ./global_var.sh
+# if a script wants to be executed by itself, 
+# it needs to load global variables
+. $TEST_HOME/sbin/global_var.sh
 
 if [ "$#" -lt 1 ]
 then
@@ -65,9 +66,9 @@ function start {
     # prepare datanode dir
     for i in ${datanodes[@]}
     do
-        ssh node-"$i"-link-0  "mkdir /root/data"
+        ssh node-"$i"-link-0  "rm -rf $hadoop_data_dir"
     done
-    
+
     # init zookeeper
     $HADOOP_HOME/bin/hdfs zkfc -formatZK
 
@@ -88,7 +89,7 @@ function stop {
 
     for i in ${datanodes[@]}
     do
-        ssh node-"$i"-link-0 "rm -rf /root/data; rm -rf /root/journal; rm $HADOOP_HOME/logs/*"
+        ssh node-"$i"-link-0 "rm -rf $hadoop_data_dir; rm -rf /root/journal; rm $HADOOP_HOME/logs/*"
     done
     
     # stop and clear up zookeeper
@@ -123,7 +124,8 @@ function collectlog {
         scp node-"$i"-link-0:$HADOOP_HOME/logs/hadoop-root-journalnode* $test/all_logs/jnodes
     done
    
-    mv $test/client* $test/all_logs/clients
+    scp node-"$clientnode"-link-0:/tmp/client*.log $test/all_logs/clients
+    ssh node-"$clientnode"-link-0 "rm /tmp/client*.log"
 }
 
 if [ $command = "start" ]; then

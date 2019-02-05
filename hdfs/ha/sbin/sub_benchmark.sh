@@ -1,7 +1,5 @@
 #!/bin/bash
 
-. ./global_var.sh
-
 id=$1
 running=true
 

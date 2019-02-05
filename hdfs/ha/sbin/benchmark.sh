@@ -1,16 +1,23 @@
 #!/bin/bash
 
-. ./global_var.sh
+# if a script wants to be executed by itself, 
+# it needs to load global variables
+. $TEST_HOME/sbin/global_var.sh
+
+# benchmark parameters
+read_times=1
+benchmark_threads=1
 
 # run benchmark
 function start_benchmark { 
-    $testdir=$1
+    #local testdir=$1
     
     rm -rf $large_file_dir_tmp/*
+    rm /tmp/client*log
 
     for i in $(seq 1 $benchmark_threads)
     do
-        ./sub_benchmark.sh $i &> $testdir/client"$i".log &
+        . $TEST_HOME/sbin/sub_benchmark.sh $i &> /tmp/client"$i".log &
         pids[$i]=$!
 	echo "sub benchmark $i started"
     done
@@ -18,7 +25,7 @@ function start_benchmark {
 
 # kill and wait benchmark finish
 function stop_benchmark {
-    $testdir=$1
+    #local testdir=$1
     
     for i in $(seq 1 $benchmark_threads)
     do
@@ -31,3 +38,17 @@ function stop_benchmark {
 	echo "sub benchmark $i stopped"
     done
 }
+
+if [ "$#" -ne 1 ]; then
+    echo "benchmark.sh [start|stop]"
+    exit
+fi
+
+command=$1
+if [ $command == "start" ]; then
+    start_benchmark
+elif [ $command == "stop" ]; then
+    stop_benchmark
+else
+    echo "error: wrong arguments. benchmark.sh [start|stop]"
+fi

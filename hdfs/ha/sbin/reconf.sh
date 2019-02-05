@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# if a script wants to be executed by itself, 
+# it needs to load global variables
+ . $TEST_HOME/sbin/global_var.sh
+
 if [ "$#" -ne 1 ]
 then
     echo "e.g., ./reconf.sh [config_file]"
