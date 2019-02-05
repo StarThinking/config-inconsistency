@@ -71,7 +71,7 @@ function start {
     # prepare datanode dir
     for i in ${datanodes[@]}
     do
-        ssh node-"$i"-link-0  "rm -rf $hadoop_data_dir"
+        ssh node-"$i"-link-0  "rm -rf $hadoop_data_dir/*"
     done
 
     # init zookeeper
@@ -94,7 +94,7 @@ function stop {
 
     for i in ${datanodes[@]}
     do
-        ssh node-"$i"-link-0 "rm -rf $hadoop_data_dir; rm -rf /root/journal; rm $HADOOP_HOME/logs/*"
+        ssh node-"$i"-link-0 "rm -rf $hadoop_data_dir/*; rm -rf /root/journal; rm $HADOOP_HOME/logs/*"
     done
     
     # stop and clear up zookeeper

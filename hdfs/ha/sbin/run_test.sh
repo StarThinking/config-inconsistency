@@ -20,7 +20,7 @@ testdir=$1
 $TEST_HOME/sbin/cluster_cmd.sh start
 
 # start running benchmark
-ssh node-$clientnode-link-0 "$TEST_HOME/sbin/benchmark.sh start"
+ssh node-$clientnode-link-0 "/bin/bash --login $TEST_HOME/sbin/benchmark.sh start"
 
 sleep 60
 
@@ -30,7 +30,7 @@ $TEST_HOME/sbin/reconf.sh $testdir/hdfs-site.xml
 sleep 300
 
 # stop running benchmark
-ssh node-$clientnode-link-0 "$TEST_HOME/sbin/benchmark.sh stop"
+ssh node-$clientnode-link-0 "/bin/bash --login $TEST_HOME/sbin/benchmark.sh stop"
 
 # collect logs for this test 
 $TEST_HOME/sbin/cluster_cmd.sh collectlog $testdir
