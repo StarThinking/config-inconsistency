@@ -5,7 +5,7 @@ if [ -z "$TEST_HOME" ]; then
     echo "TEST_HOME not set."
     exit
 fi
-:'
+
 # if a script wants to be executed by itself, 
 # it needs to load global variables
 . $TEST_HOME/sbin/global_var.sh
