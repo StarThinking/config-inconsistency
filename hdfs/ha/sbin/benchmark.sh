@@ -20,11 +20,12 @@ function start_benchmark {
     
     rm -rf $large_file_dir_tmp/*
     rm /tmp/client*log
+    rm /tmp/pids
 
     for i in $(seq 1 $benchmark_threads)
     do
         . $TEST_HOME/sbin/sub_benchmark.sh $i &> /tmp/client"$i".log &
-        pids[$i]=$!
+        echo $! >> /tmp/pids
 	echo "sub benchmark $i started"
     done
 }
@@ -32,15 +33,16 @@ function start_benchmark {
 # kill and wait benchmark finish
 function stop_benchmark {
     #local testdir=$1
-    
-    for i in $(seq 1 $benchmark_threads)
+    local pids=$(cat /tmp/pids)
+
+    for i in ${pids[@]}
     do
-        kill ${pids[$i]}
+        kill $i
     done
     
-    for i in $(seq 1 $benchmark_threads)
+    for i in ${pids[@]}
     do
-        wait ${pids[$i]}
+        wait $i
 	echo "sub benchmark $i stopped"
     done
 }

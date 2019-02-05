@@ -23,6 +23,8 @@ function start {
     for i in ${allnodes[@]}
     do
         scp $TEST_HOME/etc/* node-"$i"-link-0:$HADOOP_HOME/etc/hadoop
+        # override sbin
+        scp $TEST_HOME/sbin/* node-"$i"-link-0:$TEST_HOME/sbin
     done
     
     ### START MANUAL FAILOVER ###

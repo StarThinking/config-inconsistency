@@ -22,12 +22,12 @@ $TEST_HOME/sbin/cluster_cmd.sh start
 # start running benchmark
 ssh node-$clientnode-link-0 "/bin/bash --login $TEST_HOME/sbin/benchmark.sh start"
 
-sleep 60
+sleep 30
 
 # change configuration to be as given file
 $TEST_HOME/sbin/reconf.sh $testdir/hdfs-site.xml
 
-sleep 300
+sleep 60
 
 # stop running benchmark
 ssh node-$clientnode-link-0 "/bin/bash --login $TEST_HOME/sbin/benchmark.sh stop"
