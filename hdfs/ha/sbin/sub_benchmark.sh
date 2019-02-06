@@ -15,6 +15,12 @@ do
     do
         $HADOOP_HOME/bin/hdfs dfs -get /myfile"$id" $large_file_dir_tmp/myfile"$id"
         echo "file $id has been read from HDFS for $i time"
+	local res=$(diff $large_file_dir_tmp/myfile"$id" $large_file_dir/myfile"$id")
+	if [ "$res" != "" ]; then
+		echo "Error: diff failed!"
+	else	
+		echo "diff succeed!"
+	fi
         rm $large_file_dir_tmp/myfile"$id"
         sleep 10
     done

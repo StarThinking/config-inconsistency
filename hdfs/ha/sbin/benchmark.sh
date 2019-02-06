@@ -11,8 +11,8 @@ fi
 . $TEST_HOME/sbin/global_var.sh
 
 # benchmark parameters
-read_times=1
-benchmark_threads=1
+read_times=10
+benchmark_threads=5
 
 # run benchmark
 function start_benchmark { 
@@ -28,22 +28,26 @@ function start_benchmark {
         echo $! >> /tmp/pids
 	echo "sub benchmark $i started"
     done
+
+    local pids=$(cat /tmp/pids)
+    
+    for i in ${pids[@]}
+    do
+        wait $i
+        echo "sub benchmark $i stopped"
+    done
 }
 
 # kill and wait benchmark finish
+# just send kill signal
 function stop_benchmark {
     #local testdir=$1
     local pids=$(cat /tmp/pids)
 
     for i in ${pids[@]}
     do
+	echo "killing pid $i"
         kill $i
-    done
-    
-    for i in ${pids[@]}
-    do
-        wait $i
-	echo "sub benchmark $i stopped"
     done
 }
 

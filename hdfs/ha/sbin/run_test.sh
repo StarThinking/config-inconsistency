@@ -20,17 +20,33 @@ testdir=$1
 $TEST_HOME/sbin/cluster_cmd.sh start
 
 # start running benchmark
-ssh node-$clientnode-link-0 "/bin/bash --login $TEST_HOME/sbin/benchmark.sh start"
+# keep it running on the background on the client
+ssh node-$clientnode-link-0 "/bin/bash --login $TEST_HOME/sbin/benchmark.sh start" &
+client_benchmark_main_pid=$!
 
-sleep 30
+sleep 60
 
 # change configuration to be as given file
 $TEST_HOME/sbin/reconf.sh $testdir/hdfs-site.xml
 
 sleep 60
 
+# change configuration to be as given file
+#$TEST_HOME/sbin/reconf.sh $TEST_HOME/etc/hdfs-site.xml
+
+#sleep 300
+
+# change configuration to be as given file
+#$TEST_HOME/sbin/reconf.sh $testdir/hdfs-site.xml
+
+#sleep 300
+
 # stop running benchmark
 ssh node-$clientnode-link-0 "/bin/bash --login $TEST_HOME/sbin/benchmark.sh stop"
+echo "stop benchmark signal sent"
+wait $client_benchmark_main_pid
+echo "all benchmark sub processes on the client node exited"
+
 
 # collect logs for this test 
 $TEST_HOME/sbin/cluster_cmd.sh collectlog $testdir
