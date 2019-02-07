@@ -12,7 +12,7 @@ fi
 
 # benchmark parameters
 read_times=10
-benchmark_threads=5
+benchmark_threads=10
 
 # run benchmark
 function start_benchmark { 

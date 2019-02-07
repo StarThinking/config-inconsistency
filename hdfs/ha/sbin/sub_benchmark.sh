@@ -23,6 +23,9 @@ do
 	fi
         rm $large_file_dir_tmp/myfile"$id"
         sleep 10
+	if [ $running != true ]; then
+	    break
+	fi
     done
 
     $HADOOP_HOME/bin/hdfs dfs -rm /myfile"$id"

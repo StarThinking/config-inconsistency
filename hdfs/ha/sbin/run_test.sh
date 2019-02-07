@@ -26,20 +26,15 @@ client_benchmark_main_pid=$!
 
 sleep 60
 
-# change configuration to be as given file
-$TEST_HOME/sbin/reconf.sh $testdir/hdfs-site.xml
-
-sleep 60
-
-# change configuration to be as given file
-#$TEST_HOME/sbin/reconf.sh $TEST_HOME/etc/hdfs-site.xml
-
-#sleep 300
-
-# change configuration to be as given file
-#$TEST_HOME/sbin/reconf.sh $testdir/hdfs-site.xml
-
-#sleep 300
+for i in $(seq 1 5)
+do
+    # change configuration to be as given file
+    $TEST_HOME/sbin/reconf.sh $testdir/hdfs-site.xml
+    sleep 1800
+    # change configuration to be as given file
+    $TEST_HOME/sbin/reconf.sh $TEST_HOME/etc/hdfs-site.xml
+    sleep 1800
+done
 
 # stop running benchmark
 ssh node-$clientnode-link-0 "/bin/bash --login $TEST_HOME/sbin/benchmark.sh stop"
