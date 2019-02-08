@@ -135,6 +135,7 @@ function collectlog {
     ssh node-"$clientnode"-link-0 "rm /tmp/client*.log"
 
     cp $TEST_HOME/sbin/run_test.sh $test/all_logs/
+    cp $TEST_HOME/etc/hdfs-site.xml $test/all_logs/hdfs-site.xml.init
 }
 
 if [ $command = "start" ]; then
