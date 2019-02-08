@@ -133,6 +133,8 @@ function collectlog {
    
     scp node-"$clientnode"-link-0:/tmp/client*.log $test/all_logs/clients
     ssh node-"$clientnode"-link-0 "rm /tmp/client*.log"
+
+    cp $TEST_HOME/sbin/run_test.sh $test/all_logs/
 }
 
 if [ $command = "start" ]; then
