@@ -26,14 +26,14 @@ client_benchmark_main_pid=$!
 
 sleep 60
 
-for i in $(seq 1 1)
+for i in $(seq 1 3)
 do
     # change configuration to be as given file
-    #$TEST_HOME/sbin/reconf.sh $testdir/hdfs-site.xml
-    sleep 7200
+    $TEST_HOME/sbin/reconf.sh $testdir/hdfs-site.xml
+    sleep 1200
     # change configuration to be as given file
-    #$TEST_HOME/sbin/reconf.sh $TEST_HOME/etc/hdfs-site.xml
-    #sleep 1200
+    $TEST_HOME/sbin/reconf.sh $TEST_HOME/etc/hdfs-site.xml
+    sleep 1200
 done
 
 # stop running benchmark
