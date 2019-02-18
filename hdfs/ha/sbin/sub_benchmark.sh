@@ -3,7 +3,7 @@
 id=$1
 running=true
 
-trap 'echo "signal TERM catched and let quit gracefully"; running=false' TERM
+trap 'echo "sub_benchmark $i signal TERM catched and let quit gracefully"; running=false' TERM
 
 while [ $running == true ]
 do

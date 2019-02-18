@@ -12,7 +12,7 @@ fi
 
 # benchmark parameters
 read_times=10
-benchmark_threads=10
+benchmark_threads=20
 
 # run benchmark
 function start_benchmark { 
@@ -22,12 +22,16 @@ function start_benchmark {
     rm /tmp/client*log
     rm /tmp/pids
 
+    # my benchmark
     for i in $(seq 1 $benchmark_threads)
     do
         . $TEST_HOME/sbin/sub_benchmark.sh $i &> /tmp/client"$i".log &
         echo $! >> /tmp/pids
 	echo "sub benchmark $i started"
     done
+
+    # nnbench
+    #. $TEST_HOME/sbin/nnbench.sh &> /tmp/client-nnbench.log &
 
     local pids=$(cat /tmp/pids)
     
