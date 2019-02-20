@@ -1,0 +1,665 @@
+Found 20 items
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:28 /myfile1
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:28 /myfile10
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:28 /myfile11
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:28 /myfile12
+-rw-r--r--   3 root supergroup  939524096 2019-02-19 15:28 /myfile13._COPYING_
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:28 /myfile14
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:28 /myfile15
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:28 /myfile16
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:28 /myfile17
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:28 /myfile18
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:28 /myfile19
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:28 /myfile2
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:28 /myfile20
+-rw-r--r--   3 root supergroup  939524096 2019-02-19 15:28 /myfile3._COPYING_
+-rw-r--r--   3 root supergroup  939524096 2019-02-19 15:28 /myfile4._COPYING_
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:28 /myfile5
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:28 /myfile6
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:28 /myfile7
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:28 /myfile8
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:28 /myfile9
+file 19 has been put into HDFS
+file 19 has been read from HDFS for 1 time
+diff succeed!
+2019-02-19 15:29:29,216 INFO retry.RetryInvocationHandler: java.io.IOException: DestHost:destPort node-1-link-0:8020 , LocalHost:localPort clnode059.clemson.cloudlab.us/130.127.133.68:0. Failed on local exception: java.io.IOException: Connection reset by peer, while invoking ClientNamenodeProtocolTranslatorPB.getServerDefaults over node-1-link-0/10.10.1.4:8020. Trying to failover immediately.
+2019-02-19 15:29:29,221 INFO retry.RetryInvocationHandler: org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.ipc.StandbyException): Operation category READ is not supported in state standby. Visit https://s.apache.org/sbnn-error
+	at org.apache.hadoop.hdfs.server.namenode.ha.StandbyState.checkOperation(StandbyState.java:88)
+	at org.apache.hadoop.hdfs.server.namenode.NameNode$NameNodeHAContext.checkOperation(NameNode.java:1952)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkOperation(FSNamesystem.java:1423)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.getServerDefaults(FSNamesystem.java:1856)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.getServerDefaults(NameNodeRpcServer.java:745)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.getServerDefaults(ClientNamenodeProtocolServerSideTranslatorPB.java:444)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:523)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:991)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:872)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:818)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.security.auth.Subject.doAs(Subject.java:422)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1729)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2678)
+, while invoking ClientNamenodeProtocolTranslatorPB.getServerDefaults over node-0-link-0/10.10.1.1:8020 after 1 failover attempts. Trying to failover after sleeping for 1076ms.
+2019-02-19 15:29:30,299 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode059.clemson.cloudlab.us/130.127.133.68 to node-1-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.getServerDefaults over node-1-link-0/10.10.1.4:8020 after 2 failover attempts. Trying to failover after sleeping for 1589ms.
+file 19 has been read from HDFS for 2 time
+diff succeed!
+file 19 has been read from HDFS for 3 time
+diff succeed!
+2019-02-19 15:30:07,319 INFO retry.RetryInvocationHandler: org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.ipc.StandbyException): Operation category READ is not supported in state standby. Visit https://s.apache.org/sbnn-error
+	at org.apache.hadoop.hdfs.server.namenode.ha.StandbyState.checkOperation(StandbyState.java:88)
+	at org.apache.hadoop.hdfs.server.namenode.NameNode$NameNodeHAContext.checkOperation(NameNode.java:1952)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkOperation(FSNamesystem.java:1423)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.getFileInfo(FSNamesystem.java:3085)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.getFileInfo(NameNodeRpcServer.java:1154)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.getFileInfo(ClientNamenodeProtocolServerSideTranslatorPB.java:966)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:523)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:991)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:872)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:818)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.security.auth.Subject.doAs(Subject.java:422)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1729)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2678)
+, while invoking ClientNamenodeProtocolTranslatorPB.getFileInfo over node-1-link-0/10.10.1.4:8020 after 1 failover attempts. Trying to failover after sleeping for 1402ms.
+2019-02-19 15:30:08,724 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode059.clemson.cloudlab.us/130.127.133.68 to node-0-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.getFileInfo over node-0-link-0/10.10.1.1:8020 after 2 failover attempts. Trying to failover after sleeping for 2859ms.
+file 19 has been read from HDFS for 4 time
+diff succeed!
+file 19 has been read from HDFS for 5 time
+diff succeed!
+file 19 has been read from HDFS for 6 time
+diff succeed!
+file 19 has been read from HDFS for 7 time
+diff succeed!
+file 19 has been read from HDFS for 8 time
+diff succeed!
+file 19 has been read from HDFS for 9 time
+diff succeed!
+file 19 has been read from HDFS for 10 time
+diff succeed!
+Deleted /myfile19
+file 19 has been removed from HDFS
+Found 17 items
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:28 /myfile1
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:28 /myfile10
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:28 /myfile11
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:32 /myfile12
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:32 /myfile13
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:28 /myfile14
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:28 /myfile15
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:28 /myfile16
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:32 /myfile17
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:28 /myfile18
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:32 /myfile19
+-rw-r--r--   3 root supergroup          0 2019-02-19 15:32 /myfile2._COPYING_
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:28 /myfile20
+-rw-r--r--   3 root supergroup  268435456 2019-02-19 15:32 /myfile4._COPYING_
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:28 /myfile5
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:32 /myfile6
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:28 /myfile7
+file 19 has been put into HDFS
+file 19 has been read from HDFS for 1 time
+diff succeed!
+file 19 has been read from HDFS for 2 time
+diff succeed!
+file 19 has been read from HDFS for 3 time
+diff succeed!
+file 19 has been read from HDFS for 4 time
+diff succeed!
+file 19 has been read from HDFS for 5 time
+diff succeed!
+file 19 has been read from HDFS for 6 time
+diff succeed!
+file 19 has been read from HDFS for 7 time
+diff succeed!
+file 19 has been read from HDFS for 8 time
+diff succeed!
+file 19 has been read from HDFS for 9 time
+diff succeed!
+file 19 has been read from HDFS for 10 time
+diff succeed!
+Deleted /myfile19
+file 19 has been removed from HDFS
+Found 20 items
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:34 /myfile1
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:34 /myfile10
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:34 /myfile11
+-rw-r--r--   3 root supergroup  671088640 2019-02-19 15:36 /myfile12._COPYING_
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:36 /myfile13
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:36 /myfile14
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:34 /myfile15
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:34 /myfile16
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:36 /myfile17
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:36 /myfile18
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:36 /myfile19
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:36 /myfile2
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:34 /myfile20
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:36 /myfile3
+-rw-r--r--   3 root supergroup  939524096 2019-02-19 15:36 /myfile4._COPYING_
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:34 /myfile5
+-rw-r--r--   3 root supergroup  805306368 2019-02-19 15:36 /myfile6._COPYING_
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:34 /myfile7
+-rw-r--r--   3 root supergroup  805306368 2019-02-19 15:36 /myfile8._COPYING_
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:36 /myfile9
+file 19 has been put into HDFS
+file 19 has been read from HDFS for 1 time
+diff succeed!
+file 19 has been read from HDFS for 2 time
+diff succeed!
+file 19 has been read from HDFS for 3 time
+diff succeed!
+file 19 has been read from HDFS for 4 time
+diff succeed!
+file 19 has been read from HDFS for 5 time
+diff succeed!
+file 19 has been read from HDFS for 6 time
+diff succeed!
+file 19 has been read from HDFS for 7 time
+diff succeed!
+file 19 has been read from HDFS for 8 time
+diff succeed!
+file 19 has been read from HDFS for 9 time
+diff succeed!
+file 19 has been read from HDFS for 10 time
+diff succeed!
+Deleted /myfile19
+file 19 has been removed from HDFS
+2019-02-19 15:41:10,247 INFO retry.RetryInvocationHandler: java.io.IOException: DestHost:destPort node-0-link-0:8020 , LocalHost:localPort clnode059.clemson.cloudlab.us/130.127.133.68:0. Failed on local exception: java.io.IOException: Connection reset by peer, while invoking ClientNamenodeProtocolTranslatorPB.addBlock over node-0-link-0/10.10.1.1:8020. Trying to failover immediately.
+2019-02-19 15:41:10,281 INFO retry.RetryInvocationHandler: org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.ipc.StandbyException): Operation category READ is not supported in state standby. Visit https://s.apache.org/sbnn-error
+	at org.apache.hadoop.hdfs.server.namenode.ha.StandbyState.checkOperation(StandbyState.java:88)
+	at org.apache.hadoop.hdfs.server.namenode.NameNode$NameNodeHAContext.checkOperation(NameNode.java:1952)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkOperation(FSNamesystem.java:1423)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.getAdditionalBlock(FSNamesystem.java:2674)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.addBlock(NameNodeRpcServer.java:875)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.addBlock(ClientNamenodeProtocolServerSideTranslatorPB.java:561)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:523)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:991)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:872)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:818)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.security.auth.Subject.doAs(Subject.java:422)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1729)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2678)
+, while invoking ClientNamenodeProtocolTranslatorPB.addBlock over node-1-link-0/10.10.1.4:8020 after 1 failover attempts. Trying to failover after sleeping for 521ms.
+2019-02-19 15:41:10,805 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode059.clemson.cloudlab.us/130.127.133.68 to node-0-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.addBlock over node-0-link-0/10.10.1.1:8020 after 2 failover attempts. Trying to failover after sleeping for 1604ms.
+2019-02-19 15:41:12,667 INFO retry.RetryInvocationHandler: org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.ipc.RetriableException): org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot add block to /myfile19._COPYING_. Name node is in safe mode.
+The reported blocks 141 has reached the threshold 0.9990 of total blocks 141. The number of live datanodes 3 has reached the minimum number 0. In safe mode extension. Safe mode will be turned off automatically in 29 seconds. NamenodeHostName:node-1-link-0
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1441)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirWriteFileOp.analyzeFileState(FSDirWriteFileOp.java:591)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirWriteFileOp.validateAddBlock(FSDirWriteFileOp.java:172)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.getAdditionalBlock(FSNamesystem.java:2679)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.addBlock(NameNodeRpcServer.java:875)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.addBlock(ClientNamenodeProtocolServerSideTranslatorPB.java:561)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:523)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:991)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:872)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:818)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.security.auth.Subject.doAs(Subject.java:422)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1729)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2678)
+Caused by: org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot add block to /myfile19._COPYING_. Name node is in safe mode.
+The reported blocks 141 has reached the threshold 0.9990 of total blocks 141. The number of live datanodes 3 has reached the minimum number 0. In safe mode extension. Safe mode will be turned off automatically in 29 seconds. NamenodeHostName:node-1-link-0
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.newSafemodeException(FSNamesystem.java:1450)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1437)
+	... 14 more
+, while invoking ClientNamenodeProtocolTranslatorPB.addBlock over node-1-link-0/10.10.1.4:8020 after 3 failover attempts. Retrying after sleeping for 3617ms.
+2019-02-19 15:41:16,290 INFO retry.RetryInvocationHandler: org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.ipc.RetriableException): org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot add block to /myfile19._COPYING_. Name node is in safe mode.
+The reported blocks 141 has reached the threshold 0.9990 of total blocks 141. The number of live datanodes 3 has reached the minimum number 0. In safe mode extension. Safe mode will be turned off automatically in 26 seconds. NamenodeHostName:node-1-link-0
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1441)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirWriteFileOp.analyzeFileState(FSDirWriteFileOp.java:591)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirWriteFileOp.validateAddBlock(FSDirWriteFileOp.java:172)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.getAdditionalBlock(FSNamesystem.java:2679)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.addBlock(NameNodeRpcServer.java:875)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.addBlock(ClientNamenodeProtocolServerSideTranslatorPB.java:561)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:523)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:991)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:872)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:818)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.security.auth.Subject.doAs(Subject.java:422)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1729)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2678)
+Caused by: org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot add block to /myfile19._COPYING_. Name node is in safe mode.
+The reported blocks 141 has reached the threshold 0.9990 of total blocks 141. The number of live datanodes 3 has reached the minimum number 0. In safe mode extension. Safe mode will be turned off automatically in 26 seconds. NamenodeHostName:node-1-link-0
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.newSafemodeException(FSNamesystem.java:1450)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1437)
+	... 14 more
+, while invoking ClientNamenodeProtocolTranslatorPB.addBlock over node-1-link-0/10.10.1.4:8020 after 3 failover attempts. Retrying after sleeping for 5689ms.
+2019-02-19 15:41:21,984 INFO retry.RetryInvocationHandler: org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.ipc.RetriableException): org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot add block to /myfile19._COPYING_. Name node is in safe mode.
+The reported blocks 141 has reached the threshold 0.9990 of total blocks 141. The number of live datanodes 3 has reached the minimum number 0. In safe mode extension. Safe mode will be turned off automatically in 20 seconds. NamenodeHostName:node-1-link-0
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1441)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirWriteFileOp.analyzeFileState(FSDirWriteFileOp.java:591)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirWriteFileOp.validateAddBlock(FSDirWriteFileOp.java:172)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.getAdditionalBlock(FSNamesystem.java:2679)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.addBlock(NameNodeRpcServer.java:875)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.addBlock(ClientNamenodeProtocolServerSideTranslatorPB.java:561)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:523)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:991)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:872)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:818)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.security.auth.Subject.doAs(Subject.java:422)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1729)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2678)
+Caused by: org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot add block to /myfile19._COPYING_. Name node is in safe mode.
+The reported blocks 141 has reached the threshold 0.9990 of total blocks 141. The number of live datanodes 3 has reached the minimum number 0. In safe mode extension. Safe mode will be turned off automatically in 20 seconds. NamenodeHostName:node-1-link-0
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.newSafemodeException(FSNamesystem.java:1450)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1437)
+	... 14 more
+, while invoking ClientNamenodeProtocolTranslatorPB.addBlock over node-1-link-0/10.10.1.4:8020 after 3 failover attempts. Retrying after sleeping for 11503ms.
+2019-02-19 15:41:33,492 INFO retry.RetryInvocationHandler: org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.ipc.RetriableException): org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot add block to /myfile19._COPYING_. Name node is in safe mode.
+The reported blocks 141 has reached the threshold 0.9990 of total blocks 141. The number of live datanodes 3 has reached the minimum number 0. In safe mode extension. Safe mode will be turned off automatically in 9 seconds. NamenodeHostName:node-1-link-0
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1441)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirWriteFileOp.analyzeFileState(FSDirWriteFileOp.java:591)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirWriteFileOp.validateAddBlock(FSDirWriteFileOp.java:172)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.getAdditionalBlock(FSNamesystem.java:2679)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.addBlock(NameNodeRpcServer.java:875)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.addBlock(ClientNamenodeProtocolServerSideTranslatorPB.java:561)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:523)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:991)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:872)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:818)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.security.auth.Subject.doAs(Subject.java:422)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1729)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2678)
+Caused by: org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot add block to /myfile19._COPYING_. Name node is in safe mode.
+The reported blocks 141 has reached the threshold 0.9990 of total blocks 141. The number of live datanodes 3 has reached the minimum number 0. In safe mode extension. Safe mode will be turned off automatically in 9 seconds. NamenodeHostName:node-1-link-0
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.newSafemodeException(FSNamesystem.java:1450)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1437)
+	... 14 more
+, while invoking ClientNamenodeProtocolTranslatorPB.addBlock over node-1-link-0/10.10.1.4:8020 after 3 failover attempts. Retrying after sleeping for 15816ms.
+2019-02-19 15:41:34,946 INFO retry.RetryInvocationHandler: org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.ipc.RetriableException): org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot renew lease for DFSClient_NONMAPREDUCE_-1728001317_1. Name node is in safe mode.
+The reported blocks 141 has reached the threshold 0.9990 of total blocks 141. The number of live datanodes 3 has reached the minimum number 0. In safe mode extension. Safe mode will be turned off automatically in 7 seconds. NamenodeHostName:node-1-link-0
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1441)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.renewLease(FSNamesystem.java:3744)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.renewLease(NameNodeRpcServer.java:1134)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.renewLease(ClientNamenodeProtocolServerSideTranslatorPB.java:737)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:523)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:991)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:872)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:818)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.security.auth.Subject.doAs(Subject.java:422)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1729)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2678)
+Caused by: org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot renew lease for DFSClient_NONMAPREDUCE_-1728001317_1. Name node is in safe mode.
+The reported blocks 141 has reached the threshold 0.9990 of total blocks 141. The number of live datanodes 3 has reached the minimum number 0. In safe mode extension. Safe mode will be turned off automatically in 7 seconds. NamenodeHostName:node-1-link-0
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.newSafemodeException(FSNamesystem.java:1450)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1437)
+	... 12 more
+, while invoking ClientNamenodeProtocolTranslatorPB.renewLease over node-1-link-0/10.10.1.4:8020. Retrying immediately.
+2019-02-19 15:41:34,949 INFO retry.RetryInvocationHandler: org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.ipc.RetriableException): org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot renew lease for DFSClient_NONMAPREDUCE_-1728001317_1. Name node is in safe mode.
+The reported blocks 141 has reached the threshold 0.9990 of total blocks 141. The number of live datanodes 3 has reached the minimum number 0. In safe mode extension. Safe mode will be turned off automatically in 7 seconds. NamenodeHostName:node-1-link-0
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1441)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.renewLease(FSNamesystem.java:3744)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.renewLease(NameNodeRpcServer.java:1134)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.renewLease(ClientNamenodeProtocolServerSideTranslatorPB.java:737)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:523)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:991)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:872)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:818)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.security.auth.Subject.doAs(Subject.java:422)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1729)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2678)
+Caused by: org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot renew lease for DFSClient_NONMAPREDUCE_-1728001317_1. Name node is in safe mode.
+The reported blocks 141 has reached the threshold 0.9990 of total blocks 141. The number of live datanodes 3 has reached the minimum number 0. In safe mode extension. Safe mode will be turned off automatically in 7 seconds. NamenodeHostName:node-1-link-0
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.newSafemodeException(FSNamesystem.java:1450)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1437)
+	... 12 more
+, while invoking ClientNamenodeProtocolTranslatorPB.renewLease over node-1-link-0/10.10.1.4:8020. Retrying after sleeping for 1005ms.
+2019-02-19 15:41:35,957 INFO retry.RetryInvocationHandler: org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.ipc.RetriableException): org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot renew lease for DFSClient_NONMAPREDUCE_-1728001317_1. Name node is in safe mode.
+The reported blocks 141 has reached the threshold 0.9990 of total blocks 141. The number of live datanodes 3 has reached the minimum number 0. In safe mode extension. Safe mode will be turned off automatically in 6 seconds. NamenodeHostName:node-1-link-0
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1441)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.renewLease(FSNamesystem.java:3744)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.renewLease(NameNodeRpcServer.java:1134)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.renewLease(ClientNamenodeProtocolServerSideTranslatorPB.java:737)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:523)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:991)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:872)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:818)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.security.auth.Subject.doAs(Subject.java:422)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1729)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2678)
+Caused by: org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot renew lease for DFSClient_NONMAPREDUCE_-1728001317_1. Name node is in safe mode.
+The reported blocks 141 has reached the threshold 0.9990 of total blocks 141. The number of live datanodes 3 has reached the minimum number 0. In safe mode extension. Safe mode will be turned off automatically in 6 seconds. NamenodeHostName:node-1-link-0
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.newSafemodeException(FSNamesystem.java:1450)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1437)
+	... 12 more
+, while invoking ClientNamenodeProtocolTranslatorPB.renewLease over node-1-link-0/10.10.1.4:8020. Retrying after sleeping for 1882ms.
+2019-02-19 15:41:37,841 INFO retry.RetryInvocationHandler: org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.ipc.RetriableException): org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot renew lease for DFSClient_NONMAPREDUCE_-1728001317_1. Name node is in safe mode.
+The reported blocks 141 has reached the threshold 0.9990 of total blocks 141. The number of live datanodes 3 has reached the minimum number 0. In safe mode extension. Safe mode will be turned off automatically in 4 seconds. NamenodeHostName:node-1-link-0
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1441)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.renewLease(FSNamesystem.java:3744)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.renewLease(NameNodeRpcServer.java:1134)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.renewLease(ClientNamenodeProtocolServerSideTranslatorPB.java:737)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:523)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:991)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:872)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:818)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.security.auth.Subject.doAs(Subject.java:422)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1729)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2678)
+Caused by: org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot renew lease for DFSClient_NONMAPREDUCE_-1728001317_1. Name node is in safe mode.
+The reported blocks 141 has reached the threshold 0.9990 of total blocks 141. The number of live datanodes 3 has reached the minimum number 0. In safe mode extension. Safe mode will be turned off automatically in 4 seconds. NamenodeHostName:node-1-link-0
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.newSafemodeException(FSNamesystem.java:1450)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1437)
+	... 12 more
+, while invoking ClientNamenodeProtocolTranslatorPB.renewLease over node-1-link-0/10.10.1.4:8020. Retrying after sleeping for 4938ms.
+Found 20 items
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:39 /myfile1
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:39 /myfile10
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:39 /myfile11
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:41 /myfile12
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:41 /myfile13
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:41 /myfile14
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:39 /myfile15
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:39 /myfile16
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:41 /myfile17
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:41 /myfile18
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:42 /myfile19
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:41 /myfile2
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:39 /myfile20
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:41 /myfile3
+-rw-r--r--   3 root supergroup  805306368 2019-02-19 15:41 /myfile4._COPYING_
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:39 /myfile5
+-rw-r--r--   3 root supergroup  805306368 2019-02-19 15:41 /myfile6._COPYING_
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:39 /myfile7
+-rw-r--r--   3 root supergroup  268435456 2019-02-19 15:41 /myfile8._COPYING_
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:41 /myfile9
+file 19 has been put into HDFS
+file 19 has been read from HDFS for 1 time
+diff succeed!
+file 19 has been read from HDFS for 2 time
+diff succeed!
+file 19 has been read from HDFS for 3 time
+diff succeed!
+file 19 has been read from HDFS for 4 time
+diff succeed!
+file 19 has been read from HDFS for 5 time
+diff succeed!
+file 19 has been read from HDFS for 6 time
+diff succeed!
+file 19 has been read from HDFS for 7 time
+diff succeed!
+file 19 has been read from HDFS for 8 time
+diff succeed!
+file 19 has been read from HDFS for 9 time
+diff succeed!
+file 19 has been read from HDFS for 10 time
+diff succeed!
+Deleted /myfile19
+file 19 has been removed from HDFS
+Found 20 items
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:43 /myfile1
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:43 /myfile10
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:43 /myfile11
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:45 /myfile12
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:46 /myfile13
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:45 /myfile14
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:43 /myfile15
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:43 /myfile16
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:46 /myfile17
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:45 /myfile18
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:47 /myfile19
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:45 /myfile2
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:43 /myfile20
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:45 /myfile3
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:46 /myfile4
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:43 /myfile5
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:42 /myfile6
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:43 /myfile7
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:42 /myfile8
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:45 /myfile9
+file 19 has been put into HDFS
+file 19 has been read from HDFS for 1 time
+diff succeed!
+file 19 has been read from HDFS for 2 time
+diff succeed!
+file 19 has been read from HDFS for 3 time
+diff succeed!
+file 19 has been read from HDFS for 4 time
+diff succeed!
+file 19 has been read from HDFS for 5 time
+diff succeed!
+file 19 has been read from HDFS for 6 time
+diff succeed!
+file 19 has been read from HDFS for 7 time
+diff succeed!
+file 19 has been read from HDFS for 8 time
+diff succeed!
+file 19 has been read from HDFS for 9 time
+diff succeed!
+file 19 has been read from HDFS for 10 time
+diff succeed!
+Deleted /myfile19
+file 19 has been removed from HDFS
+Found 19 items
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:48 /myfile1
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:48 /myfile10
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:47 /myfile11
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:49 /myfile12
+-rw-r--r--   3 root supergroup  402653184 2019-02-19 15:50 /myfile13._COPYING_
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:49 /myfile14
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:48 /myfile15
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:47 /myfile16
+-rw-r--r--   3 root supergroup  402653184 2019-02-19 15:50 /myfile17._COPYING_
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:49 /myfile18
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:50 /myfile19
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:49 /myfile2
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:49 /myfile3
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:50 /myfile4
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:48 /myfile5
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:47 /myfile6
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:47 /myfile7
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:48 /myfile8
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:49 /myfile9
+file 19 has been put into HDFS
+file 19 has been read from HDFS for 1 time
+diff succeed!
+file 19 has been read from HDFS for 2 time
+diff succeed!
+file 19 has been read from HDFS for 3 time
+diff succeed!
+file 19 has been read from HDFS for 4 time
+diff succeed!
+file 19 has been read from HDFS for 5 time
+diff succeed!
+file 19 has been read from HDFS for 6 time
+diff succeed!
+file 19 has been read from HDFS for 7 time
+diff succeed!
+file 19 has been read from HDFS for 8 time
+diff succeed!
+file 19 has been read from HDFS for 9 time
+diff succeed!
+file 19 has been read from HDFS for 10 time
+diff succeed!
+Deleted /myfile19
+file 19 has been removed from HDFS
+Found 19 items
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:53 /myfile1
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:53 /myfile10
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:53 /myfile11
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:49 /myfile12
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:53 /myfile14
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:53 /myfile15
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:51 /myfile16
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:51 /myfile17
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:53 /myfile18
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:54 /myfile19
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:54 /myfile2
+-rw-r--r--   3 root supergroup          0 2019-02-19 15:54 /myfile20._COPYING_
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:53 /myfile3
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:54 /myfile4
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:53 /myfile5
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:51 /myfile6
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:51 /myfile7
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:52 /myfile8
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:54 /myfile9
+file 19 has been put into HDFS
+file 19 has been read from HDFS for 1 time
+diff succeed!
+file 19 has been read from HDFS for 2 time
+diff succeed!
+file 19 has been read from HDFS for 3 time
+diff succeed!
+file 19 has been read from HDFS for 4 time
+diff succeed!
+file 19 has been read from HDFS for 5 time
+diff succeed!
+file 19 has been read from HDFS for 6 time
+diff succeed!
+file 19 has been read from HDFS for 7 time
+diff succeed!
+file 19 has been read from HDFS for 8 time
+diff succeed!
+file 19 has been read from HDFS for 9 time
+diff succeed!
+file 19 has been read from HDFS for 10 time
+diff succeed!
+Deleted /myfile19
+file 19 has been removed from HDFS
+Found 19 items
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:57 /myfile1
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:58 /myfile10
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:57 /myfile11
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:56 /myfile12
+-rw-r--r--   3 root supergroup  671088640 2019-02-19 15:58 /myfile13._COPYING_
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:58 /myfile14
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:57 /myfile15
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:55 /myfile17
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:53 /myfile18
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:58 /myfile19
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:58 /myfile2
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:54 /myfile20
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:57 /myfile3
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:54 /myfile4
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:53 /myfile5
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:55 /myfile6
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:55 /myfile7
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:55 /myfile8
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 15:58 /myfile9
+file 19 has been put into HDFS
+file 19 has been read from HDFS for 1 time
+diff succeed!
+file 19 has been read from HDFS for 2 time
+diff succeed!
+file 19 has been read from HDFS for 3 time
+diff succeed!
+file 19 has been read from HDFS for 4 time
+diff succeed!
+file 19 has been read from HDFS for 5 time
+diff succeed!
+file 19 has been read from HDFS for 6 time
+diff succeed!
+file 19 has been read from HDFS for 7 time
+diff succeed!
+file 19 has been read from HDFS for 8 time
+diff succeed!
+file 19 has been read from HDFS for 9 time
+diff succeed!
+file 19 has been read from HDFS for 10 time
+diff succeed!
+Deleted /myfile19
+file 19 has been removed from HDFS
+Found 20 items
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 16:01 /myfile1
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 16:02 /myfile10
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 16:01 /myfile11
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 16:00 /myfile12
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 16:03 /myfile13
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 16:02 /myfile14
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 16:01 /myfile15
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 16:03 /myfile16
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 16:00 /myfile17
+-rw-r--r--   3 root supergroup          0 2019-02-19 16:05 /myfile18._COPYING_
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 16:05 /myfile19
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 16:03 /myfile2
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 16:00 /myfile20
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 16:01 /myfile3
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 16:05 /myfile4
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 16:04 /myfile5
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 16:04 /myfile6
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 16:02 /myfile7
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 16:04 /myfile8
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 16:03 /myfile9
+file 19 has been put into HDFS
+file 19 has been read from HDFS for 1 time
+diff succeed!
+file 19 has been read from HDFS for 2 time
+diff succeed!
+file 19 has been read from HDFS for 3 time
+diff succeed!
+file 19 has been read from HDFS for 4 time
+diff succeed!
+file 19 has been read from HDFS for 5 time
+diff succeed!
+file 19 has been read from HDFS for 6 time
+diff succeed!
+file 19 has been read from HDFS for 7 time
+diff succeed!
+file 19 has been read from HDFS for 8 time
+diff succeed!
+file 19 has been read from HDFS for 9 time
+diff succeed!
+file 19 has been read from HDFS for 10 time
+diff succeed!
+Deleted /myfile19
+file 19 has been removed from HDFS
+Found 18 items
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 16:06 /myfile10
+-rw-r--r--   3 root supergroup          0 2019-02-19 16:10 /myfile11._COPYING_
+-rw-r--r--   3 root supergroup  402653184 2019-02-19 16:09 /myfile12._COPYING_
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 16:08 /myfile13
+-rw-r--r--   3 root supergroup  805306368 2019-02-19 16:09 /myfile14._COPYING_
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 16:07 /myfile15
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 16:08 /myfile16
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 16:09 /myfile18
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 16:10 /myfile19
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 16:09 /myfile2
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 16:06 /myfile20
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 16:09 /myfile3
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 16:09 /myfile4
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 16:08 /myfile5
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 16:09 /myfile6
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 16:10 /myfile7
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 16:08 /myfile8
+-rw-r--r--   3 root supergroup 1073741824 2019-02-19 16:07 /myfile9
+file 19 has been put into HDFS
+file 19 has been read from HDFS for 1 time
+diff succeed!
+file 19 has been read from HDFS for 2 time
+diff succeed!
+file 19 has been read from HDFS for 3 time
+diff succeed!
+file 19 has been read from HDFS for 4 time
+diff succeed!
+file 19 has been read from HDFS for 5 time
+diff succeed!
+file 19 has been read from HDFS for 6 time
+diff succeed!
+file 19 has been read from HDFS for 7 time
+diff succeed!
+file 19 has been read from HDFS for 8 time
+diff succeed!
+file 19 has been read from HDFS for 9 time
+diff succeed!
+file 19 has been read from HDFS for 10 time
+diff succeed!
+sub_benchmark 10 signal TERM catched and let quit gracefully
+Deleted /myfile19
+file 19 has been removed from HDFS
