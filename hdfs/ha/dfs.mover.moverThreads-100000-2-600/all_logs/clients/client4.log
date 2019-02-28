@@ -1,0 +1,507 @@
+Found 20 items
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:20 /myfile1
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:21 /myfile10
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:21 /myfile11
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:21 /myfile12
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:21 /myfile13
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:21 /myfile14
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:21 /myfile15
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:21 /myfile16
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:21 /myfile17
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:21 /myfile18
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:21 /myfile19
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:21 /myfile2
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:21 /myfile20
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:21 /myfile3
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:21 /myfile4
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:21 /myfile5
+-rw-r--r--   3 root supergroup  939524096 2019-02-24 06:20 /myfile6._COPYING_
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:21 /myfile7
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:21 /myfile8
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:21 /myfile9
+file 4 has been put into HDFS
+file 4 has been read from HDFS for 1 time
+diff succeed!
+2019-02-24 06:21:41,113 INFO retry.RetryInvocationHandler: java.io.IOException: DestHost:destPort node-1-link-0:8020 , LocalHost:localPort clnode076.clemson.cloudlab.us/130.127.133.85:0. Failed on local exception: java.io.IOException: Connection reset by peer, while invoking ClientNamenodeProtocolTranslatorPB.getServerDefaults over node-1-link-0/10.10.1.4:8020. Trying to failover immediately.
+2019-02-24 06:21:41,122 INFO retry.RetryInvocationHandler: org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.ipc.StandbyException): Operation category READ is not supported in state standby. Visit https://s.apache.org/sbnn-error
+	at org.apache.hadoop.hdfs.server.namenode.ha.StandbyState.checkOperation(StandbyState.java:88)
+	at org.apache.hadoop.hdfs.server.namenode.NameNode$NameNodeHAContext.checkOperation(NameNode.java:1952)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkOperation(FSNamesystem.java:1423)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.getServerDefaults(FSNamesystem.java:1856)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.getServerDefaults(NameNodeRpcServer.java:745)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.getServerDefaults(ClientNamenodeProtocolServerSideTranslatorPB.java:444)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:523)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:991)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:872)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:818)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.security.auth.Subject.doAs(Subject.java:422)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1729)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2678)
+, while invoking ClientNamenodeProtocolTranslatorPB.getServerDefaults over node-0-link-0/10.10.1.1:8020 after 1 failover attempts. Trying to failover after sleeping for 619ms.
+2019-02-24 06:21:41,746 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode076.clemson.cloudlab.us/130.127.133.85 to node-1-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.getServerDefaults over node-1-link-0/10.10.1.4:8020 after 2 failover attempts. Trying to failover after sleeping for 1660ms.
+2019-02-24 06:21:43,409 INFO retry.RetryInvocationHandler: org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.ipc.StandbyException): Operation category READ is not supported in state standby. Visit https://s.apache.org/sbnn-error
+	at org.apache.hadoop.hdfs.server.namenode.ha.StandbyState.checkOperation(StandbyState.java:88)
+	at org.apache.hadoop.hdfs.server.namenode.NameNode$NameNodeHAContext.checkOperation(NameNode.java:1952)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkOperation(FSNamesystem.java:1423)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.getServerDefaults(FSNamesystem.java:1856)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.getServerDefaults(NameNodeRpcServer.java:745)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.getServerDefaults(ClientNamenodeProtocolServerSideTranslatorPB.java:444)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:523)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:991)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:872)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:818)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.security.auth.Subject.doAs(Subject.java:422)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1729)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2678)
+, while invoking ClientNamenodeProtocolTranslatorPB.getServerDefaults over node-0-link-0/10.10.1.1:8020 after 3 failover attempts. Trying to failover after sleeping for 5651ms.
+2019-02-24 06:21:49,065 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode076.clemson.cloudlab.us/130.127.133.85 to node-1-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.getServerDefaults over node-1-link-0/10.10.1.4:8020 after 4 failover attempts. Trying to failover after sleeping for 7181ms.
+file 4 has been read from HDFS for 2 time
+diff succeed!
+file 4 has been read from HDFS for 3 time
+diff succeed!
+file 4 has been read from HDFS for 4 time
+diff succeed!
+file 4 has been read from HDFS for 5 time
+diff succeed!
+file 4 has been read from HDFS for 6 time
+diff succeed!
+file 4 has been read from HDFS for 7 time
+diff succeed!
+file 4 has been read from HDFS for 8 time
+diff succeed!
+file 4 has been read from HDFS for 9 time
+diff succeed!
+file 4 has been read from HDFS for 10 time
+diff succeed!
+Deleted /myfile4
+file 4 has been removed from HDFS
+Found 20 items
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:25 /myfile1
+-rw-r--r--   3 root supergroup  805306368 2019-02-24 06:25 /myfile10._COPYING_
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:25 /myfile11
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:25 /myfile12
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:25 /myfile13
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:25 /myfile14
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:25 /myfile15
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:25 /myfile16
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:25 /myfile17
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:25 /myfile18
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:25 /myfile19
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:25 /myfile2
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:21 /myfile20
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:25 /myfile3
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:25 /myfile4
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:25 /myfile5
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:25 /myfile6
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:25 /myfile7
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:25 /myfile8
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:25 /myfile9
+file 4 has been put into HDFS
+file 4 has been read from HDFS for 1 time
+diff succeed!
+file 4 has been read from HDFS for 2 time
+diff succeed!
+file 4 has been read from HDFS for 3 time
+diff succeed!
+file 4 has been read from HDFS for 4 time
+diff succeed!
+file 4 has been read from HDFS for 5 time
+diff succeed!
+file 4 has been read from HDFS for 6 time
+diff succeed!
+file 4 has been read from HDFS for 7 time
+diff succeed!
+file 4 has been read from HDFS for 8 time
+diff succeed!
+file 4 has been read from HDFS for 9 time
+diff succeed!
+file 4 has been read from HDFS for 10 time
+diff succeed!
+Deleted /myfile4
+file 4 has been removed from HDFS
+Found 20 items
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:31 /myfile1
+-rw-r--r--   3 root supergroup  805306368 2019-02-24 06:30 /myfile10._COPYING_
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:31 /myfile11
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:30 /myfile12
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:31 /myfile13
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:30 /myfile14
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:31 /myfile15
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:31 /myfile16
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:30 /myfile17
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:31 /myfile18
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:31 /myfile19
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:31 /myfile2
+-rw-r--r--   3 root supergroup  671088640 2019-02-24 06:30 /myfile20._COPYING_
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:30 /myfile3
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:31 /myfile4
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:30 /myfile5
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:31 /myfile6
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:31 /myfile7
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:30 /myfile8
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:30 /myfile9
+file 4 has been put into HDFS
+file 4 has been read from HDFS for 1 time
+diff succeed!
+file 4 has been read from HDFS for 2 time
+diff succeed!
+file 4 has been read from HDFS for 3 time
+diff succeed!
+file 4 has been read from HDFS for 4 time
+diff succeed!
+file 4 has been read from HDFS for 5 time
+diff succeed!
+file 4 has been read from HDFS for 6 time
+diff succeed!
+2019-02-24 06:33:22,514 INFO retry.RetryInvocationHandler: org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.ipc.StandbyException): Operation category READ is not supported in state standby. Visit https://s.apache.org/sbnn-error
+	at org.apache.hadoop.hdfs.server.namenode.ha.StandbyState.checkOperation(StandbyState.java:88)
+	at org.apache.hadoop.hdfs.server.namenode.NameNode$NameNodeHAContext.checkOperation(NameNode.java:1952)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkOperation(FSNamesystem.java:1423)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.getFileInfo(FSNamesystem.java:3085)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.getFileInfo(NameNodeRpcServer.java:1154)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.getFileInfo(ClientNamenodeProtocolServerSideTranslatorPB.java:966)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:523)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:991)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:872)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:818)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.security.auth.Subject.doAs(Subject.java:422)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1729)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2678)
+, while invoking ClientNamenodeProtocolTranslatorPB.getFileInfo over node-1-link-0/10.10.1.4:8020 after 1 failover attempts. Trying to failover after sleeping for 1454ms.
+2019-02-24 06:33:23,973 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode076.clemson.cloudlab.us/130.127.133.85 to node-0-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.getFileInfo over node-0-link-0/10.10.1.1:8020 after 2 failover attempts. Trying to failover after sleeping for 2512ms.
+file 4 has been read from HDFS for 7 time
+diff succeed!
+file 4 has been read from HDFS for 8 time
+diff succeed!
+file 4 has been read from HDFS for 9 time
+diff succeed!
+file 4 has been read from HDFS for 10 time
+diff succeed!
+Deleted /myfile4
+file 4 has been removed from HDFS
+Found 20 items
+-rw-r--r--   3 root supergroup  671088640 2019-02-24 06:35 /myfile1._COPYING_
+-rw-r--r--   3 root supergroup  402653184 2019-02-24 06:35 /myfile10._COPYING_
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:36 /myfile11
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:35 /myfile12
+-rw-r--r--   3 root supergroup          0 2019-02-24 06:36 /myfile13._COPYING_
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:35 /myfile14
+-rw-r--r--   3 root supergroup  536870912 2019-02-24 06:36 /myfile15._COPYING_
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:35 /myfile16
+-rw-r--r--   3 root supergroup  805306368 2019-02-24 06:35 /myfile17._COPYING_
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:36 /myfile18
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:36 /myfile19
+-rw-r--r--   3 root supergroup  402653184 2019-02-24 06:35 /myfile2._COPYING_
+-rw-r--r--   3 root supergroup  805306368 2019-02-24 06:35 /myfile20._COPYING_
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:35 /myfile3
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:36 /myfile4
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:34 /myfile5
+-rw-r--r--   3 root supergroup  805306368 2019-02-24 06:35 /myfile6._COPYING_
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:35 /myfile7
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:35 /myfile8
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:34 /myfile9
+file 4 has been put into HDFS
+file 4 has been read from HDFS for 1 time
+diff succeed!
+file 4 has been read from HDFS for 2 time
+diff succeed!
+file 4 has been read from HDFS for 3 time
+diff succeed!
+file 4 has been read from HDFS for 4 time
+diff succeed!
+file 4 has been read from HDFS for 5 time
+diff succeed!
+file 4 has been read from HDFS for 6 time
+diff succeed!
+file 4 has been read from HDFS for 7 time
+diff succeed!
+file 4 has been read from HDFS for 8 time
+diff succeed!
+file 4 has been read from HDFS for 9 time
+diff succeed!
+file 4 has been read from HDFS for 10 time
+diff succeed!
+Deleted /myfile4
+file 4 has been removed from HDFS
+Found 19 items
+-rw-r--r--   3 root supergroup  805306368 2019-02-24 06:40 /myfile1._COPYING_
+-rw-r--r--   3 root supergroup  268435456 2019-02-24 06:41 /myfile10._COPYING_
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:40 /myfile11
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:40 /myfile12
+-rw-r--r--   3 root supergroup  268435456 2019-02-24 06:41 /myfile13._COPYING_
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:39 /myfile14
+-rw-r--r--   3 root supergroup  939524096 2019-02-24 06:40 /myfile15._COPYING_
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:40 /myfile16
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:41 /myfile17
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:41 /myfile18
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:41 /myfile19
+-rw-r--r--   3 root supergroup  671088640 2019-02-24 06:40 /myfile2._COPYING_
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:39 /myfile3
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:41 /myfile4
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:39 /myfile5
+-rw-r--r--   3 root supergroup  402653184 2019-02-24 06:41 /myfile6._COPYING_
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:40 /myfile7
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:41 /myfile8
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:39 /myfile9
+file 4 has been put into HDFS
+file 4 has been read from HDFS for 1 time
+diff succeed!
+file 4 has been read from HDFS for 2 time
+diff succeed!
+file 4 has been read from HDFS for 3 time
+diff succeed!
+file 4 has been read from HDFS for 4 time
+diff succeed!
+file 4 has been read from HDFS for 5 time
+diff succeed!
+file 4 has been read from HDFS for 6 time
+diff succeed!
+file 4 has been read from HDFS for 7 time
+diff succeed!
+file 4 has been read from HDFS for 8 time
+diff succeed!
+file 4 has been read from HDFS for 9 time
+diff succeed!
+file 4 has been read from HDFS for 10 time
+diff succeed!
+Deleted /myfile4
+file 4 has been removed from HDFS
+Found 20 items
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:45 /myfile1
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:45 /myfile10
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:45 /myfile11
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:45 /myfile12
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:45 /myfile13
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:43 /myfile14
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:45 /myfile15
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:45 /myfile16
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:45 /myfile17
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:45 /myfile18
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:46 /myfile19
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:46 /myfile2
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:45 /myfile20
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:44 /myfile3
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:46 /myfile4
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:43 /myfile5
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:46 /myfile6
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:45 /myfile7
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:45 /myfile8
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:43 /myfile9
+file 4 has been put into HDFS
+file 4 has been read from HDFS for 1 time
+diff succeed!
+file 4 has been read from HDFS for 2 time
+diff succeed!
+file 4 has been read from HDFS for 3 time
+diff succeed!
+file 4 has been read from HDFS for 4 time
+diff succeed!
+file 4 has been read from HDFS for 5 time
+diff succeed!
+file 4 has been read from HDFS for 6 time
+diff succeed!
+file 4 has been read from HDFS for 7 time
+diff succeed!
+file 4 has been read from HDFS for 8 time
+diff succeed!
+file 4 has been read from HDFS for 9 time
+diff succeed!
+file 4 has been read from HDFS for 10 time
+diff succeed!
+Deleted /myfile4
+file 4 has been removed from HDFS
+Found 20 items
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:49 /myfile1
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:50 /myfile10
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:50 /myfile11
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:49 /myfile12
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:50 /myfile13
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:47 /myfile14
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:50 /myfile15
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:49 /myfile16
+-rw-r--r--   3 root supergroup          0 2019-02-24 06:51 /myfile17._COPYING_
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:49 /myfile18
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:50 /myfile19
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:50 /myfile2
+-rw-r--r--   3 root supergroup  939524096 2019-02-24 06:50 /myfile20._COPYING_
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:48 /myfile3
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:51 /myfile4
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:48 /myfile5
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:50 /myfile6
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:49 /myfile7
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:48 /myfile8
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:48 /myfile9
+file 4 has been put into HDFS
+file 4 has been read from HDFS for 1 time
+diff succeed!
+file 4 has been read from HDFS for 2 time
+diff succeed!
+file 4 has been read from HDFS for 3 time
+diff succeed!
+file 4 has been read from HDFS for 4 time
+diff succeed!
+file 4 has been read from HDFS for 5 time
+diff succeed!
+file 4 has been read from HDFS for 6 time
+diff succeed!
+file 4 has been read from HDFS for 7 time
+diff succeed!
+file 4 has been read from HDFS for 8 time
+diff succeed!
+file 4 has been read from HDFS for 9 time
+diff succeed!
+file 4 has been read from HDFS for 10 time
+diff succeed!
+Deleted /myfile4
+file 4 has been removed from HDFS
+2019-02-24 06:54:53,104 INFO retry.RetryInvocationHandler: java.io.IOException: DestHost:destPort node-1-link-0:8020 , LocalHost:localPort clnode076.clemson.cloudlab.us/130.127.133.85:0. Failed on local exception: java.io.IOException: Connection reset by peer, while invoking ClientNamenodeProtocolTranslatorPB.addBlock over node-1-link-0/10.10.1.4:8020. Trying to failover immediately.
+2019-02-24 06:54:53,111 INFO retry.RetryInvocationHandler: org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.ipc.StandbyException): Operation category READ is not supported in state standby. Visit https://s.apache.org/sbnn-error
+	at org.apache.hadoop.hdfs.server.namenode.ha.StandbyState.checkOperation(StandbyState.java:88)
+	at org.apache.hadoop.hdfs.server.namenode.NameNode$NameNodeHAContext.checkOperation(NameNode.java:1952)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkOperation(FSNamesystem.java:1423)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.getAdditionalBlock(FSNamesystem.java:2674)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.addBlock(NameNodeRpcServer.java:875)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.addBlock(ClientNamenodeProtocolServerSideTranslatorPB.java:561)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:523)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:991)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:872)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:818)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.security.auth.Subject.doAs(Subject.java:422)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1729)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2678)
+, while invoking ClientNamenodeProtocolTranslatorPB.addBlock over node-0-link-0/10.10.1.1:8020 after 1 failover attempts. Trying to failover after sleeping for 1436ms.
+2019-02-24 06:54:54,550 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode076.clemson.cloudlab.us/130.127.133.85 to node-1-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.addBlock over node-1-link-0/10.10.1.4:8020 after 2 failover attempts. Trying to failover after sleeping for 1409ms.
+Found 20 items
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:53 /myfile1
+-rw-r--r--   3 root supergroup  805306368 2019-02-24 06:54 /myfile10._COPYING_
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:54 /myfile11
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:53 /myfile12
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:53 /myfile13
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:53 /myfile14
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:54 /myfile15
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:53 /myfile16
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:51 /myfile17
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:53 /myfile18
+-rw-r--r--   3 root supergroup  939524096 2019-02-24 06:54 /myfile19._COPYING_
+-rw-r--r--   3 root supergroup          0 2019-02-24 06:55 /myfile2._COPYING_
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:51 /myfile20
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:52 /myfile3
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:55 /myfile4
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:53 /myfile5
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:54 /myfile6
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:54 /myfile7
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:52 /myfile8
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:53 /myfile9
+file 4 has been put into HDFS
+file 4 has been read from HDFS for 1 time
+diff succeed!
+file 4 has been read from HDFS for 2 time
+diff succeed!
+file 4 has been read from HDFS for 3 time
+diff succeed!
+file 4 has been read from HDFS for 4 time
+diff succeed!
+file 4 has been read from HDFS for 5 time
+diff succeed!
+file 4 has been read from HDFS for 6 time
+diff succeed!
+file 4 has been read from HDFS for 7 time
+diff succeed!
+file 4 has been read from HDFS for 8 time
+diff succeed!
+file 4 has been read from HDFS for 9 time
+diff succeed!
+file 4 has been read from HDFS for 10 time
+diff succeed!
+Deleted /myfile4
+file 4 has been removed from HDFS
+Found 19 items
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:57 /myfile1
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:59 /myfile10
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:59 /myfile11
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:57 /myfile12
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:58 /myfile13
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:58 /myfile14
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:59 /myfile15
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:57 /myfile16
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:56 /myfile17
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:57 /myfile18
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:59 /myfile19
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:56 /myfile20
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:56 /myfile3
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:59 /myfile4
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:57 /myfile5
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:58 /myfile6
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:58 /myfile7
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:57 /myfile8
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 06:56 /myfile9
+file 4 has been put into HDFS
+file 4 has been read from HDFS for 1 time
+diff succeed!
+file 4 has been read from HDFS for 2 time
+diff succeed!
+file 4 has been read from HDFS for 3 time
+diff succeed!
+file 4 has been read from HDFS for 4 time
+diff succeed!
+file 4 has been read from HDFS for 5 time
+diff succeed!
+file 4 has been read from HDFS for 6 time
+diff succeed!
+file 4 has been read from HDFS for 7 time
+diff succeed!
+file 4 has been read from HDFS for 8 time
+diff succeed!
+file 4 has been read from HDFS for 9 time
+diff succeed!
+file 4 has been read from HDFS for 10 time
+diff succeed!
+Deleted /myfile4
+file 4 has been removed from HDFS
+Found 20 items
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 07:01 /myfile1
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 07:02 /myfile10
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 07:03 /myfile11
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 07:01 /myfile12
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 07:02 /myfile13
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 07:02 /myfile14
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 07:02 /myfile15
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 07:01 /myfile16
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 07:00 /myfile17
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 07:01 /myfile18
+-rw-r--r--   3 root supergroup  939524096 2019-02-24 07:03 /myfile19._COPYING_
+-rw-r--r--   3 root supergroup  805306368 2019-02-24 07:03 /myfile2._COPYING_
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 07:00 /myfile20
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 07:00 /myfile3
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 07:03 /myfile4
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 07:01 /myfile5
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 07:02 /myfile6
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 07:02 /myfile7
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 07:01 /myfile8
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 07:00 /myfile9
+file 4 has been put into HDFS
+file 4 has been read from HDFS for 1 time
+diff succeed!
+file 4 has been read from HDFS for 2 time
+diff succeed!
+file 4 has been read from HDFS for 3 time
+diff succeed!
+file 4 has been read from HDFS for 4 time
+diff succeed!
+file 4 has been read from HDFS for 5 time
+diff succeed!
+file 4 has been read from HDFS for 6 time
+diff succeed!
+file 4 has been read from HDFS for 7 time
+diff succeed!
+sub_benchmark 7 signal TERM catched and let quit gracefully
+Deleted /myfile4
+file 4 has been removed from HDFS

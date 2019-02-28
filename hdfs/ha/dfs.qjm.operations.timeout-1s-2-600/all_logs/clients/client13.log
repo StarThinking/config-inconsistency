@@ -1,0 +1,608 @@
+2019-02-24 14:27:04,779 INFO retry.RetryInvocationHandler: java.io.EOFException: End of File Exception between local host is: "clnode076.clemson.cloudlab.us/130.127.133.85"; destination host is: "node-1-link-0":8020; : java.io.EOFException; For more details see:  http://wiki.apache.org/hadoop/EOFException, while invoking ClientNamenodeProtocolTranslatorPB.renewLease over node-1-link-0/10.10.1.4:8020. Trying to failover immediately.
+2019-02-24 14:27:04,786 INFO retry.RetryInvocationHandler: org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.ipc.StandbyException): Operation category WRITE is not supported in state standby. Visit https://s.apache.org/sbnn-error
+	at org.apache.hadoop.hdfs.server.namenode.ha.StandbyState.checkOperation(StandbyState.java:88)
+	at org.apache.hadoop.hdfs.server.namenode.NameNode$NameNodeHAContext.checkOperation(NameNode.java:1952)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkOperation(FSNamesystem.java:1423)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.renewLease(FSNamesystem.java:3740)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.renewLease(NameNodeRpcServer.java:1134)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.renewLease(ClientNamenodeProtocolServerSideTranslatorPB.java:737)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:523)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:991)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:872)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:818)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.security.auth.Subject.doAs(Subject.java:422)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1729)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2678)
+, while invoking ClientNamenodeProtocolTranslatorPB.renewLease over node-0-link-0/10.10.1.1:8020 after 1 failover attempts. Trying to failover after sleeping for 1432ms.
+2019-02-24 14:27:06,221 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode076.clemson.cloudlab.us/130.127.133.85 to node-1-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.renewLease over node-1-link-0/10.10.1.4:8020 after 2 failover attempts. Trying to failover after sleeping for 2158ms.
+2019-02-24 14:27:08,108 INFO retry.RetryInvocationHandler: java.net.ConnectException: Call From clnode076.clemson.cloudlab.us/130.127.133.85 to node-1-link-0:8020 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused, while invoking ClientNamenodeProtocolTranslatorPB.complete over node-1-link-0/10.10.1.4:8020. Trying to failover immediately.
+Found 20 items
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:27 /myfile1
+-rw-r--r--   3 root supergroup  939524096 2019-02-24 14:26 /myfile10._COPYING_
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:27 /myfile11
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:27 /myfile12
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:27 /myfile13
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:27 /myfile14
+-rw-r--r--   3 root supergroup  939524096 2019-02-24 14:26 /myfile15._COPYING_
+-rw-r--r--   3 root supergroup  939524096 2019-02-24 14:26 /myfile16._COPYING_
+-rw-r--r--   3 root supergroup  939524096 2019-02-24 14:26 /myfile17._COPYING_
+-rw-r--r--   3 root supergroup  939524096 2019-02-24 14:26 /myfile18._COPYING_
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:27 /myfile19
+-rw-r--r--   3 root supergroup  939524096 2019-02-24 14:26 /myfile2._COPYING_
+-rw-r--r--   3 root supergroup  939524096 2019-02-24 14:26 /myfile20._COPYING_
+-rw-r--r--   3 root supergroup  939524096 2019-02-24 14:26 /myfile3._COPYING_
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:27 /myfile4
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:27 /myfile5
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:27 /myfile6
+-rw-r--r--   3 root supergroup  939524096 2019-02-24 14:26 /myfile7._COPYING_
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:27 /myfile8
+-rw-r--r--   3 root supergroup  939524096 2019-02-24 14:26 /myfile9._COPYING_
+file 13 has been put into HDFS
+file 13 has been read from HDFS for 1 time
+diff succeed!
+file 13 has been read from HDFS for 2 time
+diff succeed!
+file 13 has been read from HDFS for 3 time
+diff succeed!
+file 13 has been read from HDFS for 4 time
+diff succeed!
+file 13 has been read from HDFS for 5 time
+diff succeed!
+file 13 has been read from HDFS for 6 time
+diff succeed!
+file 13 has been read from HDFS for 7 time
+diff succeed!
+file 13 has been read from HDFS for 8 time
+diff succeed!
+file 13 has been read from HDFS for 9 time
+diff succeed!
+file 13 has been read from HDFS for 10 time
+diff succeed!
+Deleted /myfile13
+file 13 has been removed from HDFS
+Found 20 items
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:31 /myfile1
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:31 /myfile10
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:31 /myfile11
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:31 /myfile12
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:31 /myfile13
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:31 /myfile14
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:31 /myfile15
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:27 /myfile16
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:31 /myfile17
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:27 /myfile18
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:31 /myfile19
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:27 /myfile2
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:27 /myfile20
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:27 /myfile3
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:31 /myfile4
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:31 /myfile5
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:31 /myfile6
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:31 /myfile7
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:31 /myfile8
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:27 /myfile9
+file 13 has been put into HDFS
+file 13 has been read from HDFS for 1 time
+diff succeed!
+file 13 has been read from HDFS for 2 time
+diff succeed!
+file 13 has been read from HDFS for 3 time
+diff succeed!
+file 13 has been read from HDFS for 4 time
+diff succeed!
+file 13 has been read from HDFS for 5 time
+diff succeed!
+file 13 has been read from HDFS for 6 time
+diff succeed!
+file 13 has been read from HDFS for 7 time
+diff succeed!
+file 13 has been read from HDFS for 8 time
+diff succeed!
+file 13 has been read from HDFS for 9 time
+diff succeed!
+file 13 has been read from HDFS for 10 time
+diff succeed!
+Deleted /myfile13
+file 13 has been removed from HDFS
+Found 20 items
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:35 /myfile1
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:34 /myfile10
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:36 /myfile11
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:35 /myfile12
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:36 /myfile13
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:36 /myfile14
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:36 /myfile15
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:33 /myfile16
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:35 /myfile17
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:33 /myfile18
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:35 /myfile19
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:33 /myfile2
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:33 /myfile20
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:33 /myfile3
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:35 /myfile4
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:36 /myfile5
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:35 /myfile6
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:35 /myfile7
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:36 /myfile8
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:33 /myfile9
+file 13 has been put into HDFS
+file 13 has been read from HDFS for 1 time
+diff succeed!
+file 13 has been read from HDFS for 2 time
+diff succeed!
+file 13 has been read from HDFS for 3 time
+diff succeed!
+file 13 has been read from HDFS for 4 time
+diff succeed!
+file 13 has been read from HDFS for 5 time
+diff succeed!
+file 13 has been read from HDFS for 6 time
+diff succeed!
+file 13 has been read from HDFS for 7 time
+diff succeed!
+file 13 has been read from HDFS for 8 time
+diff succeed!
+file 13 has been read from HDFS for 9 time
+diff succeed!
+file 13 has been read from HDFS for 10 time
+diff succeed!
+Deleted /myfile13
+file 13 has been removed from HDFS
+Found 20 items
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:39 /myfile1
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:39 /myfile10
+-rw-r--r--   3 root supergroup          0 2019-02-24 14:40 /myfile11._COPYING_
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:39 /myfile12
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:40 /myfile13
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:40 /myfile14
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:40 /myfile15
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:37 /myfile16
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:40 /myfile17
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:38 /myfile18
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:39 /myfile19
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:37 /myfile2
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:37 /myfile20
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:37 /myfile3
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:39 /myfile4
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:40 /myfile5
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:39 /myfile6
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:40 /myfile7
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:40 /myfile8
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:39 /myfile9
+file 13 has been put into HDFS
+file 13 has been read from HDFS for 1 time
+diff succeed!
+file 13 has been read from HDFS for 2 time
+diff succeed!
+file 13 has been read from HDFS for 3 time
+diff succeed!
+file 13 has been read from HDFS for 4 time
+diff succeed!
+file 13 has been read from HDFS for 5 time
+diff succeed!
+file 13 has been read from HDFS for 6 time
+diff succeed!
+file 13 has been read from HDFS for 7 time
+diff succeed!
+file 13 has been read from HDFS for 8 time
+diff succeed!
+file 13 has been read from HDFS for 9 time
+diff succeed!
+file 13 has been read from HDFS for 10 time
+diff succeed!
+Deleted /myfile13
+file 13 has been removed from HDFS
+Found 20 items
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:43 /myfile1
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:44 /myfile10
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:41 /myfile11
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:44 /myfile12
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:44 /myfile13
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:44 /myfile14
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:44 /myfile15
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:42 /myfile16
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:44 /myfile17
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:42 /myfile18
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:43 /myfile19
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:41 /myfile2
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:42 /myfile20
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:42 /myfile3
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:43 /myfile4
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:44 /myfile5
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:43 /myfile6
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:44 /myfile7
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:44 /myfile8
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:43 /myfile9
+file 13 has been put into HDFS
+file 13 has been read from HDFS for 1 time
+diff succeed!
+file 13 has been read from HDFS for 2 time
+diff succeed!
+file 13 has been read from HDFS for 3 time
+diff succeed!
+file 13 has been read from HDFS for 4 time
+diff succeed!
+file 13 has been read from HDFS for 5 time
+diff succeed!
+file 13 has been read from HDFS for 6 time
+diff succeed!
+file 13 has been read from HDFS for 7 time
+diff succeed!
+file 13 has been read from HDFS for 8 time
+diff succeed!
+file 13 has been read from HDFS for 9 time
+diff succeed!
+file 13 has been read from HDFS for 10 time
+diff succeed!
+Deleted /myfile13
+file 13 has been removed from HDFS
+Found 18 items
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:47 /myfile1
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:48 /myfile10
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:45 /myfile11
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:48 /myfile12
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:48 /myfile13
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:48 /myfile15
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:46 /myfile16
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:48 /myfile17
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:46 /myfile18
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:47 /myfile19
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:45 /myfile2
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:46 /myfile20
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:45 /myfile3
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:47 /myfile4
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:48 /myfile5
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:47 /myfile6
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:48 /myfile8
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:47 /myfile9
+file 13 has been put into HDFS
+file 13 has been read from HDFS for 1 time
+diff succeed!
+file 13 has been read from HDFS for 2 time
+diff succeed!
+file 13 has been read from HDFS for 3 time
+diff succeed!
+file 13 has been read from HDFS for 4 time
+diff succeed!
+file 13 has been read from HDFS for 5 time
+diff succeed!
+file 13 has been read from HDFS for 6 time
+diff succeed!
+file 13 has been read from HDFS for 7 time
+diff succeed!
+file 13 has been read from HDFS for 8 time
+diff succeed!
+file 13 has been read from HDFS for 9 time
+diff succeed!
+file 13 has been read from HDFS for 10 time
+diff succeed!
+Deleted /myfile13
+file 13 has been removed from HDFS
+Found 20 items
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:51 /myfile1
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:52 /myfile10
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:50 /myfile11
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:52 /myfile12
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:53 /myfile13
+-rw-r--r--   3 root supergroup  671088640 2019-02-24 14:53 /myfile14._COPYING_
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:52 /myfile15
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:50 /myfile16
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:52 /myfile17
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:50 /myfile18
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:51 /myfile19
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:50 /myfile2
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:50 /myfile20
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:50 /myfile3
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:50 /myfile4
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:52 /myfile5
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:51 /myfile6
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:53 /myfile7
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:52 /myfile8
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:51 /myfile9
+file 13 has been put into HDFS
+file 13 has been read from HDFS for 1 time
+diff succeed!
+file 13 has been read from HDFS for 2 time
+diff succeed!
+file 13 has been read from HDFS for 3 time
+diff succeed!
+file 13 has been read from HDFS for 4 time
+diff succeed!
+file 13 has been read from HDFS for 5 time
+diff succeed!
+file 13 has been read from HDFS for 6 time
+diff succeed!
+file 13 has been read from HDFS for 7 time
+diff succeed!
+file 13 has been read from HDFS for 8 time
+diff succeed!
+file 13 has been read from HDFS for 9 time
+diff succeed!
+file 13 has been read from HDFS for 10 time
+diff succeed!
+Deleted /myfile13
+file 13 has been removed from HDFS
+Found 20 items
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:55 /myfile1
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:55 /myfile10
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:54 /myfile11
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:56 /myfile12
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:57 /myfile13
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:53 /myfile14
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:56 /myfile15
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:54 /myfile16
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:56 /myfile17
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:54 /myfile18
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:55 /myfile19
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:54 /myfile2
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:54 /myfile20
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:54 /myfile3
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:55 /myfile4
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:56 /myfile5
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:55 /myfile6
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:57 /myfile7
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:56 /myfile8
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:55 /myfile9
+file 13 has been put into HDFS
+file 13 has been read from HDFS for 1 time
+diff succeed!
+file 13 has been read from HDFS for 2 time
+diff succeed!
+file 13 has been read from HDFS for 3 time
+diff succeed!
+file 13 has been read from HDFS for 4 time
+diff succeed!
+file 13 has been read from HDFS for 5 time
+diff succeed!
+file 13 has been read from HDFS for 6 time
+diff succeed!
+file 13 has been read from HDFS for 7 time
+diff succeed!
+file 13 has been read from HDFS for 8 time
+diff succeed!
+file 13 has been read from HDFS for 9 time
+diff succeed!
+file 13 has been read from HDFS for 10 time
+diff succeed!
+2019-02-24 15:01:08,064 INFO retry.RetryInvocationHandler: org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.ipc.RetriableException): org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot delete /myfile13. Name node is in safe mode.
+The reported blocks 145 has reached the threshold 0.9990 of total blocks 145. The number of live datanodes 3 has reached the minimum number 0. In safe mode extension. Safe mode will be turned off automatically in 16 seconds. NamenodeHostName:node-1-link-0
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1441)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.delete(FSNamesystem.java:2986)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.delete(NameNodeRpcServer.java:1095)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.delete(ClientNamenodeProtocolServerSideTranslatorPB.java:692)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:523)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:991)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:872)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:818)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.security.auth.Subject.doAs(Subject.java:422)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1729)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2678)
+Caused by: org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot delete /myfile13. Name node is in safe mode.
+The reported blocks 145 has reached the threshold 0.9990 of total blocks 145. The number of live datanodes 3 has reached the minimum number 0. In safe mode extension. Safe mode will be turned off automatically in 16 seconds. NamenodeHostName:node-1-link-0
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.newSafemodeException(FSNamesystem.java:1450)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1437)
+	... 12 more
+, while invoking ClientNamenodeProtocolTranslatorPB.delete over node-1-link-0/10.10.1.4:8020. Retrying immediately.
+2019-02-24 15:01:08,068 INFO retry.RetryInvocationHandler: org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.ipc.RetriableException): org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot delete /myfile13. Name node is in safe mode.
+The reported blocks 145 has reached the threshold 0.9990 of total blocks 145. The number of live datanodes 3 has reached the minimum number 0. In safe mode extension. Safe mode will be turned off automatically in 16 seconds. NamenodeHostName:node-1-link-0
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1441)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.delete(FSNamesystem.java:2986)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.delete(NameNodeRpcServer.java:1095)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.delete(ClientNamenodeProtocolServerSideTranslatorPB.java:692)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:523)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:991)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:872)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:818)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.security.auth.Subject.doAs(Subject.java:422)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1729)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2678)
+Caused by: org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot delete /myfile13. Name node is in safe mode.
+The reported blocks 145 has reached the threshold 0.9990 of total blocks 145. The number of live datanodes 3 has reached the minimum number 0. In safe mode extension. Safe mode will be turned off automatically in 16 seconds. NamenodeHostName:node-1-link-0
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.newSafemodeException(FSNamesystem.java:1450)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1437)
+	... 12 more
+, while invoking ClientNamenodeProtocolTranslatorPB.delete over node-1-link-0/10.10.1.4:8020. Retrying after sleeping for 760ms.
+2019-02-24 15:01:08,831 INFO retry.RetryInvocationHandler: org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.ipc.RetriableException): org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot delete /myfile13. Name node is in safe mode.
+The reported blocks 145 has reached the threshold 0.9990 of total blocks 145. The number of live datanodes 3 has reached the minimum number 0. In safe mode extension. Safe mode will be turned off automatically in 15 seconds. NamenodeHostName:node-1-link-0
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1441)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.delete(FSNamesystem.java:2986)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.delete(NameNodeRpcServer.java:1095)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.delete(ClientNamenodeProtocolServerSideTranslatorPB.java:692)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:523)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:991)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:872)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:818)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.security.auth.Subject.doAs(Subject.java:422)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1729)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2678)
+Caused by: org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot delete /myfile13. Name node is in safe mode.
+The reported blocks 145 has reached the threshold 0.9990 of total blocks 145. The number of live datanodes 3 has reached the minimum number 0. In safe mode extension. Safe mode will be turned off automatically in 15 seconds. NamenodeHostName:node-1-link-0
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.newSafemodeException(FSNamesystem.java:1450)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1437)
+	... 12 more
+, while invoking ClientNamenodeProtocolTranslatorPB.delete over node-1-link-0/10.10.1.4:8020. Retrying after sleeping for 1299ms.
+2019-02-24 15:01:10,132 INFO retry.RetryInvocationHandler: org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.ipc.RetriableException): org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot delete /myfile13. Name node is in safe mode.
+The reported blocks 145 has reached the threshold 0.9990 of total blocks 145. The number of live datanodes 3 has reached the minimum number 0. In safe mode extension. Safe mode will be turned off automatically in 14 seconds. NamenodeHostName:node-1-link-0
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1441)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.delete(FSNamesystem.java:2986)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.delete(NameNodeRpcServer.java:1095)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.delete(ClientNamenodeProtocolServerSideTranslatorPB.java:692)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:523)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:991)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:872)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:818)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.security.auth.Subject.doAs(Subject.java:422)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1729)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2678)
+Caused by: org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot delete /myfile13. Name node is in safe mode.
+The reported blocks 145 has reached the threshold 0.9990 of total blocks 145. The number of live datanodes 3 has reached the minimum number 0. In safe mode extension. Safe mode will be turned off automatically in 14 seconds. NamenodeHostName:node-1-link-0
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.newSafemodeException(FSNamesystem.java:1450)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1437)
+	... 12 more
+, while invoking ClientNamenodeProtocolTranslatorPB.delete over node-1-link-0/10.10.1.4:8020. Retrying after sleeping for 5095ms.
+2019-02-24 15:01:15,231 INFO retry.RetryInvocationHandler: org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.ipc.RetriableException): org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot delete /myfile13. Name node is in safe mode.
+The reported blocks 145 has reached the threshold 0.9990 of total blocks 145. The number of live datanodes 3 has reached the minimum number 0. In safe mode extension. Safe mode will be turned off automatically in 9 seconds. NamenodeHostName:node-1-link-0
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1441)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.delete(FSNamesystem.java:2986)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.delete(NameNodeRpcServer.java:1095)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.delete(ClientNamenodeProtocolServerSideTranslatorPB.java:692)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:523)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:991)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:872)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:818)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.security.auth.Subject.doAs(Subject.java:422)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1729)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2678)
+Caused by: org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot delete /myfile13. Name node is in safe mode.
+The reported blocks 145 has reached the threshold 0.9990 of total blocks 145. The number of live datanodes 3 has reached the minimum number 0. In safe mode extension. Safe mode will be turned off automatically in 9 seconds. NamenodeHostName:node-1-link-0
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.newSafemodeException(FSNamesystem.java:1450)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1437)
+	... 12 more
+, while invoking ClientNamenodeProtocolTranslatorPB.delete over node-1-link-0/10.10.1.4:8020. Retrying after sleeping for 7119ms.
+2019-02-24 15:01:22,354 INFO retry.RetryInvocationHandler: org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.ipc.RetriableException): org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot delete /myfile13. Name node is in safe mode.
+The reported blocks 145 has reached the threshold 0.9990 of total blocks 145. The number of live datanodes 3 has reached the minimum number 0. In safe mode extension. Safe mode will be turned off automatically in 1 seconds. NamenodeHostName:node-1-link-0
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1441)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.delete(FSNamesystem.java:2986)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.delete(NameNodeRpcServer.java:1095)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.delete(ClientNamenodeProtocolServerSideTranslatorPB.java:692)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:523)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:991)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:872)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:818)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.security.auth.Subject.doAs(Subject.java:422)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1729)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2678)
+Caused by: org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot delete /myfile13. Name node is in safe mode.
+The reported blocks 145 has reached the threshold 0.9990 of total blocks 145. The number of live datanodes 3 has reached the minimum number 0. In safe mode extension. Safe mode will be turned off automatically in 1 seconds. NamenodeHostName:node-1-link-0
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.newSafemodeException(FSNamesystem.java:1450)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1437)
+	... 12 more
+, while invoking ClientNamenodeProtocolTranslatorPB.delete over node-1-link-0/10.10.1.4:8020. Retrying after sleeping for 9695ms.
+Deleted /myfile13
+file 13 has been removed from HDFS
+Found 18 items
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:59 /myfile1
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 15:00 /myfile10
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:58 /myfile11
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 15:00 /myfile12
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 15:01 /myfile13
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:58 /myfile14
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 15:01 /myfile15
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:58 /myfile16
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 15:01 /myfile17
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:59 /myfile18
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 15:00 /myfile19
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:58 /myfile20
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 14:59 /myfile4
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 15:00 /myfile5
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 15:00 /myfile6
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 15:01 /myfile7
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 15:01 /myfile8
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 15:00 /myfile9
+file 13 has been put into HDFS
+file 13 has been read from HDFS for 1 time
+diff succeed!
+file 13 has been read from HDFS for 2 time
+diff succeed!
+file 13 has been read from HDFS for 3 time
+diff succeed!
+file 13 has been read from HDFS for 4 time
+diff succeed!
+file 13 has been read from HDFS for 5 time
+diff succeed!
+file 13 has been read from HDFS for 6 time
+diff succeed!
+file 13 has been read from HDFS for 7 time
+diff succeed!
+file 13 has been read from HDFS for 8 time
+diff succeed!
+file 13 has been read from HDFS for 9 time
+diff succeed!
+file 13 has been read from HDFS for 10 time
+diff succeed!
+Deleted /myfile13
+file 13 has been removed from HDFS
+Found 19 items
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 15:03 /myfile1
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 15:04 /myfile10
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 15:06 /myfile11
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 15:04 /myfile12
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 15:06 /myfile13
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 15:05 /myfile15
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 15:06 /myfile16
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 15:05 /myfile17
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 15:02 /myfile18
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 15:04 /myfile19
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 15:06 /myfile2
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 15:02 /myfile20
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 15:06 /myfile3
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 15:04 /myfile4
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 15:04 /myfile5
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 15:05 /myfile6
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 15:05 /myfile7
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 15:06 /myfile8
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 15:04 /myfile9
+file 13 has been put into HDFS
+file 13 has been read from HDFS for 1 time
+diff succeed!
+file 13 has been read from HDFS for 2 time
+diff succeed!
+file 13 has been read from HDFS for 3 time
+diff succeed!
+file 13 has been read from HDFS for 4 time
+diff succeed!
+file 13 has been read from HDFS for 5 time
+diff succeed!
+file 13 has been read from HDFS for 6 time
+diff succeed!
+file 13 has been read from HDFS for 7 time
+diff succeed!
+file 13 has been read from HDFS for 8 time
+diff succeed!
+file 13 has been read from HDFS for 9 time
+diff succeed!
+file 13 has been read from HDFS for 10 time
+diff succeed!
+Deleted /myfile13
+file 13 has been removed from HDFS
+Found 20 items
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 15:08 /myfile1
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 15:07 /myfile10
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 15:10 /myfile11
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 15:09 /myfile12
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 15:10 /myfile13
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 15:07 /myfile14
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 15:09 /myfile15
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 15:10 /myfile16
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 15:09 /myfile17
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 15:07 /myfile18
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 15:08 /myfile19
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 15:10 /myfile2
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 15:07 /myfile20
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 15:10 /myfile3
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 15:08 /myfile4
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 15:08 /myfile5
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 15:09 /myfile6
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 15:09 /myfile7
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 15:10 /myfile8
+-rw-r--r--   3 root supergroup 1073741824 2019-02-24 15:09 /myfile9
+file 13 has been put into HDFS
+file 13 has been read from HDFS for 1 time
+diff succeed!
+sub_benchmark 1 signal TERM catched and let quit gracefully
+Deleted /myfile13
+file 13 has been removed from HDFS
