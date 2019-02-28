@@ -1,7 +1,18 @@
 # cluster parameters
+
+# HA cluster
+#namenodes=(0 1)
+#datanodes=(2 3 4) # make sure sdb is formatted
+#jnodes=(2 3 4) # modify hdfs-site.xml as well
+#znodes=(0 1 5)
+#clientnode=5
+#allnodes=(0 1 2 3 4 5)
+
+# 4 datanodes
 namenodes=(0 1)
-datanodes=(2 3 4)
-jnodes=(2 3 4)
+datanodes=(1 2 3 4) # make sure sdb is formatted
+reconf_datanode=4
+jnodes=(1 2 3) # modify hdfs-site.xml as well
 znodes=(0 1 5)
 clientnode=5
 allnodes=(0 1 2 3 4 5)

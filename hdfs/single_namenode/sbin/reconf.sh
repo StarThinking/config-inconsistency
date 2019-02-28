@@ -9,14 +9,13 @@ fi
 # it needs to load global variables
  . $TEST_HOME/sbin/global_var.sh
 
-if [ "$#" -ne 2 ]
+if [ "$#" -ne 1 ]
 then
-    echo "e.g., ./reconf.sh [namenode|datanode] [config_file]"
+    echo "e.g., ./reconf.sh [config_file]"
     exit
 fi
 
-type=$1
-new_conf=$2
+new_conf=$1
 
 function switch_active { 
     # find avtive and standby namenode nodes
@@ -52,22 +51,6 @@ function switch_active {
     echo "standby node after switch: $standby"
 }
 
-function switch_datanode {
-    # stop one datanode
-    ssh node-"$reconf_datanode"-link-0 "$HADOOP_HOME/bin/hdfs --daemon stop datanode"
-       
-    # change configuration to file xxx
-    scp $new_conf node-"$reconf_datanode"-link-0:$HADOOP_HOME/etc/hadoop
-    echo "change $new_conf configuration as $new_conf"
-    
-    # reboot datanode
-    ssh node-"$reconf_datanode"-link-0 "$HADOOP_HOME/bin/hdfs --daemon start datanode"
-}
-
-if [ $type = "namenode" ]; then
-    switch_active; sleep 10; switch_active
-elif [ $type = "datanode" ]; then
-    switch_datanode 
-else
-    echo "e.g., ./reconf.sh [namenode|datanode] [config_file]"
-fi
+switch_active $new_conf
+sleep 10
+switch_active $new_conf

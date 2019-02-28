@@ -17,7 +17,7 @@ fi
 name=$1
 value=$2
 round=2
-waittime=200
+waittime=600
 
 # create test dir
 testdir="$TEST_HOME"/"$name"-"$value"-"$round"-"$waittime"
@@ -40,10 +40,10 @@ sleep 60
 for i in $(seq 1 $round)
 do
     # change configuration to be as given file
-    $TEST_HOME/sbin/reconf.sh datanode $testdir/hdfs-site.xml
+    $TEST_HOME/sbin/reconf.sh $testdir/hdfs-site.xml
     sleep $waittime
     # change configuration to be as given file
-    $TEST_HOME/sbin/reconf.sh datanode $TEST_HOME/etc/hdfs-site.xml
+    $TEST_HOME/sbin/reconf.sh $TEST_HOME/etc/hdfs-site.xml
     sleep $waittime
 done
 

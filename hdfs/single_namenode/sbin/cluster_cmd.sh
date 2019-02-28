@@ -19,13 +19,6 @@ command=$1
 shift 1
 
 function start {
-    # create hdfs workers file according to datanodes parameter
-    > $TEST_HOME/etc/workers
-    for i in ${datanodes[@]}
-    do
-        echo node-$i-link-0 >> $TEST_HOME/etc/workers
-    done
-
     # copy default configuration to all nodes
     for i in ${allnodes[@]}
     do
