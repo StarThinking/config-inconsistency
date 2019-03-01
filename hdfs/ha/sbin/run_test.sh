@@ -9,15 +9,16 @@ fi
 # it needs to load global variables
 . $TEST_HOME/sbin/global_var.sh
 
-if [ $# -lt 2 ]; then
-    echo "./run_test [name] [value] [round] [waittime]"
+if [ $# -lt 3 ]; then
+    echo "./run_test [name] [value] [reconf_type: <namenode|datanode>] [round] [waittime]"
     exit
 fi
 
 name=$1
 value=$2
+reconf_type=$3
 round=2
-waittime=200
+waittime=60
 
 # create test dir
 testdir="$TEST_HOME"/"$name"-"$value"-"$round"-"$waittime"
@@ -40,10 +41,10 @@ sleep 60
 for i in $(seq 1 $round)
 do
     # change configuration to be as given file
-    $TEST_HOME/sbin/reconf.sh datanode $testdir/hdfs-site.xml
+    $TEST_HOME/sbin/reconf.sh $reconf_type $testdir/hdfs-site.xml
     sleep $waittime
     # change configuration to be as given file
-    $TEST_HOME/sbin/reconf.sh datanode $TEST_HOME/etc/hdfs-site.xml
+    $TEST_HOME/sbin/reconf.sh $reconf_type $TEST_HOME/etc/hdfs-site.xml
     sleep $waittime
 done
 
