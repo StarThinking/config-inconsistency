@@ -52,13 +52,8 @@ do
     # change configuration to be as given file
     $TEST_HOME/sbin/reconf.sh $reconf_type $testdir/hdfs-site.xml
     sleep $waittime
-
     # change configuration to be as given file
-    if [ $init_hdfs_site = "default" ]; then
-        $TEST_HOME/sbin/reconf.sh $reconf_type $TEST_HOME/etc/hdfs-site.xml
-    else
-        $TEST_HOME/sbin/reconf.sh $reconf_type $testdir/hdfs-site.xml
-    fi
+    $TEST_HOME/sbin/reconf.sh $reconf_type $TEST_HOME/etc/hdfs-site.xml
     sleep $waittime
 done
 

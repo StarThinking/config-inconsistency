@@ -31,7 +31,7 @@ function switch_active {
     
     # change configuration to file xxx
     scp $new_conf $active:$HADOOP_HOME/etc/hadoop
-    echo "change $new_conf configuration as $new_conf"
+    echo "change hdfs-site.xml configuration as $new_conf"
     
     
     # reboot namenode which should be become standby namenode
@@ -58,7 +58,7 @@ function switch_datanode {
        
     # change configuration to file xxx
     scp $new_conf node-"$reconf_datanode"-link-0:$HADOOP_HOME/etc/hadoop
-    echo "change $new_conf configuration as $new_conf"
+    echo "change hdfs-site.xml configuration as $new_conf"
     
     # reboot datanode
     ssh node-"$reconf_datanode"-link-0 "$HADOOP_HOME/bin/hdfs --daemon start datanode"
