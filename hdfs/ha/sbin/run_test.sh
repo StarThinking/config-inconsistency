@@ -9,15 +9,16 @@ fi
 # it needs to load global variables
 . $TEST_HOME/sbin/global_var.sh
 
-if [ $# -lt 3 ]; then
-    echo "./run_test [name] [value] [reconf_type: <namenode|datanode>] [round] [waittime]"
+if [ $# -lt 4 ]; then
+    echo "./run_test [name] [value] [reconf_type: <namenode|datanode>] [hdfs-site.xml: <default|test>] [round] [waittime]"
     exit
 fi
 
 name=$1
 value=$2
 reconf_type=$3
-round=2
+init_hdfs_site=$4
+round=1
 waittime=60
 
 # create test dir
@@ -29,14 +30,22 @@ sed -i "s/valuetobereplaced/$value/g" $testdir/hdfs-site.xml
 exec &> $testdir/run.log
 
 # start the cluster
-$TEST_HOME/sbin/cluster_cmd.sh start
+if [ $init_hdfs_site = "default" ]; then
+    echo "start with default hdfs-site.xml"
+    $TEST_HOME/sbin/cluster_cmd.sh start
+elif [ $init_hdfs_site = "test" ]; then
+    echo "start with test hdfs-site.xml"
+    $TEST_HOME/sbin/cluster_cmd.sh start $testdir/hdfs-site.xml
+else
+    echo "[hdfs-site.xml: <default|test>]"
+fi
 
 # start running benchmark
 # keep it running on the background on the client
 ssh node-$clientnode-link-0 "/bin/bash --login $TEST_HOME/sbin/benchmark.sh start" &
 client_benchmark_main_pid=$!
 
-sleep 60
+sleep 30
 
 for i in $(seq 1 $round)
 do

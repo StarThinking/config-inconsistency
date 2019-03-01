@@ -11,11 +11,12 @@ fi
 
 if [ "$#" -lt 1 ]
 then
-    echo "e.g., ./cluster_cmd.sh [start|stop|collectlog]"
+    echo "e.g., ./cluster_cmd.sh [start|stop|collectlog] [hdfs-site.xml]"
     exit
 fi
 
 command=$1
+init_conf=$2
 shift 1
 
 function start {
@@ -30,6 +31,11 @@ function start {
     for i in ${allnodes[@]}
     do
         scp $TEST_HOME/etc/* node-"$i"-link-0:$HADOOP_HOME/etc/hadoop
+	if [ "$init_conf" != "" ]
+	then
+ 	    echo "send $init_conf as default hdfs-site.xml"
+	    scp $init_conf node-"$i"-link-0:$HADOOP_HOME/etc/hadoop
+	fi
         # override sbin
         scp $TEST_HOME/sbin/* node-"$i"-link-0:$TEST_HOME/sbin
     done
