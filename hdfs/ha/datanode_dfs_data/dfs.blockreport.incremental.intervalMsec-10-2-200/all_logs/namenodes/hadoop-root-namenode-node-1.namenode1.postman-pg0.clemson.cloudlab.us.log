@@ -1,0 +1,946 @@
+2019-03-01 08:48:33,787 INFO org.apache.hadoop.hdfs.server.namenode.NameNode: STARTUP_MSG: 
+/************************************************************
+STARTUP_MSG: Starting NameNode
+STARTUP_MSG:   host = clnode068.clemson.cloudlab.us/130.127.133.77
+STARTUP_MSG:   args = []
+STARTUP_MSG:   version = 3.1.1
+STARTUP_MSG:   classpath = /root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/etc/hadoop:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/accessors-smart-1.2.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/jackson-core-asl-1.9.13.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/jersey-json-1.19.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/jul-to-slf4j-1.7.25.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/log4j-1.2.17.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/metrics-core-3.2.4.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/kerb-admin-1.0.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/kerb-client-1.0.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/avro-1.7.7.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/commons-codec-1.11.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/curator-recipes-2.12.0.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/jetty-servlet-9.3.19.v20170502.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/curator-framework-2.12.0.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/javax.servlet-api-3.1.0.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/jackson-xc-1.9.13.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/curator-client-2.12.0.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/asm-5.0.4.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/jaxb-api-2.2.11.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/commons-logging-1.1.3.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/jettison-1.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/jaxb-impl-2.2.3-1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/kerb-util-1.0.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/commons-math3-3.1.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/kerby-xdr-1.0.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/htrace-core4-4.1.0-incubating.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/jcip-annotations-1.0-1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/commons-beanutils-1.9.3.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/kerby-pkix-1.0.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/kerb-simplekdc-1.0.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/kerby-config-1.0.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/jetty-util-9.3.19.v20170502.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/commons-cli-1.2.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/commons-configuration2-2.1.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/httpcore-4.4.4.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/json-smart-2.3.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/kerb-server-1.0.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/jetty-webapp-9.3.19.v20170502.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/gson-2.2.4.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/paranamer-2.3.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/woodstox-core-5.0.3.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/jetty-http-9.3.19.v20170502.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/jsch-0.1.54.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/jetty-server-9.3.19.v20170502.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/stax2-api-3.1.4.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/jsr311-api-1.1.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/nimbus-jose-jwt-4.41.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/jersey-servlet-1.19.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/slf4j-api-1.7.25.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/guava-11.0.2.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/jersey-server-1.19.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/hadoop-auth-3.1.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/httpclient-4.5.2.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/token-provider-1.0.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/netty-3.10.5.Final.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/commons-io-2.5.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/kerby-util-1.0.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/jackson-jaxrs-1.9.13.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/snappy-java-1.0.5.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/kerb-core-1.0.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/commons-lang3-3.4.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/kerby-asn1-1.0.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/kerb-crypto-1.0.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/jsr305-3.0.0.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/commons-net-3.6.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/jackson-core-2.7.8.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/zookeeper-3.4.9.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/jackson-databind-2.7.8.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/kerb-common-1.0.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/jsp-api-2.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/commons-collections-3.2.2.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/jetty-io-9.3.19.v20170502.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/jetty-xml-9.3.19.v20170502.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/jetty-security-9.3.19.v20170502.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/jackson-mapper-asl-1.9.13.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/protobuf-java-2.5.0.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/jersey-core-1.19.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/re2j-1.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/hadoop-annotations-3.1.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/jackson-annotations-2.7.8.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/commons-lang-2.6.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/xz-1.0.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/kerb-identity-1.0.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/slf4j-log4j12-1.7.25.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/lib/commons-compress-1.4.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/hadoop-nfs-3.1.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/hadoop-common-3.1.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/hadoop-common-3.1.1-tests.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/common/hadoop-kms-3.1.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/accessors-smart-1.2.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/jackson-core-asl-1.9.13.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/jersey-json-1.19.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/log4j-1.2.17.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/netty-all-4.0.52.Final.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/kerb-admin-1.0.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/kerb-client-1.0.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/avro-1.7.7.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/commons-codec-1.11.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/curator-recipes-2.12.0.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/okhttp-2.7.5.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/jetty-servlet-9.3.19.v20170502.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/curator-framework-2.12.0.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/javax.servlet-api-3.1.0.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/jackson-xc-1.9.13.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/curator-client-2.12.0.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/asm-5.0.4.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/jaxb-api-2.2.11.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/commons-logging-1.1.3.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/jettison-1.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/jaxb-impl-2.2.3-1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/kerb-util-1.0.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/commons-math3-3.1.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/kerby-xdr-1.0.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/htrace-core4-4.1.0-incubating.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/jcip-annotations-1.0-1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/commons-beanutils-1.9.3.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/kerby-pkix-1.0.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/kerb-simplekdc-1.0.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/kerby-config-1.0.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/jetty-util-9.3.19.v20170502.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/json-simple-1.1.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/commons-cli-1.2.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/commons-configuration2-2.1.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/httpcore-4.4.4.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/okio-1.6.0.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/json-smart-2.3.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/kerb-server-1.0.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/jetty-webapp-9.3.19.v20170502.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/gson-2.2.4.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/paranamer-2.3.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/commons-daemon-1.0.13.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/woodstox-core-5.0.3.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/jetty-http-9.3.19.v20170502.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/jsch-0.1.54.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/jetty-server-9.3.19.v20170502.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/stax2-api-3.1.4.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/jsr311-api-1.1.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/nimbus-jose-jwt-4.41.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/jersey-servlet-1.19.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/guava-11.0.2.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/jersey-server-1.19.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/hadoop-auth-3.1.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/httpclient-4.5.2.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/token-provider-1.0.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/jetty-util-ajax-9.3.19.v20170502.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/netty-3.10.5.Final.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/commons-io-2.5.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/kerby-util-1.0.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/jackson-jaxrs-1.9.13.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/snappy-java-1.0.5.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/kerb-core-1.0.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/commons-lang3-3.4.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/kerby-asn1-1.0.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/kerb-crypto-1.0.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/jsr305-3.0.0.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/commons-net-3.6.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/jackson-core-2.7.8.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/zookeeper-3.4.9.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/jackson-databind-2.7.8.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/kerb-common-1.0.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/leveldbjni-all-1.8.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/commons-collections-3.2.2.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/jetty-io-9.3.19.v20170502.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/jetty-xml-9.3.19.v20170502.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/jetty-security-9.3.19.v20170502.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/jackson-mapper-asl-1.9.13.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/protobuf-java-2.5.0.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/jersey-core-1.19.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/re2j-1.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/hadoop-annotations-3.1.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/jackson-annotations-2.7.8.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/commons-lang-2.6.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/xz-1.0.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/kerb-identity-1.0.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/lib/commons-compress-1.4.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/hadoop-hdfs-nfs-3.1.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/hadoop-hdfs-httpfs-3.1.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/hadoop-hdfs-rbf-3.1.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/hadoop-hdfs-client-3.1.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/hadoop-hdfs-native-client-3.1.1-tests.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/hadoop-hdfs-3.1.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/hadoop-hdfs-native-client-3.1.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/hadoop-hdfs-3.1.1-tests.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/hadoop-hdfs-client-3.1.1-tests.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/hadoop-hdfs-rbf-3.1.1-tests.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/mapreduce/lib/junit-4.11.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/mapreduce/lib/hamcrest-core-1.3.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/mapreduce/hadoop-mapreduce-client-shuffle-3.1.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/mapreduce/hadoop-mapreduce-client-common-3.1.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/mapreduce/hadoop-mapreduce-client-nativetask-3.1.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/mapreduce/hadoop-mapreduce-client-jobclient-3.1.1-tests.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/mapreduce/hadoop-mapreduce-client-jobclient-3.1.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/mapreduce/hadoop-mapreduce-client-hs-3.1.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/mapreduce/hadoop-mapreduce-client-core-3.1.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/mapreduce/hadoop-mapreduce-client-app-3.1.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.1.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/mapreduce/hadoop-mapreduce-client-uploader-3.1.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/mapreduce/hadoop-mapreduce-client-hs-plugins-3.1.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/yarn/lib/metrics-core-3.2.4.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/yarn/lib/javax.inject-1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/yarn/lib/ehcache-3.3.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/yarn/lib/geronimo-jcache_1.0_spec-1.0-alpha-1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/yarn/lib/jackson-jaxrs-base-2.7.8.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/yarn/lib/snakeyaml-1.16.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/yarn/lib/guice-servlet-4.0.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/yarn/lib/dnsjava-2.1.7.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/yarn/lib/json-io-2.5.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/yarn/lib/java-util-1.9.0.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/yarn/lib/mssql-jdbc-6.2.1.jre7.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/yarn/lib/jersey-client-1.19.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/yarn/lib/guice-4.0.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/yarn/lib/fst-2.50.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/yarn/lib/objenesis-1.0.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/yarn/lib/jersey-guice-1.19.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/yarn/lib/jackson-module-jaxb-annotations-2.7.8.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/yarn/lib/aopalliance-1.0.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/yarn/lib/jackson-jaxrs-json-provider-2.7.8.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/yarn/lib/swagger-annotations-1.5.4.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/yarn/lib/HikariCP-java7-2.4.12.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/yarn/hadoop-yarn-server-router-3.1.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/yarn/hadoop-yarn-server-applicationhistoryservice-3.1.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/yarn/hadoop-yarn-applications-distributedshell-3.1.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/yarn/hadoop-yarn-client-3.1.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/yarn/hadoop-yarn-server-resourcemanager-3.1.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/yarn/hadoop-yarn-services-core-3.1.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/yarn/hadoop-yarn-services-api-3.1.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/yarn/hadoop-yarn-server-common-3.1.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/yarn/hadoop-yarn-common-3.1.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/yarn/hadoop-yarn-applications-unmanaged-am-launcher-3.1.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/yarn/hadoop-yarn-api-3.1.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/yarn/hadoop-yarn-registry-3.1.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/yarn/hadoop-yarn-server-web-proxy-3.1.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/yarn/hadoop-yarn-server-sharedcachemanager-3.1.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/yarn/hadoop-yarn-server-timeline-pluginstorage-3.1.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/yarn/hadoop-yarn-server-tests-3.1.1.jar:/root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/yarn/hadoop-yarn-server-nodemanager-3.1.1.jar
+STARTUP_MSG:   build = Unknown -r Unknown; compiled by 'root' on 2019-02-17T02:52Z
+STARTUP_MSG:   java = 1.8.0_201
+************************************************************/
+2019-03-01 08:48:33,797 INFO org.apache.hadoop.hdfs.server.namenode.NameNode: registered UNIX signal handlers for [TERM, HUP, INT]
+2019-03-01 08:48:33,802 INFO org.apache.hadoop.hdfs.server.namenode.NameNode: createNameNode []
+2019-03-01 08:48:34,095 INFO org.apache.hadoop.metrics2.impl.MetricsConfig: loaded properties from hadoop-metrics2.properties
+2019-03-01 08:48:34,200 INFO org.apache.hadoop.metrics2.impl.MetricsSystemImpl: Scheduled Metric snapshot period at 10 second(s).
+2019-03-01 08:48:34,200 INFO org.apache.hadoop.metrics2.impl.MetricsSystemImpl: NameNode metrics system started
+2019-03-01 08:48:34,252 INFO org.apache.hadoop.hdfs.server.namenode.NameNodeUtils: fs.defaultFS is hdfs://mycluster
+2019-03-01 08:48:34,252 INFO org.apache.hadoop.hdfs.server.namenode.NameNode: Clients should use mycluster to access this namenode/service.
+2019-03-01 08:48:34,411 INFO org.apache.hadoop.util.JvmPauseMonitor: Starting JVM pause monitor
+2019-03-01 08:48:34,439 INFO org.apache.hadoop.hdfs.DFSUtil: Starting Web-server for hdfs at: http://node-1-link-0:9870
+2019-03-01 08:48:34,456 INFO org.eclipse.jetty.util.log: Logging initialized @1191ms
+2019-03-01 08:48:34,563 INFO org.apache.hadoop.security.authentication.server.AuthenticationFilter: Unable to initialize FileSignerSecretProvider, falling back to use random secrets.
+2019-03-01 08:48:34,577 INFO org.apache.hadoop.http.HttpRequestLog: Http request log for http.requests.namenode is not defined
+2019-03-01 08:48:34,587 INFO org.apache.hadoop.http.HttpServer2: Added global filter 'safety' (class=org.apache.hadoop.http.HttpServer2$QuotingInputFilter)
+2019-03-01 08:48:34,590 INFO org.apache.hadoop.http.HttpServer2: Added filter static_user_filter (class=org.apache.hadoop.http.lib.StaticUserWebFilter$StaticUserFilter) to context hdfs
+2019-03-01 08:48:34,590 INFO org.apache.hadoop.http.HttpServer2: Added filter static_user_filter (class=org.apache.hadoop.http.lib.StaticUserWebFilter$StaticUserFilter) to context static
+2019-03-01 08:48:34,590 INFO org.apache.hadoop.http.HttpServer2: Added filter static_user_filter (class=org.apache.hadoop.http.lib.StaticUserWebFilter$StaticUserFilter) to context logs
+2019-03-01 08:48:34,617 INFO org.apache.hadoop.http.HttpServer2: Added filter 'org.apache.hadoop.hdfs.web.AuthFilter' (class=org.apache.hadoop.hdfs.web.AuthFilter)
+2019-03-01 08:48:34,617 INFO org.apache.hadoop.http.HttpServer2: addJerseyResourcePackage: packageName=org.apache.hadoop.hdfs.server.namenode.web.resources;org.apache.hadoop.hdfs.web.resources, pathSpec=/webhdfs/v1/*
+2019-03-01 08:48:34,626 INFO org.apache.hadoop.http.HttpServer2: Jetty bound to port 9870
+2019-03-01 08:48:34,627 INFO org.eclipse.jetty.server.Server: jetty-9.3.19.v20170502
+2019-03-01 08:48:34,663 INFO org.eclipse.jetty.server.handler.ContextHandler: Started o.e.j.s.ServletContextHandler@7c137fd5{/logs,file:///root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/logs/,AVAILABLE}
+2019-03-01 08:48:34,664 INFO org.eclipse.jetty.server.handler.ContextHandler: Started o.e.j.s.ServletContextHandler@7d9d0818{/static,file:///root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/webapps/static/,AVAILABLE}
+2019-03-01 08:48:34,740 INFO org.eclipse.jetty.server.handler.ContextHandler: Started o.e.j.w.WebAppContext@376a0d86{/,file:///root/hadoop-3.1.1-src/hadoop-dist/target/hadoop-3.1.1/share/hadoop/hdfs/webapps/hdfs/,AVAILABLE}{/hdfs}
+2019-03-01 08:48:34,764 INFO org.eclipse.jetty.server.AbstractConnector: Started ServerConnector@536dbea0{HTTP/1.1,[http/1.1]}{node-1-link-0:9870}
+2019-03-01 08:48:34,764 INFO org.eclipse.jetty.server.Server: Started @1499ms
+2019-03-01 08:48:35,104 WARN org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Only one image storage directory (dfs.namenode.name.dir) configured. Beware of data loss due to lack of redundant storage directories!
+2019-03-01 08:48:35,155 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Edit logging is async:true
+2019-03-01 08:48:35,170 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: KeyProvider: null
+2019-03-01 08:48:35,171 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: fsLock is fair: true
+2019-03-01 08:48:35,174 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Detailed lock hold time metrics enabled: false
+2019-03-01 08:48:35,181 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: fsOwner             = root (auth:SIMPLE)
+2019-03-01 08:48:35,181 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: supergroup          = supergroup
+2019-03-01 08:48:35,181 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: isPermissionEnabled = true
+2019-03-01 08:48:35,182 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Determined nameservice ID: mycluster
+2019-03-01 08:48:35,182 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: HA Enabled: true
+2019-03-01 08:48:35,225 INFO org.apache.hadoop.hdfs.server.common.Util: dfs.datanode.fileio.profiling.sampling.percentage set to 0. Disabling file IO profiling
+2019-03-01 08:48:35,237 INFO org.apache.hadoop.hdfs.server.blockmanagement.DatanodeManager: dfs.block.invalidate.limit: configured=1000, counted=60, effected=1000
+2019-03-01 08:48:35,237 INFO org.apache.hadoop.hdfs.server.blockmanagement.DatanodeManager: dfs.namenode.datanode.registration.ip-hostname-check=true
+2019-03-01 08:48:35,242 INFO org.apache.hadoop.hdfs.server.blockmanagement.BlockManager: dfs.namenode.startup.delay.block.deletion.sec is set to 000:00:00:00.000
+2019-03-01 08:48:35,242 INFO org.apache.hadoop.hdfs.server.blockmanagement.BlockManager: The block deletion will start around 2019 Mar 01 08:48:35
+2019-03-01 08:48:35,244 INFO org.apache.hadoop.util.GSet: Computing capacity for map BlocksMap
+2019-03-01 08:48:35,244 INFO org.apache.hadoop.util.GSet: VM type       = 64-bit
+2019-03-01 08:48:35,246 INFO org.apache.hadoop.util.GSet: 2.0% max memory 26.7 GB = 546.1 MB
+2019-03-01 08:48:35,246 INFO org.apache.hadoop.util.GSet: capacity      = 2^26 = 67108864 entries
+2019-03-01 08:48:35,381 INFO org.apache.hadoop.hdfs.server.blockmanagement.BlockManager: dfs.block.access.token.enable = false
+2019-03-01 08:48:35,390 INFO org.apache.hadoop.conf.Configuration.deprecation: No unit for dfs.namenode.safemode.extension(30000) assuming MILLISECONDS
+2019-03-01 08:48:35,390 INFO org.apache.hadoop.hdfs.server.blockmanagement.BlockManagerSafeMode: dfs.namenode.safemode.threshold-pct = 0.9990000128746033
+2019-03-01 08:48:35,390 INFO org.apache.hadoop.hdfs.server.blockmanagement.BlockManagerSafeMode: dfs.namenode.safemode.min.datanodes = 0
+2019-03-01 08:48:35,390 INFO org.apache.hadoop.hdfs.server.blockmanagement.BlockManagerSafeMode: dfs.namenode.safemode.extension = 30000
+2019-03-01 08:48:35,391 INFO org.apache.hadoop.hdfs.server.blockmanagement.BlockManager: defaultReplication         = 3
+2019-03-01 08:48:35,391 INFO org.apache.hadoop.hdfs.server.blockmanagement.BlockManager: maxReplication             = 512
+2019-03-01 08:48:35,391 INFO org.apache.hadoop.hdfs.server.blockmanagement.BlockManager: minReplication             = 1
+2019-03-01 08:48:35,391 INFO org.apache.hadoop.hdfs.server.blockmanagement.BlockManager: maxReplicationStreams      = 2
+2019-03-01 08:48:35,391 INFO org.apache.hadoop.hdfs.server.blockmanagement.BlockManager: redundancyRecheckInterval  = 3000ms
+2019-03-01 08:48:35,391 INFO org.apache.hadoop.hdfs.server.blockmanagement.BlockManager: encryptDataTransfer        = false
+2019-03-01 08:48:35,391 INFO org.apache.hadoop.hdfs.server.blockmanagement.BlockManager: maxNumBlocksToLog          = 1000
+2019-03-01 08:48:35,475 INFO org.apache.hadoop.util.GSet: Computing capacity for map INodeMap
+2019-03-01 08:48:35,476 INFO org.apache.hadoop.util.GSet: VM type       = 64-bit
+2019-03-01 08:48:35,476 INFO org.apache.hadoop.util.GSet: 1.0% max memory 26.7 GB = 273.0 MB
+2019-03-01 08:48:35,476 INFO org.apache.hadoop.util.GSet: capacity      = 2^25 = 33554432 entries
+2019-03-01 08:48:35,549 INFO org.apache.hadoop.hdfs.server.namenode.FSDirectory: ACLs enabled? false
+2019-03-01 08:48:35,550 INFO org.apache.hadoop.hdfs.server.namenode.FSDirectory: POSIX ACL inheritance enabled? true
+2019-03-01 08:48:35,550 INFO org.apache.hadoop.hdfs.server.namenode.FSDirectory: XAttrs enabled? true
+2019-03-01 08:48:35,550 INFO org.apache.hadoop.hdfs.server.namenode.NameNode: Caching file names occurring more than 10 times
+2019-03-01 08:48:35,557 INFO org.apache.hadoop.hdfs.server.namenode.snapshot.SnapshotManager: Loaded config captureOpenFiles: false, skipCaptureAccessTimeOnlyChange: false, snapshotDiffAllowSnapRootDescendant: true, maxSnapshotLimit: 65536
+2019-03-01 08:48:35,559 INFO org.apache.hadoop.hdfs.server.namenode.snapshot.SnapshotManager: SkipList is disabled
+2019-03-01 08:48:35,565 INFO org.apache.hadoop.util.GSet: Computing capacity for map cachedBlocks
+2019-03-01 08:48:35,565 INFO org.apache.hadoop.util.GSet: VM type       = 64-bit
+2019-03-01 08:48:35,565 INFO org.apache.hadoop.util.GSet: 0.25% max memory 26.7 GB = 68.3 MB
+2019-03-01 08:48:35,565 INFO org.apache.hadoop.util.GSet: capacity      = 2^23 = 8388608 entries
+2019-03-01 08:48:35,593 INFO org.apache.hadoop.hdfs.server.namenode.top.metrics.TopMetrics: NNTop conf: dfs.namenode.top.window.num.buckets = 10
+2019-03-01 08:48:35,593 INFO org.apache.hadoop.hdfs.server.namenode.top.metrics.TopMetrics: NNTop conf: dfs.namenode.top.num.users = 10
+2019-03-01 08:48:35,593 INFO org.apache.hadoop.hdfs.server.namenode.top.metrics.TopMetrics: NNTop conf: dfs.namenode.top.windows.minutes = 1,5,25
+2019-03-01 08:48:35,597 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Retry cache on namenode is enabled
+2019-03-01 08:48:35,597 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Retry cache will use 0.03 of total heap and retry cache entry expiry time is 600000 millis
+2019-03-01 08:48:35,599 INFO org.apache.hadoop.util.GSet: Computing capacity for map NameNodeRetryCache
+2019-03-01 08:48:35,600 INFO org.apache.hadoop.util.GSet: VM type       = 64-bit
+2019-03-01 08:48:35,600 INFO org.apache.hadoop.util.GSet: 0.029999999329447746% max memory 26.7 GB = 8.2 MB
+2019-03-01 08:48:35,600 INFO org.apache.hadoop.util.GSet: capacity      = 2^20 = 1048576 entries
+2019-03-01 08:48:35,621 INFO org.apache.hadoop.hdfs.server.common.Storage: Lock on /tmp/hadoop-root/dfs/name/in_use.lock acquired by nodename 47656@clnode068.clemson.cloudlab.us
+2019-03-01 08:48:37,237 INFO org.apache.hadoop.util.JvmPauseMonitor: Detected pause in JVM or host machine (eg GC): pause of approximately 1322ms
+GC pool 'PS MarkSweep' had collection(s): count=1 time=368ms
+GC pool 'PS Scavenge' had collection(s): count=1 time=1116ms
+2019-03-01 08:48:38,362 INFO org.apache.hadoop.ipc.Client: Retrying connect to server: node-2-link-0/10.10.1.5:8485. Already tried 0 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+2019-03-01 08:48:38,362 INFO org.apache.hadoop.ipc.Client: Retrying connect to server: node-3-link-0/10.10.1.3:8485. Already tried 0 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+2019-03-01 08:48:38,362 INFO org.apache.hadoop.ipc.Client: Retrying connect to server: node-1-link-0/10.10.1.4:8485. Already tried 0 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+2019-03-01 08:48:39,363 INFO org.apache.hadoop.ipc.Client: Retrying connect to server: node-1-link-0/10.10.1.4:8485. Already tried 1 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+2019-03-01 08:48:39,363 INFO org.apache.hadoop.ipc.Client: Retrying connect to server: node-2-link-0/10.10.1.5:8485. Already tried 1 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+2019-03-01 08:48:39,363 INFO org.apache.hadoop.ipc.Client: Retrying connect to server: node-3-link-0/10.10.1.3:8485. Already tried 1 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+2019-03-01 08:48:40,363 INFO org.apache.hadoop.ipc.Client: Retrying connect to server: node-1-link-0/10.10.1.4:8485. Already tried 2 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+2019-03-01 08:48:40,363 INFO org.apache.hadoop.ipc.Client: Retrying connect to server: node-2-link-0/10.10.1.5:8485. Already tried 2 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+2019-03-01 08:48:40,363 INFO org.apache.hadoop.ipc.Client: Retrying connect to server: node-3-link-0/10.10.1.3:8485. Already tried 2 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+2019-03-01 08:48:41,364 INFO org.apache.hadoop.ipc.Client: Retrying connect to server: node-1-link-0/10.10.1.4:8485. Already tried 3 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+2019-03-01 08:48:41,364 INFO org.apache.hadoop.ipc.Client: Retrying connect to server: node-2-link-0/10.10.1.5:8485. Already tried 3 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+2019-03-01 08:48:41,364 INFO org.apache.hadoop.ipc.Client: Retrying connect to server: node-3-link-0/10.10.1.3:8485. Already tried 3 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+2019-03-01 08:48:41,726 INFO org.apache.hadoop.hdfs.qjournal.client.QuorumJournalManager: Waited 6001 ms (timeout=20000 ms) for a response for selectInputStreams. No responses yet.
+2019-03-01 08:48:42,365 INFO org.apache.hadoop.ipc.Client: Retrying connect to server: node-1-link-0/10.10.1.4:8485. Already tried 4 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+2019-03-01 08:48:42,365 INFO org.apache.hadoop.ipc.Client: Retrying connect to server: node-3-link-0/10.10.1.3:8485. Already tried 4 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+2019-03-01 08:48:42,466 INFO org.apache.hadoop.hdfs.server.namenode.FSImage: No edit log streams selected.
+2019-03-01 08:48:42,466 INFO org.apache.hadoop.hdfs.server.namenode.FSImage: Planning to load image: FSImageFile(file=/tmp/hadoop-root/dfs/name/current/fsimage_0000000000000000000, cpktTxId=0000000000000000000)
+2019-03-01 08:48:42,530 INFO org.apache.hadoop.hdfs.server.namenode.ErasureCodingPolicyManager: Enable the erasure coding policy RS-6-3-1024k
+2019-03-01 08:48:42,532 INFO org.apache.hadoop.hdfs.server.namenode.FSImageFormatPBINode: Loading 1 INodes.
+2019-03-01 08:48:42,563 INFO org.apache.hadoop.hdfs.server.namenode.FSImageFormatProtobuf: Loaded FSImage in 0 seconds.
+2019-03-01 08:48:42,563 INFO org.apache.hadoop.hdfs.server.namenode.FSImage: Loaded image for txid 0 from /tmp/hadoop-root/dfs/name/current/fsimage_0000000000000000000
+2019-03-01 08:48:42,568 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Need to save fs image? false (staleImage=false, haEnabled=true, isRollingUpgrade=false)
+2019-03-01 08:48:42,568 INFO org.apache.hadoop.hdfs.server.namenode.NameCache: initialized with 0 entries 0 lookups
+2019-03-01 08:48:42,569 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Finished loading FSImage in 6960 msecs
+2019-03-01 08:48:42,748 INFO org.apache.hadoop.hdfs.server.namenode.NameNode: RPC server is binding to node-1-link-0:8020
+2019-03-01 08:48:42,753 INFO org.apache.hadoop.ipc.CallQueueManager: Using callQueue: class java.util.concurrent.LinkedBlockingQueue queueCapacity: 1000 scheduler: class org.apache.hadoop.ipc.DefaultRpcScheduler
+2019-03-01 08:48:42,766 INFO org.apache.hadoop.ipc.Server: Starting Socket Reader #1 for port 8020
+2019-03-01 08:48:42,955 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Registered FSNamesystemState, ReplicatedBlocksState and ECBlockGroupsState MBeans.
+2019-03-01 08:48:42,964 INFO org.apache.hadoop.hdfs.server.namenode.LeaseManager: Number of blocks under construction: 0
+2019-03-01 08:48:42,974 INFO org.apache.hadoop.hdfs.StateChange: STATE* Leaving safe mode after 0 secs
+2019-03-01 08:48:42,975 INFO org.apache.hadoop.hdfs.StateChange: STATE* Network topology has 0 racks and 0 datanodes
+2019-03-01 08:48:42,975 INFO org.apache.hadoop.hdfs.StateChange: STATE* UnderReplicatedBlocks has 0 blocks
+2019-03-01 08:48:43,009 INFO org.apache.hadoop.ipc.Server: IPC Server Responder: starting
+2019-03-01 08:48:43,009 INFO org.apache.hadoop.ipc.Server: IPC Server listener on 8020: starting
+2019-03-01 08:48:43,016 INFO org.apache.hadoop.hdfs.server.namenode.NameNode: NameNode RPC up at: node-1-link-0/10.10.1.4:8020
+2019-03-01 08:48:43,019 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Starting services required for standby state
+2019-03-01 08:48:43,024 INFO org.apache.hadoop.hdfs.server.namenode.ha.EditLogTailer: Will roll logs on active node every 120 seconds.
+2019-03-01 08:48:43,030 INFO org.apache.hadoop.hdfs.server.namenode.ha.StandbyCheckpointer: Starting standby checkpoint thread...
+Checkpointing active NN to possible NNs: [http://node-0-link-0:9870]
+Serving checkpoints at http://node-1-link-0:9870
+2019-03-01 08:48:43,555 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* registerDatanode: from DatanodeRegistration(10.10.1.5:9866, datanodeUuid=2ca5bf0b-edfb-4df6-a257-c29c277bbb71, infoPort=9864, infoSecurePort=0, ipcPort=9867, storageInfo=lv=-57;cid=CID-e4924207-df59-4452-931b-041cf51f3a90;nsid=372965395;c=1551455290764) storage 2ca5bf0b-edfb-4df6-a257-c29c277bbb71
+2019-03-01 08:48:43,557 INFO org.apache.hadoop.net.NetworkTopology: Adding a new node: /default-rack/10.10.1.5:9866
+2019-03-01 08:48:43,558 INFO org.apache.hadoop.hdfs.server.blockmanagement.BlockReportLeaseManager: Registered DN 2ca5bf0b-edfb-4df6-a257-c29c277bbb71 (10.10.1.5:9866).
+2019-03-01 08:48:43,642 INFO org.apache.hadoop.hdfs.server.blockmanagement.DatanodeDescriptor: Adding new storage ID DS-c87df14b-5465-47a7-93b0-ba288125a4d6 for DN 10.10.1.5:9866
+2019-03-01 08:48:43,670 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* registerDatanode: from DatanodeRegistration(10.10.1.3:9866, datanodeUuid=9fc92132-8bf6-4a96-98f2-57bf35ce7508, infoPort=9864, infoSecurePort=0, ipcPort=9867, storageInfo=lv=-57;cid=CID-e4924207-df59-4452-931b-041cf51f3a90;nsid=372965395;c=1551455290764) storage 9fc92132-8bf6-4a96-98f2-57bf35ce7508
+2019-03-01 08:48:43,670 INFO org.apache.hadoop.net.NetworkTopology: Adding a new node: /default-rack/10.10.1.3:9866
+2019-03-01 08:48:43,670 INFO org.apache.hadoop.hdfs.server.blockmanagement.BlockReportLeaseManager: Registered DN 9fc92132-8bf6-4a96-98f2-57bf35ce7508 (10.10.1.3:9866).
+2019-03-01 08:48:43,691 INFO BlockStateChange: BLOCK* processReport 0x7460eeecf54ee790: Processing first storage report for DS-c87df14b-5465-47a7-93b0-ba288125a4d6 from datanode 2ca5bf0b-edfb-4df6-a257-c29c277bbb71
+2019-03-01 08:48:43,693 INFO BlockStateChange: BLOCK* processReport 0x7460eeecf54ee790: from storage DS-c87df14b-5465-47a7-93b0-ba288125a4d6 node DatanodeRegistration(10.10.1.5:9866, datanodeUuid=2ca5bf0b-edfb-4df6-a257-c29c277bbb71, infoPort=9864, infoSecurePort=0, ipcPort=9867, storageInfo=lv=-57;cid=CID-e4924207-df59-4452-931b-041cf51f3a90;nsid=372965395;c=1551455290764), blocks: 0, hasStaleStorage: false, processing time: 2 msecs, invalidatedBlocks: 0
+2019-03-01 08:48:43,693 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* registerDatanode: from DatanodeRegistration(10.10.1.2:9866, datanodeUuid=d66c0887-f98d-4b72-9f83-036a97e0861b, infoPort=9864, infoSecurePort=0, ipcPort=9867, storageInfo=lv=-57;cid=CID-e4924207-df59-4452-931b-041cf51f3a90;nsid=372965395;c=1551455290764) storage d66c0887-f98d-4b72-9f83-036a97e0861b
+2019-03-01 08:48:43,693 INFO org.apache.hadoop.net.NetworkTopology: Adding a new node: /default-rack/10.10.1.2:9866
+2019-03-01 08:48:43,694 INFO org.apache.hadoop.hdfs.server.blockmanagement.BlockReportLeaseManager: Registered DN d66c0887-f98d-4b72-9f83-036a97e0861b (10.10.1.2:9866).
+2019-03-01 08:48:43,719 INFO org.apache.hadoop.hdfs.server.blockmanagement.DatanodeDescriptor: Adding new storage ID DS-d77f902f-afc4-4e69-ad56-ca5dc9d02e54 for DN 10.10.1.3:9866
+2019-03-01 08:48:43,743 INFO org.apache.hadoop.hdfs.server.blockmanagement.DatanodeDescriptor: Adding new storage ID DS-e6adc8a4-3c94-415a-96fd-46d28979b31e for DN 10.10.1.2:9866
+2019-03-01 08:48:43,744 INFO BlockStateChange: BLOCK* processReport 0x2014590ff2a69e15: Processing first storage report for DS-d77f902f-afc4-4e69-ad56-ca5dc9d02e54 from datanode 9fc92132-8bf6-4a96-98f2-57bf35ce7508
+2019-03-01 08:48:43,744 INFO BlockStateChange: BLOCK* processReport 0x2014590ff2a69e15: from storage DS-d77f902f-afc4-4e69-ad56-ca5dc9d02e54 node DatanodeRegistration(10.10.1.3:9866, datanodeUuid=9fc92132-8bf6-4a96-98f2-57bf35ce7508, infoPort=9864, infoSecurePort=0, ipcPort=9867, storageInfo=lv=-57;cid=CID-e4924207-df59-4452-931b-041cf51f3a90;nsid=372965395;c=1551455290764), blocks: 0, hasStaleStorage: false, processing time: 0 msecs, invalidatedBlocks: 0
+2019-03-01 08:48:43,767 INFO BlockStateChange: BLOCK* processReport 0xe8cb7c38034d8214: Processing first storage report for DS-e6adc8a4-3c94-415a-96fd-46d28979b31e from datanode d66c0887-f98d-4b72-9f83-036a97e0861b
+2019-03-01 08:48:43,767 INFO BlockStateChange: BLOCK* processReport 0xe8cb7c38034d8214: from storage DS-e6adc8a4-3c94-415a-96fd-46d28979b31e node DatanodeRegistration(10.10.1.2:9866, datanodeUuid=d66c0887-f98d-4b72-9f83-036a97e0861b, infoPort=9864, infoSecurePort=0, ipcPort=9867, storageInfo=lv=-57;cid=CID-e4924207-df59-4452-931b-041cf51f3a90;nsid=372965395;c=1551455290764), blocks: 0, hasStaleStorage: false, processing time: 0 msecs, invalidatedBlocks: 0
+2019-03-01 08:48:43,998 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* registerDatanode: from DatanodeRegistration(10.10.1.4:9866, datanodeUuid=b5a51ab3-37f9-41da-808a-23dfc64026c8, infoPort=9864, infoSecurePort=0, ipcPort=9867, storageInfo=lv=-57;cid=CID-e4924207-df59-4452-931b-041cf51f3a90;nsid=372965395;c=1551455290764) storage b5a51ab3-37f9-41da-808a-23dfc64026c8
+2019-03-01 08:48:43,999 INFO org.apache.hadoop.net.NetworkTopology: Adding a new node: /default-rack/10.10.1.4:9866
+2019-03-01 08:48:43,999 INFO org.apache.hadoop.hdfs.server.blockmanagement.BlockReportLeaseManager: Registered DN b5a51ab3-37f9-41da-808a-23dfc64026c8 (10.10.1.4:9866).
+2019-03-01 08:48:44,049 INFO org.apache.hadoop.hdfs.server.blockmanagement.DatanodeDescriptor: Adding new storage ID DS-c32073cd-8a02-4a33-bf16-057ebff2b270 for DN 10.10.1.4:9866
+2019-03-01 08:48:44,074 INFO BlockStateChange: BLOCK* processReport 0x143051b4b285a846: Processing first storage report for DS-c32073cd-8a02-4a33-bf16-057ebff2b270 from datanode b5a51ab3-37f9-41da-808a-23dfc64026c8
+2019-03-01 08:48:44,074 INFO BlockStateChange: BLOCK* processReport 0x143051b4b285a846: from storage DS-c32073cd-8a02-4a33-bf16-057ebff2b270 node DatanodeRegistration(10.10.1.4:9866, datanodeUuid=b5a51ab3-37f9-41da-808a-23dfc64026c8, infoPort=9864, infoSecurePort=0, ipcPort=9867, storageInfo=lv=-57;cid=CID-e4924207-df59-4452-931b-041cf51f3a90;nsid=372965395;c=1551455290764), blocks: 0, hasStaleStorage: false, processing time: 0 msecs, invalidatedBlocks: 0
+2019-03-01 08:48:44,517 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Stopping services started for standby state
+2019-03-01 08:48:44,518 WARN org.apache.hadoop.hdfs.server.namenode.ha.EditLogTailer: Edit log tailer interrupted
+java.lang.InterruptedException: sleep interrupted
+	at java.lang.Thread.sleep(Native Method)
+	at org.apache.hadoop.hdfs.server.namenode.ha.EditLogTailer$EditLogTailerThread.doWork(EditLogTailer.java:479)
+	at org.apache.hadoop.hdfs.server.namenode.ha.EditLogTailer$EditLogTailerThread.access$400(EditLogTailer.java:409)
+	at org.apache.hadoop.hdfs.server.namenode.ha.EditLogTailer$EditLogTailerThread$1.run(EditLogTailer.java:426)
+	at org.apache.hadoop.security.SecurityUtil.doAsLoginUserOrFatal(SecurityUtil.java:482)
+	at org.apache.hadoop.hdfs.server.namenode.ha.EditLogTailer$EditLogTailerThread.run(EditLogTailer.java:422)
+2019-03-01 08:48:44,622 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Starting services required for active state
+2019-03-01 08:48:44,630 INFO org.apache.hadoop.hdfs.qjournal.client.QuorumJournalManager: Starting recovery process for unclosed journal segments...
+2019-03-01 08:48:44,719 INFO org.apache.hadoop.hdfs.qjournal.client.QuorumJournalManager: Successfully started new epoch 1
+2019-03-01 08:48:44,719 INFO org.apache.hadoop.hdfs.server.namenode.FileJournalManager: Recovering unfinalized segments in /tmp/hadoop-root/dfs/name/current
+2019-03-01 08:48:44,719 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Catching up to latest edits from old active before taking over writer role in edits logs
+2019-03-01 08:48:44,723 INFO org.apache.hadoop.hdfs.server.blockmanagement.DatanodeManager: Marking all datanodes as stale
+2019-03-01 08:48:44,726 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Reprocessing replication and invalidation queues
+2019-03-01 08:48:44,726 INFO org.apache.hadoop.hdfs.server.blockmanagement.BlockManager: initializing replication queues
+2019-03-01 08:48:44,726 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Will take over writing edit logs at txnid 1
+2019-03-01 08:48:44,729 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Starting log segment at 1
+2019-03-01 08:48:45,161 INFO org.apache.hadoop.hdfs.server.namenode.FSDirectory: Initializing quota with 4 thread(s)
+2019-03-01 08:48:45,166 INFO org.apache.hadoop.hdfs.server.namenode.FSDirectory: Quota initialization completed in 5 milliseconds
+name space=1
+storage space=0
+storage types=RAM_DISK=0, SSD=0, DISK=0, ARCHIVE=0, PROVIDED=0
+2019-03-01 08:48:45,171 INFO org.apache.hadoop.hdfs.server.blockmanagement.CacheReplicationMonitor: Starting CacheReplicationMonitor with interval 30000 milliseconds
+2019-03-01 08:48:45,171 INFO org.apache.hadoop.hdfs.server.blockmanagement.BlockManager: Total number of blocks            = 0
+2019-03-01 08:48:45,171 INFO org.apache.hadoop.hdfs.server.blockmanagement.BlockManager: Number of invalid blocks          = 0
+2019-03-01 08:48:45,171 INFO org.apache.hadoop.hdfs.server.blockmanagement.BlockManager: Number of under-replicated blocks = 0
+2019-03-01 08:48:45,171 INFO org.apache.hadoop.hdfs.server.blockmanagement.BlockManager: Number of  over-replicated blocks = 0
+2019-03-01 08:48:45,171 INFO org.apache.hadoop.hdfs.server.blockmanagement.BlockManager: Number of blocks being written    = 0
+2019-03-01 08:48:45,171 INFO org.apache.hadoop.hdfs.StateChange: STATE* Replication Queue initialization scan for invalid, over- and under-replicated blocks completed in 445 msec
+2019-03-01 08:48:50,414 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741825_1001, replicas=10.10.1.3:9866, 10.10.1.2:9866, 10.10.1.4:9866 for /myfile3._COPYING_
+2019-03-01 08:48:50,448 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741826_1002, replicas=10.10.1.5:9866, 10.10.1.3:9866, 10.10.1.4:9866 for /myfile9._COPYING_
+2019-03-01 08:48:50,470 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741827_1003, replicas=10.10.1.4:9866, 10.10.1.5:9866, 10.10.1.2:9866 for /myfile19._COPYING_
+2019-03-01 08:48:50,489 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741828_1004, replicas=10.10.1.3:9866, 10.10.1.5:9866, 10.10.1.2:9866 for /myfile16._COPYING_
+2019-03-01 08:48:50,524 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741829_1005, replicas=10.10.1.4:9866, 10.10.1.2:9866, 10.10.1.5:9866 for /myfile7._COPYING_
+2019-03-01 08:48:50,538 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741830_1006, replicas=10.10.1.4:9866, 10.10.1.5:9866, 10.10.1.3:9866 for /myfile12._COPYING_
+2019-03-01 08:48:50,559 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741831_1007, replicas=10.10.1.2:9866, 10.10.1.4:9866, 10.10.1.5:9866 for /myfile17._COPYING_
+2019-03-01 08:48:50,564 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741832_1008, replicas=10.10.1.5:9866, 10.10.1.3:9866, 10.10.1.2:9866 for /myfile20._COPYING_
+2019-03-01 08:48:50,570 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741833_1009, replicas=10.10.1.5:9866, 10.10.1.3:9866, 10.10.1.4:9866 for /myfile15._COPYING_
+2019-03-01 08:48:50,577 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741834_1010, replicas=10.10.1.2:9866, 10.10.1.4:9866, 10.10.1.5:9866 for /myfile18._COPYING_
+2019-03-01 08:48:50,582 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741835_1011, replicas=10.10.1.2:9866, 10.10.1.4:9866, 10.10.1.3:9866 for /myfile10._COPYING_
+2019-03-01 08:48:50,608 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741836_1012, replicas=10.10.1.4:9866, 10.10.1.3:9866, 10.10.1.2:9866 for /myfile11._COPYING_
+2019-03-01 08:48:50,616 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741837_1013, replicas=10.10.1.5:9866, 10.10.1.3:9866, 10.10.1.2:9866 for /myfile4._COPYING_
+2019-03-01 08:48:50,620 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741838_1014, replicas=10.10.1.3:9866, 10.10.1.5:9866, 10.10.1.2:9866 for /myfile1._COPYING_
+2019-03-01 08:48:50,620 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741839_1015, replicas=10.10.1.3:9866, 10.10.1.4:9866, 10.10.1.2:9866 for /myfile13._COPYING_
+2019-03-01 08:48:50,634 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741840_1016, replicas=10.10.1.3:9866, 10.10.1.5:9866, 10.10.1.2:9866 for /myfile5._COPYING_
+2019-03-01 08:48:50,704 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741841_1017, replicas=10.10.1.2:9866, 10.10.1.3:9866, 10.10.1.4:9866 for /myfile2._COPYING_
+2019-03-01 08:48:50,710 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741842_1018, replicas=10.10.1.4:9866, 10.10.1.2:9866, 10.10.1.5:9866 for /myfile14._COPYING_
+2019-03-01 08:48:50,722 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741843_1019, replicas=10.10.1.3:9866, 10.10.1.5:9866, 10.10.1.2:9866 for /myfile6._COPYING_
+2019-03-01 08:48:50,738 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741844_1020, replicas=10.10.1.4:9866, 10.10.1.5:9866, 10.10.1.3:9866 for /myfile8._COPYING_
+2019-03-01 08:48:52,605 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741845_1021, replicas=10.10.1.4:9866, 10.10.1.3:9866, 10.10.1.2:9866 for /myfile12._COPYING_
+2019-03-01 08:48:52,615 INFO org.apache.hadoop.hdfs.server.blockmanagement.BlockManager: Received an RBW replica for blk_1073741830_1006 on 10.10.1.5:9866: ignoring it, since it is complete with the same genstamp
+2019-03-01 08:48:52,684 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741846_1022, replicas=10.10.1.5:9866, 10.10.1.3:9866, 10.10.1.2:9866 for /myfile1._COPYING_
+2019-03-01 08:48:52,738 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741847_1023, replicas=10.10.1.5:9866, 10.10.1.3:9866, 10.10.1.4:9866 for /myfile16._COPYING_
+2019-03-01 08:48:52,746 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741848_1024, replicas=10.10.1.2:9866, 10.10.1.3:9866, 10.10.1.4:9866 for /myfile10._COPYING_
+2019-03-01 08:48:52,761 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741849_1025, replicas=10.10.1.5:9866, 10.10.1.2:9866, 10.10.1.4:9866 for /myfile19._COPYING_
+2019-03-01 08:48:52,766 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741850_1026, replicas=10.10.1.4:9866, 10.10.1.3:9866, 10.10.1.2:9866 for /myfile3._COPYING_
+2019-03-01 08:48:52,766 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741851_1027, replicas=10.10.1.2:9866, 10.10.1.5:9866, 10.10.1.3:9866 for /myfile7._COPYING_
+2019-03-01 08:48:52,768 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741852_1028, replicas=10.10.1.4:9866, 10.10.1.2:9866, 10.10.1.5:9866 for /myfile20._COPYING_
+2019-03-01 08:48:52,772 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741853_1029, replicas=10.10.1.5:9866, 10.10.1.3:9866, 10.10.1.4:9866 for /myfile18._COPYING_
+2019-03-01 08:48:52,779 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741854_1030, replicas=10.10.1.5:9866, 10.10.1.3:9866, 10.10.1.2:9866 for /myfile13._COPYING_
+2019-03-01 08:48:52,782 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741855_1031, replicas=10.10.1.5:9866, 10.10.1.3:9866, 10.10.1.4:9866 for /myfile17._COPYING_
+2019-03-01 08:48:52,811 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741856_1032, replicas=10.10.1.3:9866, 10.10.1.2:9866, 10.10.1.5:9866 for /myfile2._COPYING_
+2019-03-01 08:48:52,848 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741857_1033, replicas=10.10.1.5:9866, 10.10.1.3:9866, 10.10.1.4:9866 for /myfile8._COPYING_
+2019-03-01 08:48:52,877 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741858_1034, replicas=10.10.1.5:9866, 10.10.1.2:9866, 10.10.1.3:9866 for /myfile14._COPYING_
+2019-03-01 08:48:53,301 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741859_1035, replicas=10.10.1.5:9866, 10.10.1.4:9866, 10.10.1.3:9866 for /myfile11._COPYING_
+2019-03-01 08:48:53,385 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741860_1036, replicas=10.10.1.4:9866, 10.10.1.5:9866, 10.10.1.3:9866 for /myfile4._COPYING_
+2019-03-01 08:48:53,830 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741861_1037, replicas=10.10.1.3:9866, 10.10.1.2:9866, 10.10.1.4:9866 for /myfile16._COPYING_
+2019-03-01 08:48:53,832 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741862_1038, replicas=10.10.1.2:9866, 10.10.1.5:9866, 10.10.1.3:9866 for /myfile10._COPYING_
+2019-03-01 08:48:53,840 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741863_1039, replicas=10.10.1.4:9866, 10.10.1.2:9866, 10.10.1.5:9866 for /myfile9._COPYING_
+2019-03-01 08:48:53,883 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741864_1040, replicas=10.10.1.4:9866, 10.10.1.3:9866, 10.10.1.5:9866 for /myfile20._COPYING_
+2019-03-01 08:48:53,943 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741865_1041, replicas=10.10.1.4:9866, 10.10.1.5:9866, 10.10.1.2:9866 for /myfile15._COPYING_
+2019-03-01 08:48:54,192 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741866_1042, replicas=10.10.1.5:9866, 10.10.1.2:9866, 10.10.1.3:9866 for /myfile14._COPYING_
+2019-03-01 08:48:54,392 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741867_1043, replicas=10.10.1.5:9866, 10.10.1.4:9866, 10.10.1.2:9866 for /myfile4._COPYING_
+2019-03-01 08:48:54,437 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741868_1044, replicas=10.10.1.2:9866, 10.10.1.4:9866, 10.10.1.5:9866 for /myfile18._COPYING_
+2019-03-01 08:48:54,629 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741869_1045, replicas=10.10.1.3:9866, 10.10.1.4:9866, 10.10.1.2:9866 for /myfile7._COPYING_
+2019-03-01 08:48:54,823 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741870_1046, replicas=10.10.1.3:9866, 10.10.1.5:9866, 10.10.1.4:9866 for /myfile16._COPYING_
+2019-03-01 08:48:54,875 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741871_1047, replicas=10.10.1.3:9866, 10.10.1.5:9866, 10.10.1.2:9866 for /myfile20._COPYING_
+2019-03-01 08:48:54,883 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741872_1048, replicas=10.10.1.4:9866, 10.10.1.2:9866, 10.10.1.5:9866 for /myfile17._COPYING_
+2019-03-01 08:48:54,893 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741873_1049, replicas=10.10.1.3:9866, 10.10.1.4:9866, 10.10.1.2:9866 for /myfile19._COPYING_
+2019-03-01 08:48:54,912 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741874_1050, replicas=10.10.1.2:9866, 10.10.1.3:9866, 10.10.1.5:9866 for /myfile5._COPYING_
+2019-03-01 08:48:54,952 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741875_1051, replicas=10.10.1.3:9866, 10.10.1.2:9866, 10.10.1.5:9866 for /myfile15._COPYING_
+2019-03-01 08:48:55,045 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741876_1052, replicas=10.10.1.2:9866, 10.10.1.5:9866, 10.10.1.3:9866 for /myfile3._COPYING_
+2019-03-01 08:48:55,230 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741877_1053, replicas=10.10.1.3:9866, 10.10.1.4:9866, 10.10.1.5:9866 for /myfile6._COPYING_
+2019-03-01 08:48:55,330 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741878_1054, replicas=10.10.1.2:9866, 10.10.1.3:9866, 10.10.1.4:9866 for /myfile18._COPYING_
+2019-03-01 08:48:55,584 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741879_1055, replicas=10.10.1.4:9866, 10.10.1.5:9866, 10.10.1.3:9866 for /myfile4._COPYING_
+2019-03-01 08:48:55,589 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741880_1056, replicas=10.10.1.3:9866, 10.10.1.4:9866, 10.10.1.5:9866 for /myfile9._COPYING_
+2019-03-01 08:48:57,347 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741881_1057, replicas=10.10.1.2:9866, 10.10.1.3:9866, 10.10.1.5:9866 for /myfile10._COPYING_
+2019-03-01 08:48:57,348 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741882_1058, replicas=10.10.1.4:9866, 10.10.1.3:9866, 10.10.1.2:9866 for /myfile14._COPYING_
+2019-03-01 08:48:57,350 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741883_1059, replicas=10.10.1.3:9866, 10.10.1.5:9866, 10.10.1.2:9866 for /myfile1._COPYING_
+2019-03-01 08:48:57,350 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741884_1060, replicas=10.10.1.4:9866, 10.10.1.2:9866, 10.10.1.5:9866 for /myfile20._COPYING_
+2019-03-01 08:48:57,350 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741885_1061, replicas=10.10.1.2:9866, 10.10.1.5:9866, 10.10.1.3:9866 for /myfile13._COPYING_
+2019-03-01 08:48:57,351 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741886_1062, replicas=10.10.1.3:9866, 10.10.1.2:9866, 10.10.1.4:9866 for /myfile5._COPYING_
+2019-03-01 08:48:57,351 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741887_1063, replicas=10.10.1.3:9866, 10.10.1.5:9866, 10.10.1.2:9866 for /myfile2._COPYING_
+2019-03-01 08:48:57,352 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741888_1064, replicas=10.10.1.4:9866, 10.10.1.5:9866, 10.10.1.3:9866 for /myfile15._COPYING_
+2019-03-01 08:48:57,353 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741889_1065, replicas=10.10.1.5:9866, 10.10.1.4:9866, 10.10.1.3:9866 for /myfile3._COPYING_
+2019-03-01 08:48:57,830 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741890_1066, replicas=10.10.1.3:9866, 10.10.1.4:9866, 10.10.1.2:9866 for /myfile10._COPYING_
+2019-03-01 08:48:57,831 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741891_1067, replicas=10.10.1.3:9866, 10.10.1.5:9866, 10.10.1.2:9866 for /myfile1._COPYING_
+2019-03-01 08:48:57,849 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741892_1068, replicas=10.10.1.4:9866, 10.10.1.2:9866, 10.10.1.5:9866 for /myfile19._COPYING_
+2019-03-01 08:48:57,850 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741893_1069, replicas=10.10.1.2:9866, 10.10.1.3:9866, 10.10.1.4:9866 for /myfile17._COPYING_
+2019-03-01 08:48:57,850 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741894_1070, replicas=10.10.1.5:9866, 10.10.1.3:9866, 10.10.1.4:9866 for /myfile8._COPYING_
+2019-03-01 08:48:57,851 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741895_1071, replicas=10.10.1.4:9866, 10.10.1.2:9866, 10.10.1.3:9866 for /myfile16._COPYING_
+2019-03-01 08:48:57,852 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741896_1072, replicas=10.10.1.3:9866, 10.10.1.2:9866, 10.10.1.4:9866 for /myfile6._COPYING_
+2019-03-01 08:48:57,852 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741897_1073, replicas=10.10.1.4:9866, 10.10.1.2:9866, 10.10.1.3:9866 for /myfile18._COPYING_
+2019-03-01 08:48:57,852 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741898_1074, replicas=10.10.1.3:9866, 10.10.1.5:9866, 10.10.1.2:9866 for /myfile7._COPYING_
+2019-03-01 08:48:57,853 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741899_1075, replicas=10.10.1.5:9866, 10.10.1.4:9866, 10.10.1.3:9866 for /myfile9._COPYING_
+2019-03-01 08:48:57,853 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741900_1076, replicas=10.10.1.2:9866, 10.10.1.4:9866, 10.10.1.3:9866 for /myfile12._COPYING_
+2019-03-01 08:48:57,854 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741901_1077, replicas=10.10.1.3:9866, 10.10.1.5:9866, 10.10.1.2:9866 for /myfile4._COPYING_
+2019-03-01 08:48:57,854 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741902_1078, replicas=10.10.1.2:9866, 10.10.1.4:9866, 10.10.1.3:9866 for /myfile11._COPYING_
+2019-03-01 08:48:57,897 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741903_1079, replicas=10.10.1.4:9866, 10.10.1.3:9866, 10.10.1.5:9866 for /myfile13._COPYING_
+2019-03-01 08:48:58,053 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741904_1080, replicas=10.10.1.4:9866, 10.10.1.3:9866, 10.10.1.2:9866 for /myfile2._COPYING_
+2019-03-01 08:48:58,939 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741905_1081, replicas=10.10.1.4:9866, 10.10.1.2:9866, 10.10.1.3:9866 for /myfile3._COPYING_
+2019-03-01 08:48:59,020 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741906_1082, replicas=10.10.1.3:9866, 10.10.1.5:9866, 10.10.1.2:9866 for /myfile8._COPYING_
+2019-03-01 08:48:59,021 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741907_1083, replicas=10.10.1.3:9866, 10.10.1.4:9866, 10.10.1.2:9866 for /myfile18._COPYING_
+2019-03-01 08:48:59,053 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741908_1084, replicas=10.10.1.2:9866, 10.10.1.3:9866, 10.10.1.4:9866 for /myfile9._COPYING_
+2019-03-01 08:48:59,230 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741909_1085, replicas=10.10.1.2:9866, 10.10.1.5:9866, 10.10.1.4:9866 for /myfile2._COPYING_
+2019-03-01 08:48:59,554 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741910_1086, replicas=10.10.1.4:9866, 10.10.1.3:9866, 10.10.1.2:9866 for /myfile20._COPYING_
+2019-03-01 08:48:59,713 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741911_1087, replicas=10.10.1.2:9866, 10.10.1.5:9866, 10.10.1.4:9866 for /myfile10._COPYING_
+2019-03-01 08:48:59,984 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741912_1088, replicas=10.10.1.2:9866, 10.10.1.5:9866, 10.10.1.4:9866 for /myfile1._COPYING_
+2019-03-01 08:49:00,037 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741913_1089, replicas=10.10.1.2:9866, 10.10.1.4:9866, 10.10.1.5:9866 for /myfile12._COPYING_
+2019-03-01 08:49:00,077 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741914_1090, replicas=10.10.1.3:9866, 10.10.1.4:9866, 10.10.1.5:9866 for /myfile6._COPYING_
+2019-03-01 08:49:00,078 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741915_1091, replicas=10.10.1.5:9866, 10.10.1.2:9866, 10.10.1.4:9866 for /myfile4._COPYING_
+2019-03-01 08:49:00,091 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741916_1092, replicas=10.10.1.3:9866, 10.10.1.5:9866, 10.10.1.4:9866 for /myfile18._COPYING_
+2019-03-01 08:49:00,119 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741917_1093, replicas=10.10.1.2:9866, 10.10.1.3:9866, 10.10.1.4:9866 for /myfile14._COPYING_
+2019-03-01 08:49:00,374 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741918_1094, replicas=10.10.1.5:9866, 10.10.1.2:9866, 10.10.1.3:9866 for /myfile8._COPYING_
+2019-03-01 08:49:00,541 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741919_1095, replicas=10.10.1.3:9866, 10.10.1.5:9866, 10.10.1.2:9866 for /myfile2._COPYING_
+2019-03-01 08:49:00,823 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741920_1096, replicas=10.10.1.4:9866, 10.10.1.3:9866, 10.10.1.2:9866 for /myfile10._COPYING_
+2019-03-01 08:49:00,943 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741921_1097, replicas=10.10.1.3:9866, 10.10.1.5:9866, 10.10.1.4:9866 for /myfile3._COPYING_
+2019-03-01 08:49:01,124 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741922_1098, replicas=10.10.1.2:9866, 10.10.1.3:9866, 10.10.1.5:9866 for /myfile20._COPYING_
+2019-03-01 08:49:01,148 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741923_1099, replicas=10.10.1.4:9866, 10.10.1.2:9866, 10.10.1.5:9866 for /myfile9._COPYING_
+2019-03-01 08:49:01,178 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741924_1100, replicas=10.10.1.5:9866, 10.10.1.4:9866, 10.10.1.3:9866 for /myfile1._COPYING_
+2019-03-01 08:49:01,233 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741925_1101, replicas=10.10.1.4:9866, 10.10.1.5:9866, 10.10.1.2:9866 for /myfile14._COPYING_
+2019-03-01 08:49:01,299 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741926_1102, replicas=10.10.1.3:9866, 10.10.1.4:9866, 10.10.1.5:9866 for /myfile18._COPYING_
+2019-03-01 08:49:01,311 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741927_1103, replicas=10.10.1.3:9866, 10.10.1.5:9866, 10.10.1.2:9866 for /myfile6._COPYING_
+2019-03-01 08:49:01,520 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741928_1104, replicas=10.10.1.4:9866, 10.10.1.2:9866, 10.10.1.5:9866 for /myfile8._COPYING_
+2019-03-01 08:49:01,882 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741929_1105, replicas=10.10.1.3:9866, 10.10.1.4:9866, 10.10.1.5:9866 for /myfile5._COPYING_
+2019-03-01 08:49:02,212 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741930_1106, replicas=10.10.1.2:9866, 10.10.1.5:9866, 10.10.1.3:9866 for /myfile20._COPYING_
+2019-03-01 08:49:02,241 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741931_1107, replicas=10.10.1.4:9866, 10.10.1.3:9866, 10.10.1.2:9866 for /myfile17._COPYING_
+2019-03-01 08:49:02,310 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741932_1108, replicas=10.10.1.3:9866, 10.10.1.4:9866, 10.10.1.2:9866 for /myfile14._COPYING_
+2019-03-01 08:49:02,318 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741933_1109, replicas=10.10.1.4:9866, 10.10.1.5:9866, 10.10.1.3:9866 for /myfile1._COPYING_
+2019-03-01 08:49:02,332 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741934_1110, replicas=10.10.1.3:9866, 10.10.1.2:9866, 10.10.1.4:9866 for /myfile3._COPYING_
+2019-03-01 08:49:02,352 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741935_1111, replicas=10.10.1.5:9866, 10.10.1.3:9866, 10.10.1.2:9866 for /myfile6._COPYING_
+2019-03-01 08:49:02,363 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile18._COPYING_ is closed by DFSClient_NONMAPREDUCE_-946465618_1
+2019-03-01 08:49:02,376 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741936_1112, replicas=10.10.1.2:9866, 10.10.1.3:9866, 10.10.1.4:9866 for /myfile15._COPYING_
+2019-03-01 08:49:02,447 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741937_1113, replicas=10.10.1.4:9866, 10.10.1.2:9866, 10.10.1.5:9866 for /myfile19._COPYING_
+2019-03-01 08:49:02,730 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741938_1114, replicas=10.10.1.2:9866, 10.10.1.4:9866, 10.10.1.3:9866 for /myfile9._COPYING_
+2019-03-01 08:49:02,763 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741939_1115, replicas=10.10.1.2:9866, 10.10.1.5:9866, 10.10.1.4:9866 for /myfile13._COPYING_
+2019-03-01 08:49:03,221 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741940_1116, replicas=10.10.1.3:9866, 10.10.1.4:9866, 10.10.1.2:9866 for /myfile5._COPYING_
+2019-03-01 08:49:03,245 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741941_1117, replicas=10.10.1.5:9866, 10.10.1.3:9866, 10.10.1.4:9866 for /myfile8._COPYING_
+2019-03-01 08:49:03,248 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741942_1118, replicas=10.10.1.5:9866, 10.10.1.4:9866, 10.10.1.3:9866 for /myfile16._COPYING_
+2019-03-01 08:49:03,428 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741943_1119, replicas=10.10.1.2:9866, 10.10.1.5:9866, 10.10.1.4:9866 for /myfile6._COPYING_
+2019-03-01 08:49:03,474 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741944_1120, replicas=10.10.1.3:9866, 10.10.1.2:9866, 10.10.1.4:9866 for /myfile7._COPYING_
+2019-03-01 08:49:03,489 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741945_1121, replicas=10.10.1.2:9866, 10.10.1.3:9866, 10.10.1.4:9866 for /myfile13._COPYING_
+2019-03-01 08:49:03,612 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741946_1122, replicas=10.10.1.5:9866, 10.10.1.3:9866, 10.10.1.4:9866 for /myfile15._COPYING_
+2019-03-01 08:49:03,737 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741947_1123, replicas=10.10.1.4:9866, 10.10.1.3:9866, 10.10.1.5:9866 for /myfile1._COPYING_
+2019-03-01 08:49:03,884 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741948_1124, replicas=10.10.1.5:9866, 10.10.1.4:9866, 10.10.1.2:9866 for /myfile9._COPYING_
+2019-03-01 08:49:04,073 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741949_1125, replicas=10.10.1.4:9866, 10.10.1.3:9866, 10.10.1.5:9866 for /myfile12._COPYING_
+2019-03-01 08:49:04,182 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741950_1126, replicas=10.10.1.3:9866, 10.10.1.2:9866, 10.10.1.5:9866 for /myfile4._COPYING_
+2019-03-01 08:49:04,338 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741951_1127, replicas=10.10.1.4:9866, 10.10.1.2:9866, 10.10.1.3:9866 for /myfile10._COPYING_
+2019-03-01 08:49:04,342 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741952_1128, replicas=10.10.1.5:9866, 10.10.1.2:9866, 10.10.1.3:9866 for /myfile11._COPYING_
+2019-03-01 08:49:04,362 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741953_1129, replicas=10.10.1.3:9866, 10.10.1.4:9866, 10.10.1.2:9866 for /myfile13._COPYING_
+2019-03-01 08:49:04,396 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741954_1130, replicas=10.10.1.3:9866, 10.10.1.5:9866, 10.10.1.2:9866 for /myfile5._COPYING_
+2019-03-01 08:49:04,602 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741955_1131, replicas=10.10.1.2:9866, 10.10.1.3:9866, 10.10.1.5:9866 for /myfile15._COPYING_
+2019-03-01 08:49:04,753 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741956_1132, replicas=10.10.1.3:9866, 10.10.1.5:9866, 10.10.1.2:9866 for /myfile2._COPYING_
+2019-03-01 08:49:04,846 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile1._COPYING_ is closed by DFSClient_NONMAPREDUCE_-699498764_1
+2019-03-01 08:49:04,913 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile9._COPYING_ is closed by DFSClient_NONMAPREDUCE_-50576125_1
+2019-03-01 08:49:05,055 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741957_1133, replicas=10.10.1.5:9866, 10.10.1.3:9866, 10.10.1.4:9866 for /myfile16._COPYING_
+2019-03-01 08:49:05,240 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741958_1134, replicas=10.10.1.2:9866, 10.10.1.3:9866, 10.10.1.4:9866 for /myfile7._COPYING_
+2019-03-01 08:49:05,309 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741959_1135, replicas=10.10.1.4:9866, 10.10.1.5:9866, 10.10.1.2:9866 for /myfile13._COPYING_
+2019-03-01 08:49:05,327 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741960_1136, replicas=10.10.1.5:9866, 10.10.1.2:9866, 10.10.1.4:9866 for /myfile5._COPYING_
+2019-03-01 08:49:05,509 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741961_1137, replicas=10.10.1.2:9866, 10.10.1.3:9866, 10.10.1.5:9866 for /myfile2._COPYING_
+2019-03-01 08:49:05,563 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741962_1138, replicas=10.10.1.2:9866, 10.10.1.3:9866, 10.10.1.5:9866 for /myfile6._COPYING_
+2019-03-01 08:49:05,997 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile10._COPYING_ is closed by DFSClient_NONMAPREDUCE_-1794987434_1
+2019-03-01 08:49:06,390 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741963_1139, replicas=10.10.1.4:9866, 10.10.1.2:9866, 10.10.1.5:9866 for /myfile17._COPYING_
+2019-03-01 08:49:07,414 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741964_1140, replicas=10.10.1.3:9866, 10.10.1.4:9866, 10.10.1.2:9866 for /myfile14._COPYING_
+2019-03-01 08:49:07,414 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741965_1141, replicas=10.10.1.3:9866, 10.10.1.5:9866, 10.10.1.2:9866 for /myfile7._COPYING_
+2019-03-01 08:49:07,415 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741966_1142, replicas=10.10.1.4:9866, 10.10.1.3:9866, 10.10.1.2:9866 for /myfile3._COPYING_
+2019-03-01 08:49:07,879 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile3._COPYING_ is closed by DFSClient_NONMAPREDUCE_-1700595682_1
+2019-03-01 08:49:07,914 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile14._COPYING_ is closed by DFSClient_NONMAPREDUCE_-1486187169_1
+2019-03-01 08:49:11,180 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741967_1143, replicas=10.10.1.5:9866, 10.10.1.2:9866, 10.10.1.4:9866 for /myfile5._COPYING_
+2019-03-01 08:49:11,181 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741968_1144, replicas=10.10.1.3:9866, 10.10.1.2:9866, 10.10.1.5:9866 for /myfile11._COPYING_
+2019-03-01 08:49:11,182 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741969_1145, replicas=10.10.1.4:9866, 10.10.1.2:9866, 10.10.1.5:9866 for /myfile8._COPYING_
+2019-03-01 08:49:11,183 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741970_1146, replicas=10.10.1.5:9866, 10.10.1.3:9866, 10.10.1.2:9866 for /myfile16._COPYING_
+2019-03-01 08:49:11,183 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741971_1147, replicas=10.10.1.4:9866, 10.10.1.5:9866, 10.10.1.2:9866 for /myfile12._COPYING_
+2019-03-01 08:49:11,187 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile13._COPYING_ is closed by DFSClient_NONMAPREDUCE_194883608_1
+2019-03-01 08:49:13,204 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741972_1148, replicas=10.10.1.2:9866, 10.10.1.3:9866, 10.10.1.4:9866 for /myfile4._COPYING_
+2019-03-01 08:49:13,204 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741973_1149, replicas=10.10.1.3:9866, 10.10.1.2:9866, 10.10.1.4:9866 for /myfile15._COPYING_
+2019-03-01 08:49:13,207 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741974_1150, replicas=10.10.1.4:9866, 10.10.1.3:9866, 10.10.1.5:9866 for /myfile19._COPYING_
+2019-03-01 08:49:13,208 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile6._COPYING_ is closed by DFSClient_NONMAPREDUCE_641661929_1
+2019-03-01 08:49:13,208 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile2._COPYING_ is closed by DFSClient_NONMAPREDUCE_1661089519_1
+2019-03-01 08:49:13,213 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile20._COPYING_ is closed by DFSClient_NONMAPREDUCE_1639343206_1
+2019-03-01 08:49:13,709 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile4._COPYING_ is closed by DFSClient_NONMAPREDUCE_-389607818_1
+2019-03-01 08:49:13,996 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile15._COPYING_ is closed by DFSClient_NONMAPREDUCE_1644861715_1
+2019-03-01 08:49:20,983 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741975_1151, replicas=10.10.1.3:9866, 10.10.1.4:9866, 10.10.1.2:9866 for /myfile19._COPYING_
+2019-03-01 08:49:27,218 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile5._COPYING_ is closed by DFSClient_NONMAPREDUCE_116286834_1
+2019-03-01 08:49:27,330 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile8._COPYING_ is closed by DFSClient_NONMAPREDUCE_-926660688_1
+2019-03-01 08:49:27,620 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741976_1152, replicas=10.10.1.2:9866, 10.10.1.3:9866, 10.10.1.4:9866 for /myfile12._COPYING_
+2019-03-01 08:49:27,638 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741977_1153, replicas=10.10.1.2:9866, 10.10.1.5:9866, 10.10.1.3:9866 for /myfile17._COPYING_
+2019-03-01 08:49:28,165 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741978_1154, replicas=10.10.1.5:9866, 10.10.1.2:9866, 10.10.1.3:9866 for /myfile7._COPYING_
+2019-03-01 08:49:28,172 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741979_1155, replicas=10.10.1.3:9866, 10.10.1.2:9866, 10.10.1.5:9866 for /myfile17._COPYING_
+2019-03-01 08:49:28,177 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile16._COPYING_ is closed by DFSClient_NONMAPREDUCE_-698319142_1
+2019-03-01 08:49:28,284 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741980_1156, replicas=10.10.1.4:9866, 10.10.1.2:9866, 10.10.1.5:9866 for /myfile11._COPYING_
+2019-03-01 08:49:28,311 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741981_1157, replicas=10.10.1.5:9866, 10.10.1.2:9866, 10.10.1.3:9866 for /myfile19._COPYING_
+2019-03-01 08:49:30,554 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741982_1158, replicas=10.10.1.5:9866, 10.10.1.3:9866, 10.10.1.2:9866 for /myfile12._COPYING_
+2019-03-01 08:49:30,555 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741983_1159, replicas=10.10.1.4:9866, 10.10.1.3:9866, 10.10.1.5:9866 for /myfile11._COPYING_
+2019-03-01 08:49:33,530 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile17._COPYING_ is closed by DFSClient_NONMAPREDUCE_513675873_1
+2019-03-01 08:49:34,699 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile7._COPYING_ is closed by DFSClient_NONMAPREDUCE_418830431_1
+2019-03-01 08:49:34,700 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile19._COPYING_ is closed by DFSClient_NONMAPREDUCE_-988168296_1
+2019-03-01 08:49:41,062 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741984_1160, replicas=10.10.1.5:9866, 10.10.1.2:9866, 10.10.1.3:9866 for /myfile11._COPYING_
+2019-03-01 08:49:41,062 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Number of transactions: 536 Total time for transactions(ms): 42 Number of transactions batched in Syncs: 313 Number of syncs: 221 SyncTimes(ms): 1644 1730 
+2019-03-01 08:49:53,371 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: updatePipeline(blk_1073741984_1160, newGS=1161, newLength=6838784, newNodes=[10.10.1.5:9866, 10.10.1.3:9866], client=DFSClient_NONMAPREDUCE_1773137196_1)
+2019-03-01 08:49:53,371 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: updatePipeline(blk_1073741982_1158, newGS=1162, newLength=37094912, newNodes=[10.10.1.5:9866, 10.10.1.3:9866], client=DFSClient_NONMAPREDUCE_-1554575057_1)
+2019-03-01 08:49:53,371 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: updatePipeline(blk_1073741984_1160 => blk_1073741984_1161) success
+2019-03-01 08:49:53,371 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: updatePipeline(blk_1073741982_1158 => blk_1073741982_1162) success
+2019-03-01 08:49:59,885 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile11._COPYING_ is closed by DFSClient_NONMAPREDUCE_1773137196_1
+2019-03-01 08:49:59,885 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile12._COPYING_ is closed by DFSClient_NONMAPREDUCE_-1554575057_1
+2019-03-01 08:50:10,126 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* registerDatanode: from DatanodeRegistration(10.10.1.2:9866, datanodeUuid=d66c0887-f98d-4b72-9f83-036a97e0861b, infoPort=9864, infoSecurePort=0, ipcPort=9867, storageInfo=lv=-57;cid=CID-e4924207-df59-4452-931b-041cf51f3a90;nsid=372965395;c=1551455290764) storage d66c0887-f98d-4b72-9f83-036a97e0861b
+2019-03-01 08:50:10,126 INFO org.apache.hadoop.net.NetworkTopology: Removing a node: /default-rack/10.10.1.2:9866
+2019-03-01 08:50:10,127 INFO org.apache.hadoop.net.NetworkTopology: Adding a new node: /default-rack/10.10.1.2:9866
+2019-03-01 08:50:10,172 INFO BlockStateChange: BLOCK* processReport 0xbfa4bd32639d459c: Processing first storage report for DS-e6adc8a4-3c94-415a-96fd-46d28979b31e from datanode d66c0887-f98d-4b72-9f83-036a97e0861b
+2019-03-01 08:50:10,178 INFO BlockStateChange: BLOCK* processReport 0xbfa4bd32639d459c: from storage DS-e6adc8a4-3c94-415a-96fd-46d28979b31e node DatanodeRegistration(10.10.1.2:9866, datanodeUuid=d66c0887-f98d-4b72-9f83-036a97e0861b, infoPort=9864, infoSecurePort=0, ipcPort=9867, storageInfo=lv=-57;cid=CID-e4924207-df59-4452-931b-041cf51f3a90;nsid=372965395;c=1551455290764), blocks: 125, hasStaleStorage: false, processing time: 6 msecs, invalidatedBlocks: 0
+2019-03-01 08:50:12,981 INFO org.apache.hadoop.hdfs.server.blockmanagement.BlockManager: Rescan of postponedMisreplicatedBlocks completed in 1 msecs. 0 blocks are left. 2 blocks were removed.
+2019-03-01 08:50:43,096 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 10.10.1.1
+2019-03-01 08:50:43,096 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Rolling edit logs
+2019-03-01 08:50:43,096 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Ending log segment 1, 545
+2019-03-01 08:50:43,097 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Number of transactions: 546 Total time for transactions(ms): 42 Number of transactions batched in Syncs: 315 Number of syncs: 230 SyncTimes(ms): 1713 1821 
+2019-03-01 08:50:43,120 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Number of transactions: 546 Total time for transactions(ms): 42 Number of transactions batched in Syncs: 315 Number of syncs: 231 SyncTimes(ms): 1726 1831 
+2019-03-01 08:50:43,150 INFO org.apache.hadoop.hdfs.server.namenode.FileJournalManager: Finalizing edits file /tmp/hadoop-root/dfs/name/current/edits_inprogress_0000000000000000001 -> /tmp/hadoop-root/dfs/name/current/edits_0000000000000000001-0000000000000000546
+2019-03-01 08:50:43,168 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Starting log segment at 547
+2019-03-01 08:52:20,367 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Number of transactions: 2 Total time for transactions(ms): 1 Number of transactions batched in Syncs: 0 Number of syncs: 1 SyncTimes(ms): 7 61 
+2019-03-01 08:52:33,031 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741985_1163, replicas=10.10.1.3:9866, 10.10.1.4:9866, 10.10.1.2:9866 for /myfile13._COPYING_
+2019-03-01 08:52:33,720 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741986_1164, replicas=10.10.1.3:9866, 10.10.1.5:9866, 10.10.1.2:9866 for /myfile13._COPYING_
+2019-03-01 08:52:34,242 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741987_1165, replicas=10.10.1.2:9866, 10.10.1.3:9866, 10.10.1.5:9866 for /myfile13._COPYING_
+2019-03-01 08:52:34,394 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741988_1166, replicas=10.10.1.3:9866, 10.10.1.2:9866, 10.10.1.5:9866 for /myfile4._COPYING_
+2019-03-01 08:52:34,821 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741989_1167, replicas=10.10.1.5:9866, 10.10.1.4:9866, 10.10.1.2:9866 for /myfile13._COPYING_
+2019-03-01 08:52:35,100 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741990_1168, replicas=10.10.1.5:9866, 10.10.1.2:9866, 10.10.1.4:9866 for /myfile4._COPYING_
+2019-03-01 08:52:35,334 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741991_1169, replicas=10.10.1.4:9866, 10.10.1.3:9866, 10.10.1.5:9866 for /myfile13._COPYING_
+2019-03-01 08:52:35,671 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741992_1170, replicas=10.10.1.2:9866, 10.10.1.3:9866, 10.10.1.5:9866 for /myfile4._COPYING_
+2019-03-01 08:52:35,832 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741993_1171, replicas=10.10.1.4:9866, 10.10.1.3:9866, 10.10.1.2:9866 for /myfile13._COPYING_
+2019-03-01 08:52:38,124 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741994_1172, replicas=10.10.1.2:9866, 10.10.1.5:9866, 10.10.1.3:9866 for /myfile4._COPYING_
+2019-03-01 08:52:38,185 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741995_1173, replicas=10.10.1.4:9866, 10.10.1.5:9866, 10.10.1.3:9866 for /myfile13._COPYING_
+2019-03-01 08:52:38,620 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741996_1174, replicas=10.10.1.3:9866, 10.10.1.5:9866, 10.10.1.4:9866 for /myfile4._COPYING_
+2019-03-01 08:52:38,737 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741997_1175, replicas=10.10.1.5:9866, 10.10.1.2:9866, 10.10.1.3:9866 for /myfile13._COPYING_
+2019-03-01 08:52:39,185 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile13._COPYING_ is closed by DFSClient_NONMAPREDUCE_-2147480064_1
+2019-03-01 08:52:39,211 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741998_1176, replicas=10.10.1.2:9866, 10.10.1.3:9866, 10.10.1.4:9866 for /myfile4._COPYING_
+2019-03-01 08:52:39,667 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073741999_1177, replicas=10.10.1.2:9866, 10.10.1.5:9866, 10.10.1.4:9866 for /myfile4._COPYING_
+2019-03-01 08:52:40,193 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742000_1178, replicas=10.10.1.4:9866, 10.10.1.3:9866, 10.10.1.5:9866 for /myfile4._COPYING_
+2019-03-01 08:52:40,722 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile4._COPYING_ is closed by DFSClient_NONMAPREDUCE_824717074_1
+2019-03-01 08:52:42,570 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742001_1179, replicas=10.10.1.5:9866, 10.10.1.4:9866, 10.10.1.3:9866 for /myfile18._COPYING_
+2019-03-01 08:52:43,172 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742002_1180, replicas=10.10.1.4:9866, 10.10.1.5:9866, 10.10.1.3:9866 for /myfile18._COPYING_
+2019-03-01 08:52:43,567 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742003_1181, replicas=10.10.1.5:9866, 10.10.1.3:9866, 10.10.1.4:9866 for /myfile18._COPYING_
+2019-03-01 08:52:43,586 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 10.10.1.1
+2019-03-01 08:52:43,586 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Rolling edit logs
+2019-03-01 08:52:43,586 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Ending log segment 547, 618
+2019-03-01 08:52:43,618 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Number of transactions: 73 Total time for transactions(ms): 2 Number of transactions batched in Syncs: 20 Number of syncs: 53 SyncTimes(ms): 474 448 
+2019-03-01 08:52:43,620 INFO org.apache.hadoop.hdfs.server.namenode.FileJournalManager: Finalizing edits file /tmp/hadoop-root/dfs/name/current/edits_inprogress_0000000000000000547 -> /tmp/hadoop-root/dfs/name/current/edits_0000000000000000547-0000000000000000619
+2019-03-01 08:52:43,621 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Starting log segment at 620
+2019-03-01 08:52:43,961 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742004_1182, replicas=10.10.1.4:9866, 10.10.1.5:9866, 10.10.1.2:9866 for /myfile18._COPYING_
+2019-03-01 08:52:44,378 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742005_1183, replicas=10.10.1.2:9866, 10.10.1.4:9866, 10.10.1.5:9866 for /myfile18._COPYING_
+2019-03-01 08:52:44,797 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742006_1184, replicas=10.10.1.5:9866, 10.10.1.3:9866, 10.10.1.2:9866 for /myfile18._COPYING_
+2019-03-01 08:52:45,232 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742007_1185, replicas=10.10.1.5:9866, 10.10.1.2:9866, 10.10.1.3:9866 for /myfile18._COPYING_
+2019-03-01 08:52:45,808 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742008_1186, replicas=10.10.1.3:9866, 10.10.1.4:9866, 10.10.1.5:9866 for /myfile18._COPYING_
+2019-03-01 08:52:46,228 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile18._COPYING_ is closed by DFSClient_NONMAPREDUCE_-826495259_1
+2019-03-01 08:52:48,111 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742009_1187, replicas=10.10.1.5:9866, 10.10.1.2:9866, 10.10.1.3:9866 for /myfile16._COPYING_
+2019-03-01 08:52:48,705 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742010_1188, replicas=10.10.1.2:9866, 10.10.1.4:9866, 10.10.1.3:9866 for /myfile16._COPYING_
+2019-03-01 08:52:49,133 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742011_1189, replicas=10.10.1.4:9866, 10.10.1.2:9866, 10.10.1.5:9866 for /myfile16._COPYING_
+2019-03-01 08:52:53,497 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742012_1190, replicas=10.10.1.5:9866, 10.10.1.3:9866, 10.10.1.4:9866 for /myfile2._COPYING_
+2019-03-01 08:52:53,602 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742013_1191, replicas=10.10.1.4:9866, 10.10.1.2:9866, 10.10.1.3:9866 for /myfile16._COPYING_
+2019-03-01 08:52:54,104 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742014_1192, replicas=10.10.1.2:9866, 10.10.1.5:9866, 10.10.1.3:9866 for /myfile16._COPYING_
+2019-03-01 08:52:54,283 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742015_1193, replicas=10.10.1.4:9866, 10.10.1.2:9866, 10.10.1.3:9866 for /myfile2._COPYING_
+2019-03-01 08:52:54,300 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742016_1194, replicas=10.10.1.3:9866, 10.10.1.2:9866, 10.10.1.4:9866 for /myfile8._COPYING_
+2019-03-01 08:52:54,575 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742017_1195, replicas=10.10.1.5:9866, 10.10.1.2:9866, 10.10.1.4:9866 for /myfile16._COPYING_
+2019-03-01 08:52:54,841 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742018_1196, replicas=10.10.1.3:9866, 10.10.1.4:9866, 10.10.1.5:9866 for /myfile2._COPYING_
+2019-03-01 08:52:55,045 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742019_1197, replicas=10.10.1.5:9866, 10.10.1.2:9866, 10.10.1.4:9866 for /myfile16._COPYING_
+2019-03-01 08:52:55,166 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742020_1198, replicas=10.10.1.3:9866, 10.10.1.4:9866, 10.10.1.5:9866 for /myfile8._COPYING_
+2019-03-01 08:52:55,397 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742021_1199, replicas=10.10.1.4:9866, 10.10.1.2:9866, 10.10.1.3:9866 for /myfile2._COPYING_
+2019-03-01 08:52:55,609 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742022_1200, replicas=10.10.1.4:9866, 10.10.1.2:9866, 10.10.1.3:9866 for /myfile16._COPYING_
+2019-03-01 08:52:55,672 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742023_1201, replicas=10.10.1.5:9866, 10.10.1.4:9866, 10.10.1.3:9866 for /myfile8._COPYING_
+2019-03-01 08:52:55,756 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742024_1202, replicas=10.10.1.2:9866, 10.10.1.3:9866, 10.10.1.4:9866 for /myfile14._COPYING_
+2019-03-01 08:52:55,922 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742025_1203, replicas=10.10.1.3:9866, 10.10.1.2:9866, 10.10.1.4:9866 for /myfile2._COPYING_
+2019-03-01 08:52:56,213 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile16._COPYING_ is closed by DFSClient_NONMAPREDUCE_1627678717_1
+2019-03-01 08:52:56,259 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742026_1204, replicas=10.10.1.5:9866, 10.10.1.3:9866, 10.10.1.4:9866 for /myfile8._COPYING_
+2019-03-01 08:52:56,634 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742027_1205, replicas=10.10.1.5:9866, 10.10.1.2:9866, 10.10.1.3:9866 for /myfile2._COPYING_
+2019-03-01 08:52:56,650 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742028_1206, replicas=10.10.1.2:9866, 10.10.1.3:9866, 10.10.1.4:9866 for /myfile14._COPYING_
+2019-03-01 08:52:56,807 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742029_1207, replicas=10.10.1.4:9866, 10.10.1.5:9866, 10.10.1.2:9866 for /myfile8._COPYING_
+2019-03-01 08:52:59,022 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742030_1208, replicas=10.10.1.4:9866, 10.10.1.5:9866, 10.10.1.2:9866 for /myfile14._COPYING_
+2019-03-01 08:52:59,024 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742031_1209, replicas=10.10.1.3:9866, 10.10.1.4:9866, 10.10.1.5:9866 for /myfile8._COPYING_
+2019-03-01 08:52:59,025 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742032_1210, replicas=10.10.1.4:9866, 10.10.1.2:9866, 10.10.1.5:9866 for /myfile2._COPYING_
+2019-03-01 08:52:59,512 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742033_1211, replicas=10.10.1.2:9866, 10.10.1.4:9866, 10.10.1.5:9866 for /myfile2._COPYING_
+2019-03-01 08:52:59,626 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742034_1212, replicas=10.10.1.5:9866, 10.10.1.3:9866, 10.10.1.4:9866 for /myfile14._COPYING_
+2019-03-01 08:52:59,699 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742035_1213, replicas=10.10.1.4:9866, 10.10.1.5:9866, 10.10.1.3:9866 for /myfile8._COPYING_
+2019-03-01 08:53:00,013 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile2._COPYING_ is closed by DFSClient_NONMAPREDUCE_-230281289_1
+2019-03-01 08:53:00,094 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742036_1214, replicas=10.10.1.2:9866, 10.10.1.4:9866, 10.10.1.3:9866 for /myfile14._COPYING_
+2019-03-01 08:53:00,173 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742037_1215, replicas=10.10.1.4:9866, 10.10.1.3:9866, 10.10.1.5:9866 for /myfile8._COPYING_
+2019-03-01 08:53:00,678 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742038_1216, replicas=10.10.1.3:9866, 10.10.1.2:9866, 10.10.1.5:9866 for /myfile14._COPYING_
+2019-03-01 08:53:00,730 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile8._COPYING_ is closed by DFSClient_NONMAPREDUCE_465253247_1
+2019-03-01 08:53:01,236 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742039_1217, replicas=10.10.1.3:9866, 10.10.1.2:9866, 10.10.1.5:9866 for /myfile14._COPYING_
+2019-03-01 08:53:01,773 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742040_1218, replicas=10.10.1.4:9866, 10.10.1.2:9866, 10.10.1.5:9866 for /myfile14._COPYING_
+2019-03-01 08:53:02,298 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile14._COPYING_ is closed by DFSClient_NONMAPREDUCE_-2113971970_1
+2019-03-01 08:53:08,330 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742041_1219, replicas=10.10.1.2:9866, 10.10.1.5:9866, 10.10.1.3:9866 for /myfile7._COPYING_
+2019-03-01 08:53:09,178 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742042_1220, replicas=10.10.1.2:9866, 10.10.1.5:9866, 10.10.1.4:9866 for /myfile19._COPYING_
+2019-03-01 08:53:09,867 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742043_1221, replicas=10.10.1.5:9866, 10.10.1.3:9866, 10.10.1.4:9866 for /myfile19._COPYING_
+2019-03-01 08:53:11,558 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742044_1222, replicas=10.10.1.2:9866, 10.10.1.3:9866, 10.10.1.4:9866 for /myfile7._COPYING_
+2019-03-01 08:53:12,755 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742045_1223, replicas=10.10.1.4:9866, 10.10.1.2:9866, 10.10.1.5:9866 for /myfile7._COPYING_
+2019-03-01 08:53:12,779 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742046_1224, replicas=10.10.1.2:9866, 10.10.1.3:9866, 10.10.1.4:9866 for /myfile19._COPYING_
+2019-03-01 08:53:13,449 INFO org.apache.hadoop.ipc.Server: Socket Reader #1 for port 8020: readAndProcess from client 10.10.1.2:56370 threw exception [java.io.IOException: Connection reset by peer]
+java.io.IOException: Connection reset by peer
+	at sun.nio.ch.FileDispatcherImpl.read0(Native Method)
+	at sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:39)
+	at sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:223)
+	at sun.nio.ch.IOUtil.read(IOUtil.java:197)
+	at sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:380)
+	at org.apache.hadoop.ipc.Server.channelRead(Server.java:3265)
+	at org.apache.hadoop.ipc.Server.access$2600(Server.java:137)
+	at org.apache.hadoop.ipc.Server$Connection.readAndProcess(Server.java:2040)
+	at org.apache.hadoop.ipc.Server$Listener.doRead(Server.java:1245)
+	at org.apache.hadoop.ipc.Server$Listener$Reader.doRunLoop(Server.java:1101)
+	at org.apache.hadoop.ipc.Server$Listener$Reader.run(Server.java:1072)
+2019-03-01 08:53:13,486 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742047_1226, replicas=10.10.1.3:9866, 10.10.1.5:9866, 10.10.1.4:9866 for /myfile19._COPYING_
+2019-03-01 08:53:13,507 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: updatePipeline(blk_1073742045_1223, newGS=1225, newLength=0, newNodes=[10.10.1.4:9866, 10.10.1.5:9866], client=DFSClient_NONMAPREDUCE_-1754169805_1)
+2019-03-01 08:53:13,507 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: updatePipeline(blk_1073742045_1223 => blk_1073742045_1225) success
+2019-03-01 08:53:13,918 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742048_1227, replicas=10.10.1.3:9866, 10.10.1.4:9866, 10.10.1.5:9866 for /myfile19._COPYING_
+2019-03-01 08:53:15,631 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742049_1228, replicas=10.10.1.4:9866, 10.10.1.3:9866, 10.10.1.5:9866 for /myfile7._COPYING_
+2019-03-01 08:53:17,958 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742050_1229, replicas=10.10.1.5:9866, 10.10.1.3:9866, 10.10.1.2:9866 for /myfile7._COPYING_
+2019-03-01 08:53:17,958 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742051_1230, replicas=10.10.1.4:9866, 10.10.1.5:9866, 10.10.1.3:9866 for /myfile19._COPYING_
+2019-03-01 08:53:18,404 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742052_1231, replicas=10.10.1.3:9866, 10.10.1.4:9866, 10.10.1.5:9866 for /myfile19._COPYING_
+2019-03-01 08:53:18,832 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742053_1232, replicas=10.10.1.5:9866, 10.10.1.3:9866, 10.10.1.4:9866 for /myfile19._COPYING_
+2019-03-01 08:53:19,228 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742054_1233, replicas=10.10.1.4:9866, 10.10.1.3:9866, 10.10.1.5:9866 for /myfile19._COPYING_
+2019-03-01 08:53:19,760 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile19._COPYING_ is closed by DFSClient_NONMAPREDUCE_-1081366260_1
+2019-03-01 08:53:39,079 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742055_1234, replicas=10.10.1.4:9866, 10.10.1.5:9866, 10.10.1.3:9866 for /myfile7._COPYING_
+2019-03-01 08:53:42,184 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742056_1235, replicas=10.10.1.5:9866, 10.10.1.4:9866, 10.10.1.3:9866 for /myfile7._COPYING_
+2019-03-01 08:53:46,102 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Number of transactions: 186 Total time for transactions(ms): 9 Number of transactions batched in Syncs: 66 Number of syncs: 118 SyncTimes(ms): 994 1149 
+2019-03-01 08:53:46,102 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742057_1236, replicas=10.10.1.3:9866, 10.10.1.4:9866, 10.10.1.5:9866 for /myfile7._COPYING_
+2019-03-01 08:53:46,613 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742058_1237, replicas=10.10.1.3:9866, 10.10.1.4:9866, 10.10.1.5:9866 for /myfile7._COPYING_
+2019-03-01 08:53:47,054 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* registerDatanode: from DatanodeRegistration(10.10.1.2:9866, datanodeUuid=d66c0887-f98d-4b72-9f83-036a97e0861b, infoPort=9864, infoSecurePort=0, ipcPort=9867, storageInfo=lv=-57;cid=CID-e4924207-df59-4452-931b-041cf51f3a90;nsid=372965395;c=1551455290764) storage d66c0887-f98d-4b72-9f83-036a97e0861b
+2019-03-01 08:53:47,054 INFO org.apache.hadoop.net.NetworkTopology: Removing a node: /default-rack/10.10.1.2:9866
+2019-03-01 08:53:47,055 INFO org.apache.hadoop.net.NetworkTopology: Adding a new node: /default-rack/10.10.1.2:9866
+2019-03-01 08:53:47,100 INFO BlockStateChange: BLOCK* processReport 0x9a6c227725b56cc4: Processing first storage report for DS-e6adc8a4-3c94-415a-96fd-46d28979b31e from datanode d66c0887-f98d-4b72-9f83-036a97e0861b
+2019-03-01 08:53:47,102 INFO BlockStateChange: BLOCK* processReport 0x9a6c227725b56cc4: from storage DS-e6adc8a4-3c94-415a-96fd-46d28979b31e node DatanodeRegistration(10.10.1.2:9866, datanodeUuid=d66c0887-f98d-4b72-9f83-036a97e0861b, infoPort=9864, infoSecurePort=0, ipcPort=9867, storageInfo=lv=-57;cid=CID-e4924207-df59-4452-931b-041cf51f3a90;nsid=372965395;c=1551455290764), blocks: 112, hasStaleStorage: false, processing time: 1 msecs, invalidatedBlocks: 0
+2019-03-01 08:53:47,169 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile7._COPYING_ is closed by DFSClient_NONMAPREDUCE_-1754169805_1
+2019-03-01 08:53:48,996 INFO org.apache.hadoop.hdfs.server.blockmanagement.BlockManager: Rescan of postponedMisreplicatedBlocks completed in 0 msecs. 0 blocks are left. 3 blocks were removed.
+2019-03-01 08:53:54,996 INFO org.apache.hadoop.hdfs.server.blockmanagement.BlockManager: Rescan of postponedMisreplicatedBlocks completed in 0 msecs. 0 blocks are left. 1 blocks were removed.
+2019-03-01 08:54:43,916 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 10.10.1.1
+2019-03-01 08:54:43,916 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Rolling edit logs
+2019-03-01 08:54:43,916 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Ending log segment 620, 811
+2019-03-01 08:54:43,940 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Number of transactions: 193 Total time for transactions(ms): 9 Number of transactions batched in Syncs: 68 Number of syncs: 125 SyncTimes(ms): 1055 1215 
+2019-03-01 08:54:43,943 INFO org.apache.hadoop.hdfs.server.namenode.FileJournalManager: Finalizing edits file /tmp/hadoop-root/dfs/name/current/edits_inprogress_0000000000000000620 -> /tmp/hadoop-root/dfs/name/current/edits_0000000000000000620-0000000000000000812
+2019-03-01 08:54:43,943 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Starting log segment at 813
+2019-03-01 08:55:18,096 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742059_1238, replicas=10.10.1.2:9866, 10.10.1.3:9866, 10.10.1.5:9866 for /myfile6._COPYING_
+2019-03-01 08:55:18,390 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742060_1239, replicas=10.10.1.4:9866, 10.10.1.3:9866, 10.10.1.2:9866 for /myfile15._COPYING_
+2019-03-01 08:55:18,848 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742061_1240, replicas=10.10.1.4:9866, 10.10.1.2:9866, 10.10.1.3:9866 for /myfile6._COPYING_
+2019-03-01 08:55:19,061 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742062_1241, replicas=10.10.1.4:9866, 10.10.1.2:9866, 10.10.1.5:9866 for /myfile15._COPYING_
+2019-03-01 08:55:19,439 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742063_1242, replicas=10.10.1.3:9866, 10.10.1.4:9866, 10.10.1.5:9866 for /myfile6._COPYING_
+2019-03-01 08:55:19,643 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742064_1243, replicas=10.10.1.2:9866, 10.10.1.5:9866, 10.10.1.3:9866 for /myfile15._COPYING_
+2019-03-01 08:55:20,848 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742065_1244, replicas=10.10.1.2:9866, 10.10.1.3:9866, 10.10.1.4:9866 for /myfile6._COPYING_
+2019-03-01 08:55:21,221 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742066_1245, replicas=10.10.1.3:9866, 10.10.1.4:9866, 10.10.1.2:9866 for /myfile15._COPYING_
+2019-03-01 08:55:21,273 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742067_1246, replicas=10.10.1.5:9866, 10.10.1.3:9866, 10.10.1.2:9866 for /myfile6._COPYING_
+2019-03-01 08:55:21,698 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742068_1247, replicas=10.10.1.3:9866, 10.10.1.4:9866, 10.10.1.5:9866 for /myfile15._COPYING_
+2019-03-01 08:55:21,728 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742069_1248, replicas=10.10.1.3:9866, 10.10.1.4:9866, 10.10.1.2:9866 for /myfile6._COPYING_
+2019-03-01 08:55:22,172 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742070_1249, replicas=10.10.1.3:9866, 10.10.1.5:9866, 10.10.1.2:9866 for /myfile15._COPYING_
+2019-03-01 08:55:22,181 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742071_1250, replicas=10.10.1.2:9866, 10.10.1.4:9866, 10.10.1.3:9866 for /myfile6._COPYING_
+2019-03-01 08:55:22,614 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742072_1251, replicas=10.10.1.4:9866, 10.10.1.5:9866, 10.10.1.3:9866 for /myfile6._COPYING_
+2019-03-01 08:55:22,618 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742073_1252, replicas=10.10.1.5:9866, 10.10.1.3:9866, 10.10.1.2:9866 for /myfile15._COPYING_
+2019-03-01 08:55:23,023 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile6._COPYING_ is closed by DFSClient_NONMAPREDUCE_1556433875_1
+2019-03-01 08:55:23,050 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742074_1253, replicas=10.10.1.5:9866, 10.10.1.4:9866, 10.10.1.2:9866 for /myfile15._COPYING_
+2019-03-01 08:55:23,450 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile15._COPYING_ is closed by DFSClient_NONMAPREDUCE_271449071_1
+2019-03-01 08:55:33,805 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742075_1254, replicas=10.10.1.3:9866, 10.10.1.4:9866, 10.10.1.2:9866 for /myfile3._COPYING_
+2019-03-01 08:55:34,477 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742076_1255, replicas=10.10.1.3:9866, 10.10.1.2:9866, 10.10.1.5:9866 for /myfile3._COPYING_
+2019-03-01 08:55:35,152 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742077_1256, replicas=10.10.1.5:9866, 10.10.1.4:9866, 10.10.1.2:9866 for /myfile3._COPYING_
+2019-03-01 08:55:35,611 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742078_1257, replicas=10.10.1.4:9866, 10.10.1.2:9866, 10.10.1.3:9866 for /myfile3._COPYING_
+2019-03-01 08:55:36,089 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742079_1258, replicas=10.10.1.2:9866, 10.10.1.5:9866, 10.10.1.4:9866 for /myfile3._COPYING_
+2019-03-01 08:55:36,603 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742080_1259, replicas=10.10.1.4:9866, 10.10.1.2:9866, 10.10.1.5:9866 for /myfile3._COPYING_
+2019-03-01 08:55:37,184 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742081_1260, replicas=10.10.1.4:9866, 10.10.1.3:9866, 10.10.1.2:9866 for /myfile3._COPYING_
+2019-03-01 08:55:37,784 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742082_1261, replicas=10.10.1.4:9866, 10.10.1.2:9866, 10.10.1.3:9866 for /myfile3._COPYING_
+2019-03-01 08:55:38,241 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile3._COPYING_ is closed by DFSClient_NONMAPREDUCE_94347780_1
+2019-03-01 08:55:45,477 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Number of transactions: 90 Total time for transactions(ms): 4 Number of transactions batched in Syncs: 30 Number of syncs: 59 SyncTimes(ms): 512 509 
+2019-03-01 08:55:45,556 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742083_1262, replicas=10.10.1.3:9866, 10.10.1.2:9866, 10.10.1.5:9866 for /myfile1._COPYING_
+2019-03-01 08:55:46,283 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742084_1263, replicas=10.10.1.2:9866, 10.10.1.5:9866, 10.10.1.3:9866 for /myfile1._COPYING_
+2019-03-01 08:55:46,910 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742085_1264, replicas=10.10.1.5:9866, 10.10.1.3:9866, 10.10.1.4:9866 for /myfile1._COPYING_
+2019-03-01 08:55:47,428 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742086_1265, replicas=10.10.1.4:9866, 10.10.1.2:9866, 10.10.1.3:9866 for /myfile1._COPYING_
+2019-03-01 08:55:47,629 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742087_1266, replicas=10.10.1.4:9866, 10.10.1.3:9866, 10.10.1.2:9866 for /myfile5._COPYING_
+2019-03-01 08:55:48,042 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742088_1267, replicas=10.10.1.5:9866, 10.10.1.4:9866, 10.10.1.3:9866 for /myfile1._COPYING_
+2019-03-01 08:55:48,289 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742089_1268, replicas=10.10.1.4:9866, 10.10.1.2:9866, 10.10.1.5:9866 for /myfile5._COPYING_
+2019-03-01 08:55:48,472 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742090_1269, replicas=10.10.1.3:9866, 10.10.1.4:9866, 10.10.1.2:9866 for /myfile1._COPYING_
+2019-03-01 08:55:48,790 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742091_1270, replicas=10.10.1.5:9866, 10.10.1.3:9866, 10.10.1.2:9866 for /myfile5._COPYING_
+2019-03-01 08:55:48,938 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742092_1271, replicas=10.10.1.3:9866, 10.10.1.5:9866, 10.10.1.4:9866 for /myfile1._COPYING_
+2019-03-01 08:55:49,410 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742093_1272, replicas=10.10.1.5:9866, 10.10.1.2:9866, 10.10.1.4:9866 for /myfile5._COPYING_
+2019-03-01 08:55:49,603 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742094_1273, replicas=10.10.1.3:9866, 10.10.1.2:9866, 10.10.1.4:9866 for /myfile1._COPYING_
+2019-03-01 08:55:49,970 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742095_1274, replicas=10.10.1.4:9866, 10.10.1.3:9866, 10.10.1.2:9866 for /myfile5._COPYING_
+2019-03-01 08:55:50,117 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile1._COPYING_ is closed by DFSClient_NONMAPREDUCE_-1983034263_1
+2019-03-01 08:55:50,392 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742096_1275, replicas=10.10.1.2:9866, 10.10.1.4:9866, 10.10.1.3:9866 for /myfile5._COPYING_
+2019-03-01 08:55:50,805 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742097_1276, replicas=10.10.1.3:9866, 10.10.1.2:9866, 10.10.1.5:9866 for /myfile5._COPYING_
+2019-03-01 08:55:51,238 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742098_1277, replicas=10.10.1.5:9866, 10.10.1.3:9866, 10.10.1.2:9866 for /myfile5._COPYING_
+2019-03-01 08:55:51,656 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile5._COPYING_ is closed by DFSClient_NONMAPREDUCE_1881760337_1
+2019-03-01 08:55:54,944 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742099_1278, replicas=10.10.1.5:9866, 10.10.1.4:9866, 10.10.1.3:9866 for /myfile10._COPYING_
+2019-03-01 08:55:54,955 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742100_1279, replicas=10.10.1.5:9866, 10.10.1.4:9866, 10.10.1.3:9866 for /myfile17._COPYING_
+2019-03-01 08:55:58,264 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742101_1280, replicas=10.10.1.3:9866, 10.10.1.5:9866, 10.10.1.4:9866 for /myfile10._COPYING_
+2019-03-01 08:55:58,488 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742102_1281, replicas=10.10.1.2:9866, 10.10.1.4:9866, 10.10.1.5:9866 for /myfile17._COPYING_
+2019-03-01 08:55:58,699 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742103_1282, replicas=10.10.1.2:9866, 10.10.1.5:9866, 10.10.1.4:9866 for /myfile10._COPYING_
+2019-03-01 08:56:00,605 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742104_1283, replicas=10.10.1.3:9866, 10.10.1.2:9866, 10.10.1.5:9866 for /myfile17._COPYING_
+2019-03-01 08:56:00,814 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742105_1284, replicas=10.10.1.5:9866, 10.10.1.2:9866, 10.10.1.4:9866 for /myfile10._COPYING_
+2019-03-01 08:56:01,138 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742106_1285, replicas=10.10.1.2:9866, 10.10.1.4:9866, 10.10.1.3:9866 for /myfile17._COPYING_
+2019-03-01 08:56:01,244 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742107_1286, replicas=10.10.1.4:9866, 10.10.1.5:9866, 10.10.1.3:9866 for /myfile10._COPYING_
+2019-03-01 08:56:01,619 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742108_1287, replicas=10.10.1.3:9866, 10.10.1.2:9866, 10.10.1.5:9866 for /myfile17._COPYING_
+2019-03-01 08:56:01,702 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742109_1288, replicas=10.10.1.4:9866, 10.10.1.2:9866, 10.10.1.5:9866 for /myfile10._COPYING_
+2019-03-01 08:56:02,012 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742110_1289, replicas=10.10.1.2:9866, 10.10.1.4:9866, 10.10.1.3:9866 for /myfile17._COPYING_
+2019-03-01 08:56:02,168 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742111_1290, replicas=10.10.1.5:9866, 10.10.1.4:9866, 10.10.1.3:9866 for /myfile10._COPYING_
+2019-03-01 08:56:02,513 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742112_1291, replicas=10.10.1.4:9866, 10.10.1.3:9866, 10.10.1.2:9866 for /myfile17._COPYING_
+2019-03-01 08:56:02,581 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742113_1292, replicas=10.10.1.5:9866, 10.10.1.3:9866, 10.10.1.2:9866 for /myfile10._COPYING_
+2019-03-01 08:56:03,710 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742114_1293, replicas=10.10.1.3:9866, 10.10.1.4:9866, 10.10.1.2:9866 for /myfile17._COPYING_
+2019-03-01 08:56:04,113 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile10._COPYING_ is closed by DFSClient_NONMAPREDUCE_-1099910020_1
+2019-03-01 08:56:04,172 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile17._COPYING_ is closed by DFSClient_NONMAPREDUCE_1685982865_1
+2019-03-01 08:56:12,412 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742115_1294, replicas=10.10.1.2:9866, 10.10.1.5:9866, 10.10.1.4:9866 for /myfile9._COPYING_
+2019-03-01 08:56:13,522 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742116_1295, replicas=10.10.1.4:9866, 10.10.1.2:9866, 10.10.1.3:9866 for /myfile20._COPYING_
+2019-03-01 08:56:17,574 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742117_1296, replicas=10.10.1.3:9866, 10.10.1.5:9866, 10.10.1.2:9866 for /myfile9._COPYING_
+2019-03-01 08:56:17,703 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742118_1297, replicas=10.10.1.2:9866, 10.10.1.3:9866, 10.10.1.5:9866 for /myfile20._COPYING_
+2019-03-01 08:56:18,067 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742119_1298, replicas=10.10.1.5:9866, 10.10.1.4:9866, 10.10.1.3:9866 for /myfile9._COPYING_
+2019-03-01 08:56:18,208 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742120_1299, replicas=10.10.1.4:9866, 10.10.1.3:9866, 10.10.1.5:9866 for /myfile20._COPYING_
+2019-03-01 08:56:18,504 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742121_1300, replicas=10.10.1.2:9866, 10.10.1.5:9866, 10.10.1.4:9866 for /myfile9._COPYING_
+2019-03-01 08:56:18,681 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742122_1301, replicas=10.10.1.4:9866, 10.10.1.3:9866, 10.10.1.5:9866 for /myfile20._COPYING_
+2019-03-01 08:56:18,867 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742123_1302, replicas=10.10.1.4:9866, 10.10.1.5:9866, 10.10.1.2:9866 for /myfile9._COPYING_
+2019-03-01 08:56:19,107 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742124_1303, replicas=10.10.1.5:9866, 10.10.1.4:9866, 10.10.1.2:9866 for /myfile20._COPYING_
+2019-03-01 08:56:19,349 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742125_1304, replicas=10.10.1.4:9866, 10.10.1.5:9866, 10.10.1.2:9866 for /myfile9._COPYING_
+2019-03-01 08:56:19,506 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742126_1305, replicas=10.10.1.5:9866, 10.10.1.4:9866, 10.10.1.3:9866 for /myfile20._COPYING_
+2019-03-01 08:56:19,928 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742127_1306, replicas=10.10.1.2:9866, 10.10.1.3:9866, 10.10.1.4:9866 for /myfile20._COPYING_
+2019-03-01 08:56:23,441 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742128_1307, replicas=10.10.1.5:9866, 10.10.1.4:9866, 10.10.1.3:9866 for /myfile9._COPYING_
+2019-03-01 08:56:24,246 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742129_1308, replicas=10.10.1.4:9866, 10.10.1.3:9866, 10.10.1.5:9866 for /myfile20._COPYING_
+2019-03-01 08:56:24,691 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742130_1309, replicas=10.10.1.5:9866, 10.10.1.4:9866, 10.10.1.2:9866 for /myfile9._COPYING_
+2019-03-01 08:56:24,878 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile20._COPYING_ is closed by DFSClient_NONMAPREDUCE_-31898191_1
+2019-03-01 08:56:25,205 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile9._COPYING_ is closed by DFSClient_NONMAPREDUCE_1217391091_1
+2019-03-01 08:56:32,870 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742131_1310, replicas=10.10.1.5:9866, 10.10.1.3:9866, 10.10.1.4:9866 for /myfile11._COPYING_
+2019-03-01 08:56:33,799 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742132_1311, replicas=10.10.1.2:9866, 10.10.1.4:9866, 10.10.1.5:9866 for /myfile12._COPYING_
+2019-03-01 08:56:35,927 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742133_1312, replicas=10.10.1.2:9866, 10.10.1.3:9866, 10.10.1.4:9866 for /myfile4._COPYING_
+2019-03-01 08:56:36,826 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742134_1313, replicas=10.10.1.3:9866, 10.10.1.5:9866, 10.10.1.2:9866 for /myfile11._COPYING_
+2019-03-01 08:56:37,734 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742135_1314, replicas=10.10.1.3:9866, 10.10.1.2:9866, 10.10.1.4:9866 for /myfile18._COPYING_
+2019-03-01 08:56:38,334 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742136_1317, replicas=10.10.1.5:9866, 10.10.1.4:9866, 10.10.1.3:9866 for /myfile4._COPYING_
+2019-03-01 08:56:38,350 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742137_1318, replicas=10.10.1.5:9866, 10.10.1.3:9866, 10.10.1.4:9866 for /myfile18._COPYING_
+2019-03-01 08:56:39,525 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: updatePipeline(blk_1073742134_1313, newGS=1316, newLength=512, newNodes=[10.10.1.3:9866, 10.10.1.5:9866], client=DFSClient_NONMAPREDUCE_1283232706_1)
+2019-03-01 08:56:39,526 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: updatePipeline(blk_1073742134_1313 => blk_1073742134_1316) success
+2019-03-01 08:56:39,530 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: updatePipeline(blk_1073742132_1311, newGS=1315, newLength=64512, newNodes=[10.10.1.4:9866, 10.10.1.5:9866], client=DFSClient_NONMAPREDUCE_-1710927582_1)
+2019-03-01 08:56:39,530 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: updatePipeline(blk_1073742132_1311 => blk_1073742132_1315) success
+2019-03-01 08:56:40,052 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742138_1319, replicas=10.10.1.2:9866, 10.10.1.5:9866, 10.10.1.3:9866 for /myfile12._COPYING_
+2019-03-01 08:56:40,109 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742139_1320, replicas=10.10.1.4:9866, 10.10.1.3:9866, 10.10.1.5:9866 for /myfile12._COPYING_
+2019-03-01 08:56:41,979 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742140_1321, replicas=10.10.1.3:9866, 10.10.1.4:9866, 10.10.1.2:9866 for /myfile11._COPYING_
+2019-03-01 08:56:42,029 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742141_1322, replicas=10.10.1.5:9866, 10.10.1.4:9866, 10.10.1.3:9866 for /myfile4._COPYING_
+2019-03-01 08:56:42,189 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742142_1323, replicas=10.10.1.4:9866, 10.10.1.3:9866, 10.10.1.5:9866 for /myfile12._COPYING_
+2019-03-01 08:56:42,296 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742143_1324, replicas=10.10.1.5:9866, 10.10.1.4:9866, 10.10.1.3:9866 for /myfile18._COPYING_
+2019-03-01 08:56:42,772 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742144_1325, replicas=10.10.1.4:9866, 10.10.1.3:9866, 10.10.1.5:9866 for /myfile4._COPYING_
+2019-03-01 08:56:44,160 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 10.10.1.1
+2019-03-01 08:56:44,161 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Rolling edit logs
+2019-03-01 08:56:44,161 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Ending log segment 813, 1124
+2019-03-01 08:56:44,180 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Number of transactions: 313 Total time for transactions(ms): 13 Number of transactions batched in Syncs: 97 Number of syncs: 216 SyncTimes(ms): 1729 1679 
+2019-03-01 08:56:44,183 INFO org.apache.hadoop.hdfs.server.namenode.FileJournalManager: Finalizing edits file /tmp/hadoop-root/dfs/name/current/edits_inprogress_0000000000000000813 -> /tmp/hadoop-root/dfs/name/current/edits_0000000000000000813-0000000000000001125
+2019-03-01 08:56:44,183 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Starting log segment at 1126
+2019-03-01 08:56:44,554 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742145_1326, replicas=10.10.1.3:9866, 10.10.1.4:9866, 10.10.1.5:9866 for /myfile18._COPYING_
+2019-03-01 08:56:44,749 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742146_1327, replicas=10.10.1.5:9866, 10.10.1.3:9866, 10.10.1.4:9866 for /myfile2._COPYING_
+2019-03-01 08:56:45,443 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742147_1328, replicas=10.10.1.4:9866, 10.10.1.3:9866, 10.10.1.5:9866 for /myfile12._COPYING_
+2019-03-01 08:56:45,891 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742148_1329, replicas=10.10.1.3:9866, 10.10.1.5:9866, 10.10.1.4:9866 for /myfile18._COPYING_
+2019-03-01 08:56:45,897 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742149_1330, replicas=10.10.1.5:9866, 10.10.1.3:9866, 10.10.1.4:9866 for /myfile4._COPYING_
+2019-03-01 08:56:45,961 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742150_1331, replicas=10.10.1.4:9866, 10.10.1.3:9866, 10.10.1.5:9866 for /myfile12._COPYING_
+2019-03-01 08:56:46,035 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742151_1332, replicas=10.10.1.4:9866, 10.10.1.2:9866, 10.10.1.5:9866 for /myfile2._COPYING_
+2019-03-01 08:56:46,324 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742152_1333, replicas=10.10.1.5:9866, 10.10.1.3:9866, 10.10.1.4:9866 for /myfile4._COPYING_
+2019-03-01 08:56:46,337 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742153_1334, replicas=10.10.1.5:9866, 10.10.1.4:9866, 10.10.1.3:9866 for /myfile18._COPYING_
+2019-03-01 08:56:46,433 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742154_1335, replicas=10.10.1.4:9866, 10.10.1.3:9866, 10.10.1.5:9866 for /myfile12._COPYING_
+2019-03-01 08:56:46,765 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742155_1336, replicas=10.10.1.3:9866, 10.10.1.4:9866, 10.10.1.5:9866 for /myfile18._COPYING_
+2019-03-01 08:56:46,796 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742156_1337, replicas=10.10.1.3:9866, 10.10.1.5:9866, 10.10.1.4:9866 for /myfile4._COPYING_
+2019-03-01 08:56:46,893 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742157_1338, replicas=10.10.1.4:9866, 10.10.1.3:9866, 10.10.1.5:9866 for /myfile12._COPYING_
+2019-03-01 08:56:47,196 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742158_1339, replicas=10.10.1.4:9866, 10.10.1.3:9866, 10.10.1.5:9866 for /myfile18._COPYING_
+2019-03-01 08:56:47,247 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742159_1340, replicas=10.10.1.3:9866, 10.10.1.4:9866, 10.10.1.5:9866 for /myfile4._COPYING_
+2019-03-01 08:56:47,384 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742160_1341, replicas=10.10.1.3:9866, 10.10.1.5:9866, 10.10.1.4:9866 for /myfile12._COPYING_
+2019-03-01 08:56:47,706 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742161_1342, replicas=10.10.1.4:9866, 10.10.1.5:9866, 10.10.1.3:9866 for /myfile18._COPYING_
+2019-03-01 08:56:47,717 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742162_1343, replicas=10.10.1.3:9866, 10.10.1.4:9866, 10.10.1.5:9866 for /myfile4._COPYING_
+2019-03-01 08:56:47,823 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile12._COPYING_ is closed by DFSClient_NONMAPREDUCE_-1710927582_1
+2019-03-01 08:56:48,121 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile18._COPYING_ is closed by DFSClient_NONMAPREDUCE_1298154562_1
+2019-03-01 08:56:48,138 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile4._COPYING_ is closed by DFSClient_NONMAPREDUCE_171421022_1
+2019-03-01 08:56:51,239 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742163_1344, replicas=10.10.1.2:9866, 10.10.1.3:9866, 10.10.1.4:9866 for /myfile13._COPYING_
+2019-03-01 08:56:59,232 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742164_1345, replicas=10.10.1.3:9866, 10.10.1.2:9866, 10.10.1.4:9866 for /myfile19._COPYING_
+2019-03-01 08:57:02,648 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742165_1346, replicas=10.10.1.5:9866, 10.10.1.3:9866, 10.10.1.4:9866 for /myfile14._COPYING_
+2019-03-01 08:57:03,099 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742166_1347, replicas=10.10.1.3:9866, 10.10.1.5:9866, 10.10.1.4:9866 for /myfile11._COPYING_
+2019-03-01 08:57:03,237 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742167_1348, replicas=10.10.1.5:9866, 10.10.1.4:9866, 10.10.1.2:9866 for /myfile14._COPYING_
+2019-03-01 08:57:03,774 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* registerDatanode: from DatanodeRegistration(10.10.1.2:9866, datanodeUuid=d66c0887-f98d-4b72-9f83-036a97e0861b, infoPort=9864, infoSecurePort=0, ipcPort=9867, storageInfo=lv=-57;cid=CID-e4924207-df59-4452-931b-041cf51f3a90;nsid=372965395;c=1551455290764) storage d66c0887-f98d-4b72-9f83-036a97e0861b
+2019-03-01 08:57:03,774 INFO org.apache.hadoop.net.NetworkTopology: Removing a node: /default-rack/10.10.1.2:9866
+2019-03-01 08:57:03,774 INFO org.apache.hadoop.net.NetworkTopology: Adding a new node: /default-rack/10.10.1.2:9866
+2019-03-01 08:57:03,775 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742168_1349, replicas=10.10.1.4:9866, 10.10.1.3:9866, 10.10.1.5:9866 for /myfile11._COPYING_
+2019-03-01 08:57:03,793 INFO BlockStateChange: BLOCK* processReport 0xe67470fd71724f42: Processing first storage report for DS-e6adc8a4-3c94-415a-96fd-46d28979b31e from datanode d66c0887-f98d-4b72-9f83-036a97e0861b
+2019-03-01 08:57:03,794 INFO BlockStateChange: BLOCK* processReport 0xe67470fd71724f42: from storage DS-e6adc8a4-3c94-415a-96fd-46d28979b31e node DatanodeRegistration(10.10.1.2:9866, datanodeUuid=d66c0887-f98d-4b72-9f83-036a97e0861b, infoPort=9864, infoSecurePort=0, ipcPort=9867, storageInfo=lv=-57;cid=CID-e4924207-df59-4452-931b-041cf51f3a90;nsid=372965395;c=1551455290764), blocks: 73, hasStaleStorage: false, processing time: 1 msecs, invalidatedBlocks: 0
+2019-03-01 08:57:03,954 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742169_1350, replicas=10.10.1.3:9866, 10.10.1.4:9866, 10.10.1.5:9866 for /myfile8._COPYING_
+2019-03-01 08:57:04,010 INFO org.apache.hadoop.hdfs.server.blockmanagement.BlockManager: Rescan of postponedMisreplicatedBlocks completed in 1 msecs. 0 blocks are left. 3 blocks were removed.
+2019-03-01 08:57:04,833 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742170_1351, replicas=10.10.1.4:9866, 10.10.1.5:9866, 10.10.1.2:9866 for /myfile2._COPYING_
+2019-03-01 08:57:05,000 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742171_1352, replicas=10.10.1.4:9866, 10.10.1.3:9866, 10.10.1.5:9866 for /myfile11._COPYING_
+2019-03-01 08:57:05,101 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742172_1353, replicas=10.10.1.3:9866, 10.10.1.4:9866, 10.10.1.2:9866 for /myfile19._COPYING_
+2019-03-01 08:57:05,159 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742173_1354, replicas=10.10.1.2:9866, 10.10.1.5:9866, 10.10.1.3:9866 for /myfile14._COPYING_
+2019-03-01 08:57:05,197 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742174_1355, replicas=10.10.1.2:9866, 10.10.1.3:9866, 10.10.1.5:9866 for /myfile8._COPYING_
+2019-03-01 08:57:05,240 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742175_1356, replicas=10.10.1.2:9866, 10.10.1.4:9866, 10.10.1.3:9866 for /myfile13._COPYING_
+2019-03-01 08:57:05,448 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742176_1357, replicas=10.10.1.3:9866, 10.10.1.2:9866, 10.10.1.5:9866 for /myfile2._COPYING_
+2019-03-01 08:57:05,762 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742177_1358, replicas=10.10.1.5:9866, 10.10.1.4:9866, 10.10.1.3:9866 for /myfile11._COPYING_
+2019-03-01 08:57:05,834 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742178_1359, replicas=10.10.1.4:9866, 10.10.1.5:9866, 10.10.1.3:9866 for /myfile8._COPYING_
+2019-03-01 08:57:05,868 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742179_1360, replicas=10.10.1.3:9866, 10.10.1.2:9866, 10.10.1.4:9866 for /myfile19._COPYING_
+2019-03-01 08:57:05,892 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742180_1361, replicas=10.10.1.5:9866, 10.10.1.2:9866, 10.10.1.4:9866 for /myfile13._COPYING_
+2019-03-01 08:57:06,023 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742181_1362, replicas=10.10.1.5:9866, 10.10.1.3:9866, 10.10.1.4:9866 for /myfile14._COPYING_
+2019-03-01 08:57:06,091 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742182_1363, replicas=10.10.1.4:9866, 10.10.1.3:9866, 10.10.1.5:9866 for /myfile2._COPYING_
+2019-03-01 08:57:06,348 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742183_1364, replicas=10.10.1.3:9866, 10.10.1.4:9866, 10.10.1.5:9866 for /myfile11._COPYING_
+2019-03-01 08:57:06,528 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742184_1365, replicas=10.10.1.4:9866, 10.10.1.3:9866, 10.10.1.2:9866 for /myfile8._COPYING_
+2019-03-01 08:57:06,594 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742185_1366, replicas=10.10.1.5:9866, 10.10.1.4:9866, 10.10.1.3:9866 for /myfile13._COPYING_
+2019-03-01 08:57:06,693 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742186_1367, replicas=10.10.1.2:9866, 10.10.1.5:9866, 10.10.1.4:9866 for /myfile19._COPYING_
+2019-03-01 08:57:06,832 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742187_1368, replicas=10.10.1.4:9866, 10.10.1.5:9866, 10.10.1.2:9866 for /myfile2._COPYING_
+2019-03-01 08:57:06,845 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742188_1369, replicas=10.10.1.2:9866, 10.10.1.5:9866, 10.10.1.4:9866 for /myfile14._COPYING_
+2019-03-01 08:57:07,166 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742189_1370, replicas=10.10.1.5:9866, 10.10.1.4:9866, 10.10.1.3:9866 for /myfile8._COPYING_
+2019-03-01 08:57:07,257 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742190_1371, replicas=10.10.1.5:9866, 10.10.1.3:9866, 10.10.1.2:9866 for /myfile13._COPYING_
+2019-03-01 08:57:07,311 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742191_1372, replicas=10.10.1.5:9866, 10.10.1.4:9866, 10.10.1.3:9866 for /myfile19._COPYING_
+2019-03-01 08:57:07,339 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742192_1373, replicas=10.10.1.3:9866, 10.10.1.4:9866, 10.10.1.5:9866 for /myfile11._COPYING_
+2019-03-01 08:57:07,512 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742193_1374, replicas=10.10.1.5:9866, 10.10.1.3:9866, 10.10.1.4:9866 for /myfile2._COPYING_
+2019-03-01 08:57:07,535 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742194_1375, replicas=10.10.1.5:9866, 10.10.1.2:9866, 10.10.1.4:9866 for /myfile14._COPYING_
+2019-03-01 08:57:09,520 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742195_1376, replicas=10.10.1.4:9866, 10.10.1.3:9866, 10.10.1.2:9866 for /myfile14._COPYING_
+2019-03-01 08:57:10,011 INFO org.apache.hadoop.hdfs.server.blockmanagement.BlockManager: Rescan of postponedMisreplicatedBlocks completed in 0 msecs. 0 blocks are left. 1 blocks were removed.
+2019-03-01 08:57:10,254 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742196_1377, replicas=10.10.1.3:9866, 10.10.1.4:9866, 10.10.1.2:9866 for /myfile2._COPYING_
+2019-03-01 08:57:10,254 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742197_1378, replicas=10.10.1.3:9866, 10.10.1.5:9866, 10.10.1.2:9866 for /myfile13._COPYING_
+2019-03-01 08:57:10,992 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742198_1379, replicas=10.10.1.4:9866, 10.10.1.3:9866, 10.10.1.5:9866 for /myfile19._COPYING_
+2019-03-01 08:57:10,993 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile11._COPYING_ is closed by DFSClient_NONMAPREDUCE_1283232706_1
+2019-03-01 08:57:10,993 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742199_1380, replicas=10.10.1.3:9866, 10.10.1.4:9866, 10.10.1.2:9866 for /myfile8._COPYING_
+2019-03-01 08:57:11,204 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742200_1381, replicas=10.10.1.3:9866, 10.10.1.2:9866, 10.10.1.5:9866 for /myfile13._COPYING_
+2019-03-01 08:57:11,473 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile2._COPYING_ is closed by DFSClient_NONMAPREDUCE_-2353254_1
+2019-03-01 08:57:11,705 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742201_1382, replicas=10.10.1.3:9866, 10.10.1.4:9866, 10.10.1.2:9866 for /myfile19._COPYING_
+2019-03-01 08:57:11,776 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742202_1383, replicas=10.10.1.2:9866, 10.10.1.3:9866, 10.10.1.4:9866 for /myfile14._COPYING_
+2019-03-01 08:57:11,790 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742203_1384, replicas=10.10.1.3:9866, 10.10.1.2:9866, 10.10.1.5:9866 for /myfile8._COPYING_
+2019-03-01 08:57:11,858 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742204_1385, replicas=10.10.1.2:9866, 10.10.1.4:9866, 10.10.1.5:9866 for /myfile13._COPYING_
+2019-03-01 08:57:12,236 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742205_1386, replicas=10.10.1.3:9866, 10.10.1.5:9866, 10.10.1.4:9866 for /myfile19._COPYING_
+2019-03-01 08:57:12,290 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742206_1387, replicas=10.10.1.2:9866, 10.10.1.5:9866, 10.10.1.3:9866 for /myfile8._COPYING_
+2019-03-01 08:57:12,294 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile14._COPYING_ is closed by DFSClient_NONMAPREDUCE_1141495312_1
+2019-03-01 08:57:12,327 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile13._COPYING_ is closed by DFSClient_NONMAPREDUCE_-1380691595_1
+2019-03-01 08:57:12,637 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile19._COPYING_ is closed by DFSClient_NONMAPREDUCE_569102713_1
+2019-03-01 08:57:12,701 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile8._COPYING_ is closed by DFSClient_NONMAPREDUCE_-365263533_1
+2019-03-01 08:57:38,608 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742207_1388, replicas=10.10.1.3:9866, 10.10.1.4:9866, 10.10.1.2:9866 for /myfile16._COPYING_
+2019-03-01 08:57:40,525 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742208_1389, replicas=10.10.1.5:9866, 10.10.1.4:9866, 10.10.1.3:9866 for /myfile7._COPYING_
+2019-03-01 08:57:42,249 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742209_1390, replicas=10.10.1.4:9866, 10.10.1.2:9866, 10.10.1.5:9866 for /myfile7._COPYING_
+2019-03-01 08:57:42,277 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742210_1391, replicas=10.10.1.3:9866, 10.10.1.5:9866, 10.10.1.4:9866 for /myfile16._COPYING_
+2019-03-01 08:57:42,718 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742211_1392, replicas=10.10.1.3:9866, 10.10.1.2:9866, 10.10.1.4:9866 for /myfile7._COPYING_
+2019-03-01 08:57:42,755 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742212_1393, replicas=10.10.1.3:9866, 10.10.1.2:9866, 10.10.1.4:9866 for /myfile16._COPYING_
+2019-03-01 08:57:43,304 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742213_1394, replicas=10.10.1.4:9866, 10.10.1.2:9866, 10.10.1.5:9866 for /myfile16._COPYING_
+2019-03-01 08:57:43,308 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742214_1395, replicas=10.10.1.5:9866, 10.10.1.2:9866, 10.10.1.3:9866 for /myfile7._COPYING_
+2019-03-01 08:57:46,890 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742215_1396, replicas=10.10.1.3:9866, 10.10.1.2:9866, 10.10.1.4:9866 for /myfile16._COPYING_
+2019-03-01 08:57:46,890 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Number of transactions: 244 Total time for transactions(ms): 9 Number of transactions batched in Syncs: 89 Number of syncs: 153 SyncTimes(ms): 1577 884 
+2019-03-01 08:57:47,132 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742216_1397, replicas=10.10.1.2:9866, 10.10.1.3:9866, 10.10.1.5:9866 for /myfile7._COPYING_
+2019-03-01 08:57:47,726 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742217_1398, replicas=10.10.1.5:9866, 10.10.1.3:9866, 10.10.1.4:9866 for /myfile16._COPYING_
+2019-03-01 08:57:48,168 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742218_1399, replicas=10.10.1.5:9866, 10.10.1.2:9866, 10.10.1.3:9866 for /myfile16._COPYING_
+2019-03-01 08:57:51,104 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742219_1400, replicas=10.10.1.4:9866, 10.10.1.5:9866, 10.10.1.3:9866 for /myfile16._COPYING_
+2019-03-01 08:57:52,154 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742220_1401, replicas=10.10.1.2:9866, 10.10.1.5:9866, 10.10.1.4:9866 for /myfile7._COPYING_
+2019-03-01 08:57:52,716 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile16._COPYING_ is closed by DFSClient_NONMAPREDUCE_449090219_1
+2019-03-01 08:57:52,724 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742221_1402, replicas=10.10.1.4:9866, 10.10.1.2:9866, 10.10.1.3:9866 for /myfile7._COPYING_
+2019-03-01 08:57:53,255 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742222_1403, replicas=10.10.1.2:9866, 10.10.1.3:9866, 10.10.1.5:9866 for /myfile7._COPYING_
+2019-03-01 08:57:53,845 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile7._COPYING_ is closed by DFSClient_NONMAPREDUCE_1920175414_1
+2019-03-01 08:58:44,373 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 10.10.1.1
+2019-03-01 08:58:44,373 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Rolling edit logs
+2019-03-01 08:58:44,373 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Ending log segment 1126, 1395
+2019-03-01 08:58:44,392 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Number of transactions: 271 Total time for transactions(ms): 11 Number of transactions batched in Syncs: 98 Number of syncs: 173 SyncTimes(ms): 1733 1073 
+2019-03-01 08:58:44,394 INFO org.apache.hadoop.hdfs.server.namenode.FileJournalManager: Finalizing edits file /tmp/hadoop-root/dfs/name/current/edits_inprogress_0000000000000001126 -> /tmp/hadoop-root/dfs/name/current/edits_0000000000000001126-0000000000000001396
+2019-03-01 08:58:44,395 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Starting log segment at 1397
+2019-03-01 08:59:14,345 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742223_1404, replicas=10.10.1.2:9866, 10.10.1.5:9866, 10.10.1.4:9866 for /myfile15._COPYING_
+2019-03-01 08:59:15,039 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742224_1405, replicas=10.10.1.4:9866, 10.10.1.2:9866, 10.10.1.5:9866 for /myfile15._COPYING_
+2019-03-01 08:59:15,530 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742225_1406, replicas=10.10.1.3:9866, 10.10.1.2:9866, 10.10.1.4:9866 for /myfile15._COPYING_
+2019-03-01 08:59:16,046 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742226_1407, replicas=10.10.1.4:9866, 10.10.1.2:9866, 10.10.1.3:9866 for /myfile15._COPYING_
+2019-03-01 08:59:16,610 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742227_1408, replicas=10.10.1.5:9866, 10.10.1.3:9866, 10.10.1.4:9866 for /myfile15._COPYING_
+2019-03-01 08:59:17,064 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742228_1409, replicas=10.10.1.2:9866, 10.10.1.3:9866, 10.10.1.4:9866 for /myfile15._COPYING_
+2019-03-01 08:59:17,557 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742229_1410, replicas=10.10.1.3:9866, 10.10.1.4:9866, 10.10.1.2:9866 for /myfile15._COPYING_
+2019-03-01 08:59:18,002 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742230_1411, replicas=10.10.1.2:9866, 10.10.1.4:9866, 10.10.1.3:9866 for /myfile15._COPYING_
+2019-03-01 08:59:18,606 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile15._COPYING_ is closed by DFSClient_NONMAPREDUCE_1516925861_1
+2019-03-01 08:59:30,872 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742231_1412, replicas=10.10.1.2:9866, 10.10.1.4:9866, 10.10.1.5:9866 for /myfile6._COPYING_
+2019-03-01 08:59:32,391 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742232_1413, replicas=10.10.1.4:9866, 10.10.1.2:9866, 10.10.1.5:9866 for /myfile6._COPYING_
+2019-03-01 08:59:32,869 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742233_1414, replicas=10.10.1.4:9866, 10.10.1.3:9866, 10.10.1.5:9866 for /myfile6._COPYING_
+2019-03-01 08:59:33,380 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742234_1415, replicas=10.10.1.5:9866, 10.10.1.4:9866, 10.10.1.2:9866 for /myfile6._COPYING_
+2019-03-01 08:59:33,794 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742235_1416, replicas=10.10.1.2:9866, 10.10.1.4:9866, 10.10.1.5:9866 for /myfile6._COPYING_
+2019-03-01 08:59:34,305 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742236_1417, replicas=10.10.1.3:9866, 10.10.1.2:9866, 10.10.1.5:9866 for /myfile6._COPYING_
+2019-03-01 08:59:34,783 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742237_1418, replicas=10.10.1.5:9866, 10.10.1.4:9866, 10.10.1.2:9866 for /myfile6._COPYING_
+2019-03-01 08:59:35,259 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742238_1419, replicas=10.10.1.4:9866, 10.10.1.2:9866, 10.10.1.3:9866 for /myfile6._COPYING_
+2019-03-01 08:59:35,803 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile6._COPYING_ is closed by DFSClient_NONMAPREDUCE_-85986164_1
+2019-03-01 08:59:37,419 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742239_1420, replicas=10.10.1.2:9866, 10.10.1.4:9866, 10.10.1.3:9866 for /myfile5._COPYING_
+2019-03-01 08:59:38,056 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742240_1421, replicas=10.10.1.2:9866, 10.10.1.4:9866, 10.10.1.3:9866 for /myfile5._COPYING_
+2019-03-01 08:59:39,163 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742241_1422, replicas=10.10.1.4:9866, 10.10.1.2:9866, 10.10.1.5:9866 for /myfile5._COPYING_
+2019-03-01 08:59:39,707 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742242_1423, replicas=10.10.1.4:9866, 10.10.1.3:9866, 10.10.1.5:9866 for /myfile5._COPYING_
+2019-03-01 08:59:40,227 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742243_1424, replicas=10.10.1.2:9866, 10.10.1.3:9866, 10.10.1.4:9866 for /myfile5._COPYING_
+2019-03-01 08:59:40,778 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742244_1425, replicas=10.10.1.2:9866, 10.10.1.5:9866, 10.10.1.4:9866 for /myfile5._COPYING_
+2019-03-01 08:59:41,013 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742245_1426, replicas=10.10.1.5:9866, 10.10.1.4:9866, 10.10.1.2:9866 for /myfile3._COPYING_
+2019-03-01 08:59:41,396 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742246_1427, replicas=10.10.1.5:9866, 10.10.1.3:9866, 10.10.1.4:9866 for /myfile5._COPYING_
+2019-03-01 08:59:41,646 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742247_1428, replicas=10.10.1.2:9866, 10.10.1.3:9866, 10.10.1.5:9866 for /myfile3._COPYING_
+2019-03-01 08:59:41,833 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742248_1429, replicas=10.10.1.4:9866, 10.10.1.5:9866, 10.10.1.3:9866 for /myfile5._COPYING_
+2019-03-01 08:59:42,079 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742249_1430, replicas=10.10.1.2:9866, 10.10.1.3:9866, 10.10.1.4:9866 for /myfile3._COPYING_
+2019-03-01 08:59:42,257 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile5._COPYING_ is closed by DFSClient_NONMAPREDUCE_990307411_1
+2019-03-01 08:59:42,504 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742250_1431, replicas=10.10.1.5:9866, 10.10.1.4:9866, 10.10.1.3:9866 for /myfile3._COPYING_
+2019-03-01 08:59:42,913 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742251_1432, replicas=10.10.1.5:9866, 10.10.1.3:9866, 10.10.1.4:9866 for /myfile3._COPYING_
+2019-03-01 08:59:43,321 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742252_1433, replicas=10.10.1.2:9866, 10.10.1.4:9866, 10.10.1.5:9866 for /myfile3._COPYING_
+2019-03-01 08:59:43,744 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742253_1434, replicas=10.10.1.4:9866, 10.10.1.3:9866, 10.10.1.5:9866 for /myfile3._COPYING_
+2019-03-01 08:59:44,151 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742254_1435, replicas=10.10.1.3:9866, 10.10.1.2:9866, 10.10.1.4:9866 for /myfile3._COPYING_
+2019-03-01 08:59:44,572 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile3._COPYING_ is closed by DFSClient_NONMAPREDUCE_-184864255_1
+2019-03-01 08:59:44,572 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Number of transactions: 113 Total time for transactions(ms): 5 Number of transactions batched in Syncs: 32 Number of syncs: 80 SyncTimes(ms): 690 728 
+2019-03-01 08:59:56,738 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742255_1436, replicas=10.10.1.2:9866, 10.10.1.4:9866, 10.10.1.3:9866 for /myfile1._COPYING_
+2019-03-01 08:59:57,876 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742256_1437, replicas=10.10.1.5:9866, 10.10.1.4:9866, 10.10.1.2:9866 for /myfile1._COPYING_
+2019-03-01 08:59:58,330 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742257_1438, replicas=10.10.1.5:9866, 10.10.1.3:9866, 10.10.1.4:9866 for /myfile1._COPYING_
+2019-03-01 09:00:02,349 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742258_1439, replicas=10.10.1.3:9866, 10.10.1.5:9866, 10.10.1.4:9866 for /myfile1._COPYING_
+2019-03-01 09:00:07,547 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742259_1440, replicas=10.10.1.4:9866, 10.10.1.5:9866, 10.10.1.3:9866 for /myfile10._COPYING_
+2019-03-01 09:00:07,802 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742260_1441, replicas=10.10.1.3:9866, 10.10.1.2:9866, 10.10.1.5:9866 for /myfile1._COPYING_
+2019-03-01 09:00:09,501 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742261_1442, replicas=10.10.1.2:9866, 10.10.1.4:9866, 10.10.1.3:9866 for /myfile10._COPYING_
+2019-03-01 09:00:15,163 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742262_1443, replicas=10.10.1.4:9866, 10.10.1.5:9866, 10.10.1.3:9866 for /myfile18._COPYING_
+2019-03-01 09:00:15,849 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742263_1444, replicas=10.10.1.5:9866, 10.10.1.4:9866, 10.10.1.3:9866 for /myfile18._COPYING_
+2019-03-01 09:00:18,020 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742264_1445, replicas=10.10.1.2:9866, 10.10.1.4:9866, 10.10.1.5:9866 for /myfile18._COPYING_
+2019-03-01 09:00:18,164 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742265_1446, replicas=10.10.1.5:9866, 10.10.1.4:9866, 10.10.1.3:9866 for /myfile4._COPYING_
+2019-03-01 09:00:20,191 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742266_1447, replicas=10.10.1.3:9866, 10.10.1.2:9866, 10.10.1.4:9866 for /myfile4._COPYING_
+2019-03-01 09:00:24,513 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742267_1448, replicas=10.10.1.2:9866, 10.10.1.5:9866, 10.10.1.3:9866 for /myfile9._COPYING_
+2019-03-01 09:00:28,986 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742268_1449, replicas=10.10.1.5:9866, 10.10.1.3:9866, 10.10.1.4:9866 for /myfile1._COPYING_
+2019-03-01 09:00:29,379 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742269_1450, replicas=10.10.1.5:9866, 10.10.1.4:9866, 10.10.1.3:9866 for /myfile1._COPYING_
+2019-03-01 09:00:29,475 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742270_1451, replicas=10.10.1.2:9866, 10.10.1.4:9866, 10.10.1.5:9866 for /myfile12._COPYING_
+2019-03-01 09:00:29,768 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742271_1452, replicas=10.10.1.4:9866, 10.10.1.5:9866, 10.10.1.3:9866 for /myfile1._COPYING_
+2019-03-01 09:00:30,150 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742272_1453, replicas=10.10.1.5:9866, 10.10.1.3:9866, 10.10.1.4:9866 for /myfile1._COPYING_
+2019-03-01 09:00:30,552 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile1._COPYING_ is closed by DFSClient_NONMAPREDUCE_2030891261_1
+2019-03-01 09:00:30,570 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742273_1454, replicas=10.10.1.4:9866, 10.10.1.5:9866, 10.10.1.3:9866 for /myfile10._COPYING_
+2019-03-01 09:00:31,721 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* registerDatanode: from DatanodeRegistration(10.10.1.2:9866, datanodeUuid=d66c0887-f98d-4b72-9f83-036a97e0861b, infoPort=9864, infoSecurePort=0, ipcPort=9867, storageInfo=lv=-57;cid=CID-e4924207-df59-4452-931b-041cf51f3a90;nsid=372965395;c=1551455290764) storage d66c0887-f98d-4b72-9f83-036a97e0861b
+2019-03-01 09:00:31,721 INFO org.apache.hadoop.net.NetworkTopology: Removing a node: /default-rack/10.10.1.2:9866
+2019-03-01 09:00:31,721 INFO org.apache.hadoop.net.NetworkTopology: Adding a new node: /default-rack/10.10.1.2:9866
+2019-03-01 09:00:31,776 INFO BlockStateChange: BLOCK* processReport 0xf40b396a45bfda4e: Processing first storage report for DS-e6adc8a4-3c94-415a-96fd-46d28979b31e from datanode d66c0887-f98d-4b72-9f83-036a97e0861b
+2019-03-01 09:00:31,776 INFO BlockStateChange: BLOCK* processReport 0xf40b396a45bfda4e: from storage DS-e6adc8a4-3c94-415a-96fd-46d28979b31e node DatanodeRegistration(10.10.1.2:9866, datanodeUuid=d66c0887-f98d-4b72-9f83-036a97e0861b, infoPort=9864, infoSecurePort=0, ipcPort=9867, storageInfo=lv=-57;cid=CID-e4924207-df59-4452-931b-041cf51f3a90;nsid=372965395;c=1551455290764), blocks: 85, hasStaleStorage: false, processing time: 1 msecs, invalidatedBlocks: 0
+2019-03-01 09:00:32,138 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742274_1455, replicas=10.10.1.4:9866, 10.10.1.3:9866, 10.10.1.5:9866 for /myfile10._COPYING_
+2019-03-01 09:00:32,682 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742275_1456, replicas=10.10.1.3:9866, 10.10.1.2:9866, 10.10.1.5:9866 for /myfile18._COPYING_
+2019-03-01 09:00:32,699 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742276_1457, replicas=10.10.1.5:9866, 10.10.1.3:9866, 10.10.1.4:9866 for /myfile10._COPYING_
+2019-03-01 09:00:32,761 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742277_1458, replicas=10.10.1.3:9866, 10.10.1.5:9866, 10.10.1.2:9866 for /myfile4._COPYING_
+2019-03-01 09:00:33,260 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742278_1459, replicas=10.10.1.3:9866, 10.10.1.5:9866, 10.10.1.4:9866 for /myfile10._COPYING_
+2019-03-01 09:00:33,402 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742279_1460, replicas=10.10.1.2:9866, 10.10.1.4:9866, 10.10.1.5:9866 for /myfile4._COPYING_
+2019-03-01 09:00:33,463 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742280_1461, replicas=10.10.1.4:9866, 10.10.1.3:9866, 10.10.1.5:9866 for /myfile9._COPYING_
+2019-03-01 09:00:33,615 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742281_1462, replicas=10.10.1.2:9866, 10.10.1.3:9866, 10.10.1.5:9866 for /myfile18._COPYING_
+2019-03-01 09:00:33,638 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742282_1463, replicas=10.10.1.5:9866, 10.10.1.4:9866, 10.10.1.3:9866 for /myfile12._COPYING_
+2019-03-01 09:00:33,794 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742283_1464, replicas=10.10.1.3:9866, 10.10.1.4:9866, 10.10.1.5:9866 for /myfile10._COPYING_
+2019-03-01 09:00:34,025 INFO org.apache.hadoop.hdfs.server.blockmanagement.BlockManager: Rescan of postponedMisreplicatedBlocks completed in 0 msecs. 0 blocks are left. 1 blocks were removed.
+2019-03-01 09:00:34,255 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742284_1465, replicas=10.10.1.5:9866, 10.10.1.3:9866, 10.10.1.2:9866 for /myfile18._COPYING_
+2019-03-01 09:00:34,278 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742285_1466, replicas=10.10.1.3:9866, 10.10.1.2:9866, 10.10.1.5:9866 for /myfile9._COPYING_
+2019-03-01 09:00:34,279 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742286_1467, replicas=10.10.1.3:9866, 10.10.1.4:9866, 10.10.1.2:9866 for /myfile4._COPYING_
+2019-03-01 09:00:34,283 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742287_1468, replicas=10.10.1.4:9866, 10.10.1.5:9866, 10.10.1.2:9866 for /myfile12._COPYING_
+2019-03-01 09:00:34,378 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742288_1469, replicas=10.10.1.3:9866, 10.10.1.4:9866, 10.10.1.5:9866 for /myfile10._COPYING_
+2019-03-01 09:00:35,019 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742289_1470, replicas=10.10.1.4:9866, 10.10.1.3:9866, 10.10.1.5:9866 for /myfile10._COPYING_
+2019-03-01 09:00:35,130 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742290_1471, replicas=10.10.1.5:9866, 10.10.1.3:9866, 10.10.1.2:9866 for /myfile12._COPYING_
+2019-03-01 09:00:35,131 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742291_1472, replicas=10.10.1.2:9866, 10.10.1.4:9866, 10.10.1.5:9866 for /myfile18._COPYING_
+2019-03-01 09:00:35,137 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742292_1473, replicas=10.10.1.2:9866, 10.10.1.5:9866, 10.10.1.3:9866 for /myfile4._COPYING_
+2019-03-01 09:00:35,145 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742293_1474, replicas=10.10.1.5:9866, 10.10.1.3:9866, 10.10.1.4:9866 for /myfile9._COPYING_
+2019-03-01 09:00:35,666 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile10._COPYING_ is closed by DFSClient_NONMAPREDUCE_8218992_1
+2019-03-01 09:00:35,749 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742294_1475, replicas=10.10.1.2:9866, 10.10.1.3:9866, 10.10.1.4:9866 for /myfile9._COPYING_
+2019-03-01 09:00:35,774 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742295_1476, replicas=10.10.1.5:9866, 10.10.1.2:9866, 10.10.1.3:9866 for /myfile18._COPYING_
+2019-03-01 09:00:35,848 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742296_1477, replicas=10.10.1.3:9866, 10.10.1.4:9866, 10.10.1.5:9866 for /myfile12._COPYING_
+2019-03-01 09:00:35,857 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742297_1478, replicas=10.10.1.5:9866, 10.10.1.3:9866, 10.10.1.2:9866 for /myfile4._COPYING_
+2019-03-01 09:00:36,350 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile18._COPYING_ is closed by DFSClient_NONMAPREDUCE_1617139650_1
+2019-03-01 09:00:36,547 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742298_1479, replicas=10.10.1.3:9866, 10.10.1.4:9866, 10.10.1.2:9866 for /myfile12._COPYING_
+2019-03-01 09:00:36,570 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742299_1480, replicas=10.10.1.2:9866, 10.10.1.3:9866, 10.10.1.4:9866 for /myfile9._COPYING_
+2019-03-01 09:00:36,570 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742300_1481, replicas=10.10.1.5:9866, 10.10.1.4:9866, 10.10.1.2:9866 for /myfile4._COPYING_
+2019-03-01 09:00:37,137 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742301_1482, replicas=10.10.1.2:9866, 10.10.1.5:9866, 10.10.1.3:9866 for /myfile9._COPYING_
+2019-03-01 09:00:37,140 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742302_1483, replicas=10.10.1.4:9866, 10.10.1.3:9866, 10.10.1.2:9866 for /myfile12._COPYING_
+2019-03-01 09:00:37,156 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile4._COPYING_ is closed by DFSClient_NONMAPREDUCE_-1991165575_1
+2019-03-01 09:00:37,682 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742303_1484, replicas=10.10.1.4:9866, 10.10.1.2:9866, 10.10.1.5:9866 for /myfile9._COPYING_
+2019-03-01 09:00:37,682 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742304_1485, replicas=10.10.1.3:9866, 10.10.1.4:9866, 10.10.1.2:9866 for /myfile12._COPYING_
+2019-03-01 09:00:38,085 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile12._COPYING_ is closed by DFSClient_NONMAPREDUCE_-464019675_1
+2019-03-01 09:00:38,139 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile9._COPYING_ is closed by DFSClient_NONMAPREDUCE_-1987769804_1
+2019-03-01 09:00:44,572 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 10.10.1.1
+2019-03-01 09:00:44,572 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Rolling edit logs
+2019-03-01 09:00:44,572 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Ending log segment 1397, 1685
+2019-03-01 09:00:44,572 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Number of transactions: 290 Total time for transactions(ms): 10 Number of transactions batched in Syncs: 106 Number of syncs: 183 SyncTimes(ms): 1568 1533 
+2019-03-01 09:00:44,588 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Number of transactions: 290 Total time for transactions(ms): 10 Number of transactions batched in Syncs: 106 Number of syncs: 184 SyncTimes(ms): 1576 1541 
+2019-03-01 09:00:44,591 INFO org.apache.hadoop.hdfs.server.namenode.FileJournalManager: Finalizing edits file /tmp/hadoop-root/dfs/name/current/edits_inprogress_0000000000000001397 -> /tmp/hadoop-root/dfs/name/current/edits_0000000000000001397-0000000000000001686
+2019-03-01 09:00:44,591 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Starting log segment at 1687
+2019-03-01 09:00:59,432 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742305_1486, replicas=10.10.1.5:9866, 10.10.1.4:9866, 10.10.1.3:9866 for /myfile20._COPYING_
+2019-03-01 09:00:59,504 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742306_1487, replicas=10.10.1.4:9866, 10.10.1.5:9866, 10.10.1.2:9866 for /myfile2._COPYING_
+2019-03-01 09:01:00,037 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742307_1488, replicas=10.10.1.5:9866, 10.10.1.4:9866, 10.10.1.2:9866 for /myfile20._COPYING_
+2019-03-01 09:01:00,093 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742308_1489, replicas=10.10.1.5:9866, 10.10.1.2:9866, 10.10.1.4:9866 for /myfile2._COPYING_
+2019-03-01 09:01:00,505 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742309_1490, replicas=10.10.1.3:9866, 10.10.1.2:9866, 10.10.1.4:9866 for /myfile20._COPYING_
+2019-03-01 09:01:00,543 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742310_1491, replicas=10.10.1.5:9866, 10.10.1.4:9866, 10.10.1.2:9866 for /myfile2._COPYING_
+2019-03-01 09:01:00,974 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742311_1492, replicas=10.10.1.4:9866, 10.10.1.2:9866, 10.10.1.3:9866 for /myfile2._COPYING_
+2019-03-01 09:01:01,000 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742312_1493, replicas=10.10.1.5:9866, 10.10.1.3:9866, 10.10.1.4:9866 for /myfile20._COPYING_
+2019-03-01 09:01:01,433 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742313_1494, replicas=10.10.1.3:9866, 10.10.1.5:9866, 10.10.1.4:9866 for /myfile20._COPYING_
+2019-03-01 09:01:01,478 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742314_1495, replicas=10.10.1.2:9866, 10.10.1.4:9866, 10.10.1.5:9866 for /myfile2._COPYING_
+2019-03-01 09:01:01,860 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742315_1496, replicas=10.10.1.2:9866, 10.10.1.5:9866, 10.10.1.4:9866 for /myfile20._COPYING_
+2019-03-01 09:01:01,926 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742316_1497, replicas=10.10.1.4:9866, 10.10.1.5:9866, 10.10.1.2:9866 for /myfile2._COPYING_
+2019-03-01 09:01:02,392 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742317_1498, replicas=10.10.1.4:9866, 10.10.1.3:9866, 10.10.1.2:9866 for /myfile17._COPYING_
+2019-03-01 09:01:02,456 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742318_1499, replicas=10.10.1.4:9866, 10.10.1.3:9866, 10.10.1.2:9866 for /myfile2._COPYING_
+2019-03-01 09:01:02,463 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742319_1500, replicas=10.10.1.3:9866, 10.10.1.4:9866, 10.10.1.5:9866 for /myfile20._COPYING_
+2019-03-01 09:01:03,084 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742320_1501, replicas=10.10.1.2:9866, 10.10.1.3:9866, 10.10.1.4:9866 for /myfile20._COPYING_
+2019-03-01 09:01:03,088 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742321_1502, replicas=10.10.1.4:9866, 10.10.1.3:9866, 10.10.1.2:9866 for /myfile2._COPYING_
+2019-03-01 09:01:03,736 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742322_1503, replicas=10.10.1.3:9866, 10.10.1.2:9866, 10.10.1.4:9866 for /myfile13._COPYING_
+2019-03-01 09:01:04,302 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742323_1504, replicas=10.10.1.5:9866, 10.10.1.2:9866, 10.10.1.4:9866 for /myfile14._COPYING_
+2019-03-01 09:01:04,875 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742324_1505, replicas=10.10.1.3:9866, 10.10.1.5:9866, 10.10.1.4:9866 for /myfile8._COPYING_
+2019-03-01 09:01:05,093 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742325_1506, replicas=10.10.1.4:9866, 10.10.1.5:9866, 10.10.1.2:9866 for /myfile17._COPYING_
+2019-03-01 09:01:08,059 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile2._COPYING_ is closed by DFSClient_NONMAPREDUCE_836395174_1
+2019-03-01 09:01:08,186 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile20._COPYING_ is closed by DFSClient_NONMAPREDUCE_-1952094238_1
+2019-03-01 09:01:08,197 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742326_1507, replicas=10.10.1.5:9866, 10.10.1.2:9866, 10.10.1.3:9866 for /myfile13._COPYING_
+2019-03-01 09:01:09,450 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742327_1508, replicas=10.10.1.5:9866, 10.10.1.2:9866, 10.10.1.3:9866 for /myfile8._COPYING_
+2019-03-01 09:01:09,858 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742328_1509, replicas=10.10.1.3:9866, 10.10.1.4:9866, 10.10.1.2:9866 for /myfile17._COPYING_
+2019-03-01 09:01:10,023 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742329_1510, replicas=10.10.1.5:9866, 10.10.1.4:9866, 10.10.1.2:9866 for /myfile8._COPYING_
+2019-03-01 09:01:10,059 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742330_1511, replicas=10.10.1.2:9866, 10.10.1.4:9866, 10.10.1.5:9866 for /myfile14._COPYING_
+2019-03-01 09:01:10,080 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742331_1512, replicas=10.10.1.3:9866, 10.10.1.2:9866, 10.10.1.4:9866 for /myfile13._COPYING_
+2019-03-01 09:01:10,379 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742332_1513, replicas=10.10.1.3:9866, 10.10.1.5:9866, 10.10.1.2:9866 for /myfile17._COPYING_
+2019-03-01 09:01:10,558 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742333_1514, replicas=10.10.1.5:9866, 10.10.1.3:9866, 10.10.1.2:9866 for /myfile8._COPYING_
+2019-03-01 09:01:10,564 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742334_1515, replicas=10.10.1.3:9866, 10.10.1.2:9866, 10.10.1.4:9866 for /myfile14._COPYING_
+2019-03-01 09:01:10,620 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742335_1516, replicas=10.10.1.4:9866, 10.10.1.2:9866, 10.10.1.5:9866 for /myfile13._COPYING_
+2019-03-01 09:01:10,898 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742336_1517, replicas=10.10.1.3:9866, 10.10.1.4:9866, 10.10.1.5:9866 for /myfile17._COPYING_
+2019-03-01 09:01:11,079 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742337_1518, replicas=10.10.1.4:9866, 10.10.1.2:9866, 10.10.1.3:9866 for /myfile8._COPYING_
+2019-03-01 09:01:11,116 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742338_1519, replicas=10.10.1.5:9866, 10.10.1.3:9866, 10.10.1.4:9866 for /myfile14._COPYING_
+2019-03-01 09:01:11,120 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742339_1520, replicas=10.10.1.2:9866, 10.10.1.5:9866, 10.10.1.4:9866 for /myfile13._COPYING_
+2019-03-01 09:01:14,602 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742340_1521, replicas=10.10.1.5:9866, 10.10.1.4:9866, 10.10.1.2:9866 for /myfile8._COPYING_
+2019-03-01 09:01:15,292 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742341_1522, replicas=10.10.1.3:9866, 10.10.1.5:9866, 10.10.1.2:9866 for /myfile14._COPYING_
+2019-03-01 09:01:15,293 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742342_1523, replicas=10.10.1.3:9866, 10.10.1.2:9866, 10.10.1.4:9866 for /myfile17._COPYING_
+2019-03-01 09:01:15,494 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742343_1524, replicas=10.10.1.2:9866, 10.10.1.4:9866, 10.10.1.3:9866 for /myfile19._COPYING_
+2019-03-01 09:01:17,253 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742344_1525, replicas=10.10.1.3:9866, 10.10.1.2:9866, 10.10.1.4:9866 for /myfile13._COPYING_
+2019-03-01 09:01:17,641 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742345_1526, replicas=10.10.1.3:9866, 10.10.1.4:9866, 10.10.1.5:9866 for /myfile14._COPYING_
+2019-03-01 09:01:19,535 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742346_1527, replicas=10.10.1.4:9866, 10.10.1.5:9866, 10.10.1.2:9866 for /myfile8._COPYING_
+2019-03-01 09:01:20,054 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742347_1528, replicas=10.10.1.2:9866, 10.10.1.4:9866, 10.10.1.5:9866 for /myfile8._COPYING_
+2019-03-01 09:01:20,503 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile8._COPYING_ is closed by DFSClient_NONMAPREDUCE_1087958996_1
+2019-03-01 09:01:21,687 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742348_1529, replicas=10.10.1.2:9866, 10.10.1.5:9866, 10.10.1.4:9866 for /myfile19._COPYING_
+2019-03-01 09:01:21,962 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742349_1530, replicas=10.10.1.4:9866, 10.10.1.2:9866, 10.10.1.3:9866 for /myfile13._COPYING_
+2019-03-01 09:01:21,973 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742350_1531, replicas=10.10.1.4:9866, 10.10.1.3:9866, 10.10.1.2:9866 for /myfile17._COPYING_
+2019-03-01 09:01:22,516 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742351_1532, replicas=10.10.1.3:9866, 10.10.1.5:9866, 10.10.1.2:9866 for /myfile17._COPYING_
+2019-03-01 09:01:22,547 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742352_1533, replicas=10.10.1.2:9866, 10.10.1.5:9866, 10.10.1.3:9866 for /myfile13._COPYING_
+2019-03-01 09:01:24,396 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742353_1534, replicas=10.10.1.2:9866, 10.10.1.4:9866, 10.10.1.5:9866 for /myfile19._COPYING_
+2019-03-01 09:01:26,660 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742354_1535, replicas=10.10.1.4:9866, 10.10.1.5:9866, 10.10.1.2:9866 for /myfile14._COPYING_
+2019-03-01 09:01:30,704 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742355_1536, replicas=10.10.1.5:9866, 10.10.1.3:9866, 10.10.1.2:9866 for /myfile19._COPYING_
+2019-03-01 09:01:30,833 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742356_1537, replicas=10.10.1.5:9866, 10.10.1.4:9866, 10.10.1.3:9866 for /myfile14._COPYING_
+2019-03-01 09:01:41,685 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile14._COPYING_ is closed by DFSClient_NONMAPREDUCE_-1816119965_1
+2019-03-01 09:01:41,700 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742357_1538, replicas=10.10.1.4:9866, 10.10.1.3:9866, 10.10.1.2:9866 for /myfile11._COPYING_
+2019-03-01 09:01:43,303 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile17._COPYING_ is closed by DFSClient_NONMAPREDUCE_1008679688_1
+2019-03-01 09:01:43,710 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile13._COPYING_ is closed by DFSClient_NONMAPREDUCE_1487903002_1
+2019-03-01 09:01:43,837 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742358_1539, replicas=10.10.1.5:9866, 10.10.1.4:9866, 10.10.1.3:9866 for /myfile19._COPYING_
+2019-03-01 09:01:45,239 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Number of transactions: 192 Total time for transactions(ms): 6 Number of transactions batched in Syncs: 74 Number of syncs: 117 SyncTimes(ms): 846 1262 
+2019-03-01 09:01:45,817 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742359_1540, replicas=10.10.1.3:9866, 10.10.1.2:9866, 10.10.1.5:9866 for /myfile11._COPYING_
+2019-03-01 09:01:54,419 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742360_1541, replicas=10.10.1.2:9866, 10.10.1.5:9866, 10.10.1.3:9866 for /myfile19._COPYING_
+2019-03-01 09:01:57,846 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742361_1542, replicas=10.10.1.2:9866, 10.10.1.5:9866, 10.10.1.3:9866 for /myfile16._COPYING_
+2019-03-01 09:02:03,030 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742362_1543, replicas=10.10.1.4:9866, 10.10.1.3:9866, 10.10.1.2:9866 for /myfile19._COPYING_
+2019-03-01 09:02:03,032 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742363_1544, replicas=10.10.1.5:9866, 10.10.1.2:9866, 10.10.1.3:9866 for /myfile16._COPYING_
+2019-03-01 09:02:04,141 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742364_1545, replicas=10.10.1.3:9866, 10.10.1.2:9866, 10.10.1.4:9866 for /myfile11._COPYING_
+2019-03-01 09:02:04,787 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742365_1546, replicas=10.10.1.4:9866, 10.10.1.2:9866, 10.10.1.5:9866 for /myfile11._COPYING_
+2019-03-01 09:02:04,794 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742366_1547, replicas=10.10.1.5:9866, 10.10.1.3:9866, 10.10.1.2:9866 for /myfile19._COPYING_
+2019-03-01 09:02:16,292 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742367_1548, replicas=10.10.1.4:9866, 10.10.1.2:9866, 10.10.1.3:9866 for /myfile16._COPYING_
+2019-03-01 09:02:16,435 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile19._COPYING_ is closed by DFSClient_NONMAPREDUCE_881784601_1
+2019-03-01 09:02:19,935 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742368_1549, replicas=10.10.1.4:9866, 10.10.1.3:9866, 10.10.1.5:9866 for /myfile11._COPYING_
+2019-03-01 09:02:19,936 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742369_1550, replicas=10.10.1.4:9866, 10.10.1.5:9866, 10.10.1.3:9866 for /myfile16._COPYING_
+2019-03-01 09:02:27,664 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742370_1551, replicas=10.10.1.4:9866, 10.10.1.3:9866, 10.10.1.5:9866 for /myfile16._COPYING_
+2019-03-01 09:02:27,665 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742371_1552, replicas=10.10.1.3:9866, 10.10.1.4:9866, 10.10.1.2:9866 for /myfile11._COPYING_
+2019-03-01 09:02:28,179 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742372_1553, replicas=10.10.1.4:9866, 10.10.1.2:9866, 10.10.1.3:9866 for /myfile16._COPYING_
+2019-03-01 09:02:32,008 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742373_1554, replicas=10.10.1.5:9866, 10.10.1.4:9866, 10.10.1.3:9866 for /myfile16._COPYING_
+2019-03-01 09:02:32,423 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742374_1555, replicas=10.10.1.4:9866, 10.10.1.2:9866, 10.10.1.3:9866 for /myfile11._COPYING_
+2019-03-01 09:02:32,867 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742375_1556, replicas=10.10.1.3:9866, 10.10.1.2:9866, 10.10.1.5:9866 for /myfile11._COPYING_
+2019-03-01 09:02:33,058 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742376_1557, replicas=10.10.1.2:9866, 10.10.1.5:9866, 10.10.1.4:9866 for /myfile16._COPYING_
+2019-03-01 09:02:34,840 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile16._COPYING_ is closed by DFSClient_NONMAPREDUCE_-280681066_1
+2019-03-01 09:02:36,773 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742377_1558, replicas=10.10.1.4:9866, 10.10.1.5:9866, 10.10.1.3:9866 for /myfile7._COPYING_
+2019-03-01 09:02:37,794 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile11._COPYING_ is closed by DFSClient_NONMAPREDUCE_1060489278_1
+2019-03-01 09:02:39,509 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742378_1559, replicas=10.10.1.5:9866, 10.10.1.2:9866, 10.10.1.4:9866 for /myfile7._COPYING_
+2019-03-01 09:02:43,101 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742379_1560, replicas=10.10.1.3:9866, 10.10.1.5:9866, 10.10.1.4:9866 for /myfile7._COPYING_
+2019-03-01 09:02:43,935 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742380_1561, replicas=10.10.1.5:9866, 10.10.1.4:9866, 10.10.1.2:9866 for /myfile7._COPYING_
+2019-03-01 09:02:44,815 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from 10.10.1.1
+2019-03-01 09:02:44,815 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Rolling edit logs
+2019-03-01 09:02:44,816 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Ending log segment 1687, 1953
+2019-03-01 09:02:44,831 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Number of transactions: 268 Total time for transactions(ms): 8 Number of transactions batched in Syncs: 104 Number of syncs: 164 SyncTimes(ms): 1258 1684 
+2019-03-01 09:02:44,834 INFO org.apache.hadoop.hdfs.server.namenode.FileJournalManager: Finalizing edits file /tmp/hadoop-root/dfs/name/current/edits_inprogress_0000000000000001687 -> /tmp/hadoop-root/dfs/name/current/edits_0000000000000001687-0000000000000001954
+2019-03-01 09:02:44,834 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Starting log segment at 1955
+2019-03-01 09:02:47,609 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742381_1562, replicas=10.10.1.5:9866, 10.10.1.2:9866, 10.10.1.3:9866 for /myfile7._COPYING_
+2019-03-01 09:02:54,526 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742382_1563, replicas=10.10.1.4:9866, 10.10.1.3:9866, 10.10.1.5:9866 for /myfile7._COPYING_
+2019-03-01 09:02:55,606 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742383_1564, replicas=10.10.1.2:9866, 10.10.1.3:9866, 10.10.1.4:9866 for /myfile7._COPYING_
+2019-03-01 09:03:00,107 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742384_1565, replicas=10.10.1.5:9866, 10.10.1.4:9866, 10.10.1.2:9866 for /myfile7._COPYING_
+2019-03-01 09:03:01,818 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile7._COPYING_ is closed by DFSClient_NONMAPREDUCE_-1169968305_1
+2019-03-01 09:03:10,001 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742385_1566, replicas=10.10.1.5:9866, 10.10.1.3:9866, 10.10.1.2:9866 for /myfile15._COPYING_
+2019-03-01 09:03:12,867 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742386_1567, replicas=10.10.1.2:9866, 10.10.1.4:9866, 10.10.1.3:9866 for /myfile6._COPYING_
+2019-03-01 09:03:13,799 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742387_1568, replicas=10.10.1.4:9866, 10.10.1.3:9866, 10.10.1.5:9866 for /myfile5._COPYING_
+2019-03-01 09:03:15,574 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742388_1569, replicas=10.10.1.4:9866, 10.10.1.3:9866, 10.10.1.5:9866 for /myfile5._COPYING_
+2019-03-01 09:03:16,158 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742389_1570, replicas=10.10.1.5:9866, 10.10.1.2:9866, 10.10.1.4:9866 for /myfile5._COPYING_
+2019-03-01 09:03:17,438 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742390_1571, replicas=10.10.1.5:9866, 10.10.1.3:9866, 10.10.1.2:9866 for /myfile6._COPYING_
+2019-03-01 09:03:17,904 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742391_1572, replicas=10.10.1.3:9866, 10.10.1.4:9866, 10.10.1.5:9866 for /myfile15._COPYING_
+2019-03-01 09:03:18,022 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742392_1573, replicas=10.10.1.2:9866, 10.10.1.4:9866, 10.10.1.5:9866 for /myfile5._COPYING_
+2019-03-01 09:03:18,030 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742393_1574, replicas=10.10.1.5:9866, 10.10.1.2:9866, 10.10.1.4:9866 for /myfile6._COPYING_
+2019-03-01 09:03:18,449 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742394_1575, replicas=10.10.1.5:9866, 10.10.1.2:9866, 10.10.1.3:9866 for /myfile15._COPYING_
+2019-03-01 09:03:18,563 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742395_1576, replicas=10.10.1.4:9866, 10.10.1.5:9866, 10.10.1.3:9866 for /myfile6._COPYING_
+2019-03-01 09:03:18,602 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742396_1577, replicas=10.10.1.2:9866, 10.10.1.5:9866, 10.10.1.4:9866 for /myfile5._COPYING_
+2019-03-01 09:03:18,997 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742397_1578, replicas=10.10.1.3:9866, 10.10.1.5:9866, 10.10.1.4:9866 for /myfile15._COPYING_
+2019-03-01 09:03:19,167 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742398_1579, replicas=10.10.1.2:9866, 10.10.1.4:9866, 10.10.1.5:9866 for /myfile6._COPYING_
+2019-03-01 09:03:19,247 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742399_1580, replicas=10.10.1.2:9866, 10.10.1.3:9866, 10.10.1.5:9866 for /myfile5._COPYING_
+2019-03-01 09:03:19,519 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742400_1581, replicas=10.10.1.2:9866, 10.10.1.5:9866, 10.10.1.3:9866 for /myfile15._COPYING_
+2019-03-01 09:03:19,699 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742401_1582, replicas=10.10.1.3:9866, 10.10.1.5:9866, 10.10.1.4:9866 for /myfile6._COPYING_
+2019-03-01 09:03:20,183 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742402_1583, replicas=10.10.1.5:9866, 10.10.1.3:9866, 10.10.1.2:9866 for /myfile5._COPYING_
+2019-03-01 09:03:20,197 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742403_1584, replicas=10.10.1.2:9866, 10.10.1.3:9866, 10.10.1.5:9866 for /myfile6._COPYING_
+2019-03-01 09:03:20,375 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742404_1585, replicas=10.10.1.5:9866, 10.10.1.4:9866, 10.10.1.3:9866 for /myfile15._COPYING_
+2019-03-01 09:03:20,699 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742405_1586, replicas=10.10.1.3:9866, 10.10.1.4:9866, 10.10.1.5:9866 for /myfile5._COPYING_
+2019-03-01 09:03:20,711 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742406_1587, replicas=10.10.1.5:9866, 10.10.1.2:9866, 10.10.1.3:9866 for /myfile6._COPYING_
+2019-03-01 09:03:20,831 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742407_1588, replicas=10.10.1.4:9866, 10.10.1.5:9866, 10.10.1.2:9866 for /myfile15._COPYING_
+2019-03-01 09:03:21,209 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile5._COPYING_ is closed by DFSClient_NONMAPREDUCE_-1642512644_1
+2019-03-01 09:03:24,633 INFO org.apache.hadoop.hdfs.StateChange: BLOCK* allocate blk_1073742408_1589, replicas=10.10.1.2:9866, 10.10.1.4:9866, 10.10.1.3:9866 for /myfile15._COPYING_
+2019-03-01 09:03:24,635 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile6._COPYING_ is closed by DFSClient_NONMAPREDUCE_573976376_1
+2019-03-01 09:03:25,165 INFO org.apache.hadoop.hdfs.StateChange: DIR* completeFile: /myfile15._COPYING_ is closed by DFSClient_NONMAPREDUCE_316934155_1
+2019-03-01 09:03:46,307 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Number of transactions: 118 Total time for transactions(ms): 2 Number of transactions batched in Syncs: 36 Number of syncs: 81 SyncTimes(ms): 684 725 
