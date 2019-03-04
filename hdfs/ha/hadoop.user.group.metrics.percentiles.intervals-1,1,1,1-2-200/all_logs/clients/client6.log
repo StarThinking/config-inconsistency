@@ -1,0 +1,813 @@
+2019-03-03 21:51:58,646 INFO hdfs.DataStreamer: Exception in createBlockOutputStream blk_1073741944_1120
+java.io.IOException: Got error, status=ERROR, status message , ack with firstBadLink as 10.10.1.2:9866
+	at org.apache.hadoop.hdfs.protocol.datatransfer.DataTransferProtoUtil.checkBlockOpStatus(DataTransferProtoUtil.java:134)
+	at org.apache.hadoop.hdfs.protocol.datatransfer.DataTransferProtoUtil.checkBlockOpStatus(DataTransferProtoUtil.java:110)
+	at org.apache.hadoop.hdfs.DataStreamer.createBlockOutputStream(DataStreamer.java:1778)
+	at org.apache.hadoop.hdfs.DataStreamer.nextBlockOutputStream(DataStreamer.java:1679)
+	at org.apache.hadoop.hdfs.DataStreamer.run(DataStreamer.java:716)
+2019-03-03 21:51:58,655 WARN hdfs.DataStreamer: Abandoning BP-1481288943-130.127.133.53-1551675058794:blk_1073741944_1120
+2019-03-03 21:51:58,702 WARN hdfs.DataStreamer: Excluding datanode DatanodeInfoWithStorage[10.10.1.2:9866,DS-9cb844ff-f350-433c-8a05-5d66cc32d94c,DISK]
+Found 20 items
+-rw-r--r--   3 root supergroup 1073741824 2019-03-03 21:52 /myfile1
+-rw-r--r--   3 root supergroup  671088640 2019-03-03 21:51 /myfile10._COPYING_
+-rw-r--r--   3 root supergroup 1073741824 2019-03-03 21:52 /myfile11
+-rw-r--r--   3 root supergroup  805306368 2019-03-03 21:51 /myfile12._COPYING_
+-rw-r--r--   3 root supergroup 1073741824 2019-03-03 21:52 /myfile13
+-rw-r--r--   3 root supergroup  805306368 2019-03-03 21:51 /myfile14._COPYING_
+-rw-r--r--   3 root supergroup  939524096 2019-03-03 21:51 /myfile15._COPYING_
+-rw-r--r--   3 root supergroup  939524096 2019-03-03 21:51 /myfile16._COPYING_
+-rw-r--r--   3 root supergroup  805306368 2019-03-03 21:51 /myfile17._COPYING_
+-rw-r--r--   3 root supergroup 1073741824 2019-03-03 21:52 /myfile18
+-rw-r--r--   3 root supergroup  939524096 2019-03-03 21:51 /myfile19._COPYING_
+-rw-r--r--   3 root supergroup 1073741824 2019-03-03 21:52 /myfile2
+-rw-r--r--   3 root supergroup  939524096 2019-03-03 21:51 /myfile20._COPYING_
+-rw-r--r--   3 root supergroup 1073741824 2019-03-03 21:52 /myfile3
+-rw-r--r--   3 root supergroup  939524096 2019-03-03 21:51 /myfile4._COPYING_
+-rw-r--r--   3 root supergroup  939524096 2019-03-03 21:51 /myfile5._COPYING_
+-rw-r--r--   3 root supergroup 1073741824 2019-03-03 21:52 /myfile6
+-rw-r--r--   3 root supergroup  671088640 2019-03-03 21:51 /myfile7._COPYING_
+-rw-r--r--   3 root supergroup  939524096 2019-03-03 21:51 /myfile8._COPYING_
+-rw-r--r--   3 root supergroup  805306368 2019-03-03 21:51 /myfile9._COPYING_
+file 6 has been put into HDFS
+2019-03-03 21:52:54,288 WARN impl.BlockReaderFactory: I/O error constructing remote block reader.
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.hadoop.net.SocketIOWithTimeout.connect(SocketIOWithTimeout.java:206)
+	at org.apache.hadoop.net.NetUtils.connect(NetUtils.java:531)
+	at org.apache.hadoop.hdfs.DFSClient.newConnectedPeer(DFSClient.java:2924)
+	at org.apache.hadoop.hdfs.client.impl.BlockReaderFactory.nextTcpPeer(BlockReaderFactory.java:821)
+	at org.apache.hadoop.hdfs.client.impl.BlockReaderFactory.getRemoteBlockReaderFromTcp(BlockReaderFactory.java:746)
+	at org.apache.hadoop.hdfs.client.impl.BlockReaderFactory.build(BlockReaderFactory.java:379)
+	at org.apache.hadoop.hdfs.DFSInputStream.getBlockReader(DFSInputStream.java:641)
+	at org.apache.hadoop.hdfs.DFSInputStream.blockSeekTo(DFSInputStream.java:572)
+	at org.apache.hadoop.hdfs.DFSInputStream.readWithStrategy(DFSInputStream.java:754)
+	at org.apache.hadoop.hdfs.DFSInputStream.read(DFSInputStream.java:820)
+	at java.io.DataInputStream.read(DataInputStream.java:100)
+	at org.apache.hadoop.io.IOUtils.copyBytes(IOUtils.java:100)
+	at org.apache.hadoop.io.IOUtils.copyBytes(IOUtils.java:68)
+	at org.apache.hadoop.io.IOUtils.copyBytes(IOUtils.java:129)
+	at org.apache.hadoop.fs.shell.CommandWithDestination$TargetFileSystem.writeStreamToFile(CommandWithDestination.java:485)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.copyStreamToTarget(CommandWithDestination.java:407)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.copyFileToTarget(CommandWithDestination.java:342)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processPath(CommandWithDestination.java:277)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processPath(CommandWithDestination.java:262)
+	at org.apache.hadoop.fs.shell.Command.processPaths(Command.java:331)
+	at org.apache.hadoop.fs.shell.Command.processPathArgument(Command.java:303)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processPathArgument(CommandWithDestination.java:257)
+	at org.apache.hadoop.fs.shell.Command.processArgument(Command.java:285)
+	at org.apache.hadoop.fs.shell.Command.processArguments(Command.java:269)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processArguments(CommandWithDestination.java:228)
+	at org.apache.hadoop.fs.shell.FsCommand.processRawArguments(FsCommand.java:120)
+	at org.apache.hadoop.fs.shell.Command.run(Command.java:176)
+	at org.apache.hadoop.fs.FsShell.run(FsShell.java:328)
+	at org.apache.hadoop.util.ToolRunner.run(ToolRunner.java:76)
+	at org.apache.hadoop.util.ToolRunner.run(ToolRunner.java:90)
+	at org.apache.hadoop.fs.FsShell.main(FsShell.java:391)
+2019-03-03 21:52:54,295 WARN hdfs.DFSClient: Failed to connect to /10.10.1.2:9866 for block BP-1481288943-130.127.133.53-1551675058794:blk_1073741887_1063, add to deadNodes and continue. 
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.hadoop.net.SocketIOWithTimeout.connect(SocketIOWithTimeout.java:206)
+	at org.apache.hadoop.net.NetUtils.connect(NetUtils.java:531)
+	at org.apache.hadoop.hdfs.DFSClient.newConnectedPeer(DFSClient.java:2924)
+	at org.apache.hadoop.hdfs.client.impl.BlockReaderFactory.nextTcpPeer(BlockReaderFactory.java:821)
+	at org.apache.hadoop.hdfs.client.impl.BlockReaderFactory.getRemoteBlockReaderFromTcp(BlockReaderFactory.java:746)
+	at org.apache.hadoop.hdfs.client.impl.BlockReaderFactory.build(BlockReaderFactory.java:379)
+	at org.apache.hadoop.hdfs.DFSInputStream.getBlockReader(DFSInputStream.java:641)
+	at org.apache.hadoop.hdfs.DFSInputStream.blockSeekTo(DFSInputStream.java:572)
+	at org.apache.hadoop.hdfs.DFSInputStream.readWithStrategy(DFSInputStream.java:754)
+	at org.apache.hadoop.hdfs.DFSInputStream.read(DFSInputStream.java:820)
+	at java.io.DataInputStream.read(DataInputStream.java:100)
+	at org.apache.hadoop.io.IOUtils.copyBytes(IOUtils.java:100)
+	at org.apache.hadoop.io.IOUtils.copyBytes(IOUtils.java:68)
+	at org.apache.hadoop.io.IOUtils.copyBytes(IOUtils.java:129)
+	at org.apache.hadoop.fs.shell.CommandWithDestination$TargetFileSystem.writeStreamToFile(CommandWithDestination.java:485)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.copyStreamToTarget(CommandWithDestination.java:407)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.copyFileToTarget(CommandWithDestination.java:342)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processPath(CommandWithDestination.java:277)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processPath(CommandWithDestination.java:262)
+	at org.apache.hadoop.fs.shell.Command.processPaths(Command.java:331)
+	at org.apache.hadoop.fs.shell.Command.processPathArgument(Command.java:303)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processPathArgument(CommandWithDestination.java:257)
+	at org.apache.hadoop.fs.shell.Command.processArgument(Command.java:285)
+	at org.apache.hadoop.fs.shell.Command.processArguments(Command.java:269)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processArguments(CommandWithDestination.java:228)
+	at org.apache.hadoop.fs.shell.FsCommand.processRawArguments(FsCommand.java:120)
+	at org.apache.hadoop.fs.shell.Command.run(Command.java:176)
+	at org.apache.hadoop.fs.FsShell.run(FsShell.java:328)
+	at org.apache.hadoop.util.ToolRunner.run(ToolRunner.java:76)
+	at org.apache.hadoop.util.ToolRunner.run(ToolRunner.java:90)
+	at org.apache.hadoop.fs.FsShell.main(FsShell.java:391)
+2019-03-03 21:52:54,298 INFO hdfs.DFSClient: Successfully connected to /10.10.1.5:9866 for BP-1481288943-130.127.133.53-1551675058794:blk_1073741887_1063
+file 6 has been read from HDFS for 1 time
+diff succeed!
+2019-03-03 21:53:15,331 WARN impl.BlockReaderFactory: I/O error constructing remote block reader.
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.hadoop.net.SocketIOWithTimeout.connect(SocketIOWithTimeout.java:206)
+	at org.apache.hadoop.net.NetUtils.connect(NetUtils.java:531)
+	at org.apache.hadoop.hdfs.DFSClient.newConnectedPeer(DFSClient.java:2924)
+	at org.apache.hadoop.hdfs.client.impl.BlockReaderFactory.nextTcpPeer(BlockReaderFactory.java:821)
+	at org.apache.hadoop.hdfs.client.impl.BlockReaderFactory.getRemoteBlockReaderFromTcp(BlockReaderFactory.java:746)
+	at org.apache.hadoop.hdfs.client.impl.BlockReaderFactory.build(BlockReaderFactory.java:379)
+	at org.apache.hadoop.hdfs.DFSInputStream.getBlockReader(DFSInputStream.java:641)
+	at org.apache.hadoop.hdfs.DFSInputStream.blockSeekTo(DFSInputStream.java:572)
+	at org.apache.hadoop.hdfs.DFSInputStream.readWithStrategy(DFSInputStream.java:754)
+	at org.apache.hadoop.hdfs.DFSInputStream.read(DFSInputStream.java:820)
+	at java.io.DataInputStream.read(DataInputStream.java:100)
+	at org.apache.hadoop.io.IOUtils.copyBytes(IOUtils.java:100)
+	at org.apache.hadoop.io.IOUtils.copyBytes(IOUtils.java:68)
+	at org.apache.hadoop.io.IOUtils.copyBytes(IOUtils.java:129)
+	at org.apache.hadoop.fs.shell.CommandWithDestination$TargetFileSystem.writeStreamToFile(CommandWithDestination.java:485)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.copyStreamToTarget(CommandWithDestination.java:407)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.copyFileToTarget(CommandWithDestination.java:342)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processPath(CommandWithDestination.java:277)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processPath(CommandWithDestination.java:262)
+	at org.apache.hadoop.fs.shell.Command.processPaths(Command.java:331)
+	at org.apache.hadoop.fs.shell.Command.processPathArgument(Command.java:303)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processPathArgument(CommandWithDestination.java:257)
+	at org.apache.hadoop.fs.shell.Command.processArgument(Command.java:285)
+	at org.apache.hadoop.fs.shell.Command.processArguments(Command.java:269)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processArguments(CommandWithDestination.java:228)
+	at org.apache.hadoop.fs.shell.FsCommand.processRawArguments(FsCommand.java:120)
+	at org.apache.hadoop.fs.shell.Command.run(Command.java:176)
+	at org.apache.hadoop.fs.FsShell.run(FsShell.java:328)
+	at org.apache.hadoop.util.ToolRunner.run(ToolRunner.java:76)
+	at org.apache.hadoop.util.ToolRunner.run(ToolRunner.java:90)
+	at org.apache.hadoop.fs.FsShell.main(FsShell.java:391)
+2019-03-03 21:53:15,336 WARN hdfs.DFSClient: Failed to connect to /10.10.1.2:9866 for block BP-1481288943-130.127.133.53-1551675058794:blk_1073741853_1029, add to deadNodes and continue. 
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.hadoop.net.SocketIOWithTimeout.connect(SocketIOWithTimeout.java:206)
+	at org.apache.hadoop.net.NetUtils.connect(NetUtils.java:531)
+	at org.apache.hadoop.hdfs.DFSClient.newConnectedPeer(DFSClient.java:2924)
+	at org.apache.hadoop.hdfs.client.impl.BlockReaderFactory.nextTcpPeer(BlockReaderFactory.java:821)
+	at org.apache.hadoop.hdfs.client.impl.BlockReaderFactory.getRemoteBlockReaderFromTcp(BlockReaderFactory.java:746)
+	at org.apache.hadoop.hdfs.client.impl.BlockReaderFactory.build(BlockReaderFactory.java:379)
+	at org.apache.hadoop.hdfs.DFSInputStream.getBlockReader(DFSInputStream.java:641)
+	at org.apache.hadoop.hdfs.DFSInputStream.blockSeekTo(DFSInputStream.java:572)
+	at org.apache.hadoop.hdfs.DFSInputStream.readWithStrategy(DFSInputStream.java:754)
+	at org.apache.hadoop.hdfs.DFSInputStream.read(DFSInputStream.java:820)
+	at java.io.DataInputStream.read(DataInputStream.java:100)
+	at org.apache.hadoop.io.IOUtils.copyBytes(IOUtils.java:100)
+	at org.apache.hadoop.io.IOUtils.copyBytes(IOUtils.java:68)
+	at org.apache.hadoop.io.IOUtils.copyBytes(IOUtils.java:129)
+	at org.apache.hadoop.fs.shell.CommandWithDestination$TargetFileSystem.writeStreamToFile(CommandWithDestination.java:485)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.copyStreamToTarget(CommandWithDestination.java:407)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.copyFileToTarget(CommandWithDestination.java:342)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processPath(CommandWithDestination.java:277)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processPath(CommandWithDestination.java:262)
+	at org.apache.hadoop.fs.shell.Command.processPaths(Command.java:331)
+	at org.apache.hadoop.fs.shell.Command.processPathArgument(Command.java:303)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processPathArgument(CommandWithDestination.java:257)
+	at org.apache.hadoop.fs.shell.Command.processArgument(Command.java:285)
+	at org.apache.hadoop.fs.shell.Command.processArguments(Command.java:269)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processArguments(CommandWithDestination.java:228)
+	at org.apache.hadoop.fs.shell.FsCommand.processRawArguments(FsCommand.java:120)
+	at org.apache.hadoop.fs.shell.Command.run(Command.java:176)
+	at org.apache.hadoop.fs.FsShell.run(FsShell.java:328)
+	at org.apache.hadoop.util.ToolRunner.run(ToolRunner.java:76)
+	at org.apache.hadoop.util.ToolRunner.run(ToolRunner.java:90)
+	at org.apache.hadoop.fs.FsShell.main(FsShell.java:391)
+2019-03-03 21:53:18,207 INFO hdfs.DFSClient: Successfully connected to /10.10.1.4:9866 for BP-1481288943-130.127.133.53-1551675058794:blk_1073741853_1029
+file 6 has been read from HDFS for 2 time
+diff succeed!
+2019-03-03 21:53:48,564 WARN impl.BlockReaderFactory: I/O error constructing remote block reader.
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.hadoop.net.SocketIOWithTimeout.connect(SocketIOWithTimeout.java:206)
+	at org.apache.hadoop.net.NetUtils.connect(NetUtils.java:531)
+	at org.apache.hadoop.hdfs.DFSClient.newConnectedPeer(DFSClient.java:2924)
+	at org.apache.hadoop.hdfs.client.impl.BlockReaderFactory.nextTcpPeer(BlockReaderFactory.java:821)
+	at org.apache.hadoop.hdfs.client.impl.BlockReaderFactory.getRemoteBlockReaderFromTcp(BlockReaderFactory.java:746)
+	at org.apache.hadoop.hdfs.client.impl.BlockReaderFactory.build(BlockReaderFactory.java:379)
+	at org.apache.hadoop.hdfs.DFSInputStream.getBlockReader(DFSInputStream.java:641)
+	at org.apache.hadoop.hdfs.DFSInputStream.blockSeekTo(DFSInputStream.java:572)
+	at org.apache.hadoop.hdfs.DFSInputStream.readWithStrategy(DFSInputStream.java:754)
+	at org.apache.hadoop.hdfs.DFSInputStream.read(DFSInputStream.java:820)
+	at java.io.DataInputStream.read(DataInputStream.java:100)
+	at org.apache.hadoop.io.IOUtils.copyBytes(IOUtils.java:100)
+	at org.apache.hadoop.io.IOUtils.copyBytes(IOUtils.java:68)
+	at org.apache.hadoop.io.IOUtils.copyBytes(IOUtils.java:129)
+	at org.apache.hadoop.fs.shell.CommandWithDestination$TargetFileSystem.writeStreamToFile(CommandWithDestination.java:485)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.copyStreamToTarget(CommandWithDestination.java:407)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.copyFileToTarget(CommandWithDestination.java:342)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processPath(CommandWithDestination.java:277)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processPath(CommandWithDestination.java:262)
+	at org.apache.hadoop.fs.shell.Command.processPaths(Command.java:331)
+	at org.apache.hadoop.fs.shell.Command.processPathArgument(Command.java:303)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processPathArgument(CommandWithDestination.java:257)
+	at org.apache.hadoop.fs.shell.Command.processArgument(Command.java:285)
+	at org.apache.hadoop.fs.shell.Command.processArguments(Command.java:269)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processArguments(CommandWithDestination.java:228)
+	at org.apache.hadoop.fs.shell.FsCommand.processRawArguments(FsCommand.java:120)
+	at org.apache.hadoop.fs.shell.Command.run(Command.java:176)
+	at org.apache.hadoop.fs.FsShell.run(FsShell.java:328)
+	at org.apache.hadoop.util.ToolRunner.run(ToolRunner.java:76)
+	at org.apache.hadoop.util.ToolRunner.run(ToolRunner.java:90)
+	at org.apache.hadoop.fs.FsShell.main(FsShell.java:391)
+2019-03-03 21:53:48,570 WARN hdfs.DFSClient: Failed to connect to /10.10.1.2:9866 for block BP-1481288943-130.127.133.53-1551675058794:blk_1073741887_1063, add to deadNodes and continue. 
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.hadoop.net.SocketIOWithTimeout.connect(SocketIOWithTimeout.java:206)
+	at org.apache.hadoop.net.NetUtils.connect(NetUtils.java:531)
+	at org.apache.hadoop.hdfs.DFSClient.newConnectedPeer(DFSClient.java:2924)
+	at org.apache.hadoop.hdfs.client.impl.BlockReaderFactory.nextTcpPeer(BlockReaderFactory.java:821)
+	at org.apache.hadoop.hdfs.client.impl.BlockReaderFactory.getRemoteBlockReaderFromTcp(BlockReaderFactory.java:746)
+	at org.apache.hadoop.hdfs.client.impl.BlockReaderFactory.build(BlockReaderFactory.java:379)
+	at org.apache.hadoop.hdfs.DFSInputStream.getBlockReader(DFSInputStream.java:641)
+	at org.apache.hadoop.hdfs.DFSInputStream.blockSeekTo(DFSInputStream.java:572)
+	at org.apache.hadoop.hdfs.DFSInputStream.readWithStrategy(DFSInputStream.java:754)
+	at org.apache.hadoop.hdfs.DFSInputStream.read(DFSInputStream.java:820)
+	at java.io.DataInputStream.read(DataInputStream.java:100)
+	at org.apache.hadoop.io.IOUtils.copyBytes(IOUtils.java:100)
+	at org.apache.hadoop.io.IOUtils.copyBytes(IOUtils.java:68)
+	at org.apache.hadoop.io.IOUtils.copyBytes(IOUtils.java:129)
+	at org.apache.hadoop.fs.shell.CommandWithDestination$TargetFileSystem.writeStreamToFile(CommandWithDestination.java:485)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.copyStreamToTarget(CommandWithDestination.java:407)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.copyFileToTarget(CommandWithDestination.java:342)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processPath(CommandWithDestination.java:277)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processPath(CommandWithDestination.java:262)
+	at org.apache.hadoop.fs.shell.Command.processPaths(Command.java:331)
+	at org.apache.hadoop.fs.shell.Command.processPathArgument(Command.java:303)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processPathArgument(CommandWithDestination.java:257)
+	at org.apache.hadoop.fs.shell.Command.processArgument(Command.java:285)
+	at org.apache.hadoop.fs.shell.Command.processArguments(Command.java:269)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processArguments(CommandWithDestination.java:228)
+	at org.apache.hadoop.fs.shell.FsCommand.processRawArguments(FsCommand.java:120)
+	at org.apache.hadoop.fs.shell.Command.run(Command.java:176)
+	at org.apache.hadoop.fs.FsShell.run(FsShell.java:328)
+	at org.apache.hadoop.util.ToolRunner.run(ToolRunner.java:76)
+	at org.apache.hadoop.util.ToolRunner.run(ToolRunner.java:90)
+	at org.apache.hadoop.fs.FsShell.main(FsShell.java:391)
+2019-03-03 21:53:48,578 INFO hdfs.DFSClient: Successfully connected to /10.10.1.5:9866 for BP-1481288943-130.127.133.53-1551675058794:blk_1073741887_1063
+file 6 has been read from HDFS for 3 time
+diff succeed!
+file 6 has been read from HDFS for 4 time
+diff succeed!
+2019-03-03 21:54:28,999 WARN impl.BlockReaderFactory: I/O error constructing remote block reader.
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.hadoop.net.SocketIOWithTimeout.connect(SocketIOWithTimeout.java:206)
+	at org.apache.hadoop.net.NetUtils.connect(NetUtils.java:531)
+	at org.apache.hadoop.hdfs.DFSClient.newConnectedPeer(DFSClient.java:2924)
+	at org.apache.hadoop.hdfs.client.impl.BlockReaderFactory.nextTcpPeer(BlockReaderFactory.java:821)
+	at org.apache.hadoop.hdfs.client.impl.BlockReaderFactory.getRemoteBlockReaderFromTcp(BlockReaderFactory.java:746)
+	at org.apache.hadoop.hdfs.client.impl.BlockReaderFactory.build(BlockReaderFactory.java:379)
+	at org.apache.hadoop.hdfs.DFSInputStream.getBlockReader(DFSInputStream.java:641)
+	at org.apache.hadoop.hdfs.DFSInputStream.blockSeekTo(DFSInputStream.java:572)
+	at org.apache.hadoop.hdfs.DFSInputStream.readWithStrategy(DFSInputStream.java:754)
+	at org.apache.hadoop.hdfs.DFSInputStream.read(DFSInputStream.java:820)
+	at java.io.DataInputStream.read(DataInputStream.java:100)
+	at org.apache.hadoop.io.IOUtils.copyBytes(IOUtils.java:100)
+	at org.apache.hadoop.io.IOUtils.copyBytes(IOUtils.java:68)
+	at org.apache.hadoop.io.IOUtils.copyBytes(IOUtils.java:129)
+	at org.apache.hadoop.fs.shell.CommandWithDestination$TargetFileSystem.writeStreamToFile(CommandWithDestination.java:485)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.copyStreamToTarget(CommandWithDestination.java:407)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.copyFileToTarget(CommandWithDestination.java:342)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processPath(CommandWithDestination.java:277)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processPath(CommandWithDestination.java:262)
+	at org.apache.hadoop.fs.shell.Command.processPaths(Command.java:331)
+	at org.apache.hadoop.fs.shell.Command.processPathArgument(Command.java:303)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processPathArgument(CommandWithDestination.java:257)
+	at org.apache.hadoop.fs.shell.Command.processArgument(Command.java:285)
+	at org.apache.hadoop.fs.shell.Command.processArguments(Command.java:269)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processArguments(CommandWithDestination.java:228)
+	at org.apache.hadoop.fs.shell.FsCommand.processRawArguments(FsCommand.java:120)
+	at org.apache.hadoop.fs.shell.Command.run(Command.java:176)
+	at org.apache.hadoop.fs.FsShell.run(FsShell.java:328)
+	at org.apache.hadoop.util.ToolRunner.run(ToolRunner.java:76)
+	at org.apache.hadoop.util.ToolRunner.run(ToolRunner.java:90)
+	at org.apache.hadoop.fs.FsShell.main(FsShell.java:391)
+2019-03-03 21:54:29,005 WARN hdfs.DFSClient: Failed to connect to /10.10.1.2:9866 for block BP-1481288943-130.127.133.53-1551675058794:blk_1073741853_1029, add to deadNodes and continue. 
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.hadoop.net.SocketIOWithTimeout.connect(SocketIOWithTimeout.java:206)
+	at org.apache.hadoop.net.NetUtils.connect(NetUtils.java:531)
+	at org.apache.hadoop.hdfs.DFSClient.newConnectedPeer(DFSClient.java:2924)
+	at org.apache.hadoop.hdfs.client.impl.BlockReaderFactory.nextTcpPeer(BlockReaderFactory.java:821)
+	at org.apache.hadoop.hdfs.client.impl.BlockReaderFactory.getRemoteBlockReaderFromTcp(BlockReaderFactory.java:746)
+	at org.apache.hadoop.hdfs.client.impl.BlockReaderFactory.build(BlockReaderFactory.java:379)
+	at org.apache.hadoop.hdfs.DFSInputStream.getBlockReader(DFSInputStream.java:641)
+	at org.apache.hadoop.hdfs.DFSInputStream.blockSeekTo(DFSInputStream.java:572)
+	at org.apache.hadoop.hdfs.DFSInputStream.readWithStrategy(DFSInputStream.java:754)
+	at org.apache.hadoop.hdfs.DFSInputStream.read(DFSInputStream.java:820)
+	at java.io.DataInputStream.read(DataInputStream.java:100)
+	at org.apache.hadoop.io.IOUtils.copyBytes(IOUtils.java:100)
+	at org.apache.hadoop.io.IOUtils.copyBytes(IOUtils.java:68)
+	at org.apache.hadoop.io.IOUtils.copyBytes(IOUtils.java:129)
+	at org.apache.hadoop.fs.shell.CommandWithDestination$TargetFileSystem.writeStreamToFile(CommandWithDestination.java:485)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.copyStreamToTarget(CommandWithDestination.java:407)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.copyFileToTarget(CommandWithDestination.java:342)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processPath(CommandWithDestination.java:277)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processPath(CommandWithDestination.java:262)
+	at org.apache.hadoop.fs.shell.Command.processPaths(Command.java:331)
+	at org.apache.hadoop.fs.shell.Command.processPathArgument(Command.java:303)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processPathArgument(CommandWithDestination.java:257)
+	at org.apache.hadoop.fs.shell.Command.processArgument(Command.java:285)
+	at org.apache.hadoop.fs.shell.Command.processArguments(Command.java:269)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processArguments(CommandWithDestination.java:228)
+	at org.apache.hadoop.fs.shell.FsCommand.processRawArguments(FsCommand.java:120)
+	at org.apache.hadoop.fs.shell.Command.run(Command.java:176)
+	at org.apache.hadoop.fs.FsShell.run(FsShell.java:328)
+	at org.apache.hadoop.util.ToolRunner.run(ToolRunner.java:76)
+	at org.apache.hadoop.util.ToolRunner.run(ToolRunner.java:90)
+	at org.apache.hadoop.fs.FsShell.main(FsShell.java:391)
+2019-03-03 21:54:29,009 INFO hdfs.DFSClient: Successfully connected to /10.10.1.4:9866 for BP-1481288943-130.127.133.53-1551675058794:blk_1073741853_1029
+file 6 has been read from HDFS for 5 time
+diff succeed!
+2019-03-03 21:54:47,649 WARN impl.BlockReaderFactory: I/O error constructing remote block reader.
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.hadoop.net.SocketIOWithTimeout.connect(SocketIOWithTimeout.java:206)
+	at org.apache.hadoop.net.NetUtils.connect(NetUtils.java:531)
+	at org.apache.hadoop.hdfs.DFSClient.newConnectedPeer(DFSClient.java:2924)
+	at org.apache.hadoop.hdfs.client.impl.BlockReaderFactory.nextTcpPeer(BlockReaderFactory.java:821)
+	at org.apache.hadoop.hdfs.client.impl.BlockReaderFactory.getRemoteBlockReaderFromTcp(BlockReaderFactory.java:746)
+	at org.apache.hadoop.hdfs.client.impl.BlockReaderFactory.build(BlockReaderFactory.java:379)
+	at org.apache.hadoop.hdfs.DFSInputStream.getBlockReader(DFSInputStream.java:641)
+	at org.apache.hadoop.hdfs.DFSInputStream.blockSeekTo(DFSInputStream.java:572)
+	at org.apache.hadoop.hdfs.DFSInputStream.readWithStrategy(DFSInputStream.java:754)
+	at org.apache.hadoop.hdfs.DFSInputStream.read(DFSInputStream.java:820)
+	at java.io.DataInputStream.read(DataInputStream.java:100)
+	at org.apache.hadoop.io.IOUtils.copyBytes(IOUtils.java:100)
+	at org.apache.hadoop.io.IOUtils.copyBytes(IOUtils.java:68)
+	at org.apache.hadoop.io.IOUtils.copyBytes(IOUtils.java:129)
+	at org.apache.hadoop.fs.shell.CommandWithDestination$TargetFileSystem.writeStreamToFile(CommandWithDestination.java:485)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.copyStreamToTarget(CommandWithDestination.java:407)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.copyFileToTarget(CommandWithDestination.java:342)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processPath(CommandWithDestination.java:277)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processPath(CommandWithDestination.java:262)
+	at org.apache.hadoop.fs.shell.Command.processPaths(Command.java:331)
+	at org.apache.hadoop.fs.shell.Command.processPathArgument(Command.java:303)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processPathArgument(CommandWithDestination.java:257)
+	at org.apache.hadoop.fs.shell.Command.processArgument(Command.java:285)
+	at org.apache.hadoop.fs.shell.Command.processArguments(Command.java:269)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processArguments(CommandWithDestination.java:228)
+	at org.apache.hadoop.fs.shell.FsCommand.processRawArguments(FsCommand.java:120)
+	at org.apache.hadoop.fs.shell.Command.run(Command.java:176)
+	at org.apache.hadoop.fs.FsShell.run(FsShell.java:328)
+	at org.apache.hadoop.util.ToolRunner.run(ToolRunner.java:76)
+	at org.apache.hadoop.util.ToolRunner.run(ToolRunner.java:90)
+	at org.apache.hadoop.fs.FsShell.main(FsShell.java:391)
+2019-03-03 21:54:47,658 WARN hdfs.DFSClient: Failed to connect to /10.10.1.2:9866 for block BP-1481288943-130.127.133.53-1551675058794:blk_1073741853_1029, add to deadNodes and continue. 
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.hadoop.net.SocketIOWithTimeout.connect(SocketIOWithTimeout.java:206)
+	at org.apache.hadoop.net.NetUtils.connect(NetUtils.java:531)
+	at org.apache.hadoop.hdfs.DFSClient.newConnectedPeer(DFSClient.java:2924)
+	at org.apache.hadoop.hdfs.client.impl.BlockReaderFactory.nextTcpPeer(BlockReaderFactory.java:821)
+	at org.apache.hadoop.hdfs.client.impl.BlockReaderFactory.getRemoteBlockReaderFromTcp(BlockReaderFactory.java:746)
+	at org.apache.hadoop.hdfs.client.impl.BlockReaderFactory.build(BlockReaderFactory.java:379)
+	at org.apache.hadoop.hdfs.DFSInputStream.getBlockReader(DFSInputStream.java:641)
+	at org.apache.hadoop.hdfs.DFSInputStream.blockSeekTo(DFSInputStream.java:572)
+	at org.apache.hadoop.hdfs.DFSInputStream.readWithStrategy(DFSInputStream.java:754)
+	at org.apache.hadoop.hdfs.DFSInputStream.read(DFSInputStream.java:820)
+	at java.io.DataInputStream.read(DataInputStream.java:100)
+	at org.apache.hadoop.io.IOUtils.copyBytes(IOUtils.java:100)
+	at org.apache.hadoop.io.IOUtils.copyBytes(IOUtils.java:68)
+	at org.apache.hadoop.io.IOUtils.copyBytes(IOUtils.java:129)
+	at org.apache.hadoop.fs.shell.CommandWithDestination$TargetFileSystem.writeStreamToFile(CommandWithDestination.java:485)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.copyStreamToTarget(CommandWithDestination.java:407)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.copyFileToTarget(CommandWithDestination.java:342)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processPath(CommandWithDestination.java:277)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processPath(CommandWithDestination.java:262)
+	at org.apache.hadoop.fs.shell.Command.processPaths(Command.java:331)
+	at org.apache.hadoop.fs.shell.Command.processPathArgument(Command.java:303)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processPathArgument(CommandWithDestination.java:257)
+	at org.apache.hadoop.fs.shell.Command.processArgument(Command.java:285)
+	at org.apache.hadoop.fs.shell.Command.processArguments(Command.java:269)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processArguments(CommandWithDestination.java:228)
+	at org.apache.hadoop.fs.shell.FsCommand.processRawArguments(FsCommand.java:120)
+	at org.apache.hadoop.fs.shell.Command.run(Command.java:176)
+	at org.apache.hadoop.fs.FsShell.run(FsShell.java:328)
+	at org.apache.hadoop.util.ToolRunner.run(ToolRunner.java:76)
+	at org.apache.hadoop.util.ToolRunner.run(ToolRunner.java:90)
+	at org.apache.hadoop.fs.FsShell.main(FsShell.java:391)
+2019-03-03 21:54:47,665 INFO hdfs.DFSClient: Successfully connected to /10.10.1.5:9866 for BP-1481288943-130.127.133.53-1551675058794:blk_1073741853_1029
+file 6 has been read from HDFS for 6 time
+diff succeed!
+2019-03-03 21:55:07,436 WARN impl.BlockReaderFactory: I/O error constructing remote block reader.
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.hadoop.net.SocketIOWithTimeout.connect(SocketIOWithTimeout.java:206)
+	at org.apache.hadoop.net.NetUtils.connect(NetUtils.java:531)
+	at org.apache.hadoop.hdfs.DFSClient.newConnectedPeer(DFSClient.java:2924)
+	at org.apache.hadoop.hdfs.client.impl.BlockReaderFactory.nextTcpPeer(BlockReaderFactory.java:821)
+	at org.apache.hadoop.hdfs.client.impl.BlockReaderFactory.getRemoteBlockReaderFromTcp(BlockReaderFactory.java:746)
+	at org.apache.hadoop.hdfs.client.impl.BlockReaderFactory.build(BlockReaderFactory.java:379)
+	at org.apache.hadoop.hdfs.DFSInputStream.getBlockReader(DFSInputStream.java:641)
+	at org.apache.hadoop.hdfs.DFSInputStream.blockSeekTo(DFSInputStream.java:572)
+	at org.apache.hadoop.hdfs.DFSInputStream.readWithStrategy(DFSInputStream.java:754)
+	at org.apache.hadoop.hdfs.DFSInputStream.read(DFSInputStream.java:820)
+	at java.io.DataInputStream.read(DataInputStream.java:100)
+	at org.apache.hadoop.io.IOUtils.copyBytes(IOUtils.java:100)
+	at org.apache.hadoop.io.IOUtils.copyBytes(IOUtils.java:68)
+	at org.apache.hadoop.io.IOUtils.copyBytes(IOUtils.java:129)
+	at org.apache.hadoop.fs.shell.CommandWithDestination$TargetFileSystem.writeStreamToFile(CommandWithDestination.java:485)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.copyStreamToTarget(CommandWithDestination.java:407)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.copyFileToTarget(CommandWithDestination.java:342)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processPath(CommandWithDestination.java:277)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processPath(CommandWithDestination.java:262)
+	at org.apache.hadoop.fs.shell.Command.processPaths(Command.java:331)
+	at org.apache.hadoop.fs.shell.Command.processPathArgument(Command.java:303)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processPathArgument(CommandWithDestination.java:257)
+	at org.apache.hadoop.fs.shell.Command.processArgument(Command.java:285)
+	at org.apache.hadoop.fs.shell.Command.processArguments(Command.java:269)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processArguments(CommandWithDestination.java:228)
+	at org.apache.hadoop.fs.shell.FsCommand.processRawArguments(FsCommand.java:120)
+	at org.apache.hadoop.fs.shell.Command.run(Command.java:176)
+	at org.apache.hadoop.fs.FsShell.run(FsShell.java:328)
+	at org.apache.hadoop.util.ToolRunner.run(ToolRunner.java:76)
+	at org.apache.hadoop.util.ToolRunner.run(ToolRunner.java:90)
+	at org.apache.hadoop.fs.FsShell.main(FsShell.java:391)
+2019-03-03 21:55:07,443 WARN hdfs.DFSClient: Failed to connect to /10.10.1.2:9866 for block BP-1481288943-130.127.133.53-1551675058794:blk_1073741887_1063, add to deadNodes and continue. 
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.hadoop.net.SocketIOWithTimeout.connect(SocketIOWithTimeout.java:206)
+	at org.apache.hadoop.net.NetUtils.connect(NetUtils.java:531)
+	at org.apache.hadoop.hdfs.DFSClient.newConnectedPeer(DFSClient.java:2924)
+	at org.apache.hadoop.hdfs.client.impl.BlockReaderFactory.nextTcpPeer(BlockReaderFactory.java:821)
+	at org.apache.hadoop.hdfs.client.impl.BlockReaderFactory.getRemoteBlockReaderFromTcp(BlockReaderFactory.java:746)
+	at org.apache.hadoop.hdfs.client.impl.BlockReaderFactory.build(BlockReaderFactory.java:379)
+	at org.apache.hadoop.hdfs.DFSInputStream.getBlockReader(DFSInputStream.java:641)
+	at org.apache.hadoop.hdfs.DFSInputStream.blockSeekTo(DFSInputStream.java:572)
+	at org.apache.hadoop.hdfs.DFSInputStream.readWithStrategy(DFSInputStream.java:754)
+	at org.apache.hadoop.hdfs.DFSInputStream.read(DFSInputStream.java:820)
+	at java.io.DataInputStream.read(DataInputStream.java:100)
+	at org.apache.hadoop.io.IOUtils.copyBytes(IOUtils.java:100)
+	at org.apache.hadoop.io.IOUtils.copyBytes(IOUtils.java:68)
+	at org.apache.hadoop.io.IOUtils.copyBytes(IOUtils.java:129)
+	at org.apache.hadoop.fs.shell.CommandWithDestination$TargetFileSystem.writeStreamToFile(CommandWithDestination.java:485)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.copyStreamToTarget(CommandWithDestination.java:407)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.copyFileToTarget(CommandWithDestination.java:342)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processPath(CommandWithDestination.java:277)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processPath(CommandWithDestination.java:262)
+	at org.apache.hadoop.fs.shell.Command.processPaths(Command.java:331)
+	at org.apache.hadoop.fs.shell.Command.processPathArgument(Command.java:303)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processPathArgument(CommandWithDestination.java:257)
+	at org.apache.hadoop.fs.shell.Command.processArgument(Command.java:285)
+	at org.apache.hadoop.fs.shell.Command.processArguments(Command.java:269)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processArguments(CommandWithDestination.java:228)
+	at org.apache.hadoop.fs.shell.FsCommand.processRawArguments(FsCommand.java:120)
+	at org.apache.hadoop.fs.shell.Command.run(Command.java:176)
+	at org.apache.hadoop.fs.FsShell.run(FsShell.java:328)
+	at org.apache.hadoop.util.ToolRunner.run(ToolRunner.java:76)
+	at org.apache.hadoop.util.ToolRunner.run(ToolRunner.java:90)
+	at org.apache.hadoop.fs.FsShell.main(FsShell.java:391)
+2019-03-03 21:55:07,447 INFO hdfs.DFSClient: Successfully connected to /10.10.1.5:9866 for BP-1481288943-130.127.133.53-1551675058794:blk_1073741887_1063
+file 6 has been read from HDFS for 7 time
+diff succeed!
+file 6 has been read from HDFS for 8 time
+diff succeed!
+file 6 has been read from HDFS for 9 time
+diff succeed!
+file 6 has been read from HDFS for 10 time
+diff succeed!
+Deleted /myfile6
+file 6 has been removed from HDFS
+Found 19 items
+-rw-r--r--   3 root supergroup 1073741824 2019-03-03 21:55 /myfile1
+-rw-r--r--   3 root supergroup  671088640 2019-03-03 21:56 /myfile10._COPYING_
+-rw-r--r--   3 root supergroup 1073741824 2019-03-03 21:55 /myfile11
+-rw-r--r--   3 root supergroup 1073741824 2019-03-03 21:56 /myfile13
+-rw-r--r--   3 root supergroup 1073741824 2019-03-03 21:56 /myfile14
+-rw-r--r--   3 root supergroup 1073741824 2019-03-03 21:56 /myfile15
+-rw-r--r--   3 root supergroup 1073741824 2019-03-03 21:56 /myfile16
+-rw-r--r--   3 root supergroup 1073741824 2019-03-03 21:53 /myfile17
+-rw-r--r--   3 root supergroup 1073741824 2019-03-03 21:55 /myfile18
+-rw-r--r--   3 root supergroup 1073741824 2019-03-03 21:56 /myfile19
+-rw-r--r--   3 root supergroup 1073741824 2019-03-03 21:56 /myfile2
+-rw-r--r--   3 root supergroup 1073741824 2019-03-03 21:56 /myfile20
+-rw-r--r--   3 root supergroup 1073741824 2019-03-03 21:56 /myfile3
+-rw-r--r--   3 root supergroup 1073741824 2019-03-03 21:56 /myfile4
+-rw-r--r--   3 root supergroup  939524096 2019-03-03 21:56 /myfile5._COPYING_
+-rw-r--r--   3 root supergroup 1073741824 2019-03-03 21:56 /myfile6
+-rw-r--r--   3 root supergroup 1073741824 2019-03-03 21:56 /myfile7
+-rw-r--r--   3 root supergroup 1073741824 2019-03-03 21:56 /myfile8
+-rw-r--r--   3 root supergroup 1073741824 2019-03-03 21:56 /myfile9
+file 6 has been put into HDFS
+file 6 has been read from HDFS for 1 time
+diff succeed!
+file 6 has been read from HDFS for 2 time
+diff succeed!
+file 6 has been read from HDFS for 3 time
+diff succeed!
+file 6 has been read from HDFS for 4 time
+diff succeed!
+file 6 has been read from HDFS for 5 time
+diff succeed!
+file 6 has been read from HDFS for 6 time
+diff succeed!
+file 6 has been read from HDFS for 7 time
+diff succeed!
+2019-03-03 21:59:13,145 WARN impl.BlockReaderFactory: I/O error constructing remote block reader.
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.hadoop.net.SocketIOWithTimeout.connect(SocketIOWithTimeout.java:206)
+	at org.apache.hadoop.net.NetUtils.connect(NetUtils.java:531)
+	at org.apache.hadoop.hdfs.DFSClient.newConnectedPeer(DFSClient.java:2924)
+	at org.apache.hadoop.hdfs.client.impl.BlockReaderFactory.nextTcpPeer(BlockReaderFactory.java:821)
+	at org.apache.hadoop.hdfs.client.impl.BlockReaderFactory.getRemoteBlockReaderFromTcp(BlockReaderFactory.java:746)
+	at org.apache.hadoop.hdfs.client.impl.BlockReaderFactory.build(BlockReaderFactory.java:379)
+	at org.apache.hadoop.hdfs.DFSInputStream.getBlockReader(DFSInputStream.java:641)
+	at org.apache.hadoop.hdfs.DFSInputStream.blockSeekTo(DFSInputStream.java:572)
+	at org.apache.hadoop.hdfs.DFSInputStream.readWithStrategy(DFSInputStream.java:754)
+	at org.apache.hadoop.hdfs.DFSInputStream.read(DFSInputStream.java:820)
+	at java.io.DataInputStream.read(DataInputStream.java:100)
+	at org.apache.hadoop.io.IOUtils.copyBytes(IOUtils.java:100)
+	at org.apache.hadoop.io.IOUtils.copyBytes(IOUtils.java:68)
+	at org.apache.hadoop.io.IOUtils.copyBytes(IOUtils.java:129)
+	at org.apache.hadoop.fs.shell.CommandWithDestination$TargetFileSystem.writeStreamToFile(CommandWithDestination.java:485)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.copyStreamToTarget(CommandWithDestination.java:407)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.copyFileToTarget(CommandWithDestination.java:342)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processPath(CommandWithDestination.java:277)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processPath(CommandWithDestination.java:262)
+	at org.apache.hadoop.fs.shell.Command.processPaths(Command.java:331)
+	at org.apache.hadoop.fs.shell.Command.processPathArgument(Command.java:303)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processPathArgument(CommandWithDestination.java:257)
+	at org.apache.hadoop.fs.shell.Command.processArgument(Command.java:285)
+	at org.apache.hadoop.fs.shell.Command.processArguments(Command.java:269)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processArguments(CommandWithDestination.java:228)
+	at org.apache.hadoop.fs.shell.FsCommand.processRawArguments(FsCommand.java:120)
+	at org.apache.hadoop.fs.shell.Command.run(Command.java:176)
+	at org.apache.hadoop.fs.FsShell.run(FsShell.java:328)
+	at org.apache.hadoop.util.ToolRunner.run(ToolRunner.java:76)
+	at org.apache.hadoop.util.ToolRunner.run(ToolRunner.java:90)
+	at org.apache.hadoop.fs.FsShell.main(FsShell.java:391)
+2019-03-03 21:59:13,152 WARN hdfs.DFSClient: Failed to connect to /10.10.1.2:9866 for block BP-1481288943-130.127.133.53-1551675058794:blk_1073742058_1249, add to deadNodes and continue. 
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.hadoop.net.SocketIOWithTimeout.connect(SocketIOWithTimeout.java:206)
+	at org.apache.hadoop.net.NetUtils.connect(NetUtils.java:531)
+	at org.apache.hadoop.hdfs.DFSClient.newConnectedPeer(DFSClient.java:2924)
+	at org.apache.hadoop.hdfs.client.impl.BlockReaderFactory.nextTcpPeer(BlockReaderFactory.java:821)
+	at org.apache.hadoop.hdfs.client.impl.BlockReaderFactory.getRemoteBlockReaderFromTcp(BlockReaderFactory.java:746)
+	at org.apache.hadoop.hdfs.client.impl.BlockReaderFactory.build(BlockReaderFactory.java:379)
+	at org.apache.hadoop.hdfs.DFSInputStream.getBlockReader(DFSInputStream.java:641)
+	at org.apache.hadoop.hdfs.DFSInputStream.blockSeekTo(DFSInputStream.java:572)
+	at org.apache.hadoop.hdfs.DFSInputStream.readWithStrategy(DFSInputStream.java:754)
+	at org.apache.hadoop.hdfs.DFSInputStream.read(DFSInputStream.java:820)
+	at java.io.DataInputStream.read(DataInputStream.java:100)
+	at org.apache.hadoop.io.IOUtils.copyBytes(IOUtils.java:100)
+	at org.apache.hadoop.io.IOUtils.copyBytes(IOUtils.java:68)
+	at org.apache.hadoop.io.IOUtils.copyBytes(IOUtils.java:129)
+	at org.apache.hadoop.fs.shell.CommandWithDestination$TargetFileSystem.writeStreamToFile(CommandWithDestination.java:485)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.copyStreamToTarget(CommandWithDestination.java:407)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.copyFileToTarget(CommandWithDestination.java:342)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processPath(CommandWithDestination.java:277)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processPath(CommandWithDestination.java:262)
+	at org.apache.hadoop.fs.shell.Command.processPaths(Command.java:331)
+	at org.apache.hadoop.fs.shell.Command.processPathArgument(Command.java:303)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processPathArgument(CommandWithDestination.java:257)
+	at org.apache.hadoop.fs.shell.Command.processArgument(Command.java:285)
+	at org.apache.hadoop.fs.shell.Command.processArguments(Command.java:269)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processArguments(CommandWithDestination.java:228)
+	at org.apache.hadoop.fs.shell.FsCommand.processRawArguments(FsCommand.java:120)
+	at org.apache.hadoop.fs.shell.Command.run(Command.java:176)
+	at org.apache.hadoop.fs.FsShell.run(FsShell.java:328)
+	at org.apache.hadoop.util.ToolRunner.run(ToolRunner.java:76)
+	at org.apache.hadoop.util.ToolRunner.run(ToolRunner.java:90)
+	at org.apache.hadoop.fs.FsShell.main(FsShell.java:391)
+2019-03-03 21:59:13,159 INFO hdfs.DFSClient: Successfully connected to /10.10.1.4:9866 for BP-1481288943-130.127.133.53-1551675058794:blk_1073742058_1249
+file 6 has been read from HDFS for 8 time
+diff succeed!
+2019-03-03 21:59:34,320 WARN impl.BlockReaderFactory: I/O error constructing remote block reader.
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.hadoop.net.SocketIOWithTimeout.connect(SocketIOWithTimeout.java:206)
+	at org.apache.hadoop.net.NetUtils.connect(NetUtils.java:531)
+	at org.apache.hadoop.hdfs.DFSClient.newConnectedPeer(DFSClient.java:2924)
+	at org.apache.hadoop.hdfs.client.impl.BlockReaderFactory.nextTcpPeer(BlockReaderFactory.java:821)
+	at org.apache.hadoop.hdfs.client.impl.BlockReaderFactory.getRemoteBlockReaderFromTcp(BlockReaderFactory.java:746)
+	at org.apache.hadoop.hdfs.client.impl.BlockReaderFactory.build(BlockReaderFactory.java:379)
+	at org.apache.hadoop.hdfs.DFSInputStream.getBlockReader(DFSInputStream.java:641)
+	at org.apache.hadoop.hdfs.DFSInputStream.blockSeekTo(DFSInputStream.java:572)
+	at org.apache.hadoop.hdfs.DFSInputStream.readWithStrategy(DFSInputStream.java:754)
+	at org.apache.hadoop.hdfs.DFSInputStream.read(DFSInputStream.java:820)
+	at java.io.DataInputStream.read(DataInputStream.java:100)
+	at org.apache.hadoop.io.IOUtils.copyBytes(IOUtils.java:100)
+	at org.apache.hadoop.io.IOUtils.copyBytes(IOUtils.java:68)
+	at org.apache.hadoop.io.IOUtils.copyBytes(IOUtils.java:129)
+	at org.apache.hadoop.fs.shell.CommandWithDestination$TargetFileSystem.writeStreamToFile(CommandWithDestination.java:485)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.copyStreamToTarget(CommandWithDestination.java:407)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.copyFileToTarget(CommandWithDestination.java:342)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processPath(CommandWithDestination.java:277)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processPath(CommandWithDestination.java:262)
+	at org.apache.hadoop.fs.shell.Command.processPaths(Command.java:331)
+	at org.apache.hadoop.fs.shell.Command.processPathArgument(Command.java:303)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processPathArgument(CommandWithDestination.java:257)
+	at org.apache.hadoop.fs.shell.Command.processArgument(Command.java:285)
+	at org.apache.hadoop.fs.shell.Command.processArguments(Command.java:269)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processArguments(CommandWithDestination.java:228)
+	at org.apache.hadoop.fs.shell.FsCommand.processRawArguments(FsCommand.java:120)
+	at org.apache.hadoop.fs.shell.Command.run(Command.java:176)
+	at org.apache.hadoop.fs.FsShell.run(FsShell.java:328)
+	at org.apache.hadoop.util.ToolRunner.run(ToolRunner.java:76)
+	at org.apache.hadoop.util.ToolRunner.run(ToolRunner.java:90)
+	at org.apache.hadoop.fs.FsShell.main(FsShell.java:391)
+2019-03-03 21:59:34,327 WARN hdfs.DFSClient: Failed to connect to /10.10.1.2:9866 for block BP-1481288943-130.127.133.53-1551675058794:blk_1073742058_1249, add to deadNodes and continue. 
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.hadoop.net.SocketIOWithTimeout.connect(SocketIOWithTimeout.java:206)
+	at org.apache.hadoop.net.NetUtils.connect(NetUtils.java:531)
+	at org.apache.hadoop.hdfs.DFSClient.newConnectedPeer(DFSClient.java:2924)
+	at org.apache.hadoop.hdfs.client.impl.BlockReaderFactory.nextTcpPeer(BlockReaderFactory.java:821)
+	at org.apache.hadoop.hdfs.client.impl.BlockReaderFactory.getRemoteBlockReaderFromTcp(BlockReaderFactory.java:746)
+	at org.apache.hadoop.hdfs.client.impl.BlockReaderFactory.build(BlockReaderFactory.java:379)
+	at org.apache.hadoop.hdfs.DFSInputStream.getBlockReader(DFSInputStream.java:641)
+	at org.apache.hadoop.hdfs.DFSInputStream.blockSeekTo(DFSInputStream.java:572)
+	at org.apache.hadoop.hdfs.DFSInputStream.readWithStrategy(DFSInputStream.java:754)
+	at org.apache.hadoop.hdfs.DFSInputStream.read(DFSInputStream.java:820)
+	at java.io.DataInputStream.read(DataInputStream.java:100)
+	at org.apache.hadoop.io.IOUtils.copyBytes(IOUtils.java:100)
+	at org.apache.hadoop.io.IOUtils.copyBytes(IOUtils.java:68)
+	at org.apache.hadoop.io.IOUtils.copyBytes(IOUtils.java:129)
+	at org.apache.hadoop.fs.shell.CommandWithDestination$TargetFileSystem.writeStreamToFile(CommandWithDestination.java:485)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.copyStreamToTarget(CommandWithDestination.java:407)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.copyFileToTarget(CommandWithDestination.java:342)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processPath(CommandWithDestination.java:277)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processPath(CommandWithDestination.java:262)
+	at org.apache.hadoop.fs.shell.Command.processPaths(Command.java:331)
+	at org.apache.hadoop.fs.shell.Command.processPathArgument(Command.java:303)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processPathArgument(CommandWithDestination.java:257)
+	at org.apache.hadoop.fs.shell.Command.processArgument(Command.java:285)
+	at org.apache.hadoop.fs.shell.Command.processArguments(Command.java:269)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processArguments(CommandWithDestination.java:228)
+	at org.apache.hadoop.fs.shell.FsCommand.processRawArguments(FsCommand.java:120)
+	at org.apache.hadoop.fs.shell.Command.run(Command.java:176)
+	at org.apache.hadoop.fs.FsShell.run(FsShell.java:328)
+	at org.apache.hadoop.util.ToolRunner.run(ToolRunner.java:76)
+	at org.apache.hadoop.util.ToolRunner.run(ToolRunner.java:90)
+	at org.apache.hadoop.fs.FsShell.main(FsShell.java:391)
+2019-03-03 21:59:34,333 INFO hdfs.DFSClient: Successfully connected to /10.10.1.4:9866 for BP-1481288943-130.127.133.53-1551675058794:blk_1073742058_1249
+file 6 has been read from HDFS for 9 time
+diff succeed!
+2019-03-03 21:59:58,538 WARN impl.BlockReaderFactory: I/O error constructing remote block reader.
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.hadoop.net.SocketIOWithTimeout.connect(SocketIOWithTimeout.java:206)
+	at org.apache.hadoop.net.NetUtils.connect(NetUtils.java:531)
+	at org.apache.hadoop.hdfs.DFSClient.newConnectedPeer(DFSClient.java:2924)
+	at org.apache.hadoop.hdfs.client.impl.BlockReaderFactory.nextTcpPeer(BlockReaderFactory.java:821)
+	at org.apache.hadoop.hdfs.client.impl.BlockReaderFactory.getRemoteBlockReaderFromTcp(BlockReaderFactory.java:746)
+	at org.apache.hadoop.hdfs.client.impl.BlockReaderFactory.build(BlockReaderFactory.java:379)
+	at org.apache.hadoop.hdfs.DFSInputStream.getBlockReader(DFSInputStream.java:641)
+	at org.apache.hadoop.hdfs.DFSInputStream.blockSeekTo(DFSInputStream.java:572)
+	at org.apache.hadoop.hdfs.DFSInputStream.readWithStrategy(DFSInputStream.java:754)
+	at org.apache.hadoop.hdfs.DFSInputStream.read(DFSInputStream.java:820)
+	at java.io.DataInputStream.read(DataInputStream.java:100)
+	at org.apache.hadoop.io.IOUtils.copyBytes(IOUtils.java:100)
+	at org.apache.hadoop.io.IOUtils.copyBytes(IOUtils.java:68)
+	at org.apache.hadoop.io.IOUtils.copyBytes(IOUtils.java:129)
+	at org.apache.hadoop.fs.shell.CommandWithDestination$TargetFileSystem.writeStreamToFile(CommandWithDestination.java:485)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.copyStreamToTarget(CommandWithDestination.java:407)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.copyFileToTarget(CommandWithDestination.java:342)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processPath(CommandWithDestination.java:277)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processPath(CommandWithDestination.java:262)
+	at org.apache.hadoop.fs.shell.Command.processPaths(Command.java:331)
+	at org.apache.hadoop.fs.shell.Command.processPathArgument(Command.java:303)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processPathArgument(CommandWithDestination.java:257)
+	at org.apache.hadoop.fs.shell.Command.processArgument(Command.java:285)
+	at org.apache.hadoop.fs.shell.Command.processArguments(Command.java:269)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processArguments(CommandWithDestination.java:228)
+	at org.apache.hadoop.fs.shell.FsCommand.processRawArguments(FsCommand.java:120)
+	at org.apache.hadoop.fs.shell.Command.run(Command.java:176)
+	at org.apache.hadoop.fs.FsShell.run(FsShell.java:328)
+	at org.apache.hadoop.util.ToolRunner.run(ToolRunner.java:76)
+	at org.apache.hadoop.util.ToolRunner.run(ToolRunner.java:90)
+	at org.apache.hadoop.fs.FsShell.main(FsShell.java:391)
+2019-03-03 21:59:58,544 WARN hdfs.DFSClient: Failed to connect to /10.10.1.2:9866 for block BP-1481288943-130.127.133.53-1551675058794:blk_1073742071_1262, add to deadNodes and continue. 
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.hadoop.net.SocketIOWithTimeout.connect(SocketIOWithTimeout.java:206)
+	at org.apache.hadoop.net.NetUtils.connect(NetUtils.java:531)
+	at org.apache.hadoop.hdfs.DFSClient.newConnectedPeer(DFSClient.java:2924)
+	at org.apache.hadoop.hdfs.client.impl.BlockReaderFactory.nextTcpPeer(BlockReaderFactory.java:821)
+	at org.apache.hadoop.hdfs.client.impl.BlockReaderFactory.getRemoteBlockReaderFromTcp(BlockReaderFactory.java:746)
+	at org.apache.hadoop.hdfs.client.impl.BlockReaderFactory.build(BlockReaderFactory.java:379)
+	at org.apache.hadoop.hdfs.DFSInputStream.getBlockReader(DFSInputStream.java:641)
+	at org.apache.hadoop.hdfs.DFSInputStream.blockSeekTo(DFSInputStream.java:572)
+	at org.apache.hadoop.hdfs.DFSInputStream.readWithStrategy(DFSInputStream.java:754)
+	at org.apache.hadoop.hdfs.DFSInputStream.read(DFSInputStream.java:820)
+	at java.io.DataInputStream.read(DataInputStream.java:100)
+	at org.apache.hadoop.io.IOUtils.copyBytes(IOUtils.java:100)
+	at org.apache.hadoop.io.IOUtils.copyBytes(IOUtils.java:68)
+	at org.apache.hadoop.io.IOUtils.copyBytes(IOUtils.java:129)
+	at org.apache.hadoop.fs.shell.CommandWithDestination$TargetFileSystem.writeStreamToFile(CommandWithDestination.java:485)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.copyStreamToTarget(CommandWithDestination.java:407)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.copyFileToTarget(CommandWithDestination.java:342)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processPath(CommandWithDestination.java:277)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processPath(CommandWithDestination.java:262)
+	at org.apache.hadoop.fs.shell.Command.processPaths(Command.java:331)
+	at org.apache.hadoop.fs.shell.Command.processPathArgument(Command.java:303)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processPathArgument(CommandWithDestination.java:257)
+	at org.apache.hadoop.fs.shell.Command.processArgument(Command.java:285)
+	at org.apache.hadoop.fs.shell.Command.processArguments(Command.java:269)
+	at org.apache.hadoop.fs.shell.CommandWithDestination.processArguments(CommandWithDestination.java:228)
+	at org.apache.hadoop.fs.shell.FsCommand.processRawArguments(FsCommand.java:120)
+	at org.apache.hadoop.fs.shell.Command.run(Command.java:176)
+	at org.apache.hadoop.fs.FsShell.run(FsShell.java:328)
+	at org.apache.hadoop.util.ToolRunner.run(ToolRunner.java:76)
+	at org.apache.hadoop.util.ToolRunner.run(ToolRunner.java:90)
+	at org.apache.hadoop.fs.FsShell.main(FsShell.java:391)
+2019-03-03 21:59:58,550 INFO hdfs.DFSClient: Successfully connected to /10.10.1.3:9866 for BP-1481288943-130.127.133.53-1551675058794:blk_1073742071_1262
+file 6 has been read from HDFS for 10 time
+diff succeed!
+Deleted /myfile6
+file 6 has been removed from HDFS
+2019-03-03 22:00:34,407 INFO hdfs.DataStreamer: Exception in createBlockOutputStream blk_1073742206_1397
+java.io.IOException: Got error, status=ERROR, status message , ack with firstBadLink as 10.10.1.2:9866
+	at org.apache.hadoop.hdfs.protocol.datatransfer.DataTransferProtoUtil.checkBlockOpStatus(DataTransferProtoUtil.java:134)
+	at org.apache.hadoop.hdfs.protocol.datatransfer.DataTransferProtoUtil.checkBlockOpStatus(DataTransferProtoUtil.java:110)
+	at org.apache.hadoop.hdfs.DataStreamer.createBlockOutputStream(DataStreamer.java:1778)
+	at org.apache.hadoop.hdfs.DataStreamer.nextBlockOutputStream(DataStreamer.java:1679)
+	at org.apache.hadoop.hdfs.DataStreamer.run(DataStreamer.java:716)
+2019-03-03 22:00:34,416 WARN hdfs.DataStreamer: Abandoning BP-1481288943-130.127.133.53-1551675058794:blk_1073742206_1397
+2019-03-03 22:00:34,434 WARN hdfs.DataStreamer: Excluding datanode DatanodeInfoWithStorage[10.10.1.2:9866,DS-9cb844ff-f350-433c-8a05-5d66cc32d94c,DISK]
+Found 16 items
+-rw-r--r--   3 root supergroup 1073741824 2019-03-03 21:59 /myfile1
+-rw-r--r--   3 root supergroup  536870912 2019-03-03 22:00 /myfile10._COPYING_
+-rw-r--r--   3 root supergroup 1073741824 2019-03-03 21:59 /myfile11
+-rw-r--r--   3 root supergroup  671088640 2019-03-03 22:00 /myfile12._COPYING_
+-rw-r--r--   3 root supergroup 1073741824 2019-03-03 22:00 /myfile15
+-rw-r--r--   3 root supergroup 1073741824 2019-03-03 22:00 /myfile16
+-rw-r--r--   3 root supergroup 1073741824 2019-03-03 21:58 /myfile17
+-rw-r--r--   3 root supergroup 1073741824 2019-03-03 22:00 /myfile18
+-rw-r--r--   3 root supergroup          0 2019-03-03 22:00 /myfile19._COPYING_
+-rw-r--r--   3 root supergroup 1073741824 2019-03-03 22:00 /myfile2
+-rw-r--r--   3 root supergroup 1073741824 2019-03-03 21:56 /myfile4
+-rw-r--r--   3 root supergroup 1073741824 2019-03-03 21:56 /myfile5
+-rw-r--r--   3 root supergroup 1073741824 2019-03-03 22:00 /myfile6
+-rw-r--r--   3 root supergroup 1073741824 2019-03-03 21:56 /myfile7
+-rw-r--r--   3 root supergroup  134217728 2019-03-03 22:00 /myfile8._COPYING_
+-rw-r--r--   3 root supergroup  805306368 2019-03-03 22:00 /myfile9._COPYING_
+file 6 has been put into HDFS
+file 6 has been read from HDFS for 1 time
+diff succeed!
+file 6 has been read from HDFS for 2 time
+diff succeed!
+file 6 has been read from HDFS for 3 time
+diff succeed!
+file 6 has been read from HDFS for 4 time
+diff succeed!
+file 6 has been read from HDFS for 5 time
+diff succeed!
+file 6 has been read from HDFS for 6 time
+diff succeed!
+file 6 has been read from HDFS for 7 time
+diff succeed!
+file 6 has been read from HDFS for 8 time
+diff succeed!
+file 6 has been read from HDFS for 9 time
+diff succeed!
+file 6 has been read from HDFS for 10 time
+diff succeed!
+Deleted /myfile6
+file 6 has been removed from HDFS
+Found 16 items
+-rw-r--r--   3 root supergroup 1073741824 2019-03-03 22:04 /myfile1
+-rw-r--r--   3 root supergroup 1073741824 2019-03-03 22:00 /myfile10
+-rw-r--r--   3 root supergroup 1073741824 2019-03-03 22:04 /myfile11
+-rw-r--r--   3 root supergroup          0 2019-03-03 22:04 /myfile12._COPYING_
+-rw-r--r--   3 root supergroup 1073741824 2019-03-03 22:00 /myfile13
+-rw-r--r--   3 root supergroup 1073741824 2019-03-03 22:00 /myfile16
+-rw-r--r--   3 root supergroup 1073741824 2019-03-03 22:02 /myfile17
+-rw-r--r--   3 root supergroup 1073741824 2019-03-03 22:00 /myfile18
+-rw-r--r--   3 root supergroup 1073741824 2019-03-03 22:00 /myfile2
+-rw-r--r--   3 root supergroup 1073741824 2019-03-03 22:00 /myfile20
+-rw-r--r--   3 root supergroup 1073741824 2019-03-03 22:01 /myfile4
+-rw-r--r--   3 root supergroup 1073741824 2019-03-03 22:02 /myfile5
+-rw-r--r--   3 root supergroup 1073741824 2019-03-03 22:04 /myfile6
+-rw-r--r--   3 root supergroup 1073741824 2019-03-03 22:01 /myfile7
+-rw-r--r--   3 root supergroup          0 2019-03-03 22:04 /myfile8._COPYING_
+-rw-r--r--   3 root supergroup 1073741824 2019-03-03 22:00 /myfile9
+file 6 has been put into HDFS
+file 6 has been read from HDFS for 1 time
+diff succeed!
+file 6 has been read from HDFS for 2 time
+diff succeed!
+file 6 has been read from HDFS for 3 time
+diff succeed!
+sub_benchmark 4 signal TERM catched and let quit gracefully
+file 6 has been read from HDFS for 4 time
+diff succeed!
+Deleted /myfile6
+file 6 has been removed from HDFS
