@@ -1,1 +1,0 @@
-for filename in dfs.*; do echo $filename; echo ""; ret=$(grep -rn -v 'ioctl\|BlockPlacementPolicy\|BlockStoragePolicy\|SIGTERM\|InterruptedException' $filename | grep "ERROR\|failed\|Failed\|Exception\|exception"); if [ "$ret" ]; then mv $filename to_check; fi; done; 

@@ -7,7 +7,7 @@ fi
 
 # if a script wants to be executed by itself, 
 # it needs to load global variables
- . $TEST_HOME/sbin/global_var.sh
+. $TEST_HOME/sbin/global_var.sh
 
 if [ "$#" -ne 2 ]
 then
@@ -27,7 +27,7 @@ function switch_active {
     
     # stop active namenode
     ssh $active "$HADOOP_HOME/bin/hdfs --daemon stop namenode"
-    sleep 15
+    sleep 20
     
     # change configuration to file xxx
     scp $new_conf $active:$HADOOP_HOME/etc/hadoop

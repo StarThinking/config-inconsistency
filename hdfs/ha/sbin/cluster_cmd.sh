@@ -20,13 +20,15 @@ init_conf=$2
 shift 1
 
 function start {
-    # create hdfs workers file according to datanodes parameter
+    # datanodes parameter --> hdfs etc/workers 
     > $TEST_HOME/etc/workers
     for i in ${datanodes[@]}
     do
-        echo node-$i-link-0 >> $TEST_HOME/etc/workers
+        echo node-"$i"-link-0 >> $TEST_HOME/etc/workers
     done
 
+    # jnodes --> etc/hdfs-site.xml and hdfs-site-template.xml
+   
     # copy default configuration to all nodes
     for i in ${allnodes[@]}
     do
@@ -44,8 +46,8 @@ function start {
     # start journal nodes
     for i in ${jnodes[@]}
     do
-        ssh node-$i-link-0 "mkdir /root/journal"
-        ssh node-$i-link-0 "$HADOOP_HOME/bin/hdfs --daemon start journalnode"
+        #ssh node-$i-link-0 "mkdir /root/journal"
+        ssh node-"$i"-link-0 "$HADOOP_HOME/bin/hdfs --daemon start journalnode"
     done   
     sleep 5
 
@@ -62,7 +64,7 @@ function start {
     $HADOOP_HOME/bin/hdfs --daemon stop namenode
     for i in ${jnodes[@]}
     do
-        ssh node-$i-link-0 "$HADOOP_HOME/bin/hdfs --daemon stop journalnode"
+        ssh node-"$i"-link-0 "$HADOOP_HOME/bin/hdfs --daemon stop journalnode"
     done
 
     ### START AUTOMATIC FAILOVER ###
@@ -74,9 +76,10 @@ function start {
         ssh node-"$i"-link-0 "mkdir /root/zookeeper-data"
     done
 
-    ssh node-0-link-0 "echo 1 > /root/zookeeper-data/myid"
-    ssh node-1-link-0 "echo 2 > /root/zookeeper-data/myid"
-    ssh node-5-link-0 "echo 3 > /root/zookeeper-data/myid"
+    for i in $(seq 0 2)
+    do
+        ssh node-${znodes[$i]}-link-0 "echo ${znode_ids[$i]} > /root/zookeeper-data/myid"
+    done 
 
     for i in ${znodes[@]}
     do
@@ -86,13 +89,13 @@ function start {
     # prepare datanode dir
     for i in ${datanodes[@]}
     do
-        ssh node-"$i"-link-0  "rm -rf $hadoop_data_dir/*"
+        ssh node-"$i"-link-0 "rm -rf $hadoop_data_dir/*"
     done
 
     # init zookeeper
+    sleep 5
     $HADOOP_HOME/bin/hdfs zkfc -formatZK
 
-    
     $HADOOP_HOME/sbin/start-dfs.sh
     $HADOOP_HOME/bin/hdfs haadmin -getAllServiceState
 }
@@ -109,7 +112,12 @@ function stop {
 
     for i in ${datanodes[@]}
     do
-        ssh node-"$i"-link-0 "rm -rf $hadoop_data_dir/*; rm -rf /root/journal; rm $HADOOP_HOME/logs/*"
+        ssh node-"$i"-link-0 "rm -rf $hadoop_data_dir/*; rm -rf $HADOOP_HOME/logs/*"
+    done
+    
+    for i in ${jnodes[@]}
+    do
+        ssh node-"$i"-link-0 "rm -rf $journal_dir/*; rm -rf $HADOOP_HOME/logs/*"
     done
     
     # stop and clear up zookeeper
@@ -144,8 +152,11 @@ function collectlog {
         scp node-"$i"-link-0:$HADOOP_HOME/logs/hadoop-root-journalnode* $test/all_logs/jnodes
     done
    
-    scp node-"$clientnode"-link-0:/tmp/client*.log $test/all_logs/clients
-    ssh node-"$clientnode"-link-0 "rm /tmp/client*.log"
+    for i in ${clients[@]}
+    do
+        scp node-"$i"-link-0:/tmp/client*.log $test/all_logs/clients
+        ssh node-"$i"-link-0 "rm /tmp/client*.log"
+    done
 
     cp $TEST_HOME/sbin/run_test.sh $test/all_logs/
     cp $HADOOP_HOME/etc/hadoop/hdfs-site.xml $test/all_logs/hdfs-site.xml.init

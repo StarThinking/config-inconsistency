@@ -11,8 +11,9 @@ fi
 . $TEST_HOME/sbin/global_var.sh
 
 # benchmark parameters
-read_times=10
-benchmark_threads=20
+command=$1
+read_times=$2
+benchmark_threads=$3
 
 # run benchmark
 function start_benchmark { 
@@ -55,16 +56,15 @@ function stop_benchmark {
     done
 }
 
-if [ "$#" -ne 1 ]; then
+if [ "$#" -lt 1 ]; then
     echo "benchmark.sh [start|stop]"
     exit
 fi
 
-command=$1
 if [ $command == "start" ]; then
     start_benchmark
 elif [ $command == "stop" ]; then
     stop_benchmark
 else
-    echo "error: wrong arguments. benchmark.sh [start|stop]"
+    echo "error: wrong arguments. benchmark.sh [start|stop] optional: [read_times] [benchmark_threads]"
 fi
