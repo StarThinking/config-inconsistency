@@ -82,8 +82,13 @@ if [ $test_mode = "default" ] || [ $test_mode = "test" ]; then
     do
         # change configuration to be as given file
         $TEST_HOME/sbin/reconf.sh $reconf_type $testdir/hdfs-site.xml
+        reconf_ret=$?
+        if [ $reconf_ret != 0 ]; then
+	    echo "TEST_ERROR: reconf $reconf_type failed"
+	    break
+	fi
         
-        sleep $waittime
+	sleep $waittime
     
         # change configuration as the given conf file
         if [ $test_mode = "default" ]; then
@@ -91,6 +96,12 @@ if [ $test_mode = "default" ] || [ $test_mode = "test" ]; then
         else
             $TEST_HOME/sbin/reconf.sh $reconf_type $testdir/hdfs-site.xml
         fi
+        
+        reconf_ret=$?
+        if [ $reconf_ret != 0 ]; then
+	    echo "TEST_ERROR: reconf $reconf_type failed"
+            break
+	fi
         
         sleep $waittime
     done

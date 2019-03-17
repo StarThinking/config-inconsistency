@@ -21,7 +21,7 @@ do
 	
 	local res=$(diff $large_file_dir_tmp/myfile"$id" $large_file_dir/myfile"$id")
 	if [ "$res" != "" ]; then
-		echo "Error: diff failed!"
+		echo "TEST_ERROR: diff failed!"
 	else	
 		echo "diff succeed!"
 	fi
