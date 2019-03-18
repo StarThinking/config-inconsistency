@@ -18,7 +18,6 @@ fi
 name=$1
 reconf_type=$2
 
-# return true or false
 function verify_input {
     local value=$1
     local test_mode=verifyinput
@@ -36,12 +35,12 @@ function verify_input {
     
     for err in ${errors[@]}
     do
-        local found=$(grep $err $TEST_HOME/sbin/normal_error.txt)
+        local found=$(grep $err $TEST_HOME/sbin/"$reconf_type"_base.txt)
 	if [ "$found" != "" ]; then
    	    #echo "$err found in normal_error"
 	    continue
 	else
-	    echo "$err NOT found in normal_error"
+	    echo "$err NOT found in base error set"
 	    ret=1 
 	fi
     done
