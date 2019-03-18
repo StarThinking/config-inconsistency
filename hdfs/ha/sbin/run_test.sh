@@ -21,7 +21,7 @@ test_mode=$4 # default, test, verifyinput
 round=$5
 waittime=$6
 read_times=5 # default value
-benchmark_threads=20 # default value
+benchmark_threads=10 # default value
 if [ $# -eq 8 ]; then
     read_times=$7
     benchmark_threads=$8

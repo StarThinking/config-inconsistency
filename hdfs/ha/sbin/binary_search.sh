@@ -32,7 +32,7 @@ function verify_input {
 
     $TEST_HOME/sbin/run_test.sh $name $value $reconf_type $test_mode $round $waittime $read_times $benchmark_threads
     testdir="$TEST_HOME"/"$name"-"$value"-"$test_mode"-"$round"-"$waittime"
-    errors=($(grep -r "WARN\|ERROR" $testdir | awk -F " " '{ if ($3 == "WARN" || $3 == "ERROR") print $5}' | sort -u))
+    errors=($(grep -r "WARN\|ERROR\|FATAL" $testdir | awk -F " " '{ if ($3 == "WARN" || $3 == "ERROR") print $5}' | sort -u))
     
     for err in ${errors[@]}
     do
