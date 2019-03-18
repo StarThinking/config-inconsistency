@@ -5,19 +5,31 @@ if [ -z "$TEST_HOME" ]; then
     exit
 fi
 
+if [ $# -ne 2 ]; then
+    echo "./verify_result.sh [testdir] [reconf_type]"
+    exit
+fi
+
 testdir=$1
 reconf_type=$2
 ret=0
 error_base=$TEST_HOME/sbin/base_error_set/"$reconf_type"_base.txt
 
-# check if test itself and client is valid
-test_error=$(grep -r TEST_ERROR $testdir) 
-if [ "$test_error" != "" ]; then
-    echo "Error: test_error found!"
+# check errors in test log
+run_error=$(grep -r TEST_ERROR $testdir/run.log) 
+if [ "$run_error" != "" ]; then
+    echo "Error: TEST_ERROR found in run.log!"
     ret=1
 fi
 
-# check HDFS
+# check errors in client log
+client_error=$(grep -r TEST_ERROR $testdir/all_logs/clients) 
+if [ "$client_error" != "" ]; then
+    echo "Error: TEST_ERROR found in clients!"
+    ret=1
+fi
+
+# check errors HDFS log
 errors=($(grep -r "WARN\|ERROR\|FATAL" $testdir | awk -F " " '{ if ($3 == "WARN" || $3 == "ERROR") print $5}' | sort -u))
 
 for err in ${errors[@]}
