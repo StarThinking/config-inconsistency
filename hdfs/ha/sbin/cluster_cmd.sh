@@ -108,7 +108,7 @@ function stop {
     for i in ${namenodes[@]}
     do
         ssh node-"$i"-link-0 "rm -rf /tmp/hadoop-root; rm -rf $HADOOP_HOME/logs/*"
-	ssh node-"$i"-link-0 "kill -9 DFSZKFailoverController; pkill -9 NameNode"
+	ssh node-"$i"-link-0 "pkill -9 DFSZKFailoverController; pkill -9 NameNode"
     done
 
     for i in ${datanodes[@]}
