@@ -84,5 +84,6 @@ function find_minimum {
 }
 
 find_minimum
-echo "the minimum value for parameter $name is $?"
-
+minimum_value=$?
+echo "the minimum value for parameter $name is $minimum_value"
+$TEST_HOME/sbin/run_test.sh $name $minimum_value namenode default 1 300 10 5

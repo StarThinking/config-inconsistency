@@ -47,8 +47,7 @@ function stop_client {
     echo "stop benchmark signal sent"
     #wait $client_benchmark_main_pid
     sleep 30
-    ssh node-$i-link-0 "ps aux | grep benchmark.sh | awk -F ' ' '{print $2}' | xargs kill -9"
-    ssh node-$i-link-0 "ps aux | grep FsShell | awk -F ' ' '{print $2}' | xargs kill -9"
+    ssh node-$i-link-0 "$TEST_HOME/sbin/kill_benchmark.sh"
     echo "all benchmark sub processes on the client node has exited"
 }
 

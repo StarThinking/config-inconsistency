@@ -41,7 +41,7 @@ function switch_active { # return 0 if success, 1 if error
 	    sleep 2
 	    tries=$(( tries + 1 ))
 	    if [ $tries -gt $max_try ]; then
-		echo "after $tries tries turn ACTIVE failed"
+		echo "TEST_ERROR: after $tries tries turn ACTIVE failed"
 		return 1; # report error
 	    fi
 	fi
@@ -67,7 +67,7 @@ function switch_active { # return 0 if success, 1 if error
             sleep 2
             tries=$(( tries + 1 ))
             if [ $tries -gt $max_try ]; then
-		echo "after $tries tries turn STANDBY failed"
+		echo "TEST_ERROR: after $tries tries turn STANDBY failed"
                 return 1; # report error
             fi
         fi
