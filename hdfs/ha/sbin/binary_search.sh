@@ -9,18 +9,22 @@ fi
 # it needs to load global variables
 . $TEST_HOME/sbin/global_var.sh
 
-if [ "$#" -ne 2 ]
+if [ "$#" -ne 3 ]
 then
-    echo "./binary_search.sh [name] [reconf_type]"
+    echo "./binary_search.sh [name] [reconf_type] [time_senestive]"
     exit
 fi
 
 name=$1
 reconf_type=$2
+time_sense=$3
 
 function verify_input {
     local value=$1
     local test_mode=verifyinput
+    if [ $time_sense -eq 1 ]; then
+        test_mode=test
+    fi
     local round=1
     local waittime=30
     local ret=0 # 0 if ok, 1 if not ok
@@ -56,6 +60,10 @@ function find_minimum {
 	fi
     done
 
+    if [ $time_sense -eq 1 ]; then
+	return $range_end
+    fi
+
     local lowest=$(( (range_start + range_end ) / 2 ))
     if [ $range_start -eq $range_end ]; then
 	return $lowest
@@ -87,4 +95,4 @@ find_minimum
 minimum_value=$?
 echo "the minimum value for parameter $name is $minimum_value"
 $TEST_HOME/sbin/run_test.sh $name $minimum_value namenode default 1 300 10 5
-$TEST_HOME/sbin/run_test.sh $name $minimum_value namenode test 1 300 10 5
+#$TEST_HOME/sbin/run_test.sh $name $minimum_value namenode test 1 300 10 5
