@@ -108,23 +108,32 @@ function stop {
     for i in ${namenodes[@]}
     do
         ssh node-"$i"-link-0 "rm -rf /tmp/hadoop-root; rm -rf $HADOOP_HOME/logs/*"
+	ssh node-"$i"-link-0 "kill -9 DFSZKFailoverController; pkill -9 NameNode"
     done
 
     for i in ${datanodes[@]}
     do
         ssh node-"$i"-link-0 "rm -rf $hadoop_data_dir/*; rm -rf $HADOOP_HOME/logs/*"
+	ssh node-"$i"-link-0 "pkill -9 DataNode"
     done
     
     for i in ${jnodes[@]}
     do
         ssh node-"$i"-link-0 "rm -rf $journal_dir/*; rm -rf $HADOOP_HOME/logs/*"
+	ssh node-"$i"-link-0 "pkill -9 JournalNode"
     done
-    
+
+    for i in ${clients[@]}
+    do
+	 ssh node-$i-link-0 "$TEST_HOME/sbin/kill_benchmark.sh"    
+    done    
+ 
     # stop and clear up zookeeper
     echo "stop zookeeper"
     for i in ${znodes[@]}
     do
         ssh node-"$i"-link-0 "$ZOOKEEPER_HOME/bin/zkServer.sh stop; rm -rf /root/zookeeper-data"
+        ssh node-"$i"-link-0 "pkill -9 QuorumPeerMain"
     done
 }
 
