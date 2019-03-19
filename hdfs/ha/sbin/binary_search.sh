@@ -51,8 +51,8 @@ function find_minimum {
 	    echo "set range_end as $range_end"
 	    break
 	else # ret=1: too small, double
-	    range_end=$(( range_end * 2 ))
 	    range_start=$range_end
+	    range_end=$(( range_end * 2 ))
 	fi
     done
 
@@ -87,3 +87,4 @@ find_minimum
 minimum_value=$?
 echo "the minimum value for parameter $name is $minimum_value"
 $TEST_HOME/sbin/run_test.sh $name $minimum_value namenode default 1 300 10 5
+$TEST_HOME/sbin/run_test.sh $name $minimum_value namenode test 1 300 10 5
