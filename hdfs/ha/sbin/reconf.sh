@@ -54,7 +54,7 @@ function switch_active { # return 0 if success, 1 if error
     # reboot active0 which should become standby namenode after reboot
     ssh $active0 "$HADOOP_HOME/bin/hdfs --daemon start namenode"
 
-    # wait until active0 has been rebooted as  standby
+    # wait until active0 has been rebooted as standby
     max_try=15
     tries=0
     for (( ; ; ))

@@ -22,31 +22,19 @@ function verify_input {
     local value=$1
     local test_mode=verifyinput
     local round=1
-    local waittime=60
+    local waittime=30
     local ret=0 # 0 if ok, 1 if not ok
-    local read_times=1
-    local benchmark_threads=1
+    local read_times=10
+    local benchmark_threads=5
 
     echo "verify_input for parameter $name with value $value"
 
     $TEST_HOME/sbin/run_test.sh $name $value $reconf_type $test_mode $round $waittime $read_times $benchmark_threads
     testdir="$TEST_HOME"/"$name"-"$value"-"$test_mode"-"$round"-"$waittime"
-    errors=($(grep -r "WARN\|ERROR\|FATAL" $testdir | awk -F " " '{ if ($3 == "WARN" || $3 == "ERROR") print $5}' | sort -u))
-    
-    for err in ${errors[@]}
-    do
-        local found=$(grep $err $TEST_HOME/sbin/"$reconf_type"_base.txt)
-	if [ "$found" != "" ]; then
-   	    #echo "$err found in normal_error"
-	    continue
-	else
-	    echo "$err NOT found in base error set"
-	    ret=1 
-	fi
-    done
-  
-    #rm -rf $testdir  
-    echo "ret = $ret"   
+   
+    $TEST_HOME/sbin/verify_result.sh $testdir $reconf_type 
+    ret=$?
+    echo "verify_result.sh parameter $name with value $value returns $ret"   
     return $ret   
 }
 
