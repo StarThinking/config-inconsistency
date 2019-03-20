@@ -212,12 +212,12 @@ esac
 
 # Default log4j setting for interactive commands
 # Java property: hadoop.root.logger
-export HADOOP_ROOT_LOGGER=WARN,DRFA
+export HADOOP_ROOT_LOGGER=INFO,console
 
 # Default log4j setting for daemons spawned explicitly by
 # --daemon option of hadoop, hdfs, mapred and yarn command.
 # Java property: hadoop.root.logger
-export HADOOP_DAEMON_ROOT_LOGGER=WARN,RFA
+export HADOOP_DAEMON_ROOT_LOGGER=INFO,RFA
 
 # Default log level and output location for security-related messages.
 # You will almost certainly want to change this on a per-daemon basis via

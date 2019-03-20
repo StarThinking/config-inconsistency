@@ -30,7 +30,7 @@ if [ "$client_error" != "" ]; then
 fi
 
 # check errors HDFS log
-errors=($(grep -r "WARN\|ERROR\|FATAL" $testdir | awk -F " " '{ if ($3 == "WARN" || $3 == "ERROR") print $5}' | sort -u))
+errors=($(grep -r "WARN\|ERROR\|FATAL" $testdir | awk -F " " '{ if ($3 == "WARN" || $3 == "ERROR" || $3 == "FATAL") print $5}' | sort -u))
 
 for err in ${errors[@]}
 do
