@@ -20,42 +20,15 @@ reconf_type=$3
 test_mode=$4 # default, test, verifyinput
 round=$5
 waittime=$6
-read_times=5 # default value
-benchmark_threads=10 # default value
+read_times=10 # default value
+benchmark_threads=5 # default value
 if [ $# -eq 8 ]; then
     read_times=$7
     benchmark_threads=$8
 fi
-client_benchmark_main_pid=0
-
-# start running benchmark. keep it running on the background on the client
-function start_client {
-    for i in ${clients[@]}
-    do
-        ssh node-$i-link-0 "/bin/bash --login $TEST_HOME/sbin/benchmark.sh start $read_times $benchmark_threads" &
-    done
-    client_benchmark_main_pid=$!
-}
-
-# stop running benchmark
-function stop_client {
-    for i in ${clients[@]}
-    do
-        ssh node-$i-link-0 "/bin/bash --login $TEST_HOME/sbin/benchmark.sh stop"
-    done
-    
-    echo "stop benchmark signal sent"
-    #wait $client_benchmark_main_pid
-    sleep 10
-    for i in ${clients[@]}
-    do
-        ssh node-$i-link-0 "$TEST_HOME/sbin/kill_benchmark.sh"
-    done
-    echo "all benchmark sub processes on the client node has exited"
-}
 
 # create test dir
-testdir="$TEST_HOME"/"$name"-"$value"-"$test_mode"-"$round"-"$waittime"
+testdir="$TEST_HOME"/"$name"-"$value"-"$reconf_type"-"$test_mode"-"$round"-"$waittime"
 mkdir $testdir
 cp $TEST_HOME/etc/hdfs-site-template.xml $testdir/hdfs-site.xml
 sed -i "s/nametobereplaced/$name/g" $testdir/hdfs-site.xml
@@ -64,20 +37,17 @@ exec &> $testdir/run.log
 
 # start the cluster
 if [ $test_mode = "default" ]; then
-    echo "start with default hdfs-site.xml"
+    echo "start with $test_mode hdfs-site.xml"
     $TEST_HOME/sbin/cluster_cmd.sh start
-elif [ $test_mode = "test" ]; then
-    echo "start with test hdfs-site.xml"
-    $TEST_HOME/sbin/cluster_cmd.sh start $testdir/hdfs-site.xml
-elif [ $test_mode = "verifyinput" ]; then
-    echo "start test to verify input parameter value"
+elif [ $test_mode = "test" ] || [ $test_mode = "verifyinput" ]; then
+    echo "start with $test_mode hdfs-site.xml"
     $TEST_HOME/sbin/cluster_cmd.sh start $testdir/hdfs-site.xml
 else
     echo "[hdfs-site.xml: <default|test|verifyinput>]"
 fi
 
 # start benchmark running on client
-start_client
+$TEST_HOME/sbin/cluster_cmd.sh start_client $read_times $benchmark_threads
 
 # main test procedure
 if [ $test_mode = "default" ] || [ $test_mode = "test" ]; then
@@ -87,10 +57,8 @@ if [ $test_mode = "default" ] || [ $test_mode = "test" ]; then
     do
         # change configuration to be as given file
         $TEST_HOME/sbin/reconf.sh $reconf_type $testdir/hdfs-site.xml
-        reconf_ret=$?
-        if [ $reconf_ret != 0 ]; then
-	    echo "TEST_ERROR: reconf $reconf_type failed"
-	    break
+        if [ $? -ne 0 ]; then
+	    echo "TEST_ERROR: run_test reconf $reconf_type failed"; break
 	fi
         
 	sleep $waittime
@@ -98,13 +66,12 @@ if [ $test_mode = "default" ] || [ $test_mode = "test" ]; then
         # change configuration as the given conf file
         if [ $test_mode = "default" ]; then
             $TEST_HOME/sbin/reconf.sh $reconf_type $TEST_HOME/etc/hdfs-site.xml
-        else
+        elif [ $test_mode = "test" ]; then
             $TEST_HOME/sbin/reconf.sh $reconf_type $testdir/hdfs-site.xml
         fi
         
-        reconf_ret=$?
-        if [ $reconf_ret != 0 ]; then
-	    echo "TEST_ERROR: reconf $reconf_type failed"
+        if [ $? -ne 0 ]; then
+	    echo "TEST_ERROR: run_test reconf $reconf_type failed"
             break
 	fi
         
@@ -118,7 +85,7 @@ else # verifyinput branch
 fi
 
 # stop benchmark running on client
-stop_client
+$TEST_HOME/sbin/cluster_cmd.sh stop_client
 
 # collect logs for this test 
 $TEST_HOME/sbin/cluster_cmd.sh collectlog $testdir

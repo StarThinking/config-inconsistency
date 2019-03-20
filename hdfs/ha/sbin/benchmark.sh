@@ -21,50 +21,35 @@ function start_benchmark {
     
     rm -rf $large_file_dir_tmp/*
     rm /tmp/client*log
-    rm /tmp/pids
+#    rm /tmp/pids
 
     # my benchmark
     for i in $(seq 1 $benchmark_threads)
     do
         . $TEST_HOME/sbin/sub_benchmark.sh $i &> /tmp/client"$i".log &
-        echo $! >> /tmp/pids
+#        echo $! >> /tmp/pids
 	echo "sub benchmark $i started"
     done
 
     # nnbench
     #. $TEST_HOME/sbin/nnbench.sh &> /tmp/client-nnbench.log &
 
-    local pids=$(cat /tmp/pids)
-    
-    for i in ${pids[@]}
-    do
-        wait $i
-        echo "sub benchmark $i stopped"
-    done
+#    local pids=$(cat /tmp/pids)
+#    
+#    for i in ${pids[@]}
+#    do
+#        wait $i
+#        echo "sub benchmark $i stopped"
+#    done
 }
 
-# kill and wait benchmark finish
-# just send kill signal
-function stop_benchmark {
-    #local testdir=$1
-    local pids=$(cat /tmp/pids)
-
-    for i in ${pids[@]}
-    do
-	echo "killing pid $i"
-        kill $i
-    done
-}
-
-if [ "$#" -lt 1 ]; then
-    echo "benchmark.sh [start|stop]"
+if [ "$#" -lt 3 ]; then
+    echo "./benchmark.sh [start] [read_times] [benchmark_threads]"
     exit
 fi
 
 if [ $command == "start" ]; then
     start_benchmark
-elif [ $command == "stop" ]; then
-    stop_benchmark
 else
-    echo "error: wrong arguments. benchmark.sh [start|stop] optional: [read_times] [benchmark_threads]"
+    echo "./benchmark.sh [start] [read_times] [benchmark_threads]"
 fi

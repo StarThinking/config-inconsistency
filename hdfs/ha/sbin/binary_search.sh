@@ -34,7 +34,7 @@ function verify_input {
     echo "verify_input for parameter $name with value $value"
 
     $TEST_HOME/sbin/run_test.sh $name $value $reconf_type $test_mode $round $waittime $read_times $benchmark_threads
-    testdir="$TEST_HOME"/"$name"-"$value"-"$test_mode"-"$round"-"$waittime"
+    testdir="$TEST_HOME"/"$name"-"$value"-"$reconf_type"-"$test_mode"-"$round"-"$waittime"
    
     $TEST_HOME/sbin/verify_result.sh $testdir $reconf_type 
     ret=$?
@@ -42,16 +42,16 @@ function verify_input {
     return $ret   
 }
 
+retval=0
 function find_minimum {
     local range_start=1
     local range_end=1
-    
+
     # find range_start and range_end roughly
     for (( ; ; ))
     do
         verify_input $range_end
-	local ret=$?
-	if [ $ret -eq 0 ]; then # might be too large
+	if [ $? -eq 0 ]; then # might be too large
 	    echo "set range_end as $range_end"
 	    break
 	else # ret=1: too small, double
@@ -60,39 +60,46 @@ function find_minimum {
 	fi
     done
 
-    if [ $time_sense -eq 1 ]; then
-	return $range_end
-    fi
+    #if [ $time_sense -eq 1 ]; then
+    #	lowest=$range_end
+    #	echo "time sensitive is true, return $lowest"
+    #	retval=$lowest
+    #	return
+    #fi
 
     local lowest=$(( (range_start + range_end ) / 2 ))
     if [ $range_start -eq $range_end ]; then
-	return $lowest
+	retval=$lowest	
+	return
     fi	
     
     # find the lowest value in the range
+    local max_step=5
+    local steps=0
     for (( ; ; ))
     do
         verify_input $lowest
-        local ret=$?
-        if [ $ret -eq 0 ]; then # might be too large
+        if [ $? -eq 0 ]; then # ok-branch: might be too large
     	    local distance=$(( range_end - range_start ))
-    	    if [ $distance -le 2 ]; then
+    	    if [ $distance -le 2 ] || [ $steps -gt $max_step ] ; then
     	    	break
     	    else
     	        range_end=$lowest
     	        lowest=$(( ( range_end + range_start ) / 2 ))
     	    fi
-        else # ret=1: too small
+        else # not-ok-branch: too small
     	    range_start=$lowest
     	    lowest=$(( (range_end + range_start) / 2 ))
         fi
+	steps=$(( steps + 1 ))
     done
     
-    return $lowest
+    retval=$lowest
+    return 
 }
 
 find_minimum
-minimum_value=$?
+minimum_value=$retval
 echo "the minimum value for parameter $name is $minimum_value"
-$TEST_HOME/sbin/run_test.sh $name $minimum_value namenode default 1 300 10 5
+#$TEST_HOME/sbin/run_test.sh $name $minimum_value namenode default 1 300 10 5
 #$TEST_HOME/sbin/run_test.sh $name $minimum_value namenode test 1 300 10 5

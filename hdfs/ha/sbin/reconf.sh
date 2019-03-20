@@ -2,7 +2,7 @@
 
 if [ -z "$TEST_HOME" ]; then 
     echo "TEST_HOME not set."
-    exit
+    exit 1
 fi
 
 # if a script wants to be executed by itself, 
@@ -12,7 +12,7 @@ fi
 if [ "$#" -ne 2 ]
 then
     echo "e.g., ./reconf.sh [namenode|datanode] [config_file]"
-    exit
+    exit 1
 fi
 
 type=$1
@@ -97,9 +97,16 @@ function switch_datanode {
 }
 
 if [ $type = "namenode" ]; then
-    switch_active; sleep 10; switch_active
+    if ! switch_active; then # failed 
+	exit 1
+    fi
+    sleep 10
+    switch_active
+    exit $?
 elif [ $type = "datanode" ]; then
     switch_datanode 
+    exit $?
 else
     echo "e.g., ./reconf.sh [namenode|datanode] [config_file]"
+    exit 1
 fi

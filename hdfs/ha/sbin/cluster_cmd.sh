@@ -11,15 +11,15 @@ fi
 
 if [ "$#" -lt 1 ]
 then
-    echo "e.g., ./cluster_cmd.sh [start|stop|collectlog] [hdfs-site.xml]"
+    echo "e.g., ./cluster_cmd.sh [start|stop|collectlog|start_client|stop_client] optional: [hdfs-site.xml] [read_times] [benchmark_threads]"
     exit
 fi
 
 command=$1
-init_conf=$2
 shift 1
 
 function start {
+    init_conf=$1
     # datanodes parameter --> hdfs etc/workers 
     > $TEST_HOME/etc/workers
     for i in ${datanodes[@]}
@@ -29,7 +29,7 @@ function start {
 
     # jnodes --> etc/hdfs-site.xml and hdfs-site-template.xml
    
-    # copy default configuration to all nodes
+    # copy configuration to all nodes
     for i in ${allnodes[@]}
     do
         scp $TEST_HOME/etc/* node-"$i"-link-0:$HADOOP_HOME/etc/hadoop
@@ -100,8 +100,20 @@ function start {
     $HADOOP_HOME/bin/hdfs haadmin -getAllServiceState
 }
 
+# start running benchmark. keep it running on the background on the client
+function start_client {
+    read_times=$1
+    benchmark_threads=$2
+
+    for i in ${clients[@]}
+    do
+        ssh node-$i-link-0 "/bin/bash --login $TEST_HOME/sbin/benchmark.sh start $read_times $benchmark_threads" &
+    done
+}
+
 function stop {
     # stop and clear up everything
+    
     echo "stop hdfs"
     $HADOOP_HOME/sbin/stop-dfs.sh
 
@@ -123,17 +135,22 @@ function stop {
 	ssh node-"$i"-link-0 "pkill -9 JournalNode"
     done
 
-    for i in ${clients[@]}
-    do
-	 ssh node-$i-link-0 "$TEST_HOME/sbin/kill_benchmark.sh"    
-    done    
- 
     # stop and clear up zookeeper
     echo "stop zookeeper"
     for i in ${znodes[@]}
     do
         ssh node-"$i"-link-0 "$ZOOKEEPER_HOME/bin/zkServer.sh stop; rm -rf /root/zookeeper-data"
         ssh node-"$i"-link-0 "pkill -9 QuorumPeerMain"
+    done
+}
+
+# stop running benchmark
+function stop_client {
+    # kill client
+    for i in ${clients[@]}
+    do
+        ssh node-"$i"-link-0  "ps aux | grep benchmark.sh | awk -F ' ' '{print \$2}' | xargs kill -9"
+        ssh node-"$i"-link-0 "pids=\$(jps | grep FsShell | awk -F ' ' '{print \$1}'); for p in \${pids[@]}; do echo killing FsShell \$p; kill -9 \$p; done"
     done
 }
 
@@ -172,7 +189,13 @@ function collectlog {
 }
 
 if [ $command = "start" ]; then
-    start
+    if [ "$#" -eq 1 ]; then
+        start $1
+    elif [ "$#" -eq 0 ]; then
+	start
+    else
+	echo "wrong arguments"
+    fi
 elif [ $command = "stop" ]; then
     stop
 elif [ $command = "collectlog" ]; then
@@ -181,6 +204,14 @@ elif [ $command = "collectlog" ]; then
     else
         collectlog $1
     fi
+elif [ $command = "start_client" ]; then
+    if [ "$#" -ne 2 ]; then
+	echo "wrong arguments"
+    else
+        start_client $1 $2
+    fi
+elif [ $command = "stop_client" ]; then
+    stop_client
 else
     echo "wrong command, e.g., ./cluster_cmd.sh [start|stop|collectlog]"
 fi
