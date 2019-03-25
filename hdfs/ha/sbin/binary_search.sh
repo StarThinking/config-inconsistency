@@ -34,7 +34,7 @@ function verify_input {
         test_mode=test
     fi
     local round=1
-    local waittime=30
+    local waittime=31
     local ret=0 # 0 if ok, 1 if not ok
     local read_times=10
     local benchmark_threads=6
@@ -104,4 +104,5 @@ echo "the minimum value for parameter $name is $minimum_value"
 $TEST_HOME/sbin/run_test.sh $name $minimum_value $reconf_type default $round $waittime
 testdir="$TEST_HOME"/"$name"-"$minimum_value"-"$reconf_type"-"default"-"$round"-"$waittime"
 mv $TEST_HOME/bs_run.log $testdir
+$TEST_HOME/sbin/run_test.sh $name $minimum_value $reconf_type test $round $waittime
 #$TEST_HOME/sbin/run_test.sh $name $minimum_value namenode test 1 300 10 5
