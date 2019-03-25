@@ -37,7 +37,7 @@ function verify_input {
     local waittime=31
     local ret=0 # 0 if ok, 1 if not ok
     local read_times=10
-    local benchmark_threads=6
+    local benchmark_threads=5
 
     echo "verify_input for parameter $name with value $value"
 
@@ -89,6 +89,10 @@ function find_minimum {
 	    echo "not ok branch"
     	    range_start=$(( lowest + 1 )) # it is important to add by 1
         fi
+
+  	if [ $(( range_start + 1 )) -ge $lowest ]; then
+	    break
+	fi
 	steps=$(( steps + 1 ))
     done
     
