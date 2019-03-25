@@ -64,7 +64,7 @@ function find_minimum {
 	    echo "break, set range_end as $range_end"
 	    break
 	else # ret=1: too small, double
-	    range_start=$range_end
+	    range_start=$(( range_end + 1 ))
 	    range_end=$(( range_end * 2 ))
 	fi
     done
@@ -90,9 +90,6 @@ function find_minimum {
     	    range_start=$(( lowest + 1 )) # it is important to add by 1
         fi
 
-  	if [ $(( range_start + 1 )) -ge $lowest ]; then
-	    break
-	fi
 	steps=$(( steps + 1 ))
     done
     
