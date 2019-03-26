@@ -34,17 +34,17 @@ function verify_input {
         test_mode=test
     fi
     local round=1
-    local waittime=30
+    local waittime=31
     local ret=0 # 0 if ok, 1 if not ok
     local read_times=10
-    local benchmark_threads=6
+    local benchmark_threads=5
 
     echo "verify_input for parameter $name with value $value"
 
     $TEST_HOME/sbin/run_test.sh $name $value $reconf_type $test_mode $round $waittime $read_times $benchmark_threads
     local testdir="$TEST_HOME"/"$name"-"$value"-"$reconf_type"-"$test_mode"-"$round"-"$waittime"
    
-    $TEST_HOME/sbin/verify_result.sh $testdir $reconf_type 
+    $TEST_HOME/sbin/verify_result.sh $testdir $reconf_type
     ret=$?
     echo "verify_result.sh parameter $name with value $value returns $ret"   
     return $ret   
@@ -64,7 +64,7 @@ function find_minimum {
 	    echo "break, set range_end as $range_end"
 	    break
 	else # ret=1: too small, double
-	    range_start=$range_end
+	    range_start=$(( range_end + 1 ))
 	    range_end=$(( range_end * 2 ))
 	fi
     done
@@ -89,6 +89,7 @@ function find_minimum {
 	    echo "not ok branch"
     	    range_start=$(( lowest + 1 )) # it is important to add by 1
         fi
+
 	steps=$(( steps + 1 ))
     done
     
@@ -104,4 +105,5 @@ echo "the minimum value for parameter $name is $minimum_value"
 $TEST_HOME/sbin/run_test.sh $name $minimum_value $reconf_type default $round $waittime
 testdir="$TEST_HOME"/"$name"-"$minimum_value"-"$reconf_type"-"default"-"$round"-"$waittime"
 mv $TEST_HOME/bs_run.log $testdir
+#$TEST_HOME/sbin/run_test.sh $name $minimum_value $reconf_type test $round $waittime
 #$TEST_HOME/sbin/run_test.sh $name $minimum_value namenode test 1 300 10 5

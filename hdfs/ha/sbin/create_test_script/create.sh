@@ -11,7 +11,7 @@ do
     echo -n " namenode" >> tmp.sh
     echo -n " default" >> tmp.sh
     echo -n " 2" >> tmp.sh
-    echo " 300" >> tmp.sh
+    echo " 600" >> tmp.sh
     
     echo ""  >> tmp.sh
 done

@@ -5,15 +5,22 @@ if [ -z "$TEST_HOME" ]; then
     exit
 fi
 
-if [ $# -ne 2 ]; then
-    echo "./verify_result.sh [testdir] [reconf_type]"
+if [ $# -lt 2 ]; then
+    echo "./verify_result.sh [testdir] [reconf_type] optional: [error_base_file]"
     exit
 fi
 
 testdir=$1
 reconf_type=$2
 ret=0
-error_base=$TEST_HOME/sbin/base_error_set/"$reconf_type"_base.txt
+if [ $# -eq 2 ]; then
+    error_base=$TEST_HOME/sbin/base_error_set/"$reconf_type"_base.txt
+elif [ $# -eq 3 ]; then
+    error_base=$3
+else
+    echo "Error: wrong number of aruguments"
+    exit 1
+fi
 
 # check errors in test log
 run_error=$(grep -r TEST_ERROR $testdir/run.log) 
