@@ -10,7 +10,7 @@ do
     echo -n `sed -n "$i p" name.txt` >> tmp.sh
     echo -n " " >> tmp.sh
     echo -n " namenode" >> tmp.sh
-    echo -n " 2" >> tmp.sh
+    echo -n " 1" >> tmp.sh
     echo -n " 300" >> tmp.sh
     echo " 1" >> tmp.sh
     
