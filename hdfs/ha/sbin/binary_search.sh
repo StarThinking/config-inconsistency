@@ -9,20 +9,22 @@ fi
 # it needs to load global variables
 . $TEST_HOME/sbin/global_var.sh
 
-if [ "$#" -lt 5 ]
+if [ "$#" -lt 7 ]
 then
-    echo "./binary_search.sh [name] [reconf_type] [round] [waittime] [time_senestive] [read_times] [benchmark_threads]" 
+    echo "./binary_search.sh [min|max] [name] [default_value] [reconf_type] [round] [waittime] [time_senestive] [read_times] [benchmark_threads]" 
     exit
 fi
 
-name=$1
-reconf_type=$2
-round=$3
-waittime=$4
-time_sense=$5
+min_or_max=$1
+name=$2
+default_value=$3
+reconf_type=$4
+round=$5
+waittime=$6
+time_sense=$7
 read_times=10 # default value
 benchmark_threads=5 # default value
-if [ $# -eq 8 ]; then
+if [ $# -eq 9 ]; then
     read_times=$6
     benchmark_threads=$7
 fi
@@ -34,7 +36,7 @@ function verify_input {
         test_mode=test
     fi
     local round=1
-    local waittime=31
+    local waittime=21
     local ret=0 # 0 if ok, 1 if not ok
     local read_times=10
     local benchmark_threads=5
@@ -54,14 +56,14 @@ retval=0 # pass return value to caller, as it can be larger than 255
 function find_minimum {
     local range_start=1
     local range_end=1
-    local lowest=1
+    local middle=1
 
     # find range first
     for (( ; ; ))
     do
         verify_input $range_end
 	if [ $? -eq 0 ]; then # might be too large
-	    echo "break, set range_end as $range_end"
+	    echo "break, set range_start = $range_start, range_end = $range_end"
 	    break
 	else # ret=1: too small, double
 	    range_start=$(( range_end + 1 ))
@@ -69,39 +71,103 @@ function find_minimum {
 	fi
     done
 
-    # find the lowest value in the range
+    # find the minimum value in the range
     local max_step=5
     local steps=0
     for (( ; ; ))
     do
-        lowest=$(( (range_start + range_end ) / 2 ))
+        middle=$(( (range_start + range_end ) / 2 ))
 	
 	if [ $range_start -ge $range_end ] || [ $steps -gt $max_step ]; then 
 	    break
 	fi
 
-        verify_input $lowest
+        verify_input $middle
         
         if [ $? -eq 0 ]; then # ok-branch: might be too large
  	    echo "ok branch"
-    	    range_end=$lowest
+    	    range_end=$middle
         else # not-ok-branch: too small
 	    echo "not ok branch"
-    	    range_start=$(( lowest + 1 )) # it is important to add by 1
+    	    range_start=$(( middle + 1 )) # it is important to add by 1
         fi
 
 	steps=$(( steps + 1 ))
     done
     
-    retval=$lowest
+    retval=$middle
+    return 
+}
+
+retval=0 # pass return value to caller, as it can be larger than 255
+function find_maximum {
+    local range_start=$default_value
+    local range_end=$default_value
+    local middle=0
+    local factor1=8
+    local factor2=2
+    local MAX=$(( (2**63) - 1 ))
+
+    # find range first
+    for (( ; ; ))
+    do
+        verify_input $range_end
+	if [ $? -eq 1 ]; then # error
+	    echo "break, set range_start = $range_start, range_end = $range_end"
+    	    middle=$range_start
+	    break
+	elif [ $range_end -ge $(( MAX / factor1 )) ]; then # too large
+	    echo "break, set range_start = $range_start, range_end = $range_end"
+    	    middle=$range_end
+	    break
+	else # too small
+	    range_start=$(( range_end ))
+	    range_end=$(( range_end * factor1 ))
+	fi
+    done
+
+    # find the maximum value in the range
+   # local max_step=10
+   # local steps=0
+   # for (( ; ; ))
+   # do
+   #     middle=$(( (range_start + range_end ) / factor2 ))
+   #     
+   #     if [ $range_start -ge $range_end ] || [ $steps -gt $max_step ]; then 
+   #         break
+   #     fi
+
+   #     verify_input $middle
+   #     
+   #     if [ $? -eq 0 ]; then # ok-branch
+   #         echo "ok branch"
+   # 	    break
+   #     else # not-ok-branch
+   #         echo "not ok branch"
+   # 	    range_end=$middle 
+   #     fi
+
+   #     steps=$(( steps + 1 ))
+   # done
+    
+    retval=$middle
     return 
 }
 
 echo > $TEST_HOME/bs_run.log
 exec &> $TEST_HOME/bs_run.log
-find_minimum
-minimum_value=$retval
-echo "the minimum value for parameter $name is $minimum_value"
-$TEST_HOME/sbin/run_test.sh $name $minimum_value $reconf_type default $round $waittime
-testdir="$TEST_HOME"/"$name"-"$minimum_value"-"$reconf_type"-"default"-"$round"-"$waittime"
+
+if [ $min_or_max = "min" ]; then
+    find_minimum
+elif [ $min_or_max = "max" ]; then
+    find_maximum
+else
+    echo "Error: wrong argument."
+fi
+searched_value=$retval
+echo "the $min_or_max value for parameter $name is $searched_value"
+
+# do default test
+$TEST_HOME/sbin/run_test.sh $name $searched_value $reconf_type default $round $waittime
+testdir="$TEST_HOME"/"$name"-"$searched_value"-"$reconf_type"-"default"-"$round"-"$waittime"
 mv $TEST_HOME/bs_run.log $testdir
