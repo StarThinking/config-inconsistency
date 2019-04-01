@@ -48,7 +48,8 @@ function verify_input {
    
     $TEST_HOME/sbin/verify_result.sh $testdir $reconf_type
     ret=$?
-    echo "verify_result.sh parameter $name with value $value returns $ret"   
+    echo "verify_result.sh parameter $name with value $value returns $ret" 
+    rm -rf $testdir 
     return $ret   
 }
 
