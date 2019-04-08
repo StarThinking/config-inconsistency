@@ -1,23 +1,25 @@
 #!/bin/bash
 
-para+=('dfs.balancer.getBlocks.size')
-para+=('dfs.provided.aliasmap.load.retries')
-para+=('dfs.datanode.cache.revocation.timeout.ms')
-para+=('dfs.datanode.failed.volumes.tolerated')
-para+=('dfs.datanode.lazywriter.interval.sec')
+para+=('dfs.block.access.token.enable')
+value+=('true')
+para+=('dfs.ha.tail-edits.in-progress')
+value+=('true')
+para+=('nfs.allow.insecure.ports')
+value+=('false')
 
-times=(300 301 302 303 304)
+times=(63)
 
-min_or_max=min
-default_value=0
-reconf_type=datanode
+reconf_type=namenode
 round=2
-time_senestive=1
+test_mode=test
 
+i=0
 for name in ${para[@]}
-do    
+do   
+    v=${value[i]}
     for waittime in ${times[@]}
     do
-        ./sbin/binary_search.sh $min_or_max $name $default_value $reconf_type $round $waittime $time_senestive
+        ./sbin/run_test.sh $name $v $reconf_type $test_mode $round $waittime
     done
+    i=$(( i + 1 ))
 done

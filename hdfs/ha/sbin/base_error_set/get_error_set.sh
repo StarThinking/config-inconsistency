@@ -1,7 +1,7 @@
 #!/bin/bash
 
 samples=()
-output_file=merged.txt
+#output_file=merged.txt
 tmp_file=merged.txt.tmp
 
 while [ $# -ne 0 ]
@@ -11,14 +11,15 @@ while [ $# -ne 0 ]
 done
 
 echo > $tmp_file
-echo > $output_file
+#echo > $output_file
 
 for i in ${samples[@]}
 do    
     grep -r "WARN\|ERROR\|FATAL" $i | awk -F " " '{ if ($3 == "WARN" || $3 == "ERROR" || $3 == "FATAL") print $5}' | sort -u >> $tmp_file
 done
 
-sort -u $tmp_file >> $output_file
+#sort -u $tmp_file >> $output_file
+sort -u $tmp_file
 rm $tmp_file
 
 

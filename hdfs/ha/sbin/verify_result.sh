@@ -12,7 +12,8 @@ fi
 
 testdir=$1
 reconf_type=$2
-ret=0
+ret=0 # 0 for ok, 1 for error
+
 if [ $# -eq 2 ]; then
     error_base=$TEST_HOME/sbin/base_error_set/"$reconf_type"_base.txt
 elif [ $# -eq 3 ]; then
