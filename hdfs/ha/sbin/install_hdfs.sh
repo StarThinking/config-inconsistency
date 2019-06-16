@@ -5,7 +5,7 @@ sudo apt-get -y upgrade
 sudo apt-get -y install vim
 
 sudo apt-get -y install software-properties-common
-sudo install openjdk-8-jdk
+sudo apt-get -y install openjdk-8-jdk
 sudo apt-get update
 sudo apt-get -y install maven
 sudo apt-get -y install build-essential autoconf automake libtool cmake zlib1g-dev pkg-config libssl-dev
@@ -28,7 +28,7 @@ sudo apt-get -y install fuse libfuse-dev
 sudo apt-get -y install zstd
 
 sudo ldconfig
-echo "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64" >> ~/.profile
+echo "export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64" >> ~/.profile
 echo "export HADOOP_HOME=/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2" >> ~/.profile
 
 wget http://apache.claz.org/hadoop/common/hadoop-3.1.2/hadoop-3.1.2-src.tar.gz
@@ -39,7 +39,7 @@ mvn package -Pdist,native -DskipTests -Dtar
 
 # install zooleeper
 cd ~
-wget http://ftp.wayne.edu/apache/zookeeper/zookeeper-3.4.13/zookeeper-3.4.13.tar.gz
+wget https://archive.apache.org/dist/zookeeper/zookeeper-3.4.13/zookeeper-3.4.13.tar.gz
 tar zxvf zookeeper-3.4.13.tar.gz 
 
 echo "export ZOOKEEPER_HOME=/root/zookeeper-3.4.13" >> ~/.profile
