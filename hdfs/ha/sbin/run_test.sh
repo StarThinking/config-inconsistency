@@ -10,7 +10,7 @@ fi
 . $TEST_HOME/sbin/global_var.sh
 
 if [ $# -lt 6 ]; then
-    echo "./run_test [name] [value] [reconf_type: <namenode|datanode>] [test_mode: <default|test|verifyinput>] [round] [waittime] optional: [read_times] [benchmark_threads]"
+    echo "./run_test [name] [value] [reconf_type: <namenode|datanode|journalnode>] [test_mode: <default|test|verifyinput>] [round] [waittime] optional: [read_times] [benchmark_threads]"
     exit
 fi
 
@@ -50,11 +50,17 @@ fi
 $TEST_HOME/sbin/cluster_cmd.sh start_client $read_times $benchmark_threads
 
 # main test procedure
+# default: A - [ B - A ]
+# test: B - [ B - B ]
+# verifyinput: B
 if [ $test_mode = "default" ] || [ $test_mode = "test" ]; then
     sleep $waittime
     
     for i in $(seq 1 $round)
     do
+        # stop benchmark running on client before reconfiguration
+        $TEST_HOME/sbin/cluster_cmd.sh stop_client
+        
         # change configuration to be as given file
         $TEST_HOME/sbin/reconf.sh $reconf_type $testdir/hdfs-site.xml
         if [ $? -ne 0 ]; then
@@ -63,6 +69,9 @@ if [ $test_mode = "default" ] || [ $test_mode = "test" ]; then
         
 	sleep $waittime
     
+        # stop benchmark running on client before reconfiguration
+        $TEST_HOME/sbin/cluster_cmd.sh stop_client
+        
         # change configuration as the given conf file
         if [ $test_mode = "default" ]; then
             $TEST_HOME/sbin/reconf.sh $reconf_type $TEST_HOME/etc/hdfs-site.xml

@@ -9,12 +9,6 @@ fi
 # it needs to load global variables
 . $TEST_HOME/sbin/global_var.sh
 
-if [ "$#" -ne 2 ]
-then
-    echo "e.g., ./reconf.sh [namenode|datanode] [config_file]"
-    exit 1
-fi
-
 type=$1
 new_conf=$2
 
@@ -96,17 +90,36 @@ function switch_datanode {
     return 0
 }
 
-if [ $type = "namenode" ]; then
-    if ! switch_active; then # failed 
-	exit 1
+function switch_journalnode {
+    # stop one journalnode
+    ssh node-"$reconf_journalnode"-link-0 "$HADOOP_HOME/bin/hdfs --daemon stop journalnode"
+       
+    # change configuration to file xxx
+    scp $new_conf node-"$reconf_journalnode"-link-0:$HADOOP_HOME/etc/hadoop
+    echo "change hdfs-site.xml configuration as $new_conf"
+    
+    # reboot journalnode
+    ssh node-"$reconf_journalnode"-link-0 "$HADOOP_HOME/bin/hdfs --daemon start journalnode"
+    
+    return 0
+}
+
+if [ "$#" -eq 2 ]; then
+    if [ $type = "namenode" ]; then
+        if ! switch_active; then # failed 
+    	    exit 1
+        fi
+        sleep 10
+        switch_active
+        exit $?
+    elif [ $type = "datanode" ]; then
+        switch_datanode 
+        exit $?
+    elif [ $type = "journalnode" ]; then
+        switch_journalnode
+        exit $?
     fi
-    sleep 10
-    switch_active
-    exit $?
-elif [ $type = "datanode" ]; then
-    switch_datanode 
-    exit $?
-else
-    echo "e.g., ./reconf.sh [namenode|datanode] [config_file]"
-    exit 1
 fi
+    
+echo "e.g., ./reconf.sh [namenode|datanode|journalnode] [config_file]"
+exit 1

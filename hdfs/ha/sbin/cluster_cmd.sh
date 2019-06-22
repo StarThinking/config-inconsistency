@@ -108,6 +108,7 @@ function start_client {
     for i in ${clients[@]}
     do
         ssh node-$i-link-0 "/bin/bash --login $TEST_HOME/sbin/benchmark.sh start $read_times $benchmark_threads" &
+        ssh node-"$i"-link-0  "mkdir $large_file_dir_tmp"
     done
 }
 
@@ -151,6 +152,7 @@ function stop_client {
     do
         ssh node-"$i"-link-0  "ps aux | grep benchmark.sh | awk -F ' ' '{print \$2}' | xargs kill -9"
         ssh node-"$i"-link-0 "pids=\$(jps | grep FsShell | awk -F ' ' '{print \$1}'); for p in \${pids[@]}; do echo killing FsShell \$p; kill -9 \$p; done"
+        ssh node-"$i"-link-0  "rm -rf $large_file_dir_tmp"
     done
 }
 

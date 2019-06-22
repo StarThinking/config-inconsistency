@@ -8,9 +8,9 @@ do
     echo -n `sed -n "$i p" name.txt` >> tmp.sh
     echo -n " " >> tmp.sh
     echo -n `sed -n "$i p" value1.txt` >> tmp.sh
-    echo -n " datanode" >> tmp.sh
+    echo -n " namenode" >> tmp.sh
     echo -n " default" >> tmp.sh
-    echo -n " 1" >> tmp.sh
+    echo -n " 2" >> tmp.sh
     echo " 300" >> tmp.sh
     
     echo ""  >> tmp.sh
