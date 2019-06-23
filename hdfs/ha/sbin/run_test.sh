@@ -28,7 +28,7 @@ if [ $# -eq 8 ]; then
 fi
 
 # create test dir
-testdir="$TEST_HOME"/"$name"-"$value"-"$reconf_type"-"$test_mode"-"$round"-"$waittime"
+testdir=./"$name"-"$value"-"$reconf_type"-"$test_mode"-"$round"-"$waittime"
 mkdir $testdir
 cp $TEST_HOME/etc/hdfs-site-template.xml $testdir/hdfs-site.xml
 sed -i "s/nametobereplaced/$name/g" $testdir/hdfs-site.xml
