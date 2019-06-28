@@ -8,10 +8,6 @@ trap 'echo "sub_benchmark $i signal TERM catched and let quit gracefully"; runni
 while [ $running == true ]
 do
     sleep 2
-    
-    $HADOOP_HOME/bin/hdfs dfs -put "$large_file_dir"/myfile"$id" /myfile"$id"
-    $HADOOP_HOME/bin/hdfs dfs -ls /
-    echo "file $id has been put into HDFS"
 
     for i in $(seq 1 $read_times)
     do

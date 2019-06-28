@@ -36,7 +36,7 @@ function start {
 	if [ "$init_conf" != "" ]
 	then
  	    echo "send $init_conf as default hdfs-site.xml"
-	    scp $init_conf node-"$i"-link-0:$HADOOP_HOME/etc/hadoop
+	    scp $init_conf node-"$i"-link-0:$HADOOP_HOME/etc/hadoop/hdfs-site.xml
 	fi
         # override sbin
         scp $TEST_HOME/sbin/* node-"$i"-link-0:$TEST_HOME/sbin
@@ -100,6 +100,18 @@ function start {
     $HADOOP_HOME/bin/hdfs haadmin -getAllServiceState
 }
 
+function init_client {
+    read_times=$1
+    benchmark_threads=$2
+    
+    for i in ${clients[@]}
+    do
+        echo "init client $i begins"
+        ssh node-"$i"-link-0 "/bin/bash --login $TEST_HOME/sbin/benchmark.sh init $read_times $benchmark_threads"  # fake 2nd arguments
+        echo "init client $i ends"
+    done
+}
+
 # start running benchmark. keep it running on the background on the client
 function start_client {
     read_times=$1
@@ -108,7 +120,18 @@ function start_client {
     for i in ${clients[@]}
     do
         ssh node-$i-link-0 "/bin/bash --login $TEST_HOME/sbin/benchmark.sh start $read_times $benchmark_threads" &
-        ssh node-"$i"-link-0  "mkdir $large_file_dir_tmp"
+#        ssh node-"$i"-link-0  "mkdir $large_file_dir_tmp"
+    done
+}
+
+# stop running benchmark
+function stop_client {
+    # kill client
+    for i in ${clients[@]}
+    do
+        ssh node-"$i"-link-0  "ps aux | grep benchmark.sh | awk -F ' ' '{print \$2}' | xargs kill -9"
+        ssh node-"$i"-link-0 "pids=\$(jps | grep FsShell | awk -F ' ' '{print \$1}'); for p in \${pids[@]}; do echo killing FsShell \$p; kill -9 \$p; done"
+        ssh node-"$i"-link-0  "rm -rf $large_file_dir_tmp"
     done
 }
 
@@ -142,17 +165,6 @@ function stop {
     do
         ssh node-"$i"-link-0 "$ZOOKEEPER_HOME/bin/zkServer.sh stop; rm -rf /root/zookeeper-data"
         ssh node-"$i"-link-0 "pkill -9 QuorumPeerMain"
-    done
-}
-
-# stop running benchmark
-function stop_client {
-    # kill client
-    for i in ${clients[@]}
-    do
-        ssh node-"$i"-link-0  "ps aux | grep benchmark.sh | awk -F ' ' '{print \$2}' | xargs kill -9"
-        ssh node-"$i"-link-0 "pids=\$(jps | grep FsShell | awk -F ' ' '{print \$1}'); for p in \${pids[@]}; do echo killing FsShell \$p; kill -9 \$p; done"
-        ssh node-"$i"-link-0  "rm -rf $large_file_dir_tmp"
     done
 }
 
@@ -206,6 +218,8 @@ elif [ $command = "collectlog" ]; then
     else
         collectlog $1
     fi
+elif [ $command = "init_client" ]; then
+    init_client $1 $2
 elif [ $command = "start_client" ]; then
     if [ "$#" -ne 2 ]; then
 	echo "wrong arguments"
