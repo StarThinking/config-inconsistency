@@ -104,6 +104,18 @@ function switch_journalnode {
     return 0
 }
 
+function reconfig_cluster {
+    $HADOOP_HOME/sbin/stop-dfs.sh    
+    sleep 1
+    for i in ${allnodes[@]}
+    do
+        scp $new_conf node-"$i"-link-0:$HADOOP_HOME/etc/hadoop/hdfs-site.xml
+    done
+    $HADOOP_HOME/sbin/start-dfs.sh
+    $HADOOP_HOME/bin/hdfs haadmin -getAllServiceState
+    sleep 2
+}
+
 if [ "$#" -eq 2 ]; then
     if [ $type = "namenode" ]; then
         if ! switch_active; then # failed 
@@ -118,8 +130,11 @@ if [ "$#" -eq 2 ]; then
     elif [ $type = "journalnode" ]; then
         switch_journalnode
         exit $?
+    elif [ $type = "cluster" ]; then
+        reconfig_cluster
+        exit $?
     fi
 fi
     
-echo "e.g., ./reconf.sh [namenode|datanode|journalnode] [config_file]"
+echo "e.g., ./reconf.sh [cluster|namenode|datanode|journalnode] [config_file]"
 exit 1

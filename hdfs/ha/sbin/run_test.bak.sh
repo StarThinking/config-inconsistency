@@ -72,9 +72,7 @@ if [ $reconfig_mode = "online_reconfig" ]; then
 elif [ $reconfig_mode = "cluster_stop" ]; then
     echo "performing $reconfig_mode ..."
     # stop and clean the cluster
-    $TEST_HOME/sbin/cluster_cmd.sh stop
-    sleep 2
-    $TEST_HOME/sbin/cluster_cmd.sh start $testdir/hdfs-site.xml.2
+    $TEST_HOME/sbin/reconf.sh cluster $testdir/hdfs-site.xml.2
 fi
 
 # start benchmark running on client
