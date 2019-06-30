@@ -37,6 +37,10 @@ do
         fi
     fi
     
+    if [ $running != true ]; then
+        break
+    fi
+    
     $HADOOP_HOME/bin/hdfs dfs -rm /myfile"$id"
     if [ $? -ne 0 ]; then
         echo "TEST_ERROR: remove hdfs file faield"
@@ -44,6 +48,10 @@ do
     else
         echo "remove myfile"$id" for $count times success"
         sleep 2
+    fi
+    
+    if [ $running != true ]; then
+        break
     fi
  
     $HADOOP_HOME/bin/hdfs dfs -put $large_file_dir_tmp/myfile"$id" /myfile"$id"

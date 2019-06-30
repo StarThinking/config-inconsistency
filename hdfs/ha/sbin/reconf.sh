@@ -113,7 +113,7 @@ function reconfig_cluster {
     done
     $HADOOP_HOME/sbin/start-dfs.sh
     $HADOOP_HOME/bin/hdfs haadmin -getAllServiceState
-    sleep 2
+    sleep 10
 }
 
 if [ "$#" -eq 2 ]; then

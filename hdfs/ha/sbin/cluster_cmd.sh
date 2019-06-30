@@ -11,7 +11,7 @@ fi
 
 if [ "$#" -lt 1 ]
 then
-    echo "e.g., ./cluster_cmd.sh [start|stop|collectlog|start_client|stop_client] optional: [hdfs-site.xml] [read_times] [benchmark_threads]"
+    echo "e.g., ./cluster_cmd.sh [start|stop|collectlog|start_client|stop_client|stop_client_gracefully] optional: [hdfs-site.xml] [read_times] [benchmark_threads]"
     exit
 fi
 
@@ -124,12 +124,20 @@ function start_client {
     done
 }
 
+# stop running benchmark gracefully 
+function stop_client_gracefully {
+    for i in ${clients[@]}
+    do
+        ssh node-"$i"-link-0 "ps aux | grep bench | awk -F ' ' '{print \$2}' | xargs kill "
+    done
+}
+
 # stop running benchmark
 function stop_client {
     # kill client
     for i in ${clients[@]}
     do
-        ssh node-"$i"-link-0  "ps aux | grep benchmark.sh | awk -F ' ' '{print \$2}' | xargs kill -9"
+        ssh node-"$i"-link-0  "ps aux | grep bench | awk -F ' ' '{print \$2}' | xargs kill -9"
         ssh node-"$i"-link-0 "pids=\$(jps | grep FsShell | awk -F ' ' '{print \$1}'); for p in \${pids[@]}; do echo killing FsShell \$p; kill -9 \$p; done"
         ssh node-"$i"-link-0  "rm -rf $large_file_dir_tmp"
     done
@@ -228,6 +236,8 @@ elif [ $command = "start_client" ]; then
     fi
 elif [ $command = "stop_client" ]; then
     stop_client
+elif [ $command = "stop_client_gracefully" ]; then
+    stop_client_gracefully
 else
     echo "wrong command, e.g., ./cluster_cmd.sh [start|stop|collectlog]"
 fi

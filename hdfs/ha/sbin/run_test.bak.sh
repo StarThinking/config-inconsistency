@@ -70,17 +70,21 @@ if [ $reconfig_mode = "online_reconfig" ]; then
         echo "TEST_ERROR: $reconfig_mode reconfiguration $component failed"
     fi
 elif [ $reconfig_mode = "cluster_stop" ]; then
+    echo "time before performing $reconfig_mode :"
+    date
     echo "performing $reconfig_mode ..."
-    # stop and clean the cluster
+    # reboot cluster
     $TEST_HOME/sbin/reconf.sh cluster $testdir/hdfs-site.xml.2
 fi
 
+echo "time before start_client:"
+date
 # start benchmark running on client
 $TEST_HOME/sbin/cluster_cmd.sh start_client $read_times $benchmark_threads
 sleep $waittime
 
 # stop benchmark running on client
-$TEST_HOME/sbin/cluster_cmd.sh stop_client
+$TEST_HOME/sbin/cluster_cmd.sh stop_client_gracefully
 
 # collect logs for this test 
 $TEST_HOME/sbin/cluster_cmd.sh collectlog $testdir
