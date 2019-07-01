@@ -106,10 +106,31 @@ function init_client {
     
     for i in ${clients[@]}
     do
-        echo "init client $i begins"
-        ssh node-"$i"-link-0 "/bin/bash --login $TEST_HOME/sbin/benchmark.sh init $read_times $benchmark_threads"  # fake 2nd arguments
-        echo "init client $i ends"
+        echo "init client node-"$i"-link-0 begins"
+        ssh node-"$i"-link-0 "/bin/bash --login $TEST_HOME/sbin/benchmark.sh init $read_times $benchmark_threads"  # fake 1st arguments
+        echo "init client node-"$i"-link-0 ends"
     done
+
+    expected_line_num=$(( benchmark_threads + 1 ))
+    echo "expected_line_num = $expected_line_num"
+    while true
+    do
+        line_num=$($HADOOP_HOME/bin/hdfs dfs -ls / | wc -l)
+        echo "line_num = $line_num"
+        if [ $line_num -eq $expected_line_num ]; then
+            return 0
+        else
+            echo "line_num $line_num not equal as expected_line_num $expected_line_num, sleep 20s"
+            sleep 20
+            break
+        fi
+    done
+
+    if [ $line_num -eq $expected_line_num ]; then
+        return 0
+    else
+        return 1
+    fi
 }
 
 # start running benchmark. keep it running on the background on the client
@@ -128,7 +149,28 @@ function start_client {
 function stop_client_gracefully {
     for i in ${clients[@]}
     do
-        ssh node-"$i"-link-0 "ps aux | grep bench | awk -F ' ' '{print \$2}' | xargs kill "
+        count=0
+        while [ $count -le 3 ]
+        do
+            ssh node-"$i"-link-0 "ps aux | grep bench | awk -F ' ' '{print \$2}' | xargs kill "
+
+            #check
+            echo "check if client benchmark has been killed"
+            if [ $(ssh node-"$i"-link-0 "jps | grep FsShell" | wc -l) -eq 0 ]; then
+                echo "benchmark is stopped"
+                break;
+            else
+                echo "sleep 10 seconds to wait benchmark to quit itself"
+                sleep 10
+                count=$(( count + 1 ))
+            fi
+        done
+
+        # cannot wait too long
+        if [ $count -ge 3 ]; then
+            echo "benchamrk seems to be hanging. TEST_ERROR: kill it forcefully."
+            stop_client
+        fi
     done
 }
 
@@ -173,6 +215,11 @@ function stop {
     do
         ssh node-"$i"-link-0 "$ZOOKEEPER_HOME/bin/zkServer.sh stop; rm -rf /root/zookeeper-data"
         ssh node-"$i"-link-0 "pkill -9 QuorumPeerMain"
+    done
+    
+    for i in ${clients[@]}
+    do
+        ssh node-"$i"-link-0  "rm -rf $large_file_dir_tmp"
     done
 }
 
@@ -228,6 +275,7 @@ elif [ $command = "collectlog" ]; then
     fi
 elif [ $command = "init_client" ]; then
     init_client $1 $2
+    exit $?
 elif [ $command = "start_client" ]; then
     if [ "$#" -ne 2 ]; then
 	echo "wrong arguments"

@@ -14,11 +14,14 @@ echo > $tmp_file
 #echo > $output_file
 
 for i in ${samples[@]}
-do    
-    grep -r "WARN\|ERROR\|FATAL" $i | awk -F " " '{ if ($3 == "WARN" || $3 == "ERROR" || $3 == "FATAL") print $5}' | sort -u >> $tmp_file
+do
+    echo ""$i":"
+    grep -r "WARN\|ERROR\|FATAL" $i | awk -F " " '{ if ($3 == "WARN" || $3 == "ERROR" || $3 == "FATAL") print $5}' | sort -u | tee -a $tmp_file
+    echo ""
 done
 
 #sort -u $tmp_file >> $output_file
+echo "merged result:"
 sort -u $tmp_file
 rm $tmp_file
 

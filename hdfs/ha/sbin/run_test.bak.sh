@@ -47,6 +47,8 @@ sed -i "s/$parameter_stub/$parameter/g" $testdir/hdfs-site.xml.1
 sed -i "s/$parameter_stub/$parameter/g" $testdir/hdfs-site.xml.2
 sed -i "s/$value_stub/$value1/g" $testdir/hdfs-site.xml.1
 sed -i "s/$value_stub/$value2/g" $testdir/hdfs-site.xml.2
+#exec 2>&1 
+#exec > >(tee -i $testdir/run.log)
 exec &> $testdir/run.log
 
 # main procedure
@@ -54,10 +56,20 @@ exec &> $testdir/run.log
 # start the cluster
 echo "start cluster"
 $TEST_HOME/sbin/cluster_cmd.sh start $testdir/hdfs-site.xml.1
+sleep 5
 
 # init client
+echo "init cluster..."
 $TEST_HOME/sbin/cluster_cmd.sh init_client $read_times $benchmark_threads
-echo "init client done"
+if [ $? -eq 0 ]; then
+    echo "init client succeed"
+else
+    echo "TEST_ERROR: init client failed"
+    $TEST_HOME/sbin/cluster_cmd.sh stop_client_gracefully
+    $TEST_HOME/sbin/cluster_cmd.sh collectlog $testdir
+    $TEST_HOME/sbin/cluster_cmd.sh stop
+    exit 1
+fi
 
 # perform reconfiguration 
 # stop benchmark running on client before reconfiguration
@@ -91,3 +103,5 @@ $TEST_HOME/sbin/cluster_cmd.sh collectlog $testdir
 
 # stop and clean the cluster
 $TEST_HOME/sbin/cluster_cmd.sh stop
+
+exit 0
