@@ -40,6 +40,9 @@ function start {
 	fi
         # override sbin
         scp $TEST_HOME/sbin/* node-"$i"-link-0:$TEST_HOME/sbin
+
+        # override all jars
+        scp -r $HADOOP_HOME/share node-"$i"-link-0:$HADOOP_HOME
     done
     
     ### START MANUAL FAILOVER ###
