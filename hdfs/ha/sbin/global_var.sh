@@ -5,7 +5,7 @@
 #datanodes=(2 3 4) # make sure sdb is formatted
 #jnodes=(2 3 4) # modify hdfs-site.xml as well
 #reconf_journalnode=4
-#znodes=(0 1 5) # core-site.xml?
+#znodes=(0 1 5) # core-site.xml? zoo.cfg
 #znode_ids=(1 2 3)
 #clients=(5)
 #allnodes=(0 1 2 3 4 5)

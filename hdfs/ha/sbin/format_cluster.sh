@@ -10,9 +10,9 @@ fi
 # mkfs sdb and create hadoop root dir for allnode
 for i in ${allnodes[@]}
 do
-    ssh node-$i-link-0 "printf '%s\n' n '' '' '' '' w | fdisk /dev/sdb"
-    ssh node-$i-link-0 "mkfs.ext4 /dev/sdb1"
-    ssh node-$i-link-0 "mkdir $hadoop_root_dir; mount /dev/sdb1 $hadoop_root_dir"
+#    ssh node-$i-link-0 "printf '%s\n' n '' '' '' '' w | fdisk /dev/sdb"
+#    ssh node-$i-link-0 "mkfs.ext4 /dev/sdb1"
+    ssh node-$i-link-0 "mkdir $hadoop_root_dir"
 done
 
 # create dir for datanode
