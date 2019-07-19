@@ -44,3 +44,7 @@ tar zxvf zookeeper-3.4.13.tar.gz
 
 echo "export ZOOKEEPER_HOME=/root/zookeeper-3.4.13" >> ~/.profile
 echo "export TEST_HOME=/root/config-inconsistency/hdfs/ha" >> ~/.profile
+
+# install virsh
+sudo apt install -y qemu-kvm libvirt0 libvirt-bin virt-manager bridge-utils
+sudo systemctl enable libvirt-bin
