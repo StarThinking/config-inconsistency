@@ -48,3 +48,4 @@ echo "export TEST_HOME=/root/config-inconsistency/hdfs/ha" >> ~/.profile
 # install virsh
 sudo apt install -y qemu-kvm libvirt0 libvirt-bin virt-manager bridge-utils
 sudo systemctl enable libvirt-bin
+sudo apt-get -y install expect
