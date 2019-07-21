@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [ -z "$TEST_HOME" ]; then
+    echo "TEST_HOME not set."
+    exit
+fi
+
 for i in $(seq 0 6)
 do
     ips+=($(sudo virsh domifaddr node-$i-link-0 | grep ipv4 | awk -F " " '{print $4}' | cut -d"/" -f1))
@@ -12,9 +17,10 @@ done
 
 echo "generating... temperary hosts"
 
-rm ./hosts.tmp
-touch ./hosts.tmp
+rm $TEST_HOME/sbin/hosts.tmp
+touch $TEST_HOME/sbin/hosts.tmp
 
+echo "123213213" >> ./hosts.tmp
 echo "# The following lines are desirable for IPv6 capable hosts" >> ./hosts.tmp
 echo "::1     localhost ip6-localhost ip6-loopback" >> ./hosts.tmp
 echo "ff02::1 ip6-allnodes" >> ./hosts.tmp 
@@ -30,5 +36,8 @@ cat ./hosts.tmp
 echo "update /etc/hosts for each vm"
 for i in $(seq 0 6)
 do
-    scp ./hosts.tmp root@${ips[i]}:/etc/hosts 
+    $TEST_HOME/sbin/vm_autoscp.sh root ${ips[i]} $TEST_HOME/sbin/hosts.tmp /etc/hosts 
+    #ssh root@${ips[i]} "echo node-$i-link-0 > /etc/hostname; reboot"
 done
+
+rm $TEST_HOME/sbin/hosts.tmp
