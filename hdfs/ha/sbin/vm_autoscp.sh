@@ -7,7 +7,7 @@ set host [lindex $argv 1]
 set src_file [lindex $argv 2]
 set dst_file [lindex $argv 3]
 
-sudo spawn scp $src_file $username@$host:$dst_file
+spawn scp $src_file $username@$host:$dst_file
 
 expect {
     "(yes/no)?" {
