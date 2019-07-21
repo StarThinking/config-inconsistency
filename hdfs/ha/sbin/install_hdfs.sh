@@ -37,15 +37,10 @@ tar zxvf hadoop-3.1.2-src.tar.gz
 cd hadoop-3.1.2-src
 mvn package -Pdist,native -DskipTests -Dtar
 
-# install zooleeper
+# install zookeeper
 cd ~
 wget https://archive.apache.org/dist/zookeeper/zookeeper-3.4.13/zookeeper-3.4.13.tar.gz
 tar zxvf zookeeper-3.4.13.tar.gz 
 
 echo "export ZOOKEEPER_HOME=/root/zookeeper-3.4.13" >> ~/.profile
 echo "export TEST_HOME=/root/config-inconsistency/hdfs/ha" >> ~/.profile
-
-# install virsh
-sudo apt install -y qemu-kvm libvirt0 libvirt-bin virt-manager bridge-utils
-sudo systemctl enable libvirt-bin
-sudo apt-get -y install expect

@@ -20,7 +20,6 @@ echo "generating... temperary hosts"
 rm $TEST_HOME/sbin/hosts.tmp
 touch $TEST_HOME/sbin/hosts.tmp
 
-echo "123213213" >> ./hosts.tmp
 echo "# The following lines are desirable for IPv6 capable hosts" >> ./hosts.tmp
 echo "::1     localhost ip6-localhost ip6-loopback" >> ./hosts.tmp
 echo "ff02::1 ip6-allnodes" >> ./hosts.tmp 
