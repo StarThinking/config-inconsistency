@@ -4,12 +4,13 @@
 # it needs to load global variables
 . $TEST_HOME/sbin/global_var.sh
 
-if [ $# -ne 1 ]; then
+if [ $# -ne 2 ]; then
     echo "wrong arguments"
     exit 1
 fi
 
 task_file=$1
+waittime=$2
 
 IFS=$'\n'      
 set -f         
@@ -20,7 +21,6 @@ do
     value1=$(echo $line | awk -F " " '{print $3}')
     value2=$(echo $line | awk -F " " '{print $4}')
     reconfig_mode=online_reconfig
-    waittime=30
     tuple_dir="$component"_"$parameter"_"$value1"_"$value2"
     mkdir $tuple_dir 
     cd $tuple_dir
