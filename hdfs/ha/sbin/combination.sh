@@ -1,9 +1,9 @@
 #!/bin/bash
 
-#if [ $# -ne 1 ]; then
-#    echo "wrong arguments"
-#    exit 1
-#fi
+if [ $# -ne 1 ]; then
+    echo "wrong arguments"
+    exit 1
+fi
 
 values=('true' 'false')
 component=$1
