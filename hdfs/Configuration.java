@@ -1193,7 +1193,7 @@ public class Configuration implements Iterable<Map.Entry<String,String>>,
    *         or null if no such property exists.
    */
   public String get(String name) {
-    LOG.info("[msx] get " + name);
+    LOG.info("[msx] get1 " + name);
     String[] names = handleDeprecation(deprecationContext.get(), name);
     String result = null;
     for(String n : names) {
@@ -1454,7 +1454,7 @@ public class Configuration implements Iterable<Map.Entry<String,String>>,
    *         doesn't exist.                    
    */
   public String get(String name, String defaultValue) {
-    LOG.info("[msx] get " + name + " " + defaultValue);
+    LOG.info("[msx] get2 " + name + " " + defaultValue);
     String[] names = handleDeprecation(deprecationContext.get(), name);
     String result = null;
     for(String n : names) {
