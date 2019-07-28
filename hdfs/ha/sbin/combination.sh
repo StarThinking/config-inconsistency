@@ -5,9 +5,8 @@
 #    exit 1
 #fi
 
-file=$1
 values=('true' 'false')
-component='namenode'
+component=$1
 duration=300
 #parameters=$(cat $file)
 
