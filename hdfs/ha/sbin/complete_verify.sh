@@ -12,14 +12,14 @@ fi
 ret=0
 testdir=$1
 waittime=$2
-component=$(echo $testdir | awk -F "-" '{print $1}')
-parameter=$(echo $testdir | awk -F "-" '{print $2}')
-value1=$(echo $testdir | awk -F "-" '{print $3}')
-value2=$(echo $testdir | awk -F "-" '{print $4}')
+component=$(echo $testdir | awk -F "_" '{print $1}')
+parameter=$(echo $testdir | awk -F "_" '{print $2}')
+value1=$(echo $testdir | awk -F "_" '{print $3}')
+value2=$(echo $testdir | awk -F "_" '{print $4}')
 echo component=$component parameter=$parameter value1=$value1 value2=$value2
 
 reconfig_mode=online_reconfig
-subdir[1]="$component"-"$parameter"-"$value1"-"$value2"-"$reconfig_mode"-"$waittime"
+subdir[1]="$component"_"$parameter"_"$value1"_"$value2"_"$reconfig_mode"_"$waittime"
 $TEST_HOME/sbin/verify_result.sh $testdir/${subdir[1]} > /dev/null
 if [ $? -eq 0 ]
 then
@@ -28,10 +28,10 @@ then
 fi
 
 reconfig_mode=cluster_stop
-subdir[2]="$component"-"$parameter"-"$value1"-"$value2"-"$reconfig_mode"-"$waittime"
+subdir[2]="$component"_"$parameter"_"$value1"_"$value2"_"$reconfig_mode"_"$waittime"
 reconfig_mode=online_reconfig
-subdir[3]="$component"-"$parameter"-"$value1"-"$value1"-"$reconfig_mode"-"$waittime"
-subdir[4]="$component"-"$parameter"-"$value2"-"$value2"-"$reconfig_mode"-"$waittime"
+subdir[3]="$component"_"$parameter"_"$value1"_"$value1"_"$reconfig_mode"_"$waittime"
+subdir[4]="$component"_"$parameter"_"$value2"_"$value2"_"$reconfig_mode"_"$waittime"
 
 for i in 1 2 3 4
 do
