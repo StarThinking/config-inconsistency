@@ -35,7 +35,7 @@ if [ $reconfig_mode != "cluster_stop" ] && [ $reconfig_mode != "online_reconfig"
 fi
 
 # create test dir
-testdir=./"$component"-"$parameter"-"$value1"-"$value2"-"$reconfig_mode"-"$waittime"
+testdir=./"$component"_"$parameter"_"$value1"_"$value2"_"$reconfig_mode"_"$waittime"
 mkdir $testdir
 
 # create two hdfs-site.xml

@@ -18,7 +18,7 @@ if [[ $testdir == *"cluster_stop"* ]]; then
     error_base=$root_dir/cluster_reboot_base.txt
     echo "Error_base is cluster_reboot_base.txt"
 else
-    sub_log=$(echo $testdir | awk -F "-" 'NR==1 {print $1}')
+    sub_log=$(echo $testdir | awk -F "_" 'NR==1 {print $1}')
     echo "Error_base is online_reconfig_"$sub_log"_base.txt"
     error_base=$root_dir/online_reconfig_"$sub_log"_base.txt
 fi
