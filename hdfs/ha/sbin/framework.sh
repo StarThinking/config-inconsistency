@@ -25,7 +25,11 @@ do
     mkdir $tuple_dir 
     cd $tuple_dir
     echo component=$component parameter=$parameter value1=$value1 value2=$value2
+<<<<<<< HEAD
     $TEST_HOME/sbin/run_test.bak.sh $component $parameter $value1 $value2 $reconfig_mode $waittime 
+=======
+    $TEST_HOME/sbin/run_hdfs_test.sh $component $parameter $value1 $value2 $reconfig_mode $waittime 
+>>>>>>> 54e4b360ce23ec83696e35717d628bfa7ad89e8c
 
     testdir="$component"_"$parameter"_"$value1"_"$value2"_"$reconfig_mode"_"$waittime"
     $TEST_HOME/sbin/verify_result.sh $testdir
@@ -35,10 +39,17 @@ do
     then
 	echo "furthur checking..."
 	reconfig_mode=cluster_stop
+<<<<<<< HEAD
 	$TEST_HOME/sbin/run_test.bak.sh $component $parameter $value1 $value2 $reconfig_mode $waittime
 	reconfig_mode=online_reconfig
 	$TEST_HOME/sbin/run_test.bak.sh $component $parameter $value1 $value1 $reconfig_mode $waittime
 	$TEST_HOME/sbin/run_test.bak.sh $component $parameter $value2 $value2 $reconfig_mode $waittime
+=======
+	$TEST_HOME/sbin/run_hdfs_test.sh $component $parameter $value1 $value2 $reconfig_mode $waittime
+	reconfig_mode=online_reconfig
+	$TEST_HOME/sbin/run_hdfs_test.sh $component $parameter $value1 $value1 $reconfig_mode $waittime
+	$TEST_HOME/sbin/run_hdfs_test.sh $component $parameter $value2 $value2 $reconfig_mode $waittime
+>>>>>>> 54e4b360ce23ec83696e35717d628bfa7ad89e8c
     else
 	echo "no problem."
     fi

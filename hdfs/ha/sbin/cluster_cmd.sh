@@ -19,7 +19,8 @@ command=$1
 shift 1
 
 function start {
-    init_conf=$1
+    from=$1
+    init_conf=$2
     # datanodes parameter --> hdfs etc/workers 
     > $TEST_HOME/etc/workers
     for i in ${datanodes[@]}
@@ -35,8 +36,8 @@ function start {
         scp $TEST_HOME/etc/* node-"$i"-link-0:$HADOOP_HOME/etc/hadoop
 	if [ "$init_conf" != "" ]
 	then
- 	    echo "send $init_conf as default hdfs-site.xml"
-	    scp $init_conf node-"$i"-link-0:$HADOOP_HOME/etc/hadoop/hdfs-site.xml
+ 	    echo "send $init_conf as default "$from"-site.xml"
+	    scp $init_conf node-"$i"-link-0:$HADOOP_HOME/etc/hadoop/"$from"-site.xml
 	fi
         # override sbin
         scp $TEST_HOME/sbin/* node-"$i"-link-0:$TEST_HOME/sbin
@@ -257,14 +258,11 @@ function collectlog {
     done
 
     cp $TEST_HOME/sbin/run_test.sh $test/all_logs/
-    cp $HADOOP_HOME/etc/hadoop/hdfs-site.xml $test/all_logs/hdfs-site.xml.init
 }
 
 if [ $command = "start" ]; then
-    if [ "$#" -eq 1 ]; then
-        start $1
-    elif [ "$#" -eq 0 ]; then
-	start
+    if [ "$#" -eq 2 ]; then
+        start $1 $2
     else
 	echo "wrong arguments"
     fi

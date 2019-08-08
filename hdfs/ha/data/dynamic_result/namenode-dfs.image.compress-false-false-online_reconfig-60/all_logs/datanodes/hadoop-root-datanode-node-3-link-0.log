@@ -1,0 +1,847 @@
+2019-07-27 23:01:44,049 INFO  datanode.DataNode LogAdapter.java:info:51 - STARTUP_MSG: 
+/************************************************************
+STARTUP_MSG: Starting DataNode
+STARTUP_MSG:   host = node-3-link-0/192.168.122.161
+STARTUP_MSG:   args = []
+STARTUP_MSG:   version = 3.1.2
+STARTUP_MSG:   classpath = /root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/etc/hadoop:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/curator-framework-2.13.0.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/kerby-asn1-1.0.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/jackson-databind-2.7.8.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/paranamer-2.3.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/commons-net-3.6.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/commons-codec-1.11.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/jettison-1.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/audience-annotations-0.5.0.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/commons-math3-3.1.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/jersey-core-1.19.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/kerby-pkix-1.0.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/log4j-1.2.17.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/jcip-annotations-1.0-1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/jersey-servlet-1.19.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/woodstox-core-5.0.3.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/jsr311-api-1.1.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/accessors-smart-1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/commons-collections-3.2.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/protobuf-java-2.5.0.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/jsch-0.1.54.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/kerb-identity-1.0.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/commons-compress-1.18.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/asm-5.0.4.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/jetty-io-9.3.24.v20180605.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/kerb-simplekdc-1.0.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/jackson-xc-1.9.13.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/snappy-java-1.0.5.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/kerb-crypto-1.0.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/zookeeper-3.4.13.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/curator-client-2.13.0.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/jackson-annotations-2.7.8.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/kerby-util-1.0.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/stax2-api-3.1.4.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/gson-2.2.4.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/jetty-http-9.3.24.v20180605.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/kerb-client-1.0.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/token-provider-1.0.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/commons-lang-2.6.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/jackson-jaxrs-1.9.13.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/curator-recipes-2.13.0.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/commons-lang3-3.4.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/jaxb-impl-2.2.3-1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/json-smart-2.3.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/jackson-core-asl-1.9.13.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/kerb-common-1.0.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/kerby-xdr-1.0.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/javax.servlet-api-3.1.0.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/jackson-core-2.7.8.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/slf4j-log4j12-1.7.25.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/commons-beanutils-1.9.3.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/kerb-admin-1.0.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/commons-io-2.5.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/kerb-server-1.0.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/jersey-json-1.19.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/jackson-mapper-asl-1.9.13.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/nimbus-jose-jwt-4.41.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/jetty-security-9.3.24.v20180605.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/guava-11.0.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/hadoop-annotations-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/jsr305-3.0.0.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/netty-3.10.5.Final.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/commons-cli-1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/commons-logging-1.1.3.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/avro-1.7.7.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/jetty-servlet-9.3.24.v20180605.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/slf4j-api-1.7.25.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/re2j-1.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/kerb-util-1.0.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/httpcore-4.4.4.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/jaxb-api-2.2.11.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/jetty-server-9.3.24.v20180605.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/httpclient-4.5.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/commons-configuration2-2.1.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/kerb-core-1.0.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/jersey-server-1.19.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/jul-to-slf4j-1.7.25.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/jetty-webapp-9.3.24.v20180605.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/kerby-config-1.0.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/htrace-core4-4.1.0-incubating.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/jetty-util-9.3.24.v20180605.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/jetty-xml-9.3.24.v20180605.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/jsp-api-2.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/hadoop-auth-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/metrics-core-3.2.4.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/hadoop-nfs-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/hadoop-kms-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/hadoop-common-3.1.2-tests.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/hadoop-common-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/json-simple-1.1.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/curator-framework-2.13.0.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/kerby-asn1-1.0.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/jackson-databind-2.7.8.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/paranamer-2.3.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/okio-1.6.0.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/commons-net-3.6.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/commons-codec-1.11.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/jettison-1.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/audience-annotations-0.5.0.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/commons-math3-3.1.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/jersey-core-1.19.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/kerby-pkix-1.0.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/log4j-1.2.17.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/jcip-annotations-1.0-1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/jersey-servlet-1.19.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/commons-daemon-1.0.13.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/woodstox-core-5.0.3.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/jsr311-api-1.1.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/accessors-smart-1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/commons-collections-3.2.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/protobuf-java-2.5.0.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/jsch-0.1.54.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/kerb-identity-1.0.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/commons-compress-1.18.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/asm-5.0.4.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/jetty-io-9.3.24.v20180605.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/kerb-simplekdc-1.0.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/jackson-xc-1.9.13.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/snappy-java-1.0.5.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/kerb-crypto-1.0.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/zookeeper-3.4.13.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/curator-client-2.13.0.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/jackson-annotations-2.7.8.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/kerby-util-1.0.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/stax2-api-3.1.4.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/gson-2.2.4.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/jetty-http-9.3.24.v20180605.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/kerb-client-1.0.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/token-provider-1.0.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/commons-lang-2.6.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/jackson-jaxrs-1.9.13.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/curator-recipes-2.13.0.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/okhttp-2.7.5.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/commons-lang3-3.4.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/jaxb-impl-2.2.3-1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/json-smart-2.3.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/jackson-core-asl-1.9.13.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/kerb-common-1.0.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/kerby-xdr-1.0.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/javax.servlet-api-3.1.0.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/jetty-util-ajax-9.3.24.v20180605.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/jackson-core-2.7.8.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/leveldbjni-all-1.8.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/commons-beanutils-1.9.3.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/kerb-admin-1.0.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/netty-all-4.0.52.Final.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/commons-io-2.5.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/kerb-server-1.0.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/jersey-json-1.19.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/jackson-mapper-asl-1.9.13.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/nimbus-jose-jwt-4.41.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/jetty-security-9.3.24.v20180605.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/guava-11.0.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/hadoop-annotations-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/jsr305-3.0.0.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/netty-3.10.5.Final.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/commons-cli-1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/commons-logging-1.1.3.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/avro-1.7.7.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/jetty-servlet-9.3.24.v20180605.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/re2j-1.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/kerb-util-1.0.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/httpcore-4.4.4.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/jaxb-api-2.2.11.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/jetty-server-9.3.24.v20180605.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/httpclient-4.5.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/commons-configuration2-2.1.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/kerb-core-1.0.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/jersey-server-1.19.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/jetty-webapp-9.3.24.v20180605.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/kerby-config-1.0.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/htrace-core4-4.1.0-incubating.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/jetty-util-9.3.24.v20180605.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/jetty-xml-9.3.24.v20180605.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/hadoop-auth-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/hadoop-hdfs-rbf-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/hadoop-hdfs-client-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/hadoop-hdfs-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/hadoop-hdfs-client-3.1.2-tests.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/hadoop-hdfs-httpfs-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/hadoop-hdfs-nfs-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/hadoop-hdfs-3.1.2-tests.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/hadoop-hdfs-rbf-3.1.2-tests.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/hadoop-hdfs-native-client-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/hadoop-hdfs-native-client-3.1.2-tests.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/mapreduce/lib/junit-4.11.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/mapreduce/lib/hamcrest-core-1.3.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/mapreduce/hadoop-mapreduce-client-app-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/mapreduce/hadoop-mapreduce-client-hs-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/mapreduce/hadoop-mapreduce-client-jobclient-3.1.2-tests.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/mapreduce/hadoop-mapreduce-client-nativetask-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/mapreduce/hadoop-mapreduce-client-shuffle-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/mapreduce/hadoop-mapreduce-client-jobclient-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/mapreduce/hadoop-mapreduce-client-core-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/mapreduce/hadoop-mapreduce-client-hs-plugins-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/mapreduce/hadoop-mapreduce-client-common-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/mapreduce/hadoop-mapreduce-client-uploader-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/lib/guice-servlet-4.0.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/lib/java-util-1.9.0.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/lib/jackson-jaxrs-base-2.7.8.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/lib/javax.inject-1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/lib/fst-2.50.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/lib/swagger-annotations-1.5.4.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/lib/jersey-guice-1.19.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/lib/mssql-jdbc-6.2.1.jre7.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/lib/aopalliance-1.0.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/lib/guice-4.0.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/lib/json-io-2.5.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/lib/jersey-client-1.19.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/lib/jackson-module-jaxb-annotations-2.7.8.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/lib/jackson-jaxrs-json-provider-2.7.8.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/lib/geronimo-jcache_1.0_spec-1.0-alpha-1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/lib/objenesis-1.0.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/lib/ehcache-3.3.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/lib/snakeyaml-1.16.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/lib/dnsjava-2.1.7.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/lib/HikariCP-java7-2.4.12.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/lib/metrics-core-3.2.4.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/hadoop-yarn-applications-unmanaged-am-launcher-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/hadoop-yarn-server-resourcemanager-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/hadoop-yarn-server-applicationhistoryservice-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/hadoop-yarn-server-sharedcachemanager-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/hadoop-yarn-services-core-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/hadoop-yarn-server-nodemanager-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/hadoop-yarn-server-timeline-pluginstorage-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/hadoop-yarn-api-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/hadoop-yarn-services-api-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/hadoop-yarn-client-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/hadoop-yarn-registry-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/hadoop-yarn-server-router-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/hadoop-yarn-applications-distributedshell-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/hadoop-yarn-server-web-proxy-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/hadoop-yarn-server-tests-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/hadoop-yarn-common-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/hadoop-yarn-server-common-3.1.2.jar
+STARTUP_MSG:   build = Unknown -r Unknown; compiled by 'root' on 2019-07-28T02:45Z
+STARTUP_MSG:   java = 1.8.0_212
+************************************************************/
+2019-07-27 23:01:44,058 INFO  datanode.DataNode LogAdapter.java:info:51 - registered UNIX signal handlers for [TERM, HUP, INT]
+2019-07-27 23:01:44,064 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 hadoop.service.shutdown.timeout
+2019-07-27 23:01:44,188 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.data.dir
+2019-07-27 23:01:44,267 INFO  conf.Configuration Configuration.java:getBoolean:1668 - [msx] getBoolean hadoop.security.token.service.use_ip true
+2019-07-27 23:01:44,267 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 hadoop.security.token.service.use_ip
+2019-07-27 23:01:44,284 INFO  conf.Configuration Configuration.java:getBoolean:1668 - [msx] getBoolean hadoop.security.dns.log-slow-lookups.enabled false
+2019-07-27 23:01:44,284 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 hadoop.security.dns.log-slow-lookups.enabled
+2019-07-27 23:01:44,284 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt hadoop.security.dns.log-slow-lookups.threshold.ms 1000
+2019-07-27 23:01:44,284 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 hadoop.security.dns.log-slow-lookups.threshold.ms
+2019-07-27 23:01:44,285 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 1000
+2019-07-27 23:01:44,285 INFO  conf.Configuration Configuration.java:get:1457 - [msx] get2 hadoop.security.authentication simple
+2019-07-27 23:01:44,288 INFO  conf.Configuration Configuration.java:get:1457 - [msx] get2 hadoop.security.authentication simple
+2019-07-27 23:01:44,288 INFO  conf.Configuration Configuration.java:get:1457 - [msx] get2 hadoop.security.auth_to_local RULE:[1:$1] RULE:[2:$1]
+2019-07-27 23:01:44,289 INFO  conf.Configuration Configuration.java:get:1457 - [msx] get2 hadoop.security.auth_to_local.mechanism hadoop
+2019-07-27 23:01:44,289 INFO  conf.Configuration Configuration.java:getLong:1535 - [msx] getLong hadoop.kerberos.min.seconds.before.relogin 60
+2019-07-27 23:01:44,291 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 hadoop.kerberos.min.seconds.before.relogin
+2019-07-27 23:01:44,291 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 60
+2019-07-27 23:01:44,293 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 hadoop.security.group.mapping
+2019-07-27 23:01:44,319 INFO  conf.Configuration Configuration.java:getLong:1535 - [msx] getLong hadoop.security.groups.cache.secs 300
+2019-07-27 23:01:44,319 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 hadoop.security.groups.cache.secs
+2019-07-27 23:01:44,348 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 300
+2019-07-27 23:01:44,348 INFO  conf.Configuration Configuration.java:getLong:1535 - [msx] getLong hadoop.security.groups.negative-cache.secs 30
+2019-07-27 23:01:44,348 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 hadoop.security.groups.negative-cache.secs
+2019-07-27 23:01:44,348 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 30
+2019-07-27 23:01:44,348 INFO  conf.Configuration Configuration.java:getLong:1535 - [msx] getLong hadoop.security.groups.cache.warn.after.ms 5000
+2019-07-27 23:01:44,348 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 hadoop.security.groups.cache.warn.after.ms
+2019-07-27 23:01:44,348 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 5000
+2019-07-27 23:01:44,349 INFO  conf.Configuration Configuration.java:getBoolean:1668 - [msx] getBoolean hadoop.security.groups.cache.background.reload false
+2019-07-27 23:01:44,349 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 hadoop.security.groups.cache.background.reload
+2019-07-27 23:01:44,349 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt hadoop.security.groups.cache.background.reload.threads 3
+2019-07-27 23:01:44,349 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 hadoop.security.groups.cache.background.reload.threads
+2019-07-27 23:01:44,349 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 3
+2019-07-27 23:01:44,349 INFO  conf.Configuration Configuration.java:get:1457 - [msx] get2 hadoop.user.group.static.mapping.overrides dr.who=;
+2019-07-27 23:01:44,378 INFO  conf.Configuration Configuration.java:getInts:1502 - [msx] getInts hadoop.user.group.metrics.percentiles.intervals
+2019-07-27 23:01:44,378 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 hadoop.user.group.metrics.percentiles.intervals
+2019-07-27 23:01:44,378 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.hostname
+2019-07-27 23:01:44,378 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 hadoop.security.dns.interface
+2019-07-27 23:01:44,379 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 hadoop.security.dns.nameserver
+2019-07-27 23:01:44,379 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.dns.interface
+2019-07-27 23:01:44,379 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.dns.nameserver
+2019-07-27 23:01:44,381 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.disk.check.timeout
+2019-07-27 23:01:44,384 INFO  conf.Configuration Configuration.java:get:1457 - [msx] get2 dfs.datanode.data.dir.perm 700
+2019-07-27 23:01:44,385 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt dfs.datanode.failed.volumes.tolerated 0
+2019-07-27 23:01:44,385 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.failed.volumes.tolerated
+2019-07-27 23:01:44,385 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 0
+2019-07-27 23:01:44,392 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.disk.check.min.gap
+2019-07-27 23:01:44,405 INFO  conf.Configuration Configuration.java:get:1457 - [msx] get2 fs.defaultFS file:///
+2019-07-27 23:01:44,406 INFO  conf.Configuration Configuration.java:getBoolean:1668 - [msx] getBoolean fs.file.impl.disable.cache false
+2019-07-27 23:01:44,406 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 fs.file.impl.disable.cache
+2019-07-27 23:01:44,412 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 hadoop.token.files
+2019-07-27 23:01:44,426 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 fs.client.htrace.sampler.classes
+2019-07-27 23:01:44,426 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 hadoop.htrace.sampler.classes
+2019-07-27 23:01:44,428 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 fs.client.htrace.tracer.id
+2019-07-27 23:01:44,428 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 hadoop.htrace.tracer.id
+2019-07-27 23:01:44,431 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 fs.client.htrace.span.receiver.classes
+2019-07-27 23:01:44,431 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 hadoop.htrace.span.receiver.classes
+2019-07-27 23:01:44,457 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 fs.file.impl
+2019-07-27 23:01:44,457 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt file.bytes-per-checksum 512
+2019-07-27 23:01:44,457 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 file.bytes-per-checksum
+2019-07-27 23:01:44,458 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 512
+2019-07-27 23:01:44,461 INFO  conf.Configuration Configuration.java:getBoolean:1668 - [msx] getBoolean fs.client.resolve.remote.symlinks true
+2019-07-27 23:01:44,461 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 fs.client.resolve.remote.symlinks
+2019-07-27 23:01:44,461 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 hadoop.service.shutdown.timeout
+2019-07-27 23:01:44,478 INFO  conf.Configuration Configuration.java:getBoolean:1668 - [msx] getBoolean fs.automatic.close true
+2019-07-27 23:01:44,478 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 fs.automatic.close
+2019-07-27 23:01:44,480 INFO  checker.ThrottledAsyncChecker ThrottledAsyncChecker.java:schedule:137 - Scheduling a check for [DISK]file:/root/hdfs-root/data
+2019-07-27 23:01:44,492 INFO  conf.Configuration Configuration.java:getLong:1535 - [msx] getLong fs.local.block.size 33554432
+2019-07-27 23:01:44,492 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 fs.local.block.size
+2019-07-27 23:01:44,499 INFO  conf.Configuration Configuration.java:getBoolean:1668 - [msx] getBoolean hadoop.workaround.non.threadsafe.getpwuid true
+2019-07-27 23:01:44,499 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 hadoop.workaround.non.threadsafe.getpwuid
+2019-07-27 23:01:44,516 INFO  conf.Configuration Configuration.java:getLong:1535 - [msx] getLong hadoop.security.uid.cache.secs 14400
+2019-07-27 23:01:44,516 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 hadoop.security.uid.cache.secs
+2019-07-27 23:01:44,516 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 14400
+2019-07-27 23:01:44,621 INFO  beanutils.FluentPropertyBeanIntrospector FluentPropertyBeanIntrospector.java:introspect:147 - Error when creating PropertyDescriptor for public final void org.apache.commons.configuration2.AbstractConfiguration.setProperty(java.lang.String,java.lang.Object)! Ignoring this property.
+2019-07-27 23:01:44,656 INFO  impl.MetricsConfig MetricsConfig.java:loadFirst:121 - loaded properties from hadoop-metrics2.properties
+2019-07-27 23:01:44,722 INFO  impl.MetricsSystemImpl MetricsSystemImpl.java:startTimer:374 - Scheduled Metric snapshot period at 10 second(s).
+2019-07-27 23:01:44,722 INFO  impl.MetricsSystemImpl MetricsSystemImpl.java:start:191 - DataNode metrics system started
+2019-07-27 23:01:44,724 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 datanode.htrace.sampler.classes
+2019-07-27 23:01:44,725 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 hadoop.htrace.sampler.classes
+2019-07-27 23:01:44,725 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 datanode.htrace.tracer.id
+2019-07-27 23:01:44,725 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 hadoop.htrace.tracer.id
+2019-07-27 23:01:44,725 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 datanode.htrace.span.receiver.classes
+2019-07-27 23:01:44,725 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 hadoop.htrace.span.receiver.classes
+2019-07-27 23:01:44,729 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt dfs.datanode.fileio.profiling.sampling.percentage 0
+2019-07-27 23:01:44,729 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.fileio.profiling.sampling.percentage
+2019-07-27 23:01:44,729 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 0
+2019-07-27 23:01:44,733 INFO  conf.Configuration Configuration.java:getBoolean:1668 - [msx] getBoolean hadoop.ssl.require.client.cert false
+2019-07-27 23:01:44,733 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 hadoop.ssl.require.client.cert
+2019-07-27 23:01:44,745 INFO  conf.Configuration Configuration.java:get:1457 - [msx] get2 hadoop.ssl.client.conf ssl-client.xml
+2019-07-27 23:01:44,745 INFO  conf.Configuration Configuration.java:getBoolean:1668 - [msx] getBoolean hadoop.ssl.require.client.cert false
+2019-07-27 23:01:44,745 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 hadoop.ssl.require.client.cert
+2019-07-27 23:01:44,746 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 hadoop.ssl.keystores.factory.class
+2019-07-27 23:01:44,746 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 hadoop.ssl.enabled.protocols
+2019-07-27 23:01:44,747 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 ssl.server.exclude.cipher.list
+2019-07-27 23:01:44,747 INFO  conf.Configuration Configuration.java:getBoolean:1668 - [msx] getBoolean hadoop.ssl.require.client.cert false
+2019-07-27 23:01:44,747 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 hadoop.ssl.require.client.cert
+2019-07-27 23:01:44,747 INFO  conf.Configuration Configuration.java:get:1457 - [msx] get2 ssl.client.keystore.type jks
+2019-07-27 23:01:44,768 INFO  conf.Configuration Configuration.java:get:1457 - [msx] get2 ssl.client.truststore.type jks
+2019-07-27 23:01:44,768 INFO  conf.Configuration Configuration.java:get:1457 - [msx] get2 ssl.client.truststore.location 
+2019-07-27 23:01:44,893 INFO  conf.Configuration Configuration.java:get:1457 - [msx] get2 hadoop.ssl.hostname.verifier DEFAULT
+2019-07-27 23:01:44,898 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt io.file.buffer.size 4096
+2019-07-27 23:01:44,898 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 io.file.buffer.size
+2019-07-27 23:01:44,898 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 4096
+2019-07-27 23:01:44,898 INFO  common.Util Util.java:isDiskStatsEnabled:394 - dfs.datanode.fileio.profiling.sampling.percentage set to 0. Disabling file IO profiling
+2019-07-27 23:01:44,899 INFO  conf.Configuration Configuration.java:getBoolean:1668 - [msx] getBoolean dfs.datanode.enable.fileio.fault.injection false
+2019-07-27 23:01:44,899 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.enable.fileio.fault.injection
+2019-07-27 23:01:44,901 INFO  conf.Configuration Configuration.java:getLong:1535 - [msx] getLong dfs.block.scanner.volume.bytes.per.second 1048576
+2019-07-27 23:01:44,901 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.block.scanner.volume.bytes.per.second
+2019-07-27 23:01:44,901 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 1048576
+2019-07-27 23:01:44,901 INFO  conf.Configuration Configuration.java:getLong:1535 - [msx] getLong dfs.datanode.scan.period.hours 504
+2019-07-27 23:01:44,901 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.scan.period.hours
+2019-07-27 23:01:44,901 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 504
+2019-07-27 23:01:44,902 INFO  datanode.BlockScanner BlockScanner.java:<init>:184 - Initialized block scanner with targetBytesPerSec 1048576
+2019-07-27 23:01:44,903 INFO  conf.Configuration Configuration.java:getLong:1535 - [msx] getLong dfs.namenode.max-num-blocks-to-log 1000
+2019-07-27 23:01:44,903 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.namenode.max-num-blocks-to-log
+2019-07-27 23:01:44,903 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 1000
+2019-07-27 23:01:44,903 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.block.local-path-access.user
+2019-07-27 23:01:44,903 INFO  conf.Configuration Configuration.java:getBoolean:1668 - [msx] getBoolean dfs.datanode.use.datanode.hostname false
+2019-07-27 23:01:44,903 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.use.datanode.hostname
+2019-07-27 23:01:44,903 INFO  conf.Configuration Configuration.java:get:1457 - [msx] get2 dfs.permissions.superusergroup supergroup
+2019-07-27 23:01:44,903 INFO  conf.Configuration Configuration.java:getBoolean:1668 - [msx] getBoolean dfs.permissions.enabled true
+2019-07-27 23:01:44,903 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.permissions.enabled
+2019-07-27 23:01:44,904 INFO  conf.Configuration Configuration.java:getBoolean:1668 - [msx] getBoolean dfs.pipeline.ecn false
+2019-07-27 23:01:44,904 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.pipeline.ecn
+2019-07-27 23:01:44,904 INFO  conf.Configuration Configuration.java:get:1457 - [msx] get2 hadoop.common.configuration.version UNSPECIFIED
+2019-07-27 23:01:44,905 INFO  conf.Configuration Configuration.java:get:1457 - [msx] get2 hadoop.hdfs.configuration.version UNSPECIFIED
+2019-07-27 23:01:44,907 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.disk.check.timeout
+2019-07-27 23:01:44,909 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt dfs.datanode.failed.volumes.tolerated 0
+2019-07-27 23:01:44,909 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.failed.volumes.tolerated
+2019-07-27 23:01:44,909 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 0
+2019-07-27 23:01:44,909 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.disk.check.min.gap
+2019-07-27 23:01:44,909 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.disk.check.timeout
+2019-07-27 23:01:44,911 INFO  conf.Configuration Configuration.java:getBoolean:1668 - [msx] getBoolean dfs.client.read.shortcircuit false
+2019-07-27 23:01:44,911 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.client.read.shortcircuit
+2019-07-27 23:01:44,912 INFO  conf.Configuration Configuration.java:get:1457 - [msx] get2 hadoop.rpc.socket.factory.class.default org.apache.hadoop.net.StandardSocketFactory
+2019-07-27 23:01:44,912 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.hostname
+2019-07-27 23:01:44,912 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 hadoop.security.dns.interface
+2019-07-27 23:01:44,912 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 hadoop.security.dns.nameserver
+2019-07-27 23:01:44,912 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.dns.interface
+2019-07-27 23:01:44,912 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.dns.nameserver
+2019-07-27 23:01:44,912 INFO  datanode.DataNode DataNode.java:<init>:500 - Configured hostname is node-3-link-0
+2019-07-27 23:01:44,913 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt dfs.client.socket-timeout 60000
+2019-07-27 23:01:44,913 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.client.socket-timeout
+2019-07-27 23:01:44,913 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 60000
+2019-07-27 23:01:44,913 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt dfs.datanode.socket.write.timeout 480000
+2019-07-27 23:01:44,913 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.socket.write.timeout
+2019-07-27 23:01:44,914 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 480000
+2019-07-27 23:01:44,914 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt dfs.datanode.socket.reuse.keepalive 4000
+2019-07-27 23:01:44,914 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.socket.reuse.keepalive
+2019-07-27 23:01:44,914 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 4000
+2019-07-27 23:01:44,915 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt dfs.datanode.transfer.socket.send.buffer.size 0
+2019-07-27 23:01:44,915 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.transfer.socket.send.buffer.size
+2019-07-27 23:01:44,915 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 0
+2019-07-27 23:01:44,915 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt dfs.datanode.transfer.socket.recv.buffer.size 0
+2019-07-27 23:01:44,915 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.transfer.socket.recv.buffer.size
+2019-07-27 23:01:44,915 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 0
+2019-07-27 23:01:44,915 INFO  conf.Configuration Configuration.java:getBoolean:1668 - [msx] getBoolean dfs.data.transfer.server.tcpnodelay true
+2019-07-27 23:01:44,915 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.data.transfer.server.tcpnodelay
+2019-07-27 23:01:44,915 INFO  conf.Configuration Configuration.java:getBoolean:1668 - [msx] getBoolean dfs.datanode.transferTo.allowed true
+2019-07-27 23:01:44,916 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.transferTo.allowed
+2019-07-27 23:01:44,916 INFO  conf.Configuration Configuration.java:getLong:1535 - [msx] getLong dfs.datanode.readahead.bytes 4194304
+2019-07-27 23:01:44,916 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.readahead.bytes
+2019-07-27 23:01:44,916 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 4194304
+2019-07-27 23:01:44,916 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt ipc.maximum.data.length 67108864
+2019-07-27 23:01:44,917 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 ipc.maximum.data.length
+2019-07-27 23:01:44,917 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 67108864
+2019-07-27 23:01:44,917 INFO  conf.Configuration Configuration.java:getBoolean:1668 - [msx] getBoolean dfs.datanode.drop.cache.behind.writes false
+2019-07-27 23:01:44,917 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.drop.cache.behind.writes
+2019-07-27 23:01:44,917 INFO  conf.Configuration Configuration.java:getBoolean:1668 - [msx] getBoolean dfs.datanode.sync.behind.writes false
+2019-07-27 23:01:44,917 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.sync.behind.writes
+2019-07-27 23:01:44,917 INFO  conf.Configuration Configuration.java:getBoolean:1668 - [msx] getBoolean dfs.datanode.sync.behind.writes.in.background false
+2019-07-27 23:01:44,917 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.sync.behind.writes.in.background
+2019-07-27 23:01:44,917 INFO  conf.Configuration Configuration.java:getBoolean:1668 - [msx] getBoolean dfs.datanode.drop.cache.behind.reads false
+2019-07-27 23:01:44,917 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.drop.cache.behind.reads
+2019-07-27 23:01:44,917 INFO  conf.Configuration Configuration.java:getBoolean:1668 - [msx] getBoolean dfs.datanode.use.datanode.hostname false
+2019-07-27 23:01:44,917 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.use.datanode.hostname
+2019-07-27 23:01:44,917 INFO  conf.Configuration Configuration.java:getLong:1535 - [msx] getLong dfs.blockreport.intervalMsec 21600000
+2019-07-27 23:01:44,917 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.blockreport.intervalMsec
+2019-07-27 23:01:44,917 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 21600000
+2019-07-27 23:01:44,918 INFO  conf.Configuration Configuration.java:getBoolean:1668 - [msx] getBoolean dfs.datanode.peer.stats.enabled false
+2019-07-27 23:01:44,918 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.peer.stats.enabled
+2019-07-27 23:01:44,918 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt dfs.datanode.fileio.profiling.sampling.percentage 0
+2019-07-27 23:01:44,918 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.fileio.profiling.sampling.percentage
+2019-07-27 23:01:44,918 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 0
+2019-07-27 23:01:44,918 INFO  common.Util Util.java:isDiskStatsEnabled:394 - dfs.datanode.fileio.profiling.sampling.percentage set to 0. Disabling file IO profiling
+2019-07-27 23:01:44,918 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.outliers.report.interval
+2019-07-27 23:01:44,921 INFO  conf.Configuration Configuration.java:getLong:1535 - [msx] getLong dfs.blockreport.incremental.intervalMsec 0
+2019-07-27 23:01:44,921 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.blockreport.incremental.intervalMsec
+2019-07-27 23:01:44,921 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 0
+2019-07-27 23:01:44,921 INFO  conf.Configuration Configuration.java:getLong:1535 - [msx] getLong dfs.blockreport.split.threshold 1000000
+2019-07-27 23:01:44,921 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.blockreport.split.threshold
+2019-07-27 23:01:44,921 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 1000000
+2019-07-27 23:01:44,922 INFO  conf.Configuration Configuration.java:getLong:1535 - [msx] getLong dfs.cachereport.intervalMsec 10000
+2019-07-27 23:01:44,922 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.cachereport.intervalMsec
+2019-07-27 23:01:44,922 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 10000
+2019-07-27 23:01:44,922 INFO  conf.Configuration Configuration.java:getLong:1535 - [msx] getLong dfs.datanode.slow.io.warning.threshold.ms 300
+2019-07-27 23:01:44,922 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.slow.io.warning.threshold.ms
+2019-07-27 23:01:44,922 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 300
+2019-07-27 23:01:44,922 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.blockreport.initialDelay
+2019-07-27 23:01:44,922 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.heartbeat.interval
+2019-07-27 23:01:44,922 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.heartbeat.interval
+2019-07-27 23:01:44,922 INFO  conf.Configuration Configuration.java:getLong:1535 - [msx] getLong dfs.datanode.lifeline.interval.seconds 9
+2019-07-27 23:01:44,923 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.lifeline.interval.seconds
+2019-07-27 23:01:44,923 INFO  conf.Configuration Configuration.java:getBoolean:1668 - [msx] getBoolean dfs.datanode.synconclose false
+2019-07-27 23:01:44,923 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.synconclose
+2019-07-27 23:01:44,923 INFO  conf.Configuration Configuration.java:get:1457 - [msx] get2 dfs.datanode.min.supported.namenode.version 2.1.0-beta
+2019-07-27 23:01:44,923 INFO  conf.Configuration Configuration.java:getBoolean:1668 - [msx] getBoolean dfs.encrypt.data.transfer false
+2019-07-27 23:01:44,923 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.encrypt.data.transfer
+2019-07-27 23:01:44,923 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.encrypt.data.transfer.algorithm
+2019-07-27 23:01:44,924 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.trustedchannel.resolver.class
+2019-07-27 23:01:44,927 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.data.transfer.protection
+2019-07-27 23:01:44,927 INFO  conf.Configuration Configuration.java:getBoolean:1668 - [msx] getBoolean ignore.secure.ports.for.testing false
+2019-07-27 23:01:44,927 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 ignore.secure.ports.for.testing
+2019-07-27 23:01:44,927 INFO  conf.Configuration Configuration.java:getLong:1535 - [msx] getLong dfs.datanode.xceiver.stop.timeout.millis 60000
+2019-07-27 23:01:44,928 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.xceiver.stop.timeout.millis
+2019-07-27 23:01:44,928 INFO  conf.Configuration Configuration.java:getLong:1535 - [msx] getLong dfs.datanode.max.locked.memory 0
+2019-07-27 23:01:44,928 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.max.locked.memory
+2019-07-27 23:01:44,928 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 0
+2019-07-27 23:01:44,928 INFO  conf.Configuration Configuration.java:getLong:1535 - [msx] getLong dfs.datanode.restart.replica.expiration 50
+2019-07-27 23:01:44,928 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.restart.replica.expiration
+2019-07-27 23:01:44,929 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 50
+2019-07-27 23:01:44,929 INFO  conf.Configuration Configuration.java:getBoolean:1668 - [msx] getBoolean dfs.datanode.non.local.lazy.persist false
+2019-07-27 23:01:44,929 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.non.local.lazy.persist
+2019-07-27 23:01:44,930 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.bp-ready.timeout
+2019-07-27 23:01:44,930 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt dfs.datanode.failed.volumes.tolerated 0
+2019-07-27 23:01:44,930 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.failed.volumes.tolerated
+2019-07-27 23:01:44,930 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 0
+2019-07-27 23:01:44,930 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.data.dir
+2019-07-27 23:01:44,931 INFO  datanode.DataNode DataNode.java:startDataNode:1400 - Starting DataNode with maxLockedMemory = 0
+2019-07-27 23:01:44,945 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt ipc.server.listen.queue.size 128
+2019-07-27 23:01:44,945 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 ipc.server.listen.queue.size
+2019-07-27 23:01:44,945 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 128
+2019-07-27 23:01:44,946 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.address
+2019-07-27 23:01:44,953 INFO  datanode.DataNode DataNode.java:initDataXceiver:1148 - Opened streaming server at /0.0.0.0:9866
+2019-07-27 23:01:44,954 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt dfs.datanode.max.transfer.threads 4096
+2019-07-27 23:01:44,954 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.max.transfer.threads
+2019-07-27 23:01:44,954 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 4096
+2019-07-27 23:01:44,954 INFO  conf.Configuration Configuration.java:getLongBytes:1561 - [msx] getLongBytes dfs.blocksize 134217728
+2019-07-27 23:01:44,954 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.blocksize
+2019-07-27 23:01:44,956 INFO  conf.Configuration Configuration.java:getLongBytes:1561 - [msx] getLongBytes dfs.datanode.balance.bandwidthPerSec 10485760
+2019-07-27 23:01:44,956 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.balance.bandwidthPerSec
+2019-07-27 23:01:44,956 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt dfs.datanode.balance.max.concurrent.moves 50
+2019-07-27 23:01:44,956 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.balance.max.concurrent.moves
+2019-07-27 23:01:44,956 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 50
+2019-07-27 23:01:44,956 INFO  datanode.DataNode DataXceiverServer.java:<init>:78 - Balancing bandwidth is 10485760 bytes/s
+2019-07-27 23:01:44,956 INFO  datanode.DataNode DataXceiverServer.java:<init>:79 - Number threads for balancing is 50
+2019-07-27 23:01:44,957 INFO  conf.Configuration Configuration.java:getBoolean:1668 - [msx] getBoolean dfs.client.read.shortcircuit false
+2019-07-27 23:01:44,957 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.client.read.shortcircuit
+2019-07-27 23:01:44,957 INFO  conf.Configuration Configuration.java:getBoolean:1668 - [msx] getBoolean dfs.client.domain.socket.data.traffic false
+2019-07-27 23:01:44,957 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.client.domain.socket.data.traffic
+2019-07-27 23:01:44,963 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt dfs.short.circuit.shared.memory.watcher.interrupt.check.ms 60000
+2019-07-27 23:01:44,963 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.short.circuit.shared.memory.watcher.interrupt.check.ms
+2019-07-27 23:01:44,963 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 60000
+2019-07-27 23:01:44,963 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.shared.file.descriptor.paths
+2019-07-27 23:01:44,972 INFO  conf.Configuration Configuration.java:getBoolean:1668 - [msx] getBoolean dfs.webhdfs.rest-csrf.enabled false
+2019-07-27 23:01:44,972 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.webhdfs.rest-csrf.enabled
+2019-07-27 23:01:44,973 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt dfs.datanode.http.internal-proxy.port 0
+2019-07-27 23:01:44,973 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.http.internal-proxy.port
+2019-07-27 23:01:44,974 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 0
+2019-07-27 23:01:44,976 INFO  conf.Configuration Configuration.java:get:1457 - [msx] get2 dfs.cluster.administrators  
+2019-07-27 23:01:44,976 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.http.address
+2019-07-27 23:01:44,979 INFO  conf.Configuration Configuration.java:getBoolean:1668 - [msx] getBoolean dfs.xframe.enabled true
+2019-07-27 23:01:44,979 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.xframe.enabled
+2019-07-27 23:01:44,979 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.xframe.value
+2019-07-27 23:01:45,001 INFO  util.log Log.java:initialized:192 - Logging initialized @1518ms
+2019-07-27 23:01:45,089 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 hadoop.http.temp.dir
+2019-07-27 23:01:45,093 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 hadoop.http.authentication.simple.anonymous.allowed
+2019-07-27 23:01:45,093 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 hadoop.http.authentication.type
+2019-07-27 23:01:45,093 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 hadoop.http.authentication.token.validity
+2019-07-27 23:01:45,093 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 hadoop.http.authentication.signature.secret.file
+2019-07-27 23:01:45,094 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 hadoop.http.authentication.kerberos.principal
+2019-07-27 23:01:45,096 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 hadoop.http.authentication.kerberos.keytab
+2019-07-27 23:01:45,096 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 bind.address
+2019-07-27 23:01:45,100 INFO  server.AuthenticationFilter AuthenticationFilter.java:constructSecretProvider:240 - Unable to initialize FileSignerSecretProvider, falling back to use random secrets.
+2019-07-27 23:01:45,101 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt hadoop.http.max.threads -1
+2019-07-27 23:01:45,101 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 hadoop.http.max.threads
+2019-07-27 23:01:45,101 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 3
+2019-07-27 23:01:45,114 INFO  http.HttpRequestLog HttpRequestLog.java:getRequestLog:81 - Http request log for http.requests.datanode is not defined
+2019-07-27 23:01:45,114 INFO  conf.Configuration Configuration.java:getBoolean:1668 - [msx] getBoolean hadoop.http.logs.enabled true
+2019-07-27 23:01:45,114 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 hadoop.http.logs.enabled
+2019-07-27 23:01:45,117 INFO  conf.Configuration Configuration.java:getBoolean:1668 - [msx] getBoolean hadoop.jetty.logs.serve.aliases true
+2019-07-27 23:01:45,117 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 hadoop.jetty.logs.serve.aliases
+2019-07-27 23:01:45,120 INFO  http.HttpServer2 HttpServer2.java:addGlobalFilter:970 - Added global filter 'safety' (class=org.apache.hadoop.http.HttpServer2$QuotingInputFilter)
+2019-07-27 23:01:45,120 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 hadoop.http.filter.initializers
+2019-07-27 23:01:45,122 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.web.ugi
+2019-07-27 23:01:45,122 INFO  conf.Configuration Configuration.java:get:1457 - [msx] get2 hadoop.http.staticuser.user dr.who
+2019-07-27 23:01:45,123 INFO  http.HttpServer2 HttpServer2.java:addFilter:943 - Added filter static_user_filter (class=org.apache.hadoop.http.lib.StaticUserWebFilter$StaticUserFilter) to context datanode
+2019-07-27 23:01:45,123 INFO  http.HttpServer2 HttpServer2.java:addFilter:953 - Added filter static_user_filter (class=org.apache.hadoop.http.lib.StaticUserWebFilter$StaticUserFilter) to context logs
+2019-07-27 23:01:45,123 INFO  http.HttpServer2 HttpServer2.java:addFilter:953 - Added filter static_user_filter (class=org.apache.hadoop.http.lib.StaticUserWebFilter$StaticUserFilter) to context static
+2019-07-27 23:01:45,126 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt hadoop.http.max.request.header.size 65536
+2019-07-27 23:01:45,126 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 hadoop.http.max.request.header.size
+2019-07-27 23:01:45,126 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt hadoop.http.max.response.header.size 65536
+2019-07-27 23:01:45,126 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 hadoop.http.max.response.header.size
+2019-07-27 23:01:45,126 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt hadoop.http.idle_timeout.ms 10000
+2019-07-27 23:01:45,126 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 hadoop.http.idle_timeout.ms
+2019-07-27 23:01:45,130 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt hadoop.http.socket.backlog.size 128
+2019-07-27 23:01:45,130 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 hadoop.http.socket.backlog.size
+2019-07-27 23:01:45,134 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt hadoop.http.acceptor.count -1
+2019-07-27 23:01:45,134 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 hadoop.http.acceptor.count
+2019-07-27 23:01:45,134 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 1
+2019-07-27 23:01:45,134 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt hadoop.http.selector.count -1
+2019-07-27 23:01:45,134 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 hadoop.http.selector.count
+2019-07-27 23:01:45,134 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 1
+2019-07-27 23:01:45,143 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt dfs.webhdfs.ugi.expire.after.access 600000
+2019-07-27 23:01:45,143 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.webhdfs.ugi.expire.after.access
+2019-07-27 23:01:45,143 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 600000
+2019-07-27 23:01:45,145 INFO  http.HttpServer2 HttpServer2.java:bindListener:1186 - Jetty bound to port 45918
+2019-07-27 23:01:45,146 INFO  server.Server Server.java:doStart:351 - jetty-9.3.24.v20180605, build timestamp: 2018-06-05T13:11:56-04:00, git hash: 84205aa28f11a4f31f2a3b86d1bba2cc8ab69827
+2019-07-27 23:01:45,181 INFO  handler.ContextHandler ContextHandler.java:doStart:781 - Started o.e.j.s.ServletContextHandler@3fa247d1{/logs,file:///root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/logs/,AVAILABLE}
+2019-07-27 23:01:45,182 INFO  handler.ContextHandler ContextHandler.java:doStart:781 - Started o.e.j.s.ServletContextHandler@4f4c4b1a{/static,file:///root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/webapps/static/,AVAILABLE}
+2019-07-27 23:01:45,379 INFO  handler.ContextHandler ContextHandler.java:doStart:781 - Started o.e.j.w.WebAppContext@2d6c53fc{/,file:///root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/webapps/datanode/,AVAILABLE}{/datanode}
+2019-07-27 23:01:45,389 INFO  server.AbstractConnector AbstractConnector.java:doStart:278 - Started ServerConnector@5329fe3f{HTTP/1.1,[http/1.1]}{localhost:45918}
+2019-07-27 23:01:45,389 INFO  server.Server Server.java:doStart:419 - Started @1906ms
+2019-07-27 23:01:45,480 INFO  conf.Configuration Configuration.java:get:1457 - [msx] get2 dfs.http.policy HTTP_ONLY
+2019-07-27 23:01:45,484 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt dfs.webhdfs.netty.high.watermark 65535
+2019-07-27 23:01:45,485 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.webhdfs.netty.high.watermark
+2019-07-27 23:01:45,485 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 65535
+2019-07-27 23:01:45,485 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt dfs.webhdfs.netty.low.watermark 32768
+2019-07-27 23:01:45,485 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.webhdfs.netty.low.watermark
+2019-07-27 23:01:45,485 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 32768
+2019-07-27 23:01:45,488 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.http.address
+2019-07-27 23:01:45,573 INFO  web.DatanodeHttpServer DatanodeHttpServer.java:start:255 - Listening HTTP traffic on /0.0.0.0:9864
+2019-07-27 23:01:45,580 INFO  conf.Configuration Configuration.java:getLong:1535 - [msx] getLong jvm.pause.warn-threshold.ms 10000
+2019-07-27 23:01:45,580 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 jvm.pause.warn-threshold.ms
+2019-07-27 23:01:45,580 INFO  conf.Configuration Configuration.java:getLong:1535 - [msx] getLong jvm.pause.info-threshold.ms 1000
+2019-07-27 23:01:45,580 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 jvm.pause.info-threshold.ms
+2019-07-27 23:01:45,588 INFO  datanode.DataNode DataNode.java:startDataNode:1428 - dnUserName = root
+2019-07-27 23:01:45,588 INFO  datanode.DataNode DataNode.java:startDataNode:1429 - supergroup = supergroup
+2019-07-27 23:01:45,588 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.ipc.address
+2019-07-27 23:01:45,592 INFO  util.JvmPauseMonitor JvmPauseMonitor.java:run:188 - Starting JVM pause monitor
+2019-07-27 23:01:45,633 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt dfs.datanode.handler.count 10
+2019-07-27 23:01:45,633 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.handler.count
+2019-07-27 23:01:45,633 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 10
+2019-07-27 23:01:45,634 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 rpc.engine.org.apache.hadoop.hdfs.protocolPB.ClientDatanodeProtocolPB
+2019-07-27 23:01:45,641 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt ipc.maximum.data.length 67108864
+2019-07-27 23:01:45,642 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 ipc.maximum.data.length
+2019-07-27 23:01:45,642 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 67108864
+2019-07-27 23:01:45,642 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt ipc.server.handler.queue.size 100
+2019-07-27 23:01:45,642 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 ipc.server.handler.queue.size
+2019-07-27 23:01:45,642 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt ipc.server.max.response.size 1048576
+2019-07-27 23:01:45,642 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 ipc.server.max.response.size
+2019-07-27 23:01:45,642 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt ipc.server.read.threadpool.size 1
+2019-07-27 23:01:45,642 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 ipc.server.read.threadpool.size
+2019-07-27 23:01:45,642 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt ipc.server.read.connection-queue.size 100
+2019-07-27 23:01:45,642 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 ipc.server.read.connection-queue.size
+2019-07-27 23:01:45,644 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 ipc.9867.callqueue.impl
+2019-07-27 23:01:45,644 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 ipc.9867.scheduler.impl
+2019-07-27 23:01:45,644 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 ipc.9867.callqueue.impl
+2019-07-27 23:01:45,645 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 ipc.9867.scheduler.impl
+2019-07-27 23:01:45,645 INFO  conf.Configuration Configuration.java:getBoolean:1668 - [msx] getBoolean ipc.9867.backoff.enable false
+2019-07-27 23:01:45,645 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 ipc.9867.backoff.enable
+2019-07-27 23:01:45,645 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt ipc.9867.faircallqueue.priority-levels 0
+2019-07-27 23:01:45,645 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 ipc.9867.faircallqueue.priority-levels
+2019-07-27 23:01:45,645 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt ipc.9867.scheduler.priority.levels 4
+2019-07-27 23:01:45,645 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 ipc.9867.scheduler.priority.levels
+2019-07-27 23:01:45,646 INFO  ipc.CallQueueManager CallQueueManager.java:<init>:84 - Using callQueue: class java.util.concurrent.LinkedBlockingQueue queueCapacity: 1000 scheduler: class org.apache.hadoop.ipc.DefaultRpcScheduler
+2019-07-27 23:01:45,646 INFO  conf.Configuration Configuration.java:getBoolean:1668 - [msx] getBoolean hadoop.security.authorization false
+2019-07-27 23:01:45,646 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 hadoop.security.authorization
+2019-07-27 23:01:45,646 INFO  conf.Configuration Configuration.java:get:1457 - [msx] get2 hadoop.security.authentication simple
+2019-07-27 23:01:45,658 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt ipc.server.listen.queue.size 128
+2019-07-27 23:01:45,658 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 ipc.server.listen.queue.size
+2019-07-27 23:01:45,658 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 128
+2019-07-27 23:01:45,660 INFO  ipc.Server Server.java:run:1070 - Starting Socket Reader #1 for port 9867
+2019-07-27 23:01:45,661 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt ipc.client.idlethreshold 4000
+2019-07-27 23:01:45,661 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 ipc.client.idlethreshold
+2019-07-27 23:01:45,661 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 4000
+2019-07-27 23:01:45,661 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt ipc.client.connection.idle-scan-interval.ms 10000
+2019-07-27 23:01:45,661 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 ipc.client.connection.idle-scan-interval.ms
+2019-07-27 23:01:45,661 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt ipc.client.connection.maxidletime 10000
+2019-07-27 23:01:45,661 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 ipc.client.connection.maxidletime
+2019-07-27 23:01:45,661 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 10000
+2019-07-27 23:01:45,661 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt ipc.client.kill.max 10
+2019-07-27 23:01:45,661 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 ipc.client.kill.max
+2019-07-27 23:01:45,661 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 10
+2019-07-27 23:01:45,661 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt ipc.server.max.connections 0
+2019-07-27 23:01:45,661 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 ipc.server.max.connections
+2019-07-27 23:01:45,662 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 0
+2019-07-27 23:01:45,662 INFO  conf.Configuration Configuration.java:getInts:1502 - [msx] getInts rpc.metrics.percentiles.intervals
+2019-07-27 23:01:45,663 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 rpc.metrics.percentiles.intervals
+2019-07-27 23:01:45,823 INFO  conf.Configuration Configuration.java:getBoolean:1668 - [msx] getBoolean ipc.server.tcpnodelay true
+2019-07-27 23:01:45,824 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 ipc.server.tcpnodelay
+2019-07-27 23:01:45,824 INFO  conf.Configuration Configuration.java:getBoolean:1668 - [msx] getBoolean ipc.server.log.slow.rpc false
+2019-07-27 23:01:45,824 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 ipc.server.log.slow.rpc
+2019-07-27 23:01:45,828 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 hadoop.security.saslproperties.resolver.class
+2019-07-27 23:01:45,829 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 hadoop.rpc.protection
+2019-07-27 23:01:45,841 INFO  datanode.DataNode DataNode.java:initIpcServer:1034 - Opened IPC server at /0.0.0.0:9867
+2019-07-27 23:01:45,841 INFO  conf.Configuration Configuration.java:getBoolean:1668 - [msx] getBoolean hadoop.security.authorization false
+2019-07-27 23:01:45,842 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 hadoop.security.authorization
+2019-07-27 23:01:45,842 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.metrics.session-id
+2019-07-27 23:01:45,847 INFO  conf.Configuration Configuration.java:getInts:1502 - [msx] getInts dfs.metrics.percentiles.intervals
+2019-07-27 23:01:45,847 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.metrics.percentiles.intervals
+2019-07-27 23:01:45,858 INFO  conf.Configuration Configuration.java:getFloat:1610 - [msx] getFloat dfs.datanode.ec.reconstruction.xmits.weight 0.5
+2019-07-27 23:01:45,858 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.ec.reconstruction.xmits.weight
+2019-07-27 23:01:45,860 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt dfs.datanode.ec.reconstruction.threads 8
+2019-07-27 23:01:45,860 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.ec.reconstruction.threads
+2019-07-27 23:01:45,860 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 8
+2019-07-27 23:01:45,863 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.nameservices
+2019-07-27 23:01:45,863 INFO  datanode.DataNode BlockPoolManager.java:refreshNamenodes:149 - Refresh request received for nameservices: mycluster
+2019-07-27 23:01:45,863 INFO  conf.Configuration Configuration.java:get:1457 - [msx] get2 fs.defaultFS file:///
+2019-07-27 23:01:45,870 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.nameservices
+2019-07-27 23:01:45,871 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.internal.nameservices
+2019-07-27 23:01:45,871 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.nameservices
+2019-07-27 23:01:45,871 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.ha.namenodes.mycluster
+2019-07-27 23:01:45,871 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.namenode.servicerpc-address.mycluster.nn1
+2019-07-27 23:01:45,871 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.namenode.rpc-address.mycluster.nn1
+2019-07-27 23:01:45,872 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.namenode.servicerpc-address.mycluster.nn2
+2019-07-27 23:01:45,872 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.namenode.rpc-address.mycluster.nn2
+2019-07-27 23:01:45,872 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.internal.nameservices
+2019-07-27 23:01:45,872 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.nameservices
+2019-07-27 23:01:45,872 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.ha.namenodes.mycluster
+2019-07-27 23:01:45,872 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.namenode.lifeline.rpc-address.mycluster.nn1
+2019-07-27 23:01:45,872 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.namenode.lifeline.rpc-address.mycluster.nn2
+2019-07-27 23:01:45,875 INFO  datanode.DataNode BlockPoolManager.java:doRefreshNamenodes:210 - Starting BPOfferServices for nameservices: mycluster
+2019-07-27 23:01:45,887 INFO  datanode.DataNode BPServiceActor.java:run:810 - Block pool <registering> (Datanode Uuid unassigned) service to node-0-link-0/192.168.122.202:8020 starting to offer service
+2019-07-27 23:01:45,891 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt dfs.datanode.metrics.logger.period.seconds 600
+2019-07-27 23:01:45,891 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.metrics.logger.period.seconds
+2019-07-27 23:01:45,891 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 600
+2019-07-27 23:01:45,892 INFO  datanode.DataNode BPServiceActor.java:run:810 - Block pool <registering> (Datanode Uuid unassigned) service to node-1-link-0/192.168.122.175:8020 starting to offer service
+2019-07-27 23:01:45,895 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 hadoop.rpc.socket.factory.class.DatanodeProtocolPB
+2019-07-27 23:01:45,895 INFO  conf.Configuration Configuration.java:get:1457 - [msx] get2 hadoop.rpc.socket.factory.class.default org.apache.hadoop.net.StandardSocketFactory
+2019-07-27 23:01:45,895 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt ipc.client.rpc-timeout.ms 0
+2019-07-27 23:01:45,896 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 ipc.client.rpc-timeout.ms
+2019-07-27 23:01:45,897 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 0
+2019-07-27 23:01:45,897 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 rpc.engine.org.apache.hadoop.hdfs.protocolPB.DatanodeProtocolPB
+2019-07-27 23:01:45,896 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 hadoop.rpc.socket.factory.class.DatanodeProtocolPB
+2019-07-27 23:01:45,897 INFO  conf.Configuration Configuration.java:get:1457 - [msx] get2 hadoop.rpc.socket.factory.class.default org.apache.hadoop.net.StandardSocketFactory
+2019-07-27 23:01:45,897 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt ipc.client.rpc-timeout.ms 0
+2019-07-27 23:01:45,897 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 ipc.client.rpc-timeout.ms
+2019-07-27 23:01:45,897 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 0
+2019-07-27 23:01:45,896 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt dfs.datanode.network.counts.cache.max.size 2147483647
+2019-07-27 23:01:45,897 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.network.counts.cache.max.size
+2019-07-27 23:01:45,897 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 2147483647
+2019-07-27 23:01:45,898 INFO  conf.Configuration Configuration.java:get:1457 - [msx] get2 dfs.datanode.oob.timeout-ms 1500,0,0,0
+2019-07-27 23:01:45,899 INFO  ipc.Server Server.java:run:1310 - IPC Server Responder: starting
+2019-07-27 23:01:45,899 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt ipc.client.connect.max.retries 10
+2019-07-27 23:01:45,899 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 ipc.client.connect.max.retries
+2019-07-27 23:01:45,899 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 10
+2019-07-27 23:01:45,899 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt ipc.client.connect.retry.interval 1000
+2019-07-27 23:01:45,899 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 ipc.client.connect.retry.interval
+2019-07-27 23:01:45,899 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 1000
+2019-07-27 23:01:45,899 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt ipc.client.connect.max.retries 10
+2019-07-27 23:01:45,900 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 ipc.client.connect.max.retries
+2019-07-27 23:01:45,900 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 10
+2019-07-27 23:01:45,900 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt ipc.client.connect.retry.interval 1000
+2019-07-27 23:01:45,900 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 ipc.client.connect.retry.interval
+2019-07-27 23:01:45,900 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 1000
+2019-07-27 23:01:45,911 INFO  ipc.Server Server.java:run:1149 - IPC Server listener on 9867: starting
+2019-07-27 23:01:45,915 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt ipc.client.connection.maxidletime 10000
+2019-07-27 23:01:45,915 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 ipc.client.connection.maxidletime
+2019-07-27 23:01:45,915 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 10000
+2019-07-27 23:01:45,915 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt ipc.client.connect.max.retries.on.sasl 5
+2019-07-27 23:01:45,916 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 ipc.client.connect.max.retries.on.sasl
+2019-07-27 23:01:45,916 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt ipc.client.connect.max.retries.on.timeouts 45
+2019-07-27 23:01:45,916 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 ipc.client.connect.max.retries.on.timeouts
+2019-07-27 23:01:45,916 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 45
+2019-07-27 23:01:45,916 INFO  conf.Configuration Configuration.java:getBoolean:1668 - [msx] getBoolean ipc.client.tcpnodelay true
+2019-07-27 23:01:45,916 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 ipc.client.tcpnodelay
+2019-07-27 23:01:45,916 INFO  conf.Configuration Configuration.java:getBoolean:1668 - [msx] getBoolean ipc.client.low-latency false
+2019-07-27 23:01:45,916 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 ipc.client.low-latency
+2019-07-27 23:01:45,916 INFO  conf.Configuration Configuration.java:getBoolean:1668 - [msx] getBoolean ipc.client.ping true
+2019-07-27 23:01:45,916 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 ipc.client.ping
+2019-07-27 23:01:45,918 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt ipc.ping.interval 60000
+2019-07-27 23:01:45,918 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 ipc.ping.interval
+2019-07-27 23:01:45,918 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 60000
+2019-07-27 23:01:45,918 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt ipc.client.connect.timeout 20000
+2019-07-27 23:01:45,918 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 ipc.client.connect.timeout
+2019-07-27 23:01:45,918 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 20000
+2019-07-27 23:01:45,918 INFO  conf.Configuration Configuration.java:getBoolean:1668 - [msx] getBoolean ipc.client.fallback-to-simple-auth-allowed false
+2019-07-27 23:01:45,918 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 ipc.client.fallback-to-simple-auth-allowed
+2019-07-27 23:01:45,919 INFO  conf.Configuration Configuration.java:getBoolean:1668 - [msx] getBoolean ipc.client.bind.wildcard.addr false
+2019-07-27 23:01:45,919 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 ipc.client.bind.wildcard.addr
+2019-07-27 23:01:45,920 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt ipc.client.async.calls.max 100
+2019-07-27 23:01:45,920 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 ipc.client.async.calls.max
+2019-07-27 23:01:45,923 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt ipc.client.connection.maxidletime 10000
+2019-07-27 23:01:45,923 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 ipc.client.connection.maxidletime
+2019-07-27 23:01:45,923 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 10000
+2019-07-27 23:01:45,923 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt ipc.client.connect.max.retries.on.sasl 5
+2019-07-27 23:01:45,923 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 ipc.client.connect.max.retries.on.sasl
+2019-07-27 23:01:45,923 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt ipc.client.connect.max.retries.on.timeouts 45
+2019-07-27 23:01:45,923 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 ipc.client.connect.max.retries.on.timeouts
+2019-07-27 23:01:45,923 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 45
+2019-07-27 23:01:45,923 INFO  conf.Configuration Configuration.java:getBoolean:1668 - [msx] getBoolean ipc.client.tcpnodelay true
+2019-07-27 23:01:45,923 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 ipc.client.tcpnodelay
+2019-07-27 23:01:45,923 INFO  conf.Configuration Configuration.java:getBoolean:1668 - [msx] getBoolean ipc.client.low-latency false
+2019-07-27 23:01:45,923 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 ipc.client.low-latency
+2019-07-27 23:01:45,923 INFO  conf.Configuration Configuration.java:getBoolean:1668 - [msx] getBoolean ipc.client.ping true
+2019-07-27 23:01:45,923 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 ipc.client.ping
+2019-07-27 23:01:45,923 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt ipc.ping.interval 60000
+2019-07-27 23:01:45,923 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 ipc.ping.interval
+2019-07-27 23:01:45,924 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 60000
+2019-07-27 23:01:45,977 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt ipc.maximum.response.length 134217728
+2019-07-27 23:01:45,978 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt ipc.maximum.response.length 134217728
+2019-07-27 23:01:45,978 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 ipc.maximum.response.length
+2019-07-27 23:01:45,978 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 ipc.maximum.response.length
+2019-07-27 23:01:45,978 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 134217728
+2019-07-27 23:01:45,978 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 134217728
+2019-07-27 23:01:46,997 INFO  ipc.Client Client.java:handleConnectionFailure:948 - Retrying connect to server: node-0-link-0/192.168.122.202:8020. Already tried 0 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+2019-07-27 23:01:46,997 INFO  ipc.Client Client.java:handleConnectionFailure:948 - Retrying connect to server: node-1-link-0/192.168.122.175:8020. Already tried 0 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+2019-07-27 23:01:47,999 INFO  ipc.Client Client.java:handleConnectionFailure:948 - Retrying connect to server: node-0-link-0/192.168.122.202:8020. Already tried 1 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+2019-07-27 23:01:47,999 INFO  ipc.Client Client.java:handleConnectionFailure:948 - Retrying connect to server: node-1-link-0/192.168.122.175:8020. Already tried 1 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+2019-07-27 23:01:49,000 INFO  ipc.Client Client.java:handleConnectionFailure:948 - Retrying connect to server: node-0-link-0/192.168.122.202:8020. Already tried 2 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+2019-07-27 23:01:49,000 INFO  ipc.Client Client.java:handleConnectionFailure:948 - Retrying connect to server: node-1-link-0/192.168.122.175:8020. Already tried 2 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+2019-07-27 23:01:50,001 INFO  ipc.Client Client.java:handleConnectionFailure:948 - Retrying connect to server: node-0-link-0/192.168.122.202:8020. Already tried 3 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+2019-07-27 23:01:50,001 INFO  ipc.Client Client.java:handleConnectionFailure:948 - Retrying connect to server: node-1-link-0/192.168.122.175:8020. Already tried 3 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+2019-07-27 23:01:51,003 INFO  ipc.Client Client.java:handleConnectionFailure:948 - Retrying connect to server: node-1-link-0/192.168.122.175:8020. Already tried 4 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+2019-07-27 23:01:51,003 INFO  ipc.Client Client.java:handleConnectionFailure:948 - Retrying connect to server: node-0-link-0/192.168.122.202:8020. Already tried 4 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+2019-07-27 23:01:52,004 INFO  ipc.Client Client.java:handleConnectionFailure:948 - Retrying connect to server: node-1-link-0/192.168.122.175:8020. Already tried 5 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+2019-07-27 23:01:52,004 INFO  ipc.Client Client.java:handleConnectionFailure:948 - Retrying connect to server: node-0-link-0/192.168.122.202:8020. Already tried 5 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+2019-07-27 23:01:52,170 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.fsdataset.factory
+2019-07-27 23:01:52,170 INFO  conf.Configuration Configuration.java:get:1457 - [msx] get2 dfs.datanode.startup REGULAR
+2019-07-27 23:01:52,173 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt dfs.datanode.parallel.volumes.load.threads.num 1
+2019-07-27 23:01:52,173 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.parallel.volumes.load.threads.num
+2019-07-27 23:01:52,174 INFO  common.Storage DataStorage.java:getParallelVolumeLoadThreadsNum:354 - Using 1 threads to upgrade data directories (dfs.datanode.parallel.volumes.load.threads.num=1, dataDirs=1)
+2019-07-27 23:01:52,298 INFO  common.Storage Storage.java:tryLock:905 - Lock on /root/hdfs-root/data/in_use.lock acquired by nodename 12003@node-3-link-0
+2019-07-27 23:01:52,300 INFO  common.Storage DataStorage.java:loadStorageDirectory:282 - Storage directory with location [DISK]file:/root/hdfs-root/data is not formatted for namespace 427251047. Formatting...
+2019-07-27 23:01:52,302 INFO  common.Storage DataStorage.java:createStorageID:160 - Generated new storageID DS-82745e28-afbe-42f7-b44d-de90f2972d17 for directory /root/hdfs-root/data 
+2019-07-27 23:01:52,505 INFO  conf.Configuration Configuration.java:get:1457 - [msx] get2 fs.defaultFS file:///
+2019-07-27 23:01:52,548 INFO  conf.Configuration Configuration.java:getBoolean:1668 - [msx] getBoolean fs.file.impl.disable.cache false
+2019-07-27 23:01:52,548 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 fs.file.impl.disable.cache
+2019-07-27 23:01:52,548 INFO  conf.Configuration Configuration.java:get:1457 - [msx] get2 dfs.datanode.data.dir.perm 700
+2019-07-27 23:01:52,552 INFO  common.Storage BlockPoolSliceStorage.java:recoverTransitionRead:251 - Analyzing storage directories for bpid BP-1447725025-192.168.122.202-1564282872898
+2019-07-27 23:01:52,553 INFO  common.Storage Storage.java:lock:864 - Locking is disabled for /root/hdfs-root/data/current/BP-1447725025-192.168.122.202-1564282872898
+2019-07-27 23:01:52,554 INFO  common.Storage BlockPoolSliceStorage.java:loadStorageDirectory:168 - Block pool storage directory for location [DISK]file:/root/hdfs-root/data and block pool id BP-1447725025-192.168.122.202-1564282872898 is not formatted. Formatting ...
+2019-07-27 23:01:52,554 INFO  common.Storage BlockPoolSliceStorage.java:format:280 - Formatting block pool BP-1447725025-192.168.122.202-1564282872898 directory /root/hdfs-root/data/current/BP-1447725025-192.168.122.202-1564282872898/current
+2019-07-27 23:01:52,744 INFO  datanode.DataNode DataNode.java:initStorage:1722 - Setting up storage: nsid=427251047;bpid=BP-1447725025-192.168.122.202-1564282872898;lv=-57;nsInfo=lv=-64;cid=CID-ec1565b6-8f1c-405e-b623-817897ac0236;nsid=427251047;c=1564282872898;bpid=BP-1447725025-192.168.122.202-1564282872898;dnuuid=null
+2019-07-27 23:01:52,894 INFO  datanode.DataNode DataNode.java:checkDatanodeUuid:1546 - Generated and persisted new Datanode UUID 48d35d62-8801-4d31-81d8-c30e913a8b26
+2019-07-27 23:01:52,920 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt io.file.buffer.size 4096
+2019-07-27 23:01:52,920 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 io.file.buffer.size
+2019-07-27 23:01:52,920 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 4096
+2019-07-27 23:01:52,922 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.lock.suppress.warning.interval
+2019-07-27 23:01:52,922 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.data.dir
+2019-07-27 23:01:52,926 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.ram.disk.replica.tracker
+2019-07-27 23:01:52,931 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.fsdataset.volume.choosing.policy
+2019-07-27 23:01:52,942 INFO  conf.Configuration Configuration.java:getLong:1535 - [msx] getLong fs.df.interval 60000
+2019-07-27 23:01:52,942 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 fs.df.interval
+2019-07-27 23:01:52,942 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 60000
+2019-07-27 23:01:53,023 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt dfs.datanode.fsdatasetcache.max.threads.per.volume 4
+2019-07-27 23:01:53,023 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.fsdatasetcache.max.threads.per.volume
+2019-07-27 23:01:53,023 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 4
+2019-07-27 23:01:53,025 INFO  conf.Configuration Configuration.java:getInts:1502 - [msx] getInts dfs.metrics.percentiles.intervals
+2019-07-27 23:01:53,025 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.metrics.percentiles.intervals
+2019-07-27 23:01:53,034 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.du.reserved.calculator
+2019-07-27 23:01:53,034 INFO  conf.Configuration Configuration.java:getLong:1535 - [msx] getLong dfs.datanode.du.reserved 0
+2019-07-27 23:01:53,034 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.du.reserved
+2019-07-27 23:01:53,034 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 0
+2019-07-27 23:01:53,034 INFO  conf.Configuration Configuration.java:getLong:1535 - [msx] getLong dfs.datanode.du.reserved.disk 0
+2019-07-27 23:01:53,034 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.du.reserved.disk
+2019-07-27 23:01:53,040 INFO  impl.FsDatasetImpl FsVolumeList.java:addVolume:306 - Added new volume: DS-82745e28-afbe-42f7-b44d-de90f2972d17
+2019-07-27 23:01:53,040 INFO  impl.FsDatasetImpl FsDatasetImpl.java:addVolume:450 - Added volume - [DISK]file:/root/hdfs-root/data, StorageType: DISK
+2019-07-27 23:01:53,043 INFO  conf.Configuration Configuration.java:getLong:1535 - [msx] getLong dfs.datanode.cache.revocation.timeout.ms 900000
+2019-07-27 23:01:53,043 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.cache.revocation.timeout.ms
+2019-07-27 23:01:53,043 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 900000
+2019-07-27 23:01:53,043 INFO  conf.Configuration Configuration.java:getLong:1535 - [msx] getLong dfs.datanode.cache.revocation.polling.ms 500
+2019-07-27 23:01:53,043 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.cache.revocation.polling.ms
+2019-07-27 23:01:53,043 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 500
+2019-07-27 23:01:53,047 INFO  impl.FsDatasetImpl FsDatasetImpl.java:registerMBean:2280 - Registered FSDatasetState MBean
+2019-07-27 23:01:53,063 INFO  conf.Configuration Configuration.java:get:1457 - [msx] get2 fs.defaultFS file:///
+2019-07-27 23:01:53,063 INFO  conf.Configuration Configuration.java:getBoolean:1668 - [msx] getBoolean fs.file.impl.disable.cache false
+2019-07-27 23:01:53,063 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 fs.file.impl.disable.cache
+2019-07-27 23:01:53,064 INFO  conf.Configuration Configuration.java:getBoolean:1668 - [msx] getBoolean dfs.datanode.block-pinning.enabled false
+2019-07-27 23:01:53,064 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.block-pinning.enabled
+2019-07-27 23:01:53,064 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt ipc.maximum.data.length 67108864
+2019-07-27 23:01:53,064 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 ipc.maximum.data.length
+2019-07-27 23:01:53,064 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 67108864
+2019-07-27 23:01:53,064 INFO  checker.ThrottledAsyncChecker ThrottledAsyncChecker.java:schedule:137 - Scheduling a check for /root/hdfs-root/data
+2019-07-27 23:01:53,086 INFO  checker.DatasetVolumeChecker DatasetVolumeChecker.java:checkAllVolumes:221 - Scheduled health check for volume /root/hdfs-root/data
+2019-07-27 23:01:53,089 INFO  impl.FsDatasetImpl FsDatasetImpl.java:addBlockPool:2791 - Adding block pool BP-1447725025-192.168.122.202-1564282872898
+2019-07-27 23:01:53,090 INFO  impl.FsDatasetImpl FsVolumeList.java:run:409 - Scanning block pool BP-1447725025-192.168.122.202-1564282872898 on volume /root/hdfs-root/data...
+2019-07-27 23:01:53,099 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt io.file.buffer.size 4096
+2019-07-27 23:01:53,100 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 io.file.buffer.size
+2019-07-27 23:01:53,100 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 4096
+2019-07-27 23:01:53,100 INFO  conf.Configuration Configuration.java:getBoolean:1668 - [msx] getBoolean dfs.datanode.duplicate.replica.deletion true
+2019-07-27 23:01:53,100 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.duplicate.replica.deletion
+2019-07-27 23:01:53,100 INFO  conf.Configuration Configuration.java:getLong:1535 - [msx] getLong dfs.datanode.cached-dfsused.check.interval.ms 600000
+2019-07-27 23:01:53,100 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.cached-dfsused.check.interval.ms
+2019-07-27 23:01:53,100 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 600000
+2019-07-27 23:01:53,100 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt ipc.maximum.data.length 67108864
+2019-07-27 23:01:53,100 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 ipc.maximum.data.length
+2019-07-27 23:01:53,100 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 67108864
+2019-07-27 23:01:53,108 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 fs.getspaceused.classname
+2019-07-27 23:01:53,109 INFO  conf.Configuration Configuration.java:getLong:1535 - [msx] getLong fs.du.interval 600000
+2019-07-27 23:01:53,109 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 fs.du.interval
+2019-07-27 23:01:53,109 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 600000
+2019-07-27 23:01:53,109 INFO  conf.Configuration Configuration.java:getLong:1535 - [msx] getLong fs.getspaceused.jitterMillis 60000
+2019-07-27 23:01:53,109 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 fs.getspaceused.jitterMillis
+2019-07-27 23:01:53,122 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt dfs.datanode.volumes.replica-add.threadpool.size 2
+2019-07-27 23:01:53,123 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.volumes.replica-add.threadpool.size
+2019-07-27 23:01:53,123 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 hadoop.service.shutdown.timeout
+2019-07-27 23:01:53,152 INFO  impl.FsDatasetImpl FsVolumeList.java:run:414 - Time taken to scan block pool BP-1447725025-192.168.122.202-1564282872898 on /root/hdfs-root/data: 62ms
+2019-07-27 23:01:53,152 INFO  impl.FsDatasetImpl FsVolumeList.java:addBlockPool:440 - Total time to scan all replicas for block pool BP-1447725025-192.168.122.202-1564282872898: 63ms
+2019-07-27 23:01:53,157 INFO  impl.FsDatasetImpl FsVolumeList.java:run:198 - Adding replicas to map for block pool BP-1447725025-192.168.122.202-1564282872898 on volume /root/hdfs-root/data...
+2019-07-27 23:01:53,157 INFO  impl.BlockPoolSlice BlockPoolSlice.java:readReplicasFromCache:871 - Replica Cache file: /root/hdfs-root/data/current/BP-1447725025-192.168.122.202-1564282872898/current/replicas doesn't exist 
+2019-07-27 23:01:53,159 INFO  impl.FsDatasetImpl FsVolumeList.java:run:203 - Time to add replicas to map for block pool BP-1447725025-192.168.122.202-1564282872898 on volume /root/hdfs-root/data: 2ms
+2019-07-27 23:01:53,160 INFO  impl.FsDatasetImpl FsVolumeList.java:getAllVolumesMap:230 - Total time to add all replicas to map for block pool BP-1447725025-192.168.122.202-1564282872898: 4ms
+2019-07-27 23:01:53,162 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.directoryscan.interval
+2019-07-27 23:01:53,162 INFO  datanode.VolumeScanner VolumeScanner.java:findNextUsableBlockIter:386 - Now scanning bpid BP-1447725025-192.168.122.202-1564282872898 on volume /root/hdfs-root/data
+2019-07-27 23:01:53,165 INFO  datanode.VolumeScanner VolumeScanner.java:runLoop:544 - VolumeScanner(/root/hdfs-root/data, DS-82745e28-afbe-42f7-b44d-de90f2972d17): finished scanning block pool BP-1447725025-192.168.122.202-1564282872898
+2019-07-27 23:01:53,165 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.directoryscan.interval
+2019-07-27 23:01:53,165 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt dfs.datanode.directoryscan.throttle.limit.ms.per.sec 1000
+2019-07-27 23:01:53,166 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.directoryscan.throttle.limit.ms.per.sec
+2019-07-27 23:01:53,166 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 1000
+2019-07-27 23:01:53,166 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt dfs.datanode.directoryscan.threads 1
+2019-07-27 23:01:53,166 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.datanode.directoryscan.threads
+2019-07-27 23:01:53,166 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 1
+2019-07-27 23:01:53,183 INFO  datanode.DirectoryScanner DirectoryScanner.java:start:283 - Periodic Directory Tree Verification scan starting at 7/28/19 1:17 AM with interval of 21600000ms
+2019-07-27 23:01:53,185 INFO  conf.Configuration Configuration.java:getLong:1535 - [msx] getLong dfs.disk.balancer.max.disk.throughputInMBperSec 10
+2019-07-27 23:01:53,185 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.disk.balancer.max.disk.throughputInMBperSec
+2019-07-27 23:01:53,185 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 10
+2019-07-27 23:01:53,186 INFO  conf.Configuration Configuration.java:getLong:1535 - [msx] getLong dfs.disk.balancer.block.tolerance.percent 10
+2019-07-27 23:01:53,186 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.disk.balancer.block.tolerance.percent
+2019-07-27 23:01:53,186 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 10
+2019-07-27 23:01:53,186 INFO  conf.Configuration Configuration.java:getLong:1535 - [msx] getLong dfs.disk.balancer.max.disk.errors 5
+2019-07-27 23:01:53,186 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.disk.balancer.max.disk.errors
+2019-07-27 23:01:53,186 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 5
+2019-07-27 23:01:53,189 INFO  conf.Configuration Configuration.java:getBoolean:1668 - [msx] getBoolean dfs.disk.balancer.enabled true
+2019-07-27 23:01:53,189 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.disk.balancer.enabled
+2019-07-27 23:01:53,189 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt dfs.disk.balancer.max.disk.throughputInMBperSec 10
+2019-07-27 23:01:53,189 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.disk.balancer.max.disk.throughputInMBperSec
+2019-07-27 23:01:53,189 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 10
+2019-07-27 23:01:53,190 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 dfs.disk.balancer.plan.valid.interval
+2019-07-27 23:01:53,193 INFO  datanode.DataNode BPServiceActor.java:register:764 - Block pool BP-1447725025-192.168.122.202-1564282872898 (Datanode Uuid 48d35d62-8801-4d31-81d8-c30e913a8b26) service to node-1-link-0/192.168.122.175:8020 beginning handshake with NN
+2019-07-27 23:01:53,193 INFO  datanode.DataNode BPServiceActor.java:register:764 - Block pool BP-1447725025-192.168.122.202-1564282872898 (Datanode Uuid 48d35d62-8801-4d31-81d8-c30e913a8b26) service to node-0-link-0/192.168.122.202:8020 beginning handshake with NN
+2019-07-27 23:01:53,215 INFO  datanode.VolumeScanner VolumeScanner.java:findNextUsableBlockIter:403 - VolumeScanner(/root/hdfs-root/data, DS-82745e28-afbe-42f7-b44d-de90f2972d17): no suitable block pools found to scan.  Waiting 1814399947 ms.
+2019-07-27 23:01:53,321 INFO  datanode.DataNode BPServiceActor.java:register:783 - Block pool Block pool BP-1447725025-192.168.122.202-1564282872898 (Datanode Uuid 48d35d62-8801-4d31-81d8-c30e913a8b26) service to node-1-link-0/192.168.122.175:8020 successfully registered with NN
+2019-07-27 23:01:53,321 INFO  datanode.DataNode BPServiceActor.java:offerService:612 - For namenode node-1-link-0/192.168.122.175:8020 using BLOCKREPORT_INTERVAL of 21600000msec CACHEREPORT_INTERVAL of 10000msec Initial delay: 0msec; heartBeatInterval=3000
+2019-07-27 23:01:53,355 INFO  datanode.DataNode BPServiceActor.java:register:783 - Block pool Block pool BP-1447725025-192.168.122.202-1564282872898 (Datanode Uuid 48d35d62-8801-4d31-81d8-c30e913a8b26) service to node-0-link-0/192.168.122.202:8020 successfully registered with NN
+2019-07-27 23:01:53,355 INFO  datanode.DataNode BPServiceActor.java:offerService:612 - For namenode node-0-link-0/192.168.122.202:8020 using BLOCKREPORT_INTERVAL of 21600000msec CACHEREPORT_INTERVAL of 10000msec Initial delay: 0msec; heartBeatInterval=3000
+2019-07-27 23:01:53,472 INFO  datanode.DataNode BPServiceActor.java:blockReport:422 - Successfully sent block report 0x9abe1164490192ca,  containing 1 storage report(s), of which we sent 1. The reports had 0 total blocks and used 1 RPC(s). This took 6 msec to generate and 41 msecs for RPC and NN processing. Got back no commands.
+2019-07-27 23:01:53,472 INFO  datanode.DataNode BPServiceActor.java:blockReport:422 - Successfully sent block report 0x58313e1153efb1fb,  containing 1 storage report(s), of which we sent 1. The reports had 0 total blocks and used 1 RPC(s). This took 7 msec to generate and 41 msecs for RPC and NN processing. Got back no commands.
+2019-07-27 23:01:56,326 INFO  datanode.DataNode BPOfferService.java:updateActorStatesFromHeartbeat:576 - Namenode Block pool BP-1447725025-192.168.122.202-1564282872898 (Datanode Uuid 48d35d62-8801-4d31-81d8-c30e913a8b26) service to node-1-link-0/192.168.122.175:8020 trying to claim ACTIVE state with txid=1
+2019-07-27 23:01:56,326 INFO  datanode.DataNode BPOfferService.java:updateActorStatesFromHeartbeat:588 - Acknowledging ACTIVE Namenode Block pool BP-1447725025-192.168.122.202-1564282872898 (Datanode Uuid 48d35d62-8801-4d31-81d8-c30e913a8b26) service to node-1-link-0/192.168.122.175:8020
+2019-07-27 23:02:09,149 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt io.file.buffer.size 4096
+2019-07-27 23:02:09,149 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 io.file.buffer.size
+2019-07-27 23:02:09,149 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 4096
+2019-07-27 23:02:09,149 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt io.file.buffer.size 4096
+2019-07-27 23:02:09,149 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 io.file.buffer.size
+2019-07-27 23:02:09,149 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 4096
+2019-07-27 23:02:09,376 INFO  datanode.DataNode DataXceiver.java:writeBlock:738 - Receiving BP-1447725025-192.168.122.202-1564282872898:blk_1073741826_1002 src: /192.168.122.12:47528 dest: /192.168.122.161:9866
+2019-07-27 23:02:09,399 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt io.file.buffer.size 4096
+2019-07-27 23:02:09,400 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 io.file.buffer.size
+2019-07-27 23:02:09,401 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 4096
+2019-07-27 23:02:10,450 INFO  DataNode.clienttrace BlockReceiver.java:finalizeBlock:1533 - src: /192.168.122.12:47528, dest: /192.168.122.161:9866, bytes: 134217728, op: HDFS_WRITE, cliID: DFSClient_NONMAPREDUCE_632919583_1, offset: 0, srvID: 48d35d62-8801-4d31-81d8-c30e913a8b26, blockid: BP-1447725025-192.168.122.202-1564282872898:blk_1073741826_1002, duration(ns): 1003742295
+2019-07-27 23:02:10,450 INFO  datanode.DataNode BlockReceiver.java:run:1506 - PacketResponder: BP-1447725025-192.168.122.202-1564282872898:blk_1073741826_1002, type=HAS_DOWNSTREAM_IN_PIPELINE, downstreams=2:[192.168.122.102:9866, 192.168.122.17:9866] terminating
+2019-07-27 23:02:18,940 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt io.file.buffer.size 4096
+2019-07-27 23:02:18,940 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 io.file.buffer.size
+2019-07-27 23:02:18,940 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 4096
+2019-07-27 23:02:18,940 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt io.file.buffer.size 4096
+2019-07-27 23:02:18,940 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 io.file.buffer.size
+2019-07-27 23:02:18,940 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 4096
+2019-07-27 23:02:19,140 INFO  datanode.DataNode DataXceiver.java:writeBlock:738 - Receiving BP-1447725025-192.168.122.202-1564282872898:blk_1073741827_1003 src: /192.168.122.12:47538 dest: /192.168.122.161:9866
+2019-07-27 23:02:19,141 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt io.file.buffer.size 4096
+2019-07-27 23:02:19,141 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 io.file.buffer.size
+2019-07-27 23:02:19,141 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 4096
+2019-07-27 23:02:20,141 INFO  DataNode.clienttrace BlockReceiver.java:finalizeBlock:1533 - src: /192.168.122.12:47538, dest: /192.168.122.161:9866, bytes: 134217728, op: HDFS_WRITE, cliID: DFSClient_NONMAPREDUCE_748066983_1, offset: 0, srvID: 48d35d62-8801-4d31-81d8-c30e913a8b26, blockid: BP-1447725025-192.168.122.202-1564282872898:blk_1073741827_1003, duration(ns): 976515653
+2019-07-27 23:02:20,142 INFO  datanode.DataNode BlockReceiver.java:run:1506 - PacketResponder: BP-1447725025-192.168.122.202-1564282872898:blk_1073741827_1003, type=HAS_DOWNSTREAM_IN_PIPELINE, downstreams=2:[192.168.122.102:9866, 192.168.122.50:9866] terminating
+2019-07-27 23:02:25,472 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt io.file.buffer.size 4096
+2019-07-27 23:02:25,472 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 io.file.buffer.size
+2019-07-27 23:02:25,472 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 4096
+2019-07-27 23:02:25,472 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt io.file.buffer.size 4096
+2019-07-27 23:02:25,472 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 io.file.buffer.size
+2019-07-27 23:02:25,473 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 4096
+2019-07-27 23:02:25,646 INFO  datanode.DataNode DataXceiver.java:writeBlock:738 - Receiving BP-1447725025-192.168.122.202-1564282872898:blk_1073741828_1004 src: /192.168.122.12:47548 dest: /192.168.122.161:9866
+2019-07-27 23:02:25,647 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt io.file.buffer.size 4096
+2019-07-27 23:02:25,647 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 io.file.buffer.size
+2019-07-27 23:02:25,647 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 4096
+2019-07-27 23:02:26,628 INFO  DataNode.clienttrace BlockReceiver.java:finalizeBlock:1533 - src: /192.168.122.12:47548, dest: /192.168.122.161:9866, bytes: 134217728, op: HDFS_WRITE, cliID: DFSClient_NONMAPREDUCE_-1315357877_1, offset: 0, srvID: 48d35d62-8801-4d31-81d8-c30e913a8b26, blockid: BP-1447725025-192.168.122.202-1564282872898:blk_1073741828_1004, duration(ns): 961320899
+2019-07-27 23:02:26,629 INFO  datanode.DataNode BlockReceiver.java:run:1506 - PacketResponder: BP-1447725025-192.168.122.202-1564282872898:blk_1073741828_1004, type=HAS_DOWNSTREAM_IN_PIPELINE, downstreams=2:[192.168.122.17:9866, 192.168.122.50:9866] terminating
+2019-07-27 23:02:38,851 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt io.file.buffer.size 4096
+2019-07-27 23:02:38,851 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 io.file.buffer.size
+2019-07-27 23:02:38,851 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 4096
+2019-07-27 23:02:38,851 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt io.file.buffer.size 4096
+2019-07-27 23:02:38,851 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 io.file.buffer.size
+2019-07-27 23:02:38,851 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 4096
+2019-07-27 23:02:38,991 INFO  datanode.DataNode DataXceiver.java:writeBlock:738 - Receiving BP-1447725025-192.168.122.202-1564282872898:blk_1073741829_1005 src: /192.168.122.12:47558 dest: /192.168.122.161:9866
+2019-07-27 23:02:38,991 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt io.file.buffer.size 4096
+2019-07-27 23:02:38,992 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 io.file.buffer.size
+2019-07-27 23:02:38,992 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 4096
+2019-07-27 23:02:39,925 INFO  DataNode.clienttrace BlockReceiver.java:finalizeBlock:1533 - src: /192.168.122.12:47558, dest: /192.168.122.161:9866, bytes: 134217728, op: HDFS_WRITE, cliID: DFSClient_NONMAPREDUCE_376448999_1, offset: 0, srvID: 48d35d62-8801-4d31-81d8-c30e913a8b26, blockid: BP-1447725025-192.168.122.202-1564282872898:blk_1073741829_1005, duration(ns): 913334779
+2019-07-27 23:02:39,925 INFO  datanode.DataNode BlockReceiver.java:run:1506 - PacketResponder: BP-1447725025-192.168.122.202-1564282872898:blk_1073741829_1005, type=HAS_DOWNSTREAM_IN_PIPELINE, downstreams=2:[192.168.122.17:9866, 192.168.122.102:9866] terminating
+2019-07-27 23:02:50,331 WARN  datanode.DataNode BPServiceActor.java:offerService:728 - IOException in offerService
+java.io.EOFException: End of File Exception between local host is: "node-3-link-0/192.168.122.161"; destination host is: "node-1-link-0":8020; : java.io.EOFException; For more details see:  http://wiki.apache.org/hadoop/EOFException
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.apache.hadoop.net.NetUtils.wrapWithMessage(NetUtils.java:831)
+	at org.apache.hadoop.net.NetUtils.wrapException(NetUtils.java:789)
+	at org.apache.hadoop.ipc.Client.getRpcResponse(Client.java:1515)
+	at org.apache.hadoop.ipc.Client.call(Client.java:1457)
+	at org.apache.hadoop.ipc.Client.call(Client.java:1367)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Invoker.invoke(ProtobufRpcEngine.java:228)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Invoker.invoke(ProtobufRpcEngine.java:116)
+	at com.sun.proxy.$Proxy19.sendHeartbeat(Unknown Source)
+	at org.apache.hadoop.hdfs.protocolPB.DatanodeProtocolClientSideTranslatorPB.sendHeartbeat(DatanodeProtocolClientSideTranslatorPB.java:166)
+	at org.apache.hadoop.hdfs.server.datanode.BPServiceActor.sendHeartBeat(BPServiceActor.java:514)
+	at org.apache.hadoop.hdfs.server.datanode.BPServiceActor.offerService(BPServiceActor.java:645)
+	at org.apache.hadoop.hdfs.server.datanode.BPServiceActor.run(BPServiceActor.java:842)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.io.EOFException
+	at java.io.DataInputStream.readInt(DataInputStream.java:392)
+	at org.apache.hadoop.ipc.Client$IpcStreams.readResponse(Client.java:1816)
+	at org.apache.hadoop.ipc.Client$Connection.receiveRpcResponse(Client.java:1173)
+	at org.apache.hadoop.ipc.Client$Connection.run(Client.java:1069)
+2019-07-27 23:02:51,114 INFO  datanode.DataNode BPOfferService.java:updateActorStatesFromHeartbeat:576 - Namenode Block pool BP-1447725025-192.168.122.202-1564282872898 (Datanode Uuid 48d35d62-8801-4d31-81d8-c30e913a8b26) service to node-0-link-0/192.168.122.202:8020 trying to claim ACTIVE state with txid=32
+2019-07-27 23:02:51,115 INFO  datanode.DataNode BPOfferService.java:updateActorStatesFromHeartbeat:590 - Namenode Block pool BP-1447725025-192.168.122.202-1564282872898 (Datanode Uuid 48d35d62-8801-4d31-81d8-c30e913a8b26) service to node-0-link-0/192.168.122.202:8020 taking over ACTIVE state from Block pool BP-1447725025-192.168.122.202-1564282872898 (Datanode Uuid 48d35d62-8801-4d31-81d8-c30e913a8b26) service to node-1-link-0/192.168.122.175:8020 at higher txid=32
+2019-07-27 23:02:53,329 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt ipc.maximum.response.length 134217728
+2019-07-27 23:02:53,329 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 ipc.maximum.response.length
+2019-07-27 23:02:53,329 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 134217728
+2019-07-27 23:02:54,331 INFO  ipc.Client Client.java:handleConnectionFailure:948 - Retrying connect to server: node-1-link-0/192.168.122.175:8020. Already tried 0 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+2019-07-27 23:02:55,332 INFO  ipc.Client Client.java:handleConnectionFailure:948 - Retrying connect to server: node-1-link-0/192.168.122.175:8020. Already tried 1 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+2019-07-27 23:02:56,333 INFO  ipc.Client Client.java:handleConnectionFailure:948 - Retrying connect to server: node-1-link-0/192.168.122.175:8020. Already tried 2 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+2019-07-27 23:02:57,334 INFO  ipc.Client Client.java:handleConnectionFailure:948 - Retrying connect to server: node-1-link-0/192.168.122.175:8020. Already tried 3 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+2019-07-27 23:02:58,336 INFO  ipc.Client Client.java:handleConnectionFailure:948 - Retrying connect to server: node-1-link-0/192.168.122.175:8020. Already tried 4 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+2019-07-27 23:02:58,721 INFO  datanode.DataNode BPOfferService.java:processCommandFromActor:672 - DatanodeCommand action : DNA_REGISTER from node-1-link-0/192.168.122.175:8020 with standby state
+2019-07-27 23:02:58,732 INFO  datanode.DataNode BPServiceActor.java:register:764 - Block pool BP-1447725025-192.168.122.202-1564282872898 (Datanode Uuid 48d35d62-8801-4d31-81d8-c30e913a8b26) service to node-1-link-0/192.168.122.175:8020 beginning handshake with NN
+2019-07-27 23:02:58,766 INFO  datanode.DataNode BPServiceActor.java:register:783 - Block pool Block pool BP-1447725025-192.168.122.202-1564282872898 (Datanode Uuid 48d35d62-8801-4d31-81d8-c30e913a8b26) service to node-1-link-0/192.168.122.175:8020 successfully registered with NN
+2019-07-27 23:02:58,806 INFO  datanode.DataNode BPServiceActor.java:blockReport:422 - Successfully sent block report 0x58313e1153efb1fc,  containing 1 storage report(s), of which we sent 1. The reports had 4 total blocks and used 1 RPC(s). This took 1 msec to generate and 31 msecs for RPC and NN processing. Got back no commands.
+2019-07-27 23:03:14,361 WARN  datanode.DataNode BPServiceActor.java:offerService:728 - IOException in offerService
+java.io.EOFException: End of File Exception between local host is: "node-3-link-0/192.168.122.161"; destination host is: "node-0-link-0":8020; : java.io.EOFException; For more details see:  http://wiki.apache.org/hadoop/EOFException
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.apache.hadoop.net.NetUtils.wrapWithMessage(NetUtils.java:831)
+	at org.apache.hadoop.net.NetUtils.wrapException(NetUtils.java:789)
+	at org.apache.hadoop.ipc.Client.getRpcResponse(Client.java:1515)
+	at org.apache.hadoop.ipc.Client.call(Client.java:1457)
+	at org.apache.hadoop.ipc.Client.call(Client.java:1367)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Invoker.invoke(ProtobufRpcEngine.java:228)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Invoker.invoke(ProtobufRpcEngine.java:116)
+	at com.sun.proxy.$Proxy19.sendHeartbeat(Unknown Source)
+	at org.apache.hadoop.hdfs.protocolPB.DatanodeProtocolClientSideTranslatorPB.sendHeartbeat(DatanodeProtocolClientSideTranslatorPB.java:166)
+	at org.apache.hadoop.hdfs.server.datanode.BPServiceActor.sendHeartBeat(BPServiceActor.java:514)
+	at org.apache.hadoop.hdfs.server.datanode.BPServiceActor.offerService(BPServiceActor.java:645)
+	at org.apache.hadoop.hdfs.server.datanode.BPServiceActor.run(BPServiceActor.java:842)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.io.EOFException
+	at java.io.DataInputStream.readInt(DataInputStream.java:392)
+	at org.apache.hadoop.ipc.Client$IpcStreams.readResponse(Client.java:1816)
+	at org.apache.hadoop.ipc.Client$Connection.receiveRpcResponse(Client.java:1173)
+	at org.apache.hadoop.ipc.Client$Connection.run(Client.java:1069)
+2019-07-27 23:03:17,360 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt ipc.maximum.response.length 134217728
+2019-07-27 23:03:17,360 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 ipc.maximum.response.length
+2019-07-27 23:03:17,361 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 134217728
+2019-07-27 23:03:18,362 INFO  ipc.Client Client.java:handleConnectionFailure:948 - Retrying connect to server: node-0-link-0/192.168.122.202:8020. Already tried 0 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+2019-07-27 23:03:19,365 INFO  ipc.Client Client.java:handleConnectionFailure:948 - Retrying connect to server: node-0-link-0/192.168.122.202:8020. Already tried 1 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+2019-07-27 23:03:19,771 INFO  datanode.DataNode BPOfferService.java:updateActorStatesFromHeartbeat:576 - Namenode Block pool BP-1447725025-192.168.122.202-1564282872898 (Datanode Uuid 48d35d62-8801-4d31-81d8-c30e913a8b26) service to node-1-link-0/192.168.122.175:8020 trying to claim ACTIVE state with txid=33
+2019-07-27 23:03:19,771 INFO  datanode.DataNode BPOfferService.java:updateActorStatesFromHeartbeat:590 - Namenode Block pool BP-1447725025-192.168.122.202-1564282872898 (Datanode Uuid 48d35d62-8801-4d31-81d8-c30e913a8b26) service to node-1-link-0/192.168.122.175:8020 taking over ACTIVE state from Block pool BP-1447725025-192.168.122.202-1564282872898 (Datanode Uuid 48d35d62-8801-4d31-81d8-c30e913a8b26) service to node-0-link-0/192.168.122.202:8020 at higher txid=33
+2019-07-27 23:03:20,367 INFO  ipc.Client Client.java:handleConnectionFailure:948 - Retrying connect to server: node-0-link-0/192.168.122.202:8020. Already tried 2 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+2019-07-27 23:03:21,368 INFO  ipc.Client Client.java:handleConnectionFailure:948 - Retrying connect to server: node-0-link-0/192.168.122.202:8020. Already tried 3 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+2019-07-27 23:03:22,370 INFO  ipc.Client Client.java:handleConnectionFailure:948 - Retrying connect to server: node-0-link-0/192.168.122.202:8020. Already tried 4 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+2019-07-27 23:03:23,371 INFO  ipc.Client Client.java:handleConnectionFailure:948 - Retrying connect to server: node-0-link-0/192.168.122.202:8020. Already tried 5 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+2019-07-27 23:03:24,372 INFO  ipc.Client Client.java:handleConnectionFailure:948 - Retrying connect to server: node-0-link-0/192.168.122.202:8020. Already tried 6 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+2019-07-27 23:03:25,374 INFO  ipc.Client Client.java:handleConnectionFailure:948 - Retrying connect to server: node-0-link-0/192.168.122.202:8020. Already tried 7 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+2019-07-27 23:03:25,392 INFO  datanode.DataNode BPOfferService.java:processCommandFromActor:672 - DatanodeCommand action : DNA_REGISTER from node-0-link-0/192.168.122.202:8020 with standby state
+2019-07-27 23:03:25,402 INFO  datanode.DataNode BPServiceActor.java:register:764 - Block pool BP-1447725025-192.168.122.202-1564282872898 (Datanode Uuid 48d35d62-8801-4d31-81d8-c30e913a8b26) service to node-0-link-0/192.168.122.202:8020 beginning handshake with NN
+2019-07-27 23:03:25,436 INFO  datanode.DataNode BPServiceActor.java:register:783 - Block pool Block pool BP-1447725025-192.168.122.202-1564282872898 (Datanode Uuid 48d35d62-8801-4d31-81d8-c30e913a8b26) service to node-0-link-0/192.168.122.202:8020 successfully registered with NN
+2019-07-27 23:03:25,500 INFO  datanode.DataNode BPServiceActor.java:blockReport:422 - Successfully sent block report 0x9abe1164490192cb,  containing 1 storage report(s), of which we sent 1. The reports had 4 total blocks and used 1 RPC(s). This took 1 msec to generate and 56 msecs for RPC and NN processing. Got back no commands.
+2019-07-27 23:03:34,732 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt io.file.buffer.size 4096
+2019-07-27 23:03:34,733 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 io.file.buffer.size
+2019-07-27 23:03:34,733 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 4096
+2019-07-27 23:03:34,733 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt io.file.buffer.size 4096
+2019-07-27 23:03:34,733 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 io.file.buffer.size
+2019-07-27 23:03:34,733 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 4096
+2019-07-27 23:03:34,937 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt io.file.buffer.size 4096
+2019-07-27 23:03:34,937 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 io.file.buffer.size
+2019-07-27 23:03:34,938 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 4096
+2019-07-27 23:03:34,938 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt io.file.buffer.size 4096
+2019-07-27 23:03:34,938 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 io.file.buffer.size
+2019-07-27 23:03:34,938 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 4096
+2019-07-27 23:03:35,163 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt io.file.buffer.size 4096
+2019-07-27 23:03:35,163 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 io.file.buffer.size
+2019-07-27 23:03:35,189 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 4096
+2019-07-27 23:03:58,783 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:deleteAsync:225 - Scheduling blk_1073741826_1002 replica FinalizedReplica, blk_1073741826_1002, FINALIZED
+  getNumBytes()     = 134217728
+  getBytesOnDisk()  = 134217728
+  getVisibleLength()= 134217728
+  getVolume()       = /root/hdfs-root/data
+  getBlockURI()     = file:/root/hdfs-root/data/current/BP-1447725025-192.168.122.202-1564282872898/current/finalized/subdir0/subdir0/blk_1073741826 for deletion
+2019-07-27 23:03:58,786 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:deleteAsync:225 - Scheduling blk_1073741827_1003 replica FinalizedReplica, blk_1073741827_1003, FINALIZED
+  getNumBytes()     = 134217728
+  getBytesOnDisk()  = 134217728
+  getVisibleLength()= 134217728
+  getVolume()       = /root/hdfs-root/data
+  getBlockURI()     = file:/root/hdfs-root/data/current/BP-1447725025-192.168.122.202-1564282872898/current/finalized/subdir0/subdir0/blk_1073741827 for deletion
+2019-07-27 23:03:58,787 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:deleteAsync:225 - Scheduling blk_1073741828_1004 replica FinalizedReplica, blk_1073741828_1004, FINALIZED
+  getNumBytes()     = 134217728
+  getBytesOnDisk()  = 134217728
+  getVisibleLength()= 134217728
+  getVolume()       = /root/hdfs-root/data
+  getBlockURI()     = file:/root/hdfs-root/data/current/BP-1447725025-192.168.122.202-1564282872898/current/finalized/subdir0/subdir0/blk_1073741828 for deletion
+2019-07-27 23:03:58,788 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:deleteAsync:225 - Scheduling blk_1073741829_1005 replica FinalizedReplica, blk_1073741829_1005, FINALIZED
+  getNumBytes()     = 134217728
+  getBytesOnDisk()  = 134217728
+  getVisibleLength()= 134217728
+  getVolume()       = /root/hdfs-root/data
+  getBlockURI()     = file:/root/hdfs-root/data/current/BP-1447725025-192.168.122.202-1564282872898/current/finalized/subdir0/subdir0/blk_1073741829 for deletion
+2019-07-27 23:03:58,821 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:run:333 - Deleted BP-1447725025-192.168.122.202-1564282872898 blk_1073741826_1002 URI file:/root/hdfs-root/data/current/BP-1447725025-192.168.122.202-1564282872898/current/finalized/subdir0/subdir0/blk_1073741826
+2019-07-27 23:03:58,850 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:run:333 - Deleted BP-1447725025-192.168.122.202-1564282872898 blk_1073741827_1003 URI file:/root/hdfs-root/data/current/BP-1447725025-192.168.122.202-1564282872898/current/finalized/subdir0/subdir0/blk_1073741827
+2019-07-27 23:03:58,873 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:run:333 - Deleted BP-1447725025-192.168.122.202-1564282872898 blk_1073741828_1004 URI file:/root/hdfs-root/data/current/BP-1447725025-192.168.122.202-1564282872898/current/finalized/subdir0/subdir0/blk_1073741828
+2019-07-27 23:03:58,895 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:run:333 - Deleted BP-1447725025-192.168.122.202-1564282872898 blk_1073741829_1005 URI file:/root/hdfs-root/data/current/BP-1447725025-192.168.122.202-1564282872898/current/finalized/subdir0/subdir0/blk_1073741829
+2019-07-27 23:04:02,812 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt io.file.buffer.size 4096
+2019-07-27 23:04:02,812 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 io.file.buffer.size
+2019-07-27 23:04:02,812 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 4096
+2019-07-27 23:04:02,812 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt io.file.buffer.size 4096
+2019-07-27 23:04:02,812 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 io.file.buffer.size
+2019-07-27 23:04:02,812 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 4096
+2019-07-27 23:04:02,824 INFO  datanode.DataNode DataXceiver.java:writeBlock:738 - Receiving BP-1447725025-192.168.122.202-1564282872898:blk_1073741832_1008 src: /192.168.122.102:48666 dest: /192.168.122.161:9866
+2019-07-27 23:04:02,824 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt io.file.buffer.size 4096
+2019-07-27 23:04:02,825 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 io.file.buffer.size
+2019-07-27 23:04:02,825 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 4096
+2019-07-27 23:04:03,230 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt io.file.buffer.size 4096
+2019-07-27 23:04:03,230 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 io.file.buffer.size
+2019-07-27 23:04:03,230 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 4096
+2019-07-27 23:04:03,230 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt io.file.buffer.size 4096
+2019-07-27 23:04:03,230 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 io.file.buffer.size
+2019-07-27 23:04:03,230 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 4096
+2019-07-27 23:04:03,804 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt io.file.buffer.size 4096
+2019-07-27 23:04:03,804 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 io.file.buffer.size
+2019-07-27 23:04:03,805 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 4096
+2019-07-27 23:04:03,805 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt io.file.buffer.size 4096
+2019-07-27 23:04:03,805 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 io.file.buffer.size
+2019-07-27 23:04:03,805 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 4096
+2019-07-27 23:04:03,817 INFO  datanode.DataNode DataXceiver.java:writeBlock:738 - Receiving BP-1447725025-192.168.122.202-1564282872898:blk_1073741833_1009 src: /192.168.122.102:48670 dest: /192.168.122.161:9866
+2019-07-27 23:04:03,818 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt io.file.buffer.size 4096
+2019-07-27 23:04:03,819 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 io.file.buffer.size
+2019-07-27 23:04:03,819 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 4096
+2019-07-27 23:04:04,209 INFO  datanode.DataNode DataXceiver.java:writeBlock:738 - Receiving BP-1447725025-192.168.122.202-1564282872898:blk_1073741834_1010 src: /192.168.122.12:47642 dest: /192.168.122.161:9866
+2019-07-27 23:04:04,210 INFO  conf.Configuration Configuration.java:getInt:1480 - [msx] getInt io.file.buffer.size 4096
+2019-07-27 23:04:04,210 INFO  conf.Configuration Configuration.java:get:1196 - [msx] get1 io.file.buffer.size
+2019-07-27 23:04:04,210 INFO  conf.Configuration Configuration.java:getHexDigits:1569 - [msx] getHexDigits 4096
+2019-07-27 23:04:04,814 INFO  DataNode.clienttrace BlockReceiver.java:finalizeBlock:1533 - src: /192.168.122.102:48666, dest: /192.168.122.161:9866, bytes: 134217728, op: HDFS_WRITE, cliID: DFSClient_NONMAPREDUCE_-712753842_1, offset: 0, srvID: 48d35d62-8801-4d31-81d8-c30e913a8b26, blockid: BP-1447725025-192.168.122.202-1564282872898:blk_1073741832_1008, duration(ns): 1981299346
+2019-07-27 23:04:04,815 INFO  datanode.DataNode BlockReceiver.java:run:1506 - PacketResponder: BP-1447725025-192.168.122.202-1564282872898:blk_1073741832_1008, type=HAS_DOWNSTREAM_IN_PIPELINE, downstreams=1:[192.168.122.17:9866] terminating
+2019-07-27 23:04:08,215 INFO  DataNode.clienttrace BlockReceiver.java:finalizeBlock:1533 - src: /192.168.122.102:48670, dest: /192.168.122.161:9866, bytes: 134217728, op: HDFS_WRITE, cliID: DFSClient_NONMAPREDUCE_1062050497_1, offset: 0, srvID: 48d35d62-8801-4d31-81d8-c30e913a8b26, blockid: BP-1447725025-192.168.122.202-1564282872898:blk_1073741833_1009, duration(ns): 4387028494
+2019-07-27 23:04:08,216 INFO  datanode.DataNode BlockReceiver.java:run:1506 - PacketResponder: BP-1447725025-192.168.122.202-1564282872898:blk_1073741833_1009, type=HAS_DOWNSTREAM_IN_PIPELINE, downstreams=1:[192.168.122.50:9866] terminating
+2019-07-27 23:04:17,356 INFO  DataNode.clienttrace BlockReceiver.java:finalizeBlock:1533 - src: /192.168.122.12:47642, dest: /192.168.122.161:9866, bytes: 134217728, op: HDFS_WRITE, cliID: DFSClient_NONMAPREDUCE_1717555132_1, offset: 0, srvID: 48d35d62-8801-4d31-81d8-c30e913a8b26, blockid: BP-1447725025-192.168.122.202-1564282872898:blk_1073741834_1010, duration(ns): 13110268710
+2019-07-27 23:04:17,356 INFO  datanode.DataNode BlockReceiver.java:run:1506 - PacketResponder: BP-1447725025-192.168.122.202-1564282872898:blk_1073741834_1010, type=HAS_DOWNSTREAM_IN_PIPELINE, downstreams=2:[192.168.122.17:9866, 192.168.122.102:9866] terminating
