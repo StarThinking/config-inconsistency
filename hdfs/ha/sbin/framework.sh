@@ -9,6 +9,7 @@ if [ $# -ne 2 ]; then
     exit 1
 fi
 
+split="#"
 task_file=$1
 waittime=$2
 
@@ -21,17 +22,13 @@ do
     value1=$(echo $line | awk -F " " '{print $3}')
     value2=$(echo $line | awk -F " " '{print $4}')
     reconfig_mode=online_reconfig
-    tuple_dir="$component"_"$parameter"_"$value1"_"$value2"
+    tuple_dir="$component""$split""$parameter""$split""$value1""$split""$value2"
     mkdir $tuple_dir 
     cd $tuple_dir
     echo component=$component parameter=$parameter value1=$value1 value2=$value2
-<<<<<<< HEAD
-    $TEST_HOME/sbin/run_test.bak.sh $component $parameter $value1 $value2 $reconfig_mode $waittime 
-=======
     $TEST_HOME/sbin/run_hdfs_test.sh $component $parameter $value1 $value2 $reconfig_mode $waittime 
->>>>>>> 54e4b360ce23ec83696e35717d628bfa7ad89e8c
 
-    testdir="$component"_"$parameter"_"$value1"_"$value2"_"$reconfig_mode"_"$waittime"
+    testdir="$component""$split""$parameter""$split""$value1""$split""$value2""$split""$reconfig_mode""$split""$waittime"
     $TEST_HOME/sbin/verify_result.sh $testdir
     ret=$?
     echo ret=$ret
@@ -39,17 +36,10 @@ do
     then
 	echo "furthur checking..."
 	reconfig_mode=cluster_stop
-<<<<<<< HEAD
-	$TEST_HOME/sbin/run_test.bak.sh $component $parameter $value1 $value2 $reconfig_mode $waittime
-	reconfig_mode=online_reconfig
-	$TEST_HOME/sbin/run_test.bak.sh $component $parameter $value1 $value1 $reconfig_mode $waittime
-	$TEST_HOME/sbin/run_test.bak.sh $component $parameter $value2 $value2 $reconfig_mode $waittime
-=======
 	$TEST_HOME/sbin/run_hdfs_test.sh $component $parameter $value1 $value2 $reconfig_mode $waittime
 	reconfig_mode=online_reconfig
 	$TEST_HOME/sbin/run_hdfs_test.sh $component $parameter $value1 $value1 $reconfig_mode $waittime
 	$TEST_HOME/sbin/run_hdfs_test.sh $component $parameter $value2 $value2 $reconfig_mode $waittime
->>>>>>> 54e4b360ce23ec83696e35717d628bfa7ad89e8c
     else
 	echo "no problem."
     fi

@@ -11,3 +11,6 @@ do
     sleep 1
     $TEST_HOME/sbin/vm_autossh.sh root node-$i-link-0 "cat ~/node-$i-link-0.id_rsa.pub >> ~/.ssh/authorized_keys; rm ~/node-$i-link-0.id_rsa.pub"
 done
+
+
+echo "Don't forget to run this script from the other namenode !!"

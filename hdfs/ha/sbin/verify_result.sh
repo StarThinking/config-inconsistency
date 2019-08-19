@@ -10,6 +10,8 @@ if [ $# -ne 1 ]; then
     exit 1
 fi
 
+
+split="#"
 testdir=$1
 root_dir=$TEST_HOME/sbin/base_error_set
 ret=0 # 0 for ok, 1 for error
@@ -18,7 +20,7 @@ if [[ $testdir == *"cluster_stop"* ]]; then
     error_base=$root_dir/cluster_reboot_base.txt
     echo "Error_base is cluster_reboot_base.txt"
 else
-    sub_log=$(echo $testdir | awk -F "_" 'NR==1 {print $1}')
+    sub_log=$(echo $testdir | awk -F "$split" 'NR==1 {print $1}')
     echo "Error_base is online_reconfig_"$sub_log"_base.txt"
     error_base=$root_dir/online_reconfig_"$sub_log"_base.txt
 fi

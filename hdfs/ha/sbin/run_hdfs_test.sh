@@ -12,10 +12,11 @@ fi
 argument_num=6
 argument_num_optional=8
 if [ $# -lt $argument_num ]; then
-    echo "./run_test [component: <namenode|datanode|journalnode>] [parameter] [value1] [value2] [reconfig_mode: <cluster_stop|online_reconfig] [waittime] optional: [read_times] [benchmark_threads]"
+    echo "./run_hdfs_test [component: <namenode|datanode|journalnode>] [parameter] [value1] [value2] [reconfig_mode: <cluster_stop|online_reconfig] [waittime] optional: [read_times] [benchmark_threads]"
     exit
 fi
 
+split="#"
 component=$1
 parameter=$2
 value1=$3
@@ -35,7 +36,7 @@ if [ $reconfig_mode != "cluster_stop" ] && [ $reconfig_mode != "online_reconfig"
 fi
 
 # create test dir
-testdir=./"$component"_"$parameter"_"$value1"_"$value2"_"$reconfig_mode"_"$waittime"
+testdir=./"$component""$split""$parameter""$split""$value1""$split""$value2""$split""$reconfig_mode""$split""$waittime"
 mkdir $testdir
 
 #exec 2>&1 

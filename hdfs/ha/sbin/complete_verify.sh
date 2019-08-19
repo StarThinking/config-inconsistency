@@ -9,28 +9,18 @@ if [ $# -ne 2 ]; then
     exit 1
 fi
 
+split="#"
 ret=0
 testdir=$1
 waittime=$2
-<<<<<<< HEAD
-component=$(echo $testdir | awk -F "-" '{print $1}')
-parameter=$(echo $testdir | awk -F "-" '{print $2}')
-value1=$(echo $testdir | awk -F "-" '{print $3}')
-value2=$(echo $testdir | awk -F "-" '{print $4}')
+component=$(echo $testdir | awk -F "$split" '{print $1}')
+parameter=$(echo $testdir | awk -F "$split" '{print $2}')
+value1=$(echo $testdir | awk -F "$split" '{print $3}')
+value2=$(echo $testdir | awk -F "$split" '{print $4}')
 echo component=$component parameter=$parameter value1=$value1 value2=$value2
 
 reconfig_mode=online_reconfig
-subdir[1]="$component"-"$parameter"-"$value1"-"$value2"-"$reconfig_mode"-"$waittime"
-=======
-component=$(echo $testdir | awk -F "_" '{print $1}')
-parameter=$(echo $testdir | awk -F "_" '{print $2}')
-value1=$(echo $testdir | awk -F "_" '{print $3}')
-value2=$(echo $testdir | awk -F "_" '{print $4}')
-echo component=$component parameter=$parameter value1=$value1 value2=$value2
-
-reconfig_mode=online_reconfig
-subdir[1]="$component"_"$parameter"_"$value1"_"$value2"_"$reconfig_mode"_"$waittime"
->>>>>>> 54e4b360ce23ec83696e35717d628bfa7ad89e8c
+subdir[1]="$component""$split""$parameter""$split""$value1""$split""$value2""$split""$reconfig_mode""$split""$waittime"
 $TEST_HOME/sbin/verify_result.sh $testdir/${subdir[1]} > /dev/null
 if [ $? -eq 0 ]
 then
@@ -39,17 +29,10 @@ then
 fi
 
 reconfig_mode=cluster_stop
-<<<<<<< HEAD
-subdir[2]="$component"-"$parameter"-"$value1"-"$value2"-"$reconfig_mode"-"$waittime"
+subdir[2]="$component""$split""$parameter""$split""$value1""$split""$value2""$split""$reconfig_mode""$split""$waittime"
 reconfig_mode=online_reconfig
-subdir[3]="$component"-"$parameter"-"$value1"-"$value1"-"$reconfig_mode"-"$waittime"
-subdir[4]="$component"-"$parameter"-"$value2"-"$value2"-"$reconfig_mode"-"$waittime"
-=======
-subdir[2]="$component"_"$parameter"_"$value1"_"$value2"_"$reconfig_mode"_"$waittime"
-reconfig_mode=online_reconfig
-subdir[3]="$component"_"$parameter"_"$value1"_"$value1"_"$reconfig_mode"_"$waittime"
-subdir[4]="$component"_"$parameter"_"$value2"_"$value2"_"$reconfig_mode"_"$waittime"
->>>>>>> 54e4b360ce23ec83696e35717d628bfa7ad89e8c
+subdir[3]="$component""$split""$parameter""$split""$value1""$split""$value1""$split""$reconfig_mode""$split""$waittime"
+subdir[4]="$component""$split""$parameter""$split""$value2""$split""$value2""$split""$reconfig_mode""$split""$waittime"
 
 for i in 1 2 3 4
 do
@@ -93,15 +76,26 @@ do
 	fi
     done
     
-    if [ $found1 -eq 0 ] && [ $found2 -eq 0 ] && [ $found3 -eq 0 ] && [ $found4 -eq 0 ]
+    if [ $found1 -eq 0 ] && [ $found2 -eq 0 ] && [ $found3 -eq 0 ]
     then
-        echo "$err cannot be found in any subdirs!"
-        ret=1
+        echo "$err cannot be found in error[1-3]"
+	if [ $found4 -eq 0 ]
+	then
+            ret=1
+	else
+            ret=2
+	fi
     fi
 done
 
 
 if [ $ret -eq 0 ]
 then
-    echo "no issue as errors are found in subdirs"
+    echo "no issue as errors can be found in error[1-3]"
+elif [ $ret -eq 1 ]
+then
+    echo "not online reconfigurable"
+elif [ $ret -eq 2 ]
+then
+    echo "not reconfigurable"
 fi
