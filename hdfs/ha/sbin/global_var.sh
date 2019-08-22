@@ -27,3 +27,6 @@ hadoop_data_dir=$hadoop_root_dir/data # for datanode
 journal_dir=$hadoop_root_dir/journal # for datanode
 large_file_dir=$hadoop_root_dir/my_large_file # for client
 large_file_dir_tmp=$hadoop_root_dir/my_large_file/tmp # for client
+
+#
+split="#"

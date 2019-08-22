@@ -35,8 +35,8 @@ cat $TEST_HOME/sbin/hosts.tmp
 echo "update /etc/hosts for each vm"
 for i in $(seq 0 6)
 do
-    $TEST_HOME/sbin/vm_autoscp.sh root ${ips[i]} $TEST_HOME/sbin/hosts.tmp /etc/hosts 
-    $TEST_HOME/sbin/vm_autossh.sh root ${ips[i]} "echo node-$i-link-0 > /etc/hostname; reboot"
+    $TEST_HOME/sbin/util/vm_autoscp.sh root ${ips[i]} $TEST_HOME/sbin/hosts.tmp /etc/hosts 
+    $TEST_HOME/sbin/util/vm_autossh.sh root ${ips[i]} "echo node-$i-link-0 > /etc/hostname; reboot"
 done
 
 rm $TEST_HOME/sbin/hosts.tmp

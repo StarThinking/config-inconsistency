@@ -16,7 +16,6 @@ if [ $# -lt $argument_num ]; then
     exit
 fi
 
-split="#"
 component=$1
 parameter=$2
 value1=$3
