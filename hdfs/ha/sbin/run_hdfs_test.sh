@@ -36,7 +36,9 @@ fi
 
 # create test dir
 testdir=./"$component""$split""$parameter""$split""$value1""$split""$value2""$split""$reconfig_mode""$split""$waittime"
-mkdir $testdir
+if ! mkdir $testdir; then
+    exit 1
+fi
 
 #exec 2>&1 
 #exec > >(tee -i $testdir/run.log)
