@@ -172,7 +172,7 @@ function stop_client_gracefully {
 
         # cannot wait too long
         if [ $count -ge 3 ]; then
-            echo "benchamrk seems to be hanging. TEST_ERROR: kill it forcefully."
+            echo "TEST_ERROR[cluster_cmd:benchmark_hanging] benchamrk seems to be hanging. kill it forcefully."
             stop_client
         fi
     done

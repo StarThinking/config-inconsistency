@@ -87,7 +87,7 @@ $TEST_HOME/sbin/cluster_cmd.sh init_client $read_times $benchmark_threads
 if [ $? -eq 0 ]; then
     echo "init client succeed"
 else
-    echo "TEST_ERROR: init client failed"
+    echo "TEST_ERROR[run_hdfs_test:init_client_failure]: init client failed"
     $TEST_HOME/sbin/cluster_cmd.sh stop_client_gracefully
     $TEST_HOME/sbin/cluster_cmd.sh collectlog $testdir
     $TEST_HOME/sbin/cluster_cmd.sh stop
@@ -102,7 +102,7 @@ if [ $reconfig_mode = "online_reconfig" ]; then
     echo "performing $reconfig_mode ..."
     $TEST_HOME/sbin/reconf.sh $component $parameter_from $testdir/"$parameter_from"-site.xml.2
     if [ $? -ne 0 ]; then
-        echo "TEST_ERROR: $reconfig_mode reconfiguration $component failed"
+        echo "TEST_ERROR[run_hdfs_test:reconfig_component_failure]: $reconfig_mode reconfiguration $component failed"
     fi
 elif [ $reconfig_mode = "cluster_stop" ]; then
     echo "time before performing $reconfig_mode :"
