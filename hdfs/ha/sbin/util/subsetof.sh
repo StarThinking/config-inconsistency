@@ -31,7 +31,7 @@ function subsetof {
 	union_size=$(( union_size + 1 ))
         dir=$1
 	#echo "dir = $dir"
-	testrun_error_unions[$union_size]=$(grep -r "TEST_ERROR" $dir/run.log | sort -u)
+	testrun_error_unions[$union_size]=$(grep -r "TEST_ERROR" $dir/run.log | awk -F "[\]\[]" '{print $2}' 2>/dev/null)
  
 	# generate system errors
 	system_error_unions[$union_size]=$(grep -r "WARN\|ERROR\|FATAL" $dir | awk -F " " '{ if ($3 == "WARN" || $3 == "ERROR" || $3 == "FATAL") print $5}' | sort -u)
