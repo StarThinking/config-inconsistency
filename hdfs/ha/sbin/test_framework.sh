@@ -31,10 +31,6 @@ do
     echo "run online v1-v2 test"
     reconfig_mode=online_reconfig
     $TEST_HOME/sbin/run_hdfs_test.sh $component $parameter $value1 $value2 $reconfig_mode $waittime 
-    if [ $? -ne 0 ]; then
-        echo "error during online v1-v2 test, quit"
-        stop=1
-    fi
     online_12="$component""$split""$parameter""$split""$value1""$split""$value2""$split""$reconfig_mode""$split""$waittime"
     subsetof $online_12
     ret=$?
