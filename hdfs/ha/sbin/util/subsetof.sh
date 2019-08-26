@@ -108,7 +108,17 @@ function subsetof {
                 union_index=$(( union_index + 1 ))
             done
             echo "" >> errors_not_found.tmp.txt
+
+	    if [ $union_size -eq 3 ]; then 
+		if [ ${testrun_error_unions[3]} != "" ]; then
+		    echo "testrun_error_unions[3] not empty!!!!!"
+		    echo ${testrun_error_unions[3]}
+	  	    ret=2
+		fi
+	    fi
 	fi
+
+	
     done
 
     echo "Test Run Errors:"
