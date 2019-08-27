@@ -5,17 +5,25 @@
 
 errorset_names=('online_component' 'online_22' 'online_11' 'cluster_12')
 
+function generate_run_errors {
+    dir=$1
+    grep -r "TEST_ERROR" $dir/run.log | awk -F "[\]\[]" '{print $2}' 2>/dev/null
+}
+
+function generate_system_errors {
+    dir=$1
+    grep -r "WARN\|ERROR\|FATAL" $dir | awk -F " " '{ if ($3 == "WARN" || $3 == "ERROR" || $3 == "FATAL") print $5}' | sort -u 2>/dev/null
+}
+
 function subsetof {
     ret=0
 
     online_12=$1
     shift 1
 
-    # generate run errors
-    online_12_run_errors=$(grep -r "TEST_ERROR" $online_12/run.log | awk -F "[\]\[]" '{print $2}' 2>/dev/null)
- 
-    # generate system errors
-    online_12_system_errors=$(grep -r "WARN\|ERROR\|FATAL" $online_12 | awk -F " " '{ if ($3 == "WARN" || $3 == "ERROR" || $3 == "FATAL") print $5}' | sort -u)
+    # generate run and system errors for online_12
+    online_12_run_errors=$(generate_run_errors $online_12)
+    online_12_system_errors=$(generate_system_errors $online_12)
     
     # union 0 only has system errors but no run errors
     union_size=0
@@ -30,17 +38,17 @@ function subsetof {
     while [ $# -ge 1 ]; do
 	union_size=$(( union_size + 1 ))
         dir=$1
-	#echo "dir = $dir"
-	testrun_error_unions[$union_size]=$(grep -r "TEST_ERROR" $dir/run.log | awk -F "[\]\[]" '{print $2}' 2>/dev/null)
- 
-	# generate system errors
-	system_error_unions[$union_size]=$(grep -r "WARN\|ERROR\|FATAL" $dir | awk -F " " '{ if ($3 == "WARN" || $3 == "ERROR" || $3 == "FATAL") print $5}' | sort -u)
+        testrun_error_unions[$union_size]=$(generate_run_errors $dir)
+	system_error_unions[$union_size]=$(generate_system_errors $dir)
         shift 1
     done	
-    echo "subsetof with union_size $union_size"
 
-    touch errors_found.tmp.txt
-    touch errors_not_found.tmp.txt
+    touch system_errors_found.tmp.txt
+    touch system_errors_not_found.tmp.txt
+    touch run_errors_found.tmp.txt
+    touch run_errors_not_found.tmp.txt
+    
+    # search for system errors
     for err in ${online_12_system_errors[@]}; do
 	found=-1
 	union_index=0
@@ -48,7 +56,7 @@ function subsetof {
 	    for e in ${system_error_unions[$union_index]}; do
 	        if [ "$err" == "$e" ]; then
 	    	found=$union_index
-                    echo "[$found] $err is found in ${errorset_names[$found]} " >> errors_found.tmp.txt
+                    echo "[$found] $err is found in ${errorset_names[$found]} " >> system_errors_found.tmp.txt
                     break
 	        fi  
 	    done
@@ -62,24 +70,17 @@ function subsetof {
 
 	if [ $found -lt 0 ]; then
 	    ret=1
-	    echo -n "[$found] $err CANNOT be found in error set ${errorset_names[0]}" >> errors_not_found.tmp.txt
+	    echo -n "[$found] $err CANNOT be found in error set ${errorset_names[0]}" >> system_errors_not_found.tmp.txt
             union_index=1
             while [ $union_size -ge $union_index ]; do
-                echo -n ", ${errorset_names[$union_index]} " >> errors_not_found.tmp.txt
+                echo -n ", ${errorset_names[$union_index]} " >> system_errors_not_found.tmp.txt
                 union_index=$(( union_index + 1 ))
             done
-            echo "" >> errors_not_found.tmp.txt
+            echo "" >> system_errors_not_found.tmp.txt
 	fi
     done
-
-    echo "System Errors:"
-    cat errors_found.tmp.txt | sort -u
-    cat errors_not_found.tmp.txt | sort -u
-    rm  errors_found.tmp.txt
-    rm errors_not_found.tmp.txt
     
-    touch errors_found.tmp.txt
-    touch errors_not_found.tmp.txt
+    # saerch for run errors
     for err in ${online_12_run_errors[@]}; do
 	found=-1
 	union_index=0
@@ -87,7 +88,7 @@ function subsetof {
 	    for e in ${testrun_error_unions[$union_index]}; do
 	        if [ "$err" == "$e" ]; then
 	    	found=$union_index
-                    echo "[$found] $err is found in ${errorset_names[$found]} " >> errors_found.tmp.txt
+                    echo "[$found] $err is found in ${errorset_names[$found]} " >> run_errors_found.tmp.txt
                     break
 	        fi  
 	    done
@@ -101,34 +102,44 @@ function subsetof {
 
 	if [ $found -lt 0 ]; then
 	    ret=1
-	    echo -n "[$found] $err CANNOT be found in error set ${errorset_names[0]}" >> errors_not_found.tmp.txt
+	    echo -n "[$found] $err CANNOT be found in error set ${errorset_names[0]}" >> run_errors_not_found.tmp.txt
             union_index=1
             while [ $union_size -ge $union_index ]; do
-                echo -n ", ${errorset_names[$union_index]} " >> errors_not_found.tmp.txt
+                echo -n ", ${errorset_names[$union_index]} " >> run_errors_not_found.tmp.txt
                 union_index=$(( union_index + 1 ))
             done
-            echo "" >> errors_not_found.tmp.txt
-
-	    if [ $union_size -eq 3 ]; then 
-		if [ ${testrun_error_unions[3]} != "" ]; then
-		    echo "testrun_error_unions[3] not empty!!!!!"
-		    echo ${testrun_error_unions[3]}
-	  	    ret=2
-		fi
-	    fi
+            echo "" >> run_errors_not_found.tmp.txt
 	fi
-
-	
     done
+	    
+    # print results
+    echo "System Errors:"
+    cat system_errors_found.tmp.txt | sort -u
+    cat system_errors_not_found.tmp.txt | sort -u
+    rm system_errors_found.tmp.txt
+    rm system_errors_not_found.tmp.txt
 
     echo "Test Run Errors:"
-    cat errors_found.tmp.txt | sort -u
-    cat errors_not_found.tmp.txt | sort -u
-    rm  errors_found.tmp.txt
-    rm errors_not_found.tmp.txt
+    cat run_errors_found.tmp.txt | sort -u
+    cat run_errors_not_found.tmp.txt | sort -u
+    rm run_errors_found.tmp.txt
+    rm run_errors_not_found.tmp.txt
+    
+    # ignore situation when cluster_reboot generates run errors
+    #echo "subsetof with union_size $union_size"
+    if [ $union_size -eq 3 ]; then 
+        echo ""
+    	echo "verify run errors in cluster v1-v2 test"
+	if [ "${testrun_error_unions[3]}" != "" ]; then
+            echo "testrun_error_unions is not empty:"
+     	    echo ${testrun_error_unions[3]}
+	    ret=2
+	fi
+    fi
 
     echo "subsetof returns $ret" 
     echo ""
+
     return $ret
 }
 
