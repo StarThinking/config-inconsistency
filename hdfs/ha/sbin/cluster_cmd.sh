@@ -15,9 +15,6 @@ then
     exit
 fi
 
-command=$1
-shift 1
-
 function start {
     from=$1
     init_conf=$2
@@ -172,7 +169,7 @@ function stop_client_gracefully {
 
         # cannot wait too long
         if [ $count -ge 3 ]; then
-            echo "benchamrk seems to be hanging. TEST_ERROR: kill it forcefully."
+            echo "TEST_ERROR[cluster_cmd:benchmark_hanging] benchamrk seems to be hanging. kill it forcefully."
             stop_client
         fi
     done
@@ -260,6 +257,51 @@ function collectlog {
     cp $TEST_HOME/sbin/run_test.sh $test/all_logs/
 }
 
+function insert_time_barrier {
+    point=$1
+    points=('endof_pre_stage' 'endof_reconfig_stage' 'endof_post_stage')
+    valid=0
+    for p in ${points[@]}
+    do
+        if [ "$p" == "$point" ]; then
+	    valid=1
+        fi
+    done
+
+    if [ $valid -ne 1 ]; then
+	echo "point $point is invalid"
+        return 1
+    fi
+
+    for i in ${namenodes[@]}
+    do
+        ssh node-"$i"-link-0 "echo time_barrier:$point >> $HADOOP_HOME/logs/hadoop-root-namenode-node-$i-link-0.log"
+    done
+    
+    for i in ${datanodes[@]}
+    do
+        ssh node-"$i"-link-0 "echo time_barrier:$point >> $HADOOP_HOME/logs/hadoop-root-datanode-node-$i-link-0.log"
+    done
+    
+    for i in ${jnodes[@]}
+    do
+        ssh node-"$i"-link-0 "echo time_barrier:$point >> $HADOOP_HOME/logs/hadoop-root-journalnode-node-$i-link-0.log"
+    done
+   
+    for i in ${clients[@]}
+    do
+        for j in $(seq 1 $benchmark_threads)
+	do
+            ssh node-"$i"-link-0 "echo time_barrier:$point >> /tmp/client$j.log"
+	done
+    done 
+
+    return 0 
+}
+
+command=$1
+shift 1
+
 if [ $command = "start" ]; then
     if [ "$#" -eq 2 ]; then
         start $1 $2
@@ -268,6 +310,8 @@ if [ $command = "start" ]; then
     fi
 elif [ $command = "stop" ]; then
     stop
+elif [ $command = "insert_time_barrier" ]; then
+    insert_time_barrier $1
 elif [ $command = "collectlog" ]; then
     if [ "$#" -ne 1 ]; then
         echo "wrong command, e.g., ./cluster_cmd.sh collectlog TEST_DIR"

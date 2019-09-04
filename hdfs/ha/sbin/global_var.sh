@@ -30,3 +30,5 @@ large_file_dir_tmp=$hadoop_root_dir/my_large_file/tmp # for client
 
 #
 split="#"
+read_times=10 # default value
+benchmark_threads=5 # default value

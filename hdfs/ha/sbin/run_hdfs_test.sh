@@ -1,5 +1,16 @@
 #!/bin/bash
 
+function insert_time_barrier_wrapper {
+    $TEST_HOME/sbin/cluster_cmd.sh insert_time_barrier $1
+    if [ $? -ne 0 ]; then
+        echo "TEST_ERROR[run_hdfs_test:insert_time_barrier_failure]: insert time barrier failed"
+        $TEST_HOME/sbin/cluster_cmd.sh stop_client_gracefully
+        $TEST_HOME/sbin/cluster_cmd.sh collectlog $testdir
+        $TEST_HOME/sbin/cluster_cmd.sh stop
+        exit 1
+    fi
+}
+
 if [ -z "$TEST_HOME" ]; then 
     echo "TEST_HOME not set."
     exit
@@ -36,7 +47,9 @@ fi
 
 # create test dir
 testdir=./"$component""$split""$parameter""$split""$value1""$split""$value2""$split""$reconfig_mode""$split""$waittime"
-mkdir $testdir
+if ! mkdir $testdir; then
+    exit 1
+fi
 
 #exec 2>&1 
 #exec > >(tee -i $testdir/run.log)
@@ -81,16 +94,21 @@ sleep 5
 
 # init client
 echo "init cluster..."
-$TEST_HOME/sbin/cluster_cmd.sh init_client $read_times $benchmark_threads
-if [ $? -eq 0 ]; then
+wait_client_init_timeout=90
+timeout $wait_client_init_timeout $TEST_HOME/sbin/cluster_cmd.sh init_client $read_times $benchmark_threads
+retv=$?
+
+if [ $retv -eq 0 ]; then
     echo "init client succeed"
 else
-    echo "TEST_ERROR: init client failed"
+    echo "TEST_ERROR[run_hdfs_test:init_client_failure]: init client failed: $retv"
     $TEST_HOME/sbin/cluster_cmd.sh stop_client_gracefully
     $TEST_HOME/sbin/cluster_cmd.sh collectlog $testdir
     $TEST_HOME/sbin/cluster_cmd.sh stop
     exit 1
 fi
+
+insert_time_barrier_wrapper endof_pre_stage
 
 # perform reconfiguration 
 # stop benchmark running on client before reconfiguration
@@ -100,7 +118,7 @@ if [ $reconfig_mode = "online_reconfig" ]; then
     echo "performing $reconfig_mode ..."
     $TEST_HOME/sbin/reconf.sh $component $parameter_from $testdir/"$parameter_from"-site.xml.2
     if [ $? -ne 0 ]; then
-        echo "TEST_ERROR: $reconfig_mode reconfiguration $component failed"
+        echo "TEST_ERROR[run_hdfs_test:reconfig_component_failure]: $reconfig_mode reconfiguration $component failed"
     fi
 elif [ $reconfig_mode = "cluster_stop" ]; then
     echo "time before performing $reconfig_mode :"
@@ -112,10 +130,17 @@ fi
 
 echo "time before start_client:"
 date
+
+insert_time_barrier_wrapper endof_reconfig_stage
+
+# perform reconfiguration 
 # start benchmark running on client
 $TEST_HOME/sbin/cluster_cmd.sh start_client $read_times $benchmark_threads
 sleep $waittime
 
+insert_time_barrier_wrapper endof_post_stage
+
+# perform reconfiguration 
 # stop benchmark running on client
 $TEST_HOME/sbin/cluster_cmd.sh stop_client_gracefully
 
