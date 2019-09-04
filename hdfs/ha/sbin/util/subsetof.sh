@@ -7,7 +7,8 @@ errorset_names=('online_component' 'online_22' 'online_11' 'cluster_12')
 
 function generate_run_errors {
     dir=$1
-    grep -r "TEST_ERROR" $dir/run.log | awk -F "[\]\[]" '{print $2}' 2>/dev/null
+    #grep -r "TEST_ERROR" $dir/run.log | awk -F "[\]\[]" '{print $2}' 2>/dev/null
+    grep -r "TEST_ERROR" $dir | awk -F "[\]\[]" '{print $2}' 2>/dev/null
 }
 
 function generate_system_errors {
