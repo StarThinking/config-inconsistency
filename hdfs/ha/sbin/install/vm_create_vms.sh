@@ -9,9 +9,14 @@ fi
 
 init_image=$1
 
+ifconfig virbr0-nic down
+brctl delbr virbr0-nic
+virsh net-destroy default
+virsh net-start default
+
 for i in $(seq 0 6)
 do
-    cp $init_image ~/vm_images/node-"$i"-link-0.qcow2
+#    cp $init_image ~/vm_images/node-"$i"-link-0.qcow2
     sudo virt-install --name node-"$i"-link-0 --memory 2048 --vcpus 2 --disk ~/vm_images/node-"$i"-link-0.qcow2 --import --os-variant ubuntu16.04 &
     pids[$i]=$?
 done
