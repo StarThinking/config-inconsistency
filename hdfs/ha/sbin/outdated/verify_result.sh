@@ -33,7 +33,7 @@ fi
 grep -r "TEST_ERROR" $testdir/run.log | awk '{printf "%s", "run.log: "} {print $0}' 
 
 # check errors in HDFS log
-for sub_log in all_logs/clients all_logs/namenodes all_logs/datanodes all_logs/jnodes
+for sub_log in all_logs/clients all_logs/namenodes all_logs/datanodes all_logs/journalnodes
 do
     errors=$(grep -r "WARN\|ERROR\|FATAL" $testdir/$sub_log | awk -F " " '{ if ($3 == "WARN" || $3 == "ERROR" || $3 == "FATAL") print $5}' | sort -u)
     

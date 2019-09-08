@@ -3,7 +3,7 @@
 # HA cluster
 #namenodes=(0 1)
 #datanodes=(2 3 4) # make sure sdb is formatted
-#jnodes=(2 3 4) # modify hdfs-site.xml as well
+#journalnodes=(2 3 4) # modify hdfs-site.xml as well
 #reconf_journalnode=4
 #znodes=(0 1 5) # core-site.xml? zoo.cfg
 #znode_ids=(1 2 3)
@@ -15,7 +15,7 @@ namenodes=(0 1)
 datanodes=(2 3 4 5) # make sure sdb is formatted
 reconf_datanode=5
 reconf_journalnode=4
-jnodes=(2 3 4) # modify hdfs-site.xml as well
+journalnodes=(2 3 4) # modify hdfs-site.xml as well
 znodes=(0 1 6) # core-site.xml?
 znode_ids=(1 2 3)
 clients=(6)
@@ -32,3 +32,4 @@ large_file_dir_tmp=$hadoop_root_dir/my_large_file/tmp # for client
 split="#"
 read_times=10 # default value
 benchmark_threads=5 # default value
+points=('endof_pre_stage' 'endof_reconfig_stage' 'endof_post_stage')

@@ -13,7 +13,7 @@ functions+=('Configuration.java:getInts:1502')
 functions+=('Configuration.java:getLong:1535')
 functions+=('Configuration.java:getLongBytes:1561')
 
-for component in namenodes jnodes datanodes
+for component in namenodes journalnodes datanodes
 do
     echo "#############"$component"#############"
     

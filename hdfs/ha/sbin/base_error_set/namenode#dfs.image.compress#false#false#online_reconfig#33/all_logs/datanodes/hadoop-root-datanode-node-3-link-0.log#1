@@ -1,0 +1,66 @@
+2019-09-05 20:50:15,163 WARN  datanode.DataNode BPServiceActor.java:offerService:728 - IOException in offerService
+java.io.EOFException: End of File Exception between local host is: "node-3-link-0/192.168.122.217"; destination host is: "node-1-link-0":8020; : java.io.EOFException; For more details see:  http://wiki.apache.org/hadoop/EOFException
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.apache.hadoop.net.NetUtils.wrapWithMessage(NetUtils.java:831)
+	at org.apache.hadoop.net.NetUtils.wrapException(NetUtils.java:789)
+	at org.apache.hadoop.ipc.Client.getRpcResponse(Client.java:1515)
+	at org.apache.hadoop.ipc.Client.call(Client.java:1457)
+	at org.apache.hadoop.ipc.Client.call(Client.java:1367)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Invoker.invoke(ProtobufRpcEngine.java:228)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Invoker.invoke(ProtobufRpcEngine.java:116)
+	at com.sun.proxy.$Proxy19.sendHeartbeat(Unknown Source)
+	at org.apache.hadoop.hdfs.protocolPB.DatanodeProtocolClientSideTranslatorPB.sendHeartbeat(DatanodeProtocolClientSideTranslatorPB.java:166)
+	at org.apache.hadoop.hdfs.server.datanode.BPServiceActor.sendHeartBeat(BPServiceActor.java:514)
+	at org.apache.hadoop.hdfs.server.datanode.BPServiceActor.offerService(BPServiceActor.java:645)
+	at org.apache.hadoop.hdfs.server.datanode.BPServiceActor.run(BPServiceActor.java:842)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.io.EOFException
+	at java.io.DataInputStream.readInt(DataInputStream.java:392)
+	at org.apache.hadoop.ipc.Client$IpcStreams.readResponse(Client.java:1816)
+	at org.apache.hadoop.ipc.Client$Connection.receiveRpcResponse(Client.java:1173)
+	at org.apache.hadoop.ipc.Client$Connection.run(Client.java:1069)
+2019-09-05 20:50:15,524 INFO  datanode.DataNode BPOfferService.java:updateActorStatesFromHeartbeat:576 - Namenode Block pool BP-1626868070-192.168.122.202-1567730933308 (Datanode Uuid dc8de855-1978-44d7-9c46-304578e98b91) service to node-0-link-0/192.168.122.202:8020 trying to claim ACTIVE state with txid=32
+2019-09-05 20:50:15,524 INFO  datanode.DataNode BPOfferService.java:updateActorStatesFromHeartbeat:590 - Namenode Block pool BP-1626868070-192.168.122.202-1567730933308 (Datanode Uuid dc8de855-1978-44d7-9c46-304578e98b91) service to node-0-link-0/192.168.122.202:8020 taking over ACTIVE state from Block pool BP-1626868070-192.168.122.202-1567730933308 (Datanode Uuid dc8de855-1978-44d7-9c46-304578e98b91) service to node-1-link-0/192.168.122.192:8020 at higher txid=32
+2019-09-05 20:50:19,162 INFO  ipc.Client Client.java:handleConnectionFailure:948 - Retrying connect to server: node-1-link-0/192.168.122.192:8020. Already tried 0 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+2019-09-05 20:50:20,164 INFO  ipc.Client Client.java:handleConnectionFailure:948 - Retrying connect to server: node-1-link-0/192.168.122.192:8020. Already tried 1 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+2019-09-05 20:50:20,337 INFO  datanode.DataNode BPOfferService.java:processCommandFromActor:672 - DatanodeCommand action : DNA_REGISTER from node-1-link-0/192.168.122.192:8020 with standby state
+2019-09-05 20:50:20,351 INFO  datanode.DataNode BPServiceActor.java:register:764 - Block pool BP-1626868070-192.168.122.202-1567730933308 (Datanode Uuid dc8de855-1978-44d7-9c46-304578e98b91) service to node-1-link-0/192.168.122.192:8020 beginning handshake with NN
+2019-09-05 20:50:20,379 INFO  datanode.DataNode BPServiceActor.java:register:783 - Block pool Block pool BP-1626868070-192.168.122.202-1567730933308 (Datanode Uuid dc8de855-1978-44d7-9c46-304578e98b91) service to node-1-link-0/192.168.122.192:8020 successfully registered with NN
+2019-09-05 20:50:20,406 INFO  datanode.DataNode BPServiceActor.java:blockReport:422 - Successfully sent block report 0x614ccdb806f37a6c,  containing 1 storage report(s), of which we sent 1. The reports had 5 total blocks and used 1 RPC(s). This took 1 msec to generate and 20 msecs for RPC and NN processing. Got back no commands.
+2019-09-05 20:50:36,166 WARN  datanode.DataNode BPServiceActor.java:offerService:728 - IOException in offerService
+java.io.EOFException: End of File Exception between local host is: "node-3-link-0/192.168.122.217"; destination host is: "node-0-link-0":8020; : java.io.EOFException; For more details see:  http://wiki.apache.org/hadoop/EOFException
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.apache.hadoop.net.NetUtils.wrapWithMessage(NetUtils.java:831)
+	at org.apache.hadoop.net.NetUtils.wrapException(NetUtils.java:789)
+	at org.apache.hadoop.ipc.Client.getRpcResponse(Client.java:1515)
+	at org.apache.hadoop.ipc.Client.call(Client.java:1457)
+	at org.apache.hadoop.ipc.Client.call(Client.java:1367)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Invoker.invoke(ProtobufRpcEngine.java:228)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Invoker.invoke(ProtobufRpcEngine.java:116)
+	at com.sun.proxy.$Proxy19.sendHeartbeat(Unknown Source)
+	at org.apache.hadoop.hdfs.protocolPB.DatanodeProtocolClientSideTranslatorPB.sendHeartbeat(DatanodeProtocolClientSideTranslatorPB.java:166)
+	at org.apache.hadoop.hdfs.server.datanode.BPServiceActor.sendHeartBeat(BPServiceActor.java:514)
+	at org.apache.hadoop.hdfs.server.datanode.BPServiceActor.offerService(BPServiceActor.java:645)
+	at org.apache.hadoop.hdfs.server.datanode.BPServiceActor.run(BPServiceActor.java:842)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.io.EOFException
+	at java.io.DataInputStream.readInt(DataInputStream.java:392)
+	at org.apache.hadoop.ipc.Client$IpcStreams.readResponse(Client.java:1816)
+	at org.apache.hadoop.ipc.Client$Connection.receiveRpcResponse(Client.java:1173)
+	at org.apache.hadoop.ipc.Client$Connection.run(Client.java:1069)
+2019-09-05 20:50:38,381 INFO  datanode.DataNode BPOfferService.java:updateActorStatesFromHeartbeat:576 - Namenode Block pool BP-1626868070-192.168.122.202-1567730933308 (Datanode Uuid dc8de855-1978-44d7-9c46-304578e98b91) service to node-1-link-0/192.168.122.192:8020 trying to claim ACTIVE state with txid=33
+2019-09-05 20:50:38,382 INFO  datanode.DataNode BPOfferService.java:updateActorStatesFromHeartbeat:590 - Namenode Block pool BP-1626868070-192.168.122.202-1567730933308 (Datanode Uuid dc8de855-1978-44d7-9c46-304578e98b91) service to node-1-link-0/192.168.122.192:8020 taking over ACTIVE state from Block pool BP-1626868070-192.168.122.202-1567730933308 (Datanode Uuid dc8de855-1978-44d7-9c46-304578e98b91) service to node-0-link-0/192.168.122.202:8020 at higher txid=33
+2019-09-05 20:50:40,167 INFO  ipc.Client Client.java:handleConnectionFailure:948 - Retrying connect to server: node-0-link-0/192.168.122.202:8020. Already tried 0 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+2019-09-05 20:50:41,168 INFO  ipc.Client Client.java:handleConnectionFailure:948 - Retrying connect to server: node-0-link-0/192.168.122.202:8020. Already tried 1 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+2019-09-05 20:50:42,169 INFO  ipc.Client Client.java:handleConnectionFailure:948 - Retrying connect to server: node-0-link-0/192.168.122.202:8020. Already tried 2 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+2019-09-05 20:50:42,180 INFO  datanode.DataNode BPOfferService.java:processCommandFromActor:672 - DatanodeCommand action : DNA_REGISTER from node-0-link-0/192.168.122.202:8020 with standby state
+2019-09-05 20:50:42,185 INFO  datanode.DataNode BPServiceActor.java:register:764 - Block pool BP-1626868070-192.168.122.202-1567730933308 (Datanode Uuid dc8de855-1978-44d7-9c46-304578e98b91) service to node-0-link-0/192.168.122.202:8020 beginning handshake with NN
+2019-09-05 20:50:42,199 INFO  datanode.DataNode BPServiceActor.java:register:783 - Block pool Block pool BP-1626868070-192.168.122.202-1567730933308 (Datanode Uuid dc8de855-1978-44d7-9c46-304578e98b91) service to node-0-link-0/192.168.122.202:8020 successfully registered with NN
+2019-09-05 20:50:42,235 INFO  datanode.DataNode BPServiceActor.java:blockReport:422 - Successfully sent block report 0x46d5261630664668,  containing 1 storage report(s), of which we sent 1. The reports had 5 total blocks and used 1 RPC(s). This took 0 msec to generate and 26 msecs for RPC and NN processing. Got back no commands.
+time_barrier:endof_reconfig_stage

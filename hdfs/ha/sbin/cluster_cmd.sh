@@ -25,7 +25,7 @@ function start {
         echo node-"$i"-link-0 >> $TEST_HOME/etc/workers
     done
 
-    # jnodes --> etc/hdfs-site.xml and hdfs-site-template.xml
+    # journalnodes --> etc/hdfs-site.xml and hdfs-site-template.xml
    
     # copy configuration to all nodes
     for i in ${allnodes[@]}
@@ -45,7 +45,7 @@ function start {
     
     ### START MANUAL FAILOVER ###
     # start journal nodes
-    for i in ${jnodes[@]}
+    for i in ${journalnodes[@]}
     do
         #ssh node-$i-link-0 "mkdir /root/journal"
         ssh node-"$i"-link-0 "$HADOOP_HOME/bin/hdfs --daemon start journalnode"
@@ -63,7 +63,7 @@ function start {
  
     ### SHUTDOWN MANUAL FAILOVER ###
     $HADOOP_HOME/bin/hdfs --daemon stop namenode
-    for i in ${jnodes[@]}
+    for i in ${journalnodes[@]}
     do
         ssh node-"$i"-link-0 "$HADOOP_HOME/bin/hdfs --daemon stop journalnode"
     done
@@ -204,7 +204,7 @@ function stop {
 	ssh node-"$i"-link-0 "pkill -9 DataNode"
     done
     
-    for i in ${jnodes[@]}
+    for i in ${journalnodes[@]}
     do
         ssh node-"$i"-link-0 "rm -rf $journal_dir/*; rm -rf $HADOOP_HOME/logs/*"
 	ssh node-"$i"-link-0 "pkill -9 JournalNode"
@@ -230,7 +230,7 @@ function collectlog {
     mkdir $test/all_logs
     mkdir $test/all_logs/namenodes
     mkdir $test/all_logs/datanodes
-    mkdir $test/all_logs/jnodes
+    mkdir $test/all_logs/journalnodes
     mkdir $test/all_logs/clients
     
     for i in ${namenodes[@]}
@@ -243,9 +243,9 @@ function collectlog {
         scp node-"$i"-link-0:$HADOOP_HOME/logs/hadoop-root-datanode* $test/all_logs/datanodes
     done
     
-    for i in ${jnodes[@]}
+    for i in ${journalnodes[@]}
     do
-        scp node-"$i"-link-0:$HADOOP_HOME/logs/hadoop-root-journalnode* $test/all_logs/jnodes
+        scp node-"$i"-link-0:$HADOOP_HOME/logs/hadoop-root-journalnode* $test/all_logs/journalnodes
     done
    
     for i in ${clients[@]}
@@ -253,13 +253,10 @@ function collectlog {
         scp node-"$i"-link-0:/tmp/client*.log $test/all_logs/clients
         ssh node-"$i"-link-0 "rm /tmp/client*.log"
     done
-
-    cp $TEST_HOME/sbin/run_test.sh $test/all_logs/
 }
 
 function insert_time_barrier {
     point=$1
-    points=('endof_pre_stage' 'endof_reconfig_stage' 'endof_post_stage')
     valid=0
     for p in ${points[@]}
     do
@@ -272,27 +269,27 @@ function insert_time_barrier {
 	echo "point $point is invalid"
         return 1
     fi
-
+   
     for i in ${namenodes[@]}
     do
-        ssh node-"$i"-link-0 "echo time_barrier:$point >> $HADOOP_HOME/logs/hadoop-root-namenode-node-$i-link-0.log"
+        ssh node-"$i"-link-0 "echo time_barrier:$point >> $HADOOP_HOME/logs/hadoop-root-namenode-node-$i-link-0.log" &
     done
     
     for i in ${datanodes[@]}
     do
-        ssh node-"$i"-link-0 "echo time_barrier:$point >> $HADOOP_HOME/logs/hadoop-root-datanode-node-$i-link-0.log"
+        ssh node-"$i"-link-0 "echo time_barrier:$point >> $HADOOP_HOME/logs/hadoop-root-datanode-node-$i-link-0.log" &
     done
     
-    for i in ${jnodes[@]}
+    for i in ${journalnodes[@]}
     do
-        ssh node-"$i"-link-0 "echo time_barrier:$point >> $HADOOP_HOME/logs/hadoop-root-journalnode-node-$i-link-0.log"
+        ssh node-"$i"-link-0 "echo time_barrier:$point >> $HADOOP_HOME/logs/hadoop-root-journalnode-node-$i-link-0.log" &
     done
    
     for i in ${clients[@]}
     do
         for j in $(seq 1 $benchmark_threads)
 	do
-            ssh node-"$i"-link-0 "echo time_barrier:$point >> /tmp/client$j.log"
+            ssh node-"$i"-link-0 "echo time_barrier:$point >> /tmp/client$j.log" &
 	done
     done 
 

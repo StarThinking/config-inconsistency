@@ -4,7 +4,7 @@ dir=$1
 
 functions+=('Configuration.java:getInt:1480')
 
-for component in namenodes jnodes datanodes
+for component in namenodes journalnodes datanodes
 do
     echo "#############"$component"#############"
     

@@ -23,7 +23,7 @@ do
 done
 
 # create dir for journal node
-for i in ${jnodes[@]}
+for i in ${journalnodes[@]}
 do
     ssh node-$i-link-0 "mkdir $journal_dir"
 done

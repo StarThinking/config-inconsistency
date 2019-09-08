@@ -1,16 +1,5 @@
 #!/bin/bash
 
-function insert_time_barrier_wrapper {
-    $TEST_HOME/sbin/cluster_cmd.sh insert_time_barrier $1
-    if [ $? -ne 0 ]; then
-        echo "TEST_ERROR[run_hdfs_test:insert_time_barrier_failure]: insert time barrier failed"
-        $TEST_HOME/sbin/cluster_cmd.sh stop_client_gracefully
-        $TEST_HOME/sbin/cluster_cmd.sh collectlog $testdir
-        $TEST_HOME/sbin/cluster_cmd.sh stop
-        exit 1
-    fi
-}
-
 if [ -z "$TEST_HOME" ]; then 
     echo "TEST_HOME not set."
     exit
@@ -42,7 +31,7 @@ fi
 
 if [ $reconfig_mode != "cluster_stop" ] && [ $reconfig_mode != "online_reconfig" ]; then
     echo "reconfig_mode: cluster_stop | online_reconfig"
-    exit
+    exit 1
 fi
 
 # create test dir
@@ -50,6 +39,18 @@ testdir=./"$component""$split""$parameter""$split""$value1""$split""$value2""$sp
 if ! mkdir $testdir; then
     exit 1
 fi
+
+function insert_time_barrier_wrapper {
+    echo time_barrier:$1 
+    $TEST_HOME/sbin/cluster_cmd.sh insert_time_barrier $1
+    if [ $? -ne 0 ]; then
+        echo "TEST_ERROR[run_hdfs_test:insert_time_barrier_failure]: insert time barrier failed"
+        $TEST_HOME/sbin/cluster_cmd.sh stop_client_gracefully
+        $TEST_HOME/sbin/cluster_cmd.sh collectlog $testdir
+        $TEST_HOME/sbin/cluster_cmd.sh stop
+        exit 1
+    fi
+}
 
 #exec 2>&1 
 #exec > >(tee -i $testdir/run.log)
