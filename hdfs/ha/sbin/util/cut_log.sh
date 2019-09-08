@@ -47,5 +47,11 @@ do
     done
 done
 
+
+for c in $(seq 1 $benchmark_threads)
+do
+     cut_one_log $testdir/all_logs/clients/client$c.log
+done
+
 cut_one_log $testdir/run.log
 

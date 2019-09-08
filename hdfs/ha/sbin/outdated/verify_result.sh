@@ -26,11 +26,11 @@ else
 fi
 
 # check errors in our test log
-test_errors=$(grep -r "TEST_ERROR" $testdir/run.log)
+test_errors=$(grep -r "TEST_ERROR" $testdir)
 if [ "$test_errors" != "" ]; then
     ret=1
 fi
-grep -r "TEST_ERROR" $testdir/run.log | awk '{printf "%s", "run.log: "} {print $0}' 
+grep -r "TEST_ERROR" $testdir | awk '{printf "%s", "run.log or client.log: "} {print $0}' 
 
 # check errors in HDFS log
 for sub_log in all_logs/clients all_logs/namenodes all_logs/datanodes all_logs/journalnodes
