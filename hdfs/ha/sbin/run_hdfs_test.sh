@@ -2,7 +2,7 @@
 
 if [ -z "$TEST_HOME" ]; then 
     echo "TEST_HOME not set."
-    exit
+    exit 3
 fi
 
 # if a script wants to be executed by itself, 
@@ -13,7 +13,7 @@ argument_num=6
 argument_num_optional=8
 if [ $# -lt $argument_num ]; then
     echo "./run_hdfs_test [component: <namenode|datanode|journalnode>] [parameter] [value1] [value2] [reconfig_mode: <cluster_stop|online_reconfig] [waittime] optional: [read_times] [benchmark_threads]"
-    exit
+    exit 3
 fi
 
 component=$1
@@ -31,13 +31,13 @@ fi
 
 if [ $reconfig_mode != "cluster_stop" ] && [ $reconfig_mode != "online_reconfig" ]; then
     echo "reconfig_mode: cluster_stop | online_reconfig"
-    exit 1
+    exit 3
 fi
 
 # create test dir
 testdir=./"$component""$split""$parameter""$split""$value1""$split""$value2""$split""$reconfig_mode""$split""$waittime"
 if ! mkdir $testdir; then
-    exit 1
+    exit 3
 fi
 
 function insert_time_barrier_wrapper {
@@ -84,7 +84,7 @@ if [ "$parameter_from" == "hdfs" ] || [ "$parameter_from" == "core" ]; then
     sed -i "s/$value_stub/$value2/g" $testdir/"$parameter_from"-site.xml.2
 else
     echo "cannot find $parameter in neither hdfs-site.xml nor core-site.xml"
-    exit 1
+    exit 3
 fi
 
 # main procedure

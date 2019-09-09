@@ -32,6 +32,11 @@ function procedure {
     echo "run $reconfig_mode v1-v2 test"
     $TEST_HOME/sbin/run_hdfs_test.sh $component $parameter $value1 $value2 $reconfig_mode $waittime 
     test_12="$component""$split""$parameter""$split""$value1""$split""$value2""$split""$reconfig_mode""$split""$waittime"
+    if [ $? -eq 3 ]; then
+	stop=1
+	echo "command error"
+	return $stop
+    fi
     $TEST_HOME/sbin/util/cut_log.sh $test_12
     $TEST_HOME/sbin/util/stage.sh $test_12
     no_run_error_in_pre $test_12
