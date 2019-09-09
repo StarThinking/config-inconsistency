@@ -20,7 +20,7 @@ nodes=('namenode' 'datanode' 'journalnode')
 
 function cut_one_log {
     log_file=$1
-    echo "log to be cut is $log_file"
+    #echo "log to be cut is $log_file"
     head_line=0
     tail_line=0
     part_id=0

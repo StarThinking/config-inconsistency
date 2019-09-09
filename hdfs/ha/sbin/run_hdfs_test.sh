@@ -101,15 +101,17 @@ retv=$?
 
 if [ $retv -eq 0 ]; then
     echo "init client succeed"
+    insert_time_barrier_wrapper endof_pre_stage
 else
     echo "TEST_ERROR[run_hdfs_test:init_client_failure]: init client failed: $retv"
+    insert_time_barrier_wrapper endof_pre_stage
+    sleep 5
     $TEST_HOME/sbin/cluster_cmd.sh stop_client_gracefully
     $TEST_HOME/sbin/cluster_cmd.sh collectlog $testdir
     $TEST_HOME/sbin/cluster_cmd.sh stop
     exit 1
 fi
 
-insert_time_barrier_wrapper endof_pre_stage
 
 # perform reconfiguration 
 # stop benchmark running on client before reconfiguration
@@ -132,14 +134,14 @@ fi
 echo "time before start_client:"
 date
 
-insert_time_barrier_wrapper endof_reconfig_stage
+#insert_time_barrier_wrapper endof_reconfig_stage
 
 # perform reconfiguration 
 # start benchmark running on client
 $TEST_HOME/sbin/cluster_cmd.sh start_client $read_times $benchmark_threads
 sleep $waittime
 
-insert_time_barrier_wrapper endof_post_stage
+#insert_time_barrier_wrapper endof_post_stage
 
 # perform reconfiguration 
 # stop benchmark running on client

@@ -123,7 +123,6 @@ function init_client {
         else
             echo "line_num $line_num not equal as expected_line_num $expected_line_num, sleep 20s"
             sleep 20
-            break
         fi
     done
 
