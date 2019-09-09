@@ -28,7 +28,7 @@ function procedure {
    # echo component=$component parameter=$parameter value1=$value1 value2=$value2
    # mkdir $tuple_dir 
    # cd $tuple_dir
-
+  
     echo "run $reconfig_mode v1-v2 test"
     $TEST_HOME/sbin/run_hdfs_test.sh $component $parameter $value1 $value2 $reconfig_mode $waittime 
     test_12="$component""$split""$parameter""$split""$value1""$split""$value2""$split""$reconfig_mode""$split""$waittime"
@@ -112,6 +112,27 @@ do
     value1=$(echo $line | awk -F '[#| ]' '{print $3}')
     value2=$(echo $line | awk -F '[#| ]' '{print $4}')
     tuple_dir="$component""$split""$parameter""$split""$value1""$split""$value2"
+   
+# find out which xml file this parameter comes from
+parameter_from=""
+for p in $(cat $TEST_HOME/etc/parameter_hdfs.txt)
+do
+    if [ "$p" == "$parameter" ] ; then
+        parameter_from="hdfs"
+    fi
+done
+
+for p in $(cat $TEST_HOME/etc/parameter_core.txt)
+do
+    if [ "$p" == "$parameter" ] ; then
+        parameter_from="core"
+    fi
+done
+if [ "$parameter_from" != "hdfs" ] && [ "$parameter_from" != "core" ]; then
+    echo "cannot find $parameter, continue"
+    continue
+fi
+
     echo component=$component parameter=$parameter value1=$value1 value2=$value2
     mkdir $tuple_dir 
     cd $tuple_dir
