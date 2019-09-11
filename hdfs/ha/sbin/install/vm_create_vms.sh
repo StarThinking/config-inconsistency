@@ -9,10 +9,12 @@ fi
 
 init_image=$1
 
-#ifconfig virbr0-nic down
-#brctl delbr virbr0-nic
-#virsh net-destroy default
-#virsh net-start default
+ifconfig virbr0 down
+brctl delbr virbr0
+service libvirtd restart
+sleep 5
+virsh net-destroy default
+virsh net-start default
 
 for i in $(seq 0 6)
 do
