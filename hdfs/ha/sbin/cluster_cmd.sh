@@ -1,8 +1,9 @@
 #!/bin/bash
+set -u
 
 if [ -z "$TEST_HOME" ]; then 
     echo "TEST_HOME not set."
-    exit
+    exit 3
 fi
 
 # if a script wants to be executed by itself, 
@@ -111,26 +112,26 @@ function init_client {
         ssh node-"$i"-link-0 "/bin/bash --login $TEST_HOME/sbin/benchmark.sh init $read_times $benchmark_threads"  # fake 1st arguments
         echo "init client node-"$i"-link-0 ends"
     done
-
-    expected_line_num=$(( benchmark_threads + 1 ))
-    echo "expected_line_num = $expected_line_num"
-    while true
-    do
-        line_num=$($HADOOP_HOME/bin/hdfs dfs -ls / | wc -l)
-        echo "line_num = $line_num"
-        if [ $line_num -eq $expected_line_num ]; then
-            return 0
-        else
-            echo "line_num $line_num not equal as expected_line_num $expected_line_num, sleep 20s"
-            sleep 20
-        fi
-    done
-
-    if [ $line_num -eq $expected_line_num ]; then
-        return 0
-    else
-        return 1
-    fi
+    return 0
+#    expected_line_num=$(( benchmark_threads + 1 ))
+#    echo "expected_line_num = $expected_line_num"
+#    while true
+#    do
+#        line_num=$($HADOOP_HOME/bin/hdfs dfs -ls / | wc -l)
+#        echo "line_num = $line_num"
+#        if [ $line_num -eq $expected_line_num ]; then
+#            return 0
+#        else
+#            echo "line_num $line_num not equal as expected_line_num $expected_line_num, sleep 20s"
+#            sleep 20
+#        fi
+#    done
+#
+#    if [ $line_num -eq $expected_line_num ]; then
+#        return 0
+#    else
+#        return 1
+#    fi
 }
 
 # start running benchmark. keep it running on the background on the client
@@ -168,7 +169,7 @@ function stop_client_gracefully {
 
         # cannot wait too long
         if [ $count -ge 3 ]; then
-            echo "TEST_ERROR[cluster_cmd:benchmark_hanging] benchamrk seems to be hanging. kill it forcefully."
+            echo "${ERRORS[$FATAL]}[cluster_cmd:benchmark_hanging] benchamrk seems to be hanging. kill it forcefully."
             stop_client
         fi
     done

@@ -1,9 +1,17 @@
 #!/bin/bash
+set -u
+
+if [ -z "$TEST_HOME" ]; then
+    echo "TEST_HOME not set."
+    exit 3
+fi
+
+. $TEST_HOME/sbin/global_var.sh
+. $TEST_HOME/sbin/util/subsetof.sh
 
 samples=()
 #output_file=merged.txt
 tmp_file=merged.txt.tmp
-stage=$1
 shift
 
 while [ $# -ne 0 ]
@@ -18,7 +26,7 @@ echo > $tmp_file
 for i in ${samples[@]}
 do
     echo ""$i":"
-    grep -r "WARN\|ERROR\|FATAL" $i/$stage | awk -F " " '{ if ($3 == "WARN" || $3 == "ERROR" || $3 == "FATAL") print $5}' | sort -u | tee -a $tmp_file
+    generate_fatal_errors $i | tee -a $tmp_file
     echo ""
 done
 

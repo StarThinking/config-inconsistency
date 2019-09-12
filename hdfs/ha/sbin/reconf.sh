@@ -32,7 +32,7 @@ function switch_active { # return 0 if success, 1 if error
 	    sleep 2
 	    tries=$(( tries + 1 ))
 	    if [ $tries -gt $max_try ]; then
-		echo "TEST_ERROR[turn_active_failure]: after $tries tries turn ACTIVE failed"
+		echo "${ERRORS[$FATAL]}[turn_active_failure]: after $tries tries turn ACTIVE failed"
 		return 1; # report error
 	    fi
 	fi
@@ -58,7 +58,7 @@ function switch_active { # return 0 if success, 1 if error
             sleep 2
             tries=$(( tries + 1 ))
             if [ $tries -gt $max_try ]; then
-		echo "TEST_ERROR[turn_standby_failure]: after $tries tries turn STANDBY failed"
+		echo "${ERRORS[$FATAL]}[turn_standby_failure]: after $tries tries turn STANDBY failed"
                 return 1; # report error
             fi
         fi

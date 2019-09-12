@@ -5,48 +5,52 @@
 
 errorset_names=('component' 'test_22' 'test_11' 'test_12')
 
-function generate_run_errors {
+function generate_command_errors {
+    if [ $# -lt 1 ]; then
+        echo "${ERRORS[$COMMAND]}[wrong_arguments]"
+        exit 1
+    fi
     dir=$1
-    stage=$2
-    #grep -r "TEST_ERROR" $dir/run.log | awk -F "[\]\[]" '{print $2}' 2>/dev/null
-    grep -r "TEST_ERROR" $dir/$stage | awk -F "[\]\[]" '{print $2}' 2>/dev/null
+    grep -r "${ERRORS[$COMMAND]}" $dir | awk -F "[\]\[]" '{print $2}' 2>/dev/null
+}
+
+function generate_fatal_errors {
+    if [ $# -lt 1 ]; then
+        echo "${ERRORS[$COMMAND]}[wrong_arguments]"
+        exit 1
+    fi
+    dir=$1
+    grep -r "${ERRORS[$FATAL]}" $dir | awk -F "[\]\[]" '{print $2}' 2>/dev/null
 }
 
 function generate_system_errors {
-    dir=$1
-    stage=$2
-    grep -r "WARN\|ERROR\|FATAL" $dir/$stage | awk -F " " '{ if ($3 == "WARN" || $3 == "ERROR" || $3 == "FATAL") print $5}' | sort -u 2>/dev/null
-}
-
-function no_run_error_in_pre {
-    dir=$1
-    stage=0
-    run_errors_in_pre=$(generate_run_errors $dir/$stage)
-    if [ "$run_errors_in_pre" == "" ]; then
-	return 0
-    else
-	echo $run_errors_in_pre
-        return 1
+    if [ $# -lt 1 ]; then
+        echo "${ERRORS[$COMMAND]}[wrong_arguments]"
+        exit 1
     fi
+    dir=$1
+    grep -r "WARN\|ERROR\|FATAL" $dir | awk -F " " '{ if ($3 == "WARN" || $3 == "ERROR" || $3 == "FATAL") print $5}' | sort -u 2>/dev/null
 }
 
 function subsetof {
+    if [ $# -ne 2 ]; then
+        echo "${ERRORS[$COMMAND]}[wrong_arguments]"
+    fi
+    reconfig_mode=$1
+    test_12=$2
+    shift 2
+
     ret=0
 
-    reconfig_mode=$1
-    stage=$2
-    test_12=$3
-    shift 3
-
     # generate run and system errors for test_12
-    test_12_run_errors=$(generate_run_errors $test_12 $stage)
-    test_12_system_errors=$(generate_system_errors $test_12 $stage)
+    test_12_run_errors=$(generate_run_errors $test_12)
+    test_12_system_errors=$(generate_system_errors $test_1)
     
     # union 0 only has system errors but no run errors
     union_size=0
     component=$(echo $test_12 | awk -F "$split" 'NR==1 {print $1}')
-    root_base_dir=$TEST_HOME/sbin/base_error_set/$reconfig_mode/$stage
-    echo "Error_base is $reconfig_mode/$stage/"$component".txt"
+    root_base_dir=$TEST_HOME/sbin/base_error_set/$reconfig_mode
+    echo "Error_base is $reconfig_mode/"$component".txt"
     component_errors=$root_base_dir/"$component".txt
     system_error_unions[0]=$(cat $component_errors)
     testrun_error_unions[0]=''
@@ -55,8 +59,8 @@ function subsetof {
     while [ $# -ge 1 ]; do
 	union_size=$(( union_size + 1 ))
         dir=$1
-        testrun_error_unions[$union_size]=$(generate_run_errors $dir $stage)
-	system_error_unions[$union_size]=$(generate_system_errors $dir $stage)
+        testrun_error_unions[$union_size]=$(generate_run_errors $dir)
+	system_error_unions[$union_size]=$(generate_system_errors $dir)
         shift 1
     done	
 
@@ -160,3 +164,13 @@ function subsetof {
     return $ret
 }
 
+#function no_run_error_in_pre {
+#    dir=$1
+#    run_errors_in_pre=$(generate_run_errors $dir/$stage)
+#    if [ "$run_errors_in_pre" == "" ]; then
+#	return 0
+#    else
+#	echo $run_errors_in_pre
+#        return 1
+#    fi
+#}

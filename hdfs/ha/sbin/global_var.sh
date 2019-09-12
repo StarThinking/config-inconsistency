@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # cluster parameters
 
 # HA cluster
@@ -33,4 +35,12 @@ split="#"
 read_times=10 # default value
 benchmark_threads=5 # default value
 #points=('endof_pre_stage' 'endof_reconfig_stage' 'endof_post_stage')
-points=('endof_pre_stage')
+points=()
+
+# error types
+ERRORS=(COMMAND FATAL SYSTEM)
+ERRORS_NUM=${#ERRORS[@]}
+for ((i=0; i < $ERRORS_NUM; i++)); do
+    name=${ERRORS[i]}
+    declare ${name}=$i
+done

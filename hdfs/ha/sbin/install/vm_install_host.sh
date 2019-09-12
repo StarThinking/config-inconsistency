@@ -19,7 +19,7 @@ sudo systemctl enable libvirt-bin
 sudo apt-get -y install expect
  
 # allow root user for qemu
-cp $TEST_HOME/sbin/qemu.conf /etc/libvirt/qemu.conf
+cp $TEST_HOME/etc/qemu.conf /etc/libvirt/qemu.conf
 service libvirtd restart
 
 printf '%s\n' n '' '' '' '' w | sudo fdisk /dev/sdb
