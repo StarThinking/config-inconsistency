@@ -112,7 +112,7 @@ fi
 $TEST_HOME/sbin/cluster_cmd.sh start_client $read_times $benchmark_threads
 sleep $waittime
 
-n=10
+n=5
 for i in $(seq 1 $n)
 do
 # perform reconfiguration 
