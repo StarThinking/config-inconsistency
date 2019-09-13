@@ -5,7 +5,7 @@ if [ -z "$TEST_HOME" ]; then
     exit 3
 fi
 
-for i in 100 200 400 1600
+for i in 50 100 200 400 1000
 do
 $TEST_HOME/sbin/run_hdfs_test.sh namenode dfs.image.compress false false online_reconfig $i
 $TEST_HOME/sbin/run_hdfs_test.sh namenode dfs.image.compress false false cluster_stop $i
