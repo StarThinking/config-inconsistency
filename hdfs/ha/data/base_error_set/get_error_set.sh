@@ -20,19 +20,27 @@ do
     shift
 done
 
-echo > $tmp_file
 #echo > $output_file
 
-for i in ${samples[@]}
-do
-    echo ""$i":"
-    generate_fatal_errors $i | tee -a $tmp_file
-    echo ""
+errors=('command' 'fatal' 'system')
+
+for i in $(seq 0 $(( ${#errors[@]} - 1 )))
+do 
+    echo > $tmp_file
+    echo "${errors[$i]}"
+    
+    for j in ${samples[@]}
+    do
+        echo ""$j":"
+        generate_"${errors[$i]}"_errors $j | tee -a $tmp_file
+        echo ""
+    done
+    
+    echo "merged result for ${errors[$i]}:"
+    sort -u $tmp_file
+    rm $tmp_file
 done
 
 #sort -u $tmp_file >> $output_file
-echo "merged result:"
-sort -u $tmp_file
-rm $tmp_file
 
 
