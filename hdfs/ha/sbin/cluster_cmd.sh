@@ -142,7 +142,6 @@ function start_client {
     for i in ${clients[@]}
     do
         ssh node-$i-link-0 "/bin/bash --login $TEST_HOME/sbin/benchmark.sh start $read_times $benchmark_threads" &
-#        ssh node-"$i"-link-0  "mkdir $large_file_dir_tmp"
     done
 }
 
@@ -151,24 +150,24 @@ function stop_client_gracefully {
     for i in ${clients[@]}
     do
         count=0
-        while [ $count -le 3 ]
+        while [ $count -le 2 ]
         do
             ssh node-"$i"-link-0 "ps aux | grep bench | awk -F ' ' '{print \$2}' | xargs kill "
+            echo "sleep 30 seconds to wait benchmark to quit itself"
+            sleep 30
 
             #check
             echo "check if client benchmark has been killed"
             if [ $(ssh node-"$i"-link-0 "jps | grep FsShell" | wc -l) -eq 0 ]; then
                 echo "benchmark is stopped"
                 break;
-            else
-                echo "sleep 10 seconds to wait benchmark to quit itself"
-                sleep 10
-                count=$(( count + 1 ))
             fi
+            
+            count=$(( count + 1 ))
         done
 
         # cannot wait too long
-        if [ $count -ge 3 ]; then
+        if [ $count -gt 2 ]; then
             echo "${ERRORS[$FATAL]}[cluster_cmd:benchmark_hanging] benchamrk seems to be hanging. kill it forcefully."
             stop_client
         fi
@@ -182,7 +181,7 @@ function stop_client {
     do
         ssh node-"$i"-link-0  "ps aux | grep bench | awk -F ' ' '{print \$2}' | xargs kill -9"
         ssh node-"$i"-link-0 "pids=\$(jps | grep FsShell | awk -F ' ' '{print \$1}'); for p in \${pids[@]}; do echo killing FsShell \$p; kill -9 \$p; done"
-        ssh node-"$i"-link-0  "rm -rf $large_file_dir_tmp"
+        ssh node-"$i"-link-0  "rm -rf $large_file_dir_tmp/*"
     done
 }
 

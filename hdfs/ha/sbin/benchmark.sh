@@ -17,10 +17,8 @@ benchmark_threads=$3
 
 # init benchmark
 function init_benchmark {
-    rm -rf $large_file_dir_tmp
-    mkdir $large_file_dir_tmp
     rm /tmp/client*log
-
+    mkdir $large_file_dir_tmp
     for id in $(seq 1 $benchmark_threads)
     do
         $HADOOP_HOME/bin/hdfs dfs -put "$large_file_dir"/myfile"$id" /myfile"$id" &>> /tmp/client"$id".log
