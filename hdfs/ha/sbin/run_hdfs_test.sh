@@ -119,6 +119,7 @@ n=1
 i=0
 while [ $i -lt $n ]
 do
+    echo "do $(( i + 1 )) additional v1-v2" reconfig test
     # perform reconfiguration 
     if [ $reconfig_mode = "online_reconfig" ]; then
         echo "performing $reconfig_mode ..."
