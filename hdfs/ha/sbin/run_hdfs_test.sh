@@ -115,46 +115,49 @@ sleep $waittime
 # stop benchmark running on client
 $TEST_HOME/sbin/cluster_cmd.sh stop_client_gracefully
 
-#n=3
-#for i in $(seq 1 $n)
-#do
-#    # perform reconfiguration 
-#    if [ $reconfig_mode = "online_reconfig" ]; then
-#        echo "performing $reconfig_mode ..."
-#        $TEST_HOME/sbin/reconf.sh $component $parameter_from $testdir/"$parameter_from"-site.xml.1
-#        if [ $? -ne 0 ]; then
-#            echo "${ERRORS[$FATAL]}[run_hdfs_test:reconfig_component_failure]: $reconfig_mode reconfiguration $component failed"
-#        fi
-#    elif [ $reconfig_mode = "cluster_stop" ]; then
-#        echo "performing $reconfig_mode ..."
-#        $TEST_HOME/sbin/reconf.sh cluster $parameter_from $testdir/"$parameter_from"-site.xml.1
-#    fi
-#    
-#    
-#    # start benchmark running on client
-#    $TEST_HOME/sbin/cluster_cmd.sh start_client $read_times $benchmark_threads
-#    sleep $waittime
-#    # stop benchmark running on client
-#    $TEST_HOME/sbin/cluster_cmd.sh stop_client_gracefully
-#    
-#    # perform reconfiguration 
-#    if [ $reconfig_mode = "online_reconfig" ]; then
-#        echo "performing $reconfig_mode ..."
-#        $TEST_HOME/sbin/reconf.sh $component $parameter_from $testdir/"$parameter_from"-site.xml.2
-#        if [ $? -ne 0 ]; then
-#            echo "${ERRORS[$FATAL]}[run_hdfs_test:reconfig_component_failure]: $reconfig_mode reconfiguration $component failed"
-#        fi
-#    elif [ $reconfig_mode = "cluster_stop" ]; then
-#        echo "performing $reconfig_mode ..."
-#        $TEST_HOME/sbin/reconf.sh cluster $parameter_from $testdir/"$parameter_from"-site.xml.2
-#    fi
-#    
-#    # start benchmark running on client
-#    $TEST_HOME/sbin/cluster_cmd.sh start_client $read_times $benchmark_threads
-#    sleep $waittime
-#    # stop benchmark running on client
-#    $TEST_HOME/sbin/cluster_cmd.sh stop_client_gracefully
-#done
+n=1
+i=0
+while [ $i -lt $n ]
+do
+    # perform reconfiguration 
+    if [ $reconfig_mode = "online_reconfig" ]; then
+        echo "performing $reconfig_mode ..."
+        $TEST_HOME/sbin/reconf.sh $component $parameter_from $testdir/"$parameter_from"-site.xml.1
+        if [ $? -ne 0 ]; then
+            echo "${ERRORS[$FATAL]}[run_hdfs_test:reconfig_component_failure]: $reconfig_mode reconfiguration $component failed"
+        fi
+    elif [ $reconfig_mode = "cluster_stop" ]; then
+        echo "performing $reconfig_mode ..."
+        $TEST_HOME/sbin/reconf.sh cluster $parameter_from $testdir/"$parameter_from"-site.xml.1
+    fi
+    
+    
+    # start benchmark running on client
+    $TEST_HOME/sbin/cluster_cmd.sh start_client $read_times $benchmark_threads
+    sleep $waittime
+    # stop benchmark running on client
+    $TEST_HOME/sbin/cluster_cmd.sh stop_client_gracefully
+    
+    # perform reconfiguration 
+    if [ $reconfig_mode = "online_reconfig" ]; then
+        echo "performing $reconfig_mode ..."
+        $TEST_HOME/sbin/reconf.sh $component $parameter_from $testdir/"$parameter_from"-site.xml.2
+        if [ $? -ne 0 ]; then
+            echo "${ERRORS[$FATAL]}[run_hdfs_test:reconfig_component_failure]: $reconfig_mode reconfiguration $component failed"
+        fi
+    elif [ $reconfig_mode = "cluster_stop" ]; then
+        echo "performing $reconfig_mode ..."
+        $TEST_HOME/sbin/reconf.sh cluster $parameter_from $testdir/"$parameter_from"-site.xml.2
+    fi
+    
+    # start benchmark running on client
+    $TEST_HOME/sbin/cluster_cmd.sh start_client $read_times $benchmark_threads
+    sleep $waittime
+    # stop benchmark running on client
+    $TEST_HOME/sbin/cluster_cmd.sh stop_client_gracefully
+
+    i=$(( i + 1 ))
+done
 
 # collect logs for this test 
 $TEST_HOME/sbin/cluster_cmd.sh collectlog $testdir

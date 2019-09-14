@@ -26,10 +26,10 @@ function switch_active { # return 0 if success, 1 if error
     do
         current_active=$($HADOOP_HOME/bin/hdfs haadmin -getAllServiceState | grep active | cut -d':' -f1)
 	if [ "$current_active" = "$standby0" ]; then
-	    echo "$standby0 has turned ACTIVE from STANDBY" 
+	    echo "$standby0 has turned ACTIVE from STANDBY after TRIED it $tries times" 
 	    break;
         else
-	    sleep 2
+	    sleep 4
 	    tries=$(( tries + 1 ))
 	    if [ $tries -gt $max_try ]; then
 		echo "${ERRORS[$FATAL]}[turn_active_failure]: after $tries tries turn ACTIVE failed"
@@ -52,10 +52,10 @@ function switch_active { # return 0 if success, 1 if error
     do
         current_standby=$($HADOOP_HOME/bin/hdfs haadmin -getAllServiceState | grep standby | cut -d':' -f1)
 	if [ "$current_standby" = "$active0" ]; then
-            echo "$active0 has turned STANDBY from ACTIVE" 
+            echo "$active0 has turned STANDBY from ACTIVE after TRIED it $tries times" 
             break;
         else
-            sleep 2
+            sleep 4
             tries=$(( tries + 1 ))
             if [ $tries -gt $max_try ]; then
 		echo "${ERRORS[$FATAL]}[turn_standby_failure]: after $tries tries turn STANDBY failed"
