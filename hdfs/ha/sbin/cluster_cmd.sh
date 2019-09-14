@@ -254,47 +254,6 @@ function collectlog {
     done
 }
 
-function insert_time_barrier {
-    point=$1
-    valid=0
-    for p in ${points[@]}
-    do
-        if [ "$p" == "$point" ]; then
-	    valid=1
-        fi
-    done
-
-    if [ $valid -ne 1 ]; then
-	echo "point $point is invalid"
-        return 1
-    fi
-   
-    for i in ${namenodes[@]}
-    do
-        ssh node-"$i"-link-0 "echo time_barrier:$point >> $HADOOP_HOME/logs/hadoop-root-namenode-node-$i-link-0.log" &
-    done
-    
-    for i in ${datanodes[@]}
-    do
-        ssh node-"$i"-link-0 "echo time_barrier:$point >> $HADOOP_HOME/logs/hadoop-root-datanode-node-$i-link-0.log" &
-    done
-    
-    for i in ${journalnodes[@]}
-    do
-        ssh node-"$i"-link-0 "echo time_barrier:$point >> $HADOOP_HOME/logs/hadoop-root-journalnode-node-$i-link-0.log" &
-    done
-   
-    for i in ${clients[@]}
-    do
-        for j in $(seq 1 $benchmark_threads)
-	do
-            ssh node-"$i"-link-0 "echo time_barrier:$point >> /tmp/client$j.log" &
-	done
-    done 
-
-    return 0 
-}
-
 command=$1
 shift 1
 
@@ -306,8 +265,6 @@ if [ $command = "start" ]; then
     fi
 elif [ $command = "stop" ]; then
     stop
-elif [ $command = "insert_time_barrier" ]; then
-    insert_time_barrier $1
 elif [ $command = "collectlog" ]; then
     if [ "$#" -ne 1 ]; then
         echo "wrong command, e.g., ./cluster_cmd.sh collectlog TEST_DIR"
