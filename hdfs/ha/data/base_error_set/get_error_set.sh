@@ -28,6 +28,7 @@ errors=('command' 'fatal' 'system')
 for i in $(seq 0 $(( ${#errors[@]} - 1 )))
 do 
     echo > $res_file
+    echo > $occ_file
     echo "${errors[$i]}"
     
     for j in ${samples[@]}
