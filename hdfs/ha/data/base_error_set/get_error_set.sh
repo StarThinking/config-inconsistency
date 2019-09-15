@@ -11,7 +11,8 @@ fi
 
 samples=()
 #output_file=merged.txt
-tmp_file=merged.txt.tmp
+res_file=merged.txt.tmp
+occ_file=occ.txt.tmp
 shift
 
 while [ $# -ne 0 ]
@@ -26,21 +27,31 @@ errors=('command' 'fatal' 'system')
 
 for i in $(seq 0 $(( ${#errors[@]} - 1 )))
 do 
-    echo > $tmp_file
+    echo > $res_file
     echo "${errors[$i]}"
     
     for j in ${samples[@]}
     do
         echo ""$j":"
-        generate_"${errors[$i]}"_errors $j | tee -a $tmp_file
+        generate_"${errors[$i]}"_errors $j | tee -a $res_file
         echo ""
     done
     
     echo "merged result for ${errors[$i]}:"
-    sort -u $tmp_file
-    rm $tmp_file
+    error_set=$(sort -u $res_file)
+    #echo "error set: ${error_set[@]}"
+    echo "occurance of each error:"
+    for e in ${error_set[@]}
+    do
+        occ=$(cat $res_file | grep $e | wc -l)
+	echo "$occ $e" >> $occ_file
+    done
+    cat $occ_file | sort -u -r
+
+    rm $occ_file
+    rm $res_file
 done
 
-#sort -u $tmp_file >> $output_file
+#sort -u $res_file >> $output_file
 
 
