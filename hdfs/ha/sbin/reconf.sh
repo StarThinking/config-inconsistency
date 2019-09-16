@@ -141,7 +141,7 @@ function reconfig_cluster {
 }
 
 if [ $# -ne 3 ]; then
-    echo "${ERRORS[$COMMAND]} ./reconf.sh [cluster|namenode|datanode|journalnode] [parameter_from] [config_file]"
+    echo "${ERRORS[$COMMAND]}[wrong_args] ./reconf.sh [cluster|namenode|datanode|journalnode] [parameter_from] [config_file]"
     exit 1
 fi
 
@@ -154,5 +154,7 @@ if [ $type = "namenode" ] || [ $type = "datanode" ] || [ $type = "journalnode" ]
     online_reconfig_$type
 elif [ $type = "cluster" ]; then
     reconfig_cluster
+else
+    echo "${ERRORS[$COMMAND]}[wrong_args]"
 fi
 exit $?

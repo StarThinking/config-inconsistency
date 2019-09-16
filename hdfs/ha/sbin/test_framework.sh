@@ -1,9 +1,11 @@
 #!/bin/bash
+set -u
 
 # if a script wants to be executed by itself, 
 # it needs to load global variables
 . $TEST_HOME/sbin/global_var.sh
 . $TEST_HOME/sbin/util/subsetof.sh
+. $TEST_HOME/sbin/util/error_helper.sh
 
 if [ $# -ne 2 ]; then
     echo "wrong arguments: [task_file] [waittime]"
@@ -12,93 +14,92 @@ fi
 
 task_file=$1
 waittime=$2
+online_reconfigurable=1
 
-error_stage=1 # after pre 
-
+# return >1 if command errors in subtest
 function procedure {
-    line=$1
-    reconfig_mode=$2
-    stop=0 
-    
-    component=$(echo $line | awk -F '[#| ]' '{print $1}')
-    parameter=$(echo $line | awk -F '[#| ]' '{print $2}')
-    value1=$(echo $line | awk -F '[#| ]' '{print $3}')
-    value2=$(echo $line | awk -F '[#| ]' '{print $4}')
-    tuple_dir="$component""$split""$parameter""$split""$value1""$split""$value2"
-   # echo component=$component parameter=$parameter value1=$value1 value2=$value2
-   # mkdir $tuple_dir 
-   # cd $tuple_dir
-  
-    echo "run $reconfig_mode v1-v2 test"
-    $TEST_HOME/sbin/run_hdfs_test.sh $component $parameter $value1 $value2 $reconfig_mode $waittime 
+    component=$1
+    parameter=$2
+    value1=$3
+    value2=$4
+    reconfig_mode=$5
     test_12="$component""$split""$parameter""$split""$value1""$split""$value2""$split""$reconfig_mode""$split""$waittime"
-    if [ $? -eq 3 ]; then
-	stop=1
-	echo "command error"
-	return $stop
-    fi
-    $TEST_HOME/sbin/util/cut_log.sh $test_12
-    $TEST_HOME/sbin/util/stage.sh $test_12
-    no_run_error_in_pre $test_12
-    ret=$?
-    if [ $ret -eq 0 ]; then
-        echo "no run error in pre stage"
-        subsetof $reconfig_mode $error_stage $test_12 
-        ret=$?
-        if [ $ret -eq 0 ]; then
-            echo "no issue for $tuple_dir in stage $error_stage : test_12 < test_c, stop."
-	    stop=1
-        fi
-    else
-        echo "run error in pre stage, stop"
-    	stop=1
-    fi 
+    test_22="$component""$split""$parameter""$split""$value2""$split""$value2""$split""$reconfig_mode""$split""$waittime"
+    test_11="$component""$split""$parameter""$split""$value1""$split""$value1""$split""$reconfig_mode""$split""$waittime"
 
-    if [ $stop -eq 0 ]; then
-        echo "run $reconfig_mode v2-v2 test"
-        $TEST_HOME/sbin/run_hdfs_test.sh $component $parameter $value2 $value2 $reconfig_mode $waittime 
-        test_22="$component""$split""$parameter""$split""$value2""$split""$value2""$split""$reconfig_mode""$split""$waittime"
-        $TEST_HOME/sbin/util/cut_log.sh $test_22
-        $TEST_HOME/sbin/util/stage.sh $test_22
-        no_run_error_in_pre $test_22
-        ret=$?
-        if [ $ret -eq 0 ]; then
-            echo "no run error in pre stage"
-            subsetof $reconfig_mode $error_stage $test_12 $test_22
-            ret=$?
-            if [ $ret -eq 0 ]; then
-                echo "no issue for $tuple_dir in stage $error_stage : test_12 < test_c + test_22, stop."
-                stop=1
-            fi
-        else
-            echo "run error in pre stage, stop"
-    	    stop=1
-        fi 
+    #### v1-v2 ####   
+    echo "run $reconfig_mode v1-v2 test"
+    $TEST_HOME/sbin/sub_test.sh $component $parameter $value1 $value2 $reconfig_mode $waittime 
+    # make sure no command error
+    if [ $? -ne 0 ]; then
+	echo "command error in test_12, quit"
+	return 1
+    fi
+
+    subsetof $reconfig_mode $test_12 
+    if [ $? -eq 0 ]; then
+        echo "test_12 is subset of test_c, quit."
+        return 0
+    else
+	echo "test_12 is NOT subset of test_c, continue."
+    fi
+
+    #### v2-v2 ####
+    echo "run $reconfig_mode v2-v2 test"
+    $TEST_HOME/sbin/sub_test.sh $component $parameter $value2 $value2 $reconfig_mode $waittime 
+    # make sure no command error
+    if [ $ret -eq 0 ]; then
+	echo "command error in test_22, quit"
+	return 1
+    fi
+
+    # make sure no reconfig and fatal error
+    if [ "$(generate_reconfig_errors $test_22)" != '' ] || [ "$(generate_fatal_errors $test_22)" != '' ]; then
+	echo "reconfig or fatal errors in test_22, quit"
+	return 0
+    else
+	echo "no reconfig and fatal errors in test_22, continue"	
     fi
     
-    if [ $stop -eq 0 ]; then
-        echo "run $reconfig_mode v1-v1 test"
-        $TEST_HOME/sbin/run_hdfs_test.sh $component $parameter $value1 $value1 $reconfig_mode $waittime 
-        test_11="$component""$split""$parameter""$split""$value1""$split""$value1""$split""$reconfig_mode""$split""$waittime"
-        $TEST_HOME/sbin/util/cut_log.sh $test_11
-        $TEST_HOME/sbin/util/stage.sh $test_11
-        no_run_error_in_pre $test_11
-        ret=$?
-        if [ $ret -eq 0 ]; then
-            echo "no run error in pre stage"
-            subsetof $reconfig_mode $error_stage $test_12 $test_22 $test_11
-            ret=$?
-            if [ $ret -eq 0 ]; then
-                echo "no issue for $tuple_dir in stage $error_stage : test_12 < test_c + test_22 + test_11, stop."
-                stop=1
-            fi
-        else
-            echo "run error in pre stage, stop"
-    	    stop=1
-        fi 
+    #### v1-v1 ####
+    echo "run $reconfig_mode v1-v1 test"
+    $TEST_HOME/sbin/sub_test.sh $component $parameter $value1 $value1 $reconfig_mode $waittime 
+    # make sure no command error
+    if [ $ret -eq 0 ]; then
+	echo "command error in test_11, quit"
+	return 1
     fi
 
-    return $stop
+    # make sure no reconfig and fatal error
+    if [ "$(generate_reconfig_errors $test_11)" != '' ] || [ "$(generate_fatal_errors $test_11)" != '' ]; then
+	echo "reconfig or fatal errors in test_11, quit"
+	return 0
+    else
+	echo "no reconfig and fatal errors in test_11, continue"	
+    fi
+   
+    #### final check ####
+    # check reconfig and fatal error
+    if [ "$(generate_reconfig_errors $test_12)" != '' ] || [ "$(generate_fatal_errors $test_12)" != '' ]; then
+        echo "reconfig_errors:"
+	generate_reconfig_errors $test_12
+        echo "fatal_errors:"
+	generate_fatal_errors $test_12
+	echo "reconfig or fatal errors in test_12 --> NOT online reconfigurable, quit"
+	online_reconfigurable=0
+	return 0
+    fi
+
+    # check system error
+    subsetof $reconfig_mode $test_12 $test_22 $test_11
+    if [ $? -eq 0 ]; then
+        echo "test_12 is subset of union (test_c, test_22, test_11) --> MAYBE online reconfigurable, quit."
+    else
+	echo "test_12 is NOT subset of union(test_c, test_22, test_11) --> NOT online reconfigurable, quit"
+	online_reconfigurable=0
+    fi
+    
+    return 0
 }
 
 IFS=$'\n'      
@@ -111,61 +112,19 @@ do
     parameter=$(echo $line | awk -F '[#| ]' '{print $2}')
     value1=$(echo $line | awk -F '[#| ]' '{print $3}')
     value2=$(echo $line | awk -F '[#| ]' '{print $4}')
-    tuple_dir="$component""$split""$parameter""$split""$value1""$split""$value2"
-   
-# find out which xml file this parameter comes from
-parameter_from=""
-for p in $(cat $TEST_HOME/etc/parameter_hdfs.txt)
-do
-    if [ "$p" == "$parameter" ] ; then
-        parameter_from="hdfs"
-    fi
-done
+    test_dir="$component""$split""$parameter""$split""$value1""$split""$value2"
 
-for p in $(cat $TEST_HOME/etc/parameter_core.txt)
-do
-    if [ "$p" == "$parameter" ] ; then
-        parameter_from="core"
-    fi
-done
-if [ "$parameter_from" != "hdfs" ] && [ "$parameter_from" != "core" ]; then
-    echo "cannot find $parameter, continue"
-    continue
-fi
-
-    echo component=$component parameter=$parameter value1=$value1 value2=$value2
-    mkdir $tuple_dir 
-    cd $tuple_dir
+    echo "start test procedure for component=$component parameter=$parameter value1=$value1 value2=$value2"
+    mkdir $test_dir 
+    cd $test_dir
 
     reconfig_mode=online_reconfig
-    procedure $line $reconfig_mode  
-    online_procedure_ret=$? 
-    if [ $online_procedure_ret -eq 1 ]; then
-	echo "online reconfigurable"
-    else
-        reconfig_mode=cluster_stop
-	procedure $line $reconfig_mode
-	cluster_procedure_ret=$?
-	if [ $cluster_procedure_ret -eq 1 ]; then
-	    echo "ISSUE : not online reconfigurable but cluster stop reconfigurable"
-	else
-	    echo "ISSUE : not reconfigurable"
-	fi
+    online_reconfigurable=1 # global variable
+    procedure $component $parameter $value1 $value2 $reconfig_mode  
+    if [ $? -ne 0 ]; then
+	echo "command error in the test, exit"
     fi 
-    #if [ $stop -eq 0 ]; then
-    #    echo "run cluster v1-v2 test"
-    #    reconfig_mode=cluster_stop
-    #    $TEST_HOME/sbin/run_hdfs_test.sh $component $parameter $value1 $value2 $reconfig_mode $waittime 
-    #    cluster_12="$component""$split""$parameter""$split""$value1""$split""$value2""$split""$reconfig_mode""$split""$waittime"
-    #    subsetof $test_12 $test_22 $test_11 $cluster_12
-    #    ret=$?
-    #    if [ $ret -eq 0 ]; then
-    #        echo "ISSUE for $tuple_dir : not reconfigurable!"
-    #    else
-    #        echo "ISSUE for $tuple_dir : not online reconfigurable!"
-    #    fi
-    #fi
-     
+    
     cd ..
     echo "---------------------------------------------------------"
 done
