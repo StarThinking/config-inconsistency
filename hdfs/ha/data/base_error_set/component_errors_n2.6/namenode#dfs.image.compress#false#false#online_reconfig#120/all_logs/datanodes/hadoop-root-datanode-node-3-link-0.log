@@ -1,0 +1,943 @@
+2019-09-15 08:25:19,655 INFO  datanode.DataNode LogAdapter.java:info:51 - STARTUP_MSG: 
+/************************************************************
+STARTUP_MSG: Starting DataNode
+STARTUP_MSG:   host = node-3-link-0/192.168.122.235
+STARTUP_MSG:   args = []
+STARTUP_MSG:   version = 3.1.2
+STARTUP_MSG:   classpath = /root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/etc/hadoop:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/curator-framework-2.13.0.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/kerby-asn1-1.0.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/jackson-databind-2.7.8.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/paranamer-2.3.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/commons-net-3.6.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/commons-codec-1.11.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/jettison-1.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/audience-annotations-0.5.0.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/commons-math3-3.1.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/jersey-core-1.19.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/kerby-pkix-1.0.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/log4j-1.2.17.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/jcip-annotations-1.0-1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/jersey-servlet-1.19.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/woodstox-core-5.0.3.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/jsr311-api-1.1.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/accessors-smart-1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/commons-collections-3.2.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/protobuf-java-2.5.0.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/jsch-0.1.54.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/kerb-identity-1.0.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/commons-compress-1.18.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/asm-5.0.4.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/jetty-io-9.3.24.v20180605.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/kerb-simplekdc-1.0.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/jackson-xc-1.9.13.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/snappy-java-1.0.5.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/kerb-crypto-1.0.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/zookeeper-3.4.13.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/curator-client-2.13.0.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/jackson-annotations-2.7.8.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/kerby-util-1.0.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/stax2-api-3.1.4.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/gson-2.2.4.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/jetty-http-9.3.24.v20180605.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/kerb-client-1.0.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/token-provider-1.0.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/commons-lang-2.6.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/jackson-jaxrs-1.9.13.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/curator-recipes-2.13.0.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/commons-lang3-3.4.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/jaxb-impl-2.2.3-1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/json-smart-2.3.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/jackson-core-asl-1.9.13.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/kerb-common-1.0.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/kerby-xdr-1.0.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/javax.servlet-api-3.1.0.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/jackson-core-2.7.8.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/slf4j-log4j12-1.7.25.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/commons-beanutils-1.9.3.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/kerb-admin-1.0.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/commons-io-2.5.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/kerb-server-1.0.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/jersey-json-1.19.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/jackson-mapper-asl-1.9.13.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/nimbus-jose-jwt-4.41.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/jetty-security-9.3.24.v20180605.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/guava-11.0.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/hadoop-annotations-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/jsr305-3.0.0.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/netty-3.10.5.Final.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/commons-cli-1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/commons-logging-1.1.3.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/avro-1.7.7.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/jetty-servlet-9.3.24.v20180605.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/slf4j-api-1.7.25.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/re2j-1.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/kerb-util-1.0.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/httpcore-4.4.4.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/jaxb-api-2.2.11.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/jetty-server-9.3.24.v20180605.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/httpclient-4.5.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/commons-configuration2-2.1.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/kerb-core-1.0.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/jersey-server-1.19.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/jul-to-slf4j-1.7.25.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/jetty-webapp-9.3.24.v20180605.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/kerby-config-1.0.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/htrace-core4-4.1.0-incubating.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/jetty-util-9.3.24.v20180605.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/jetty-xml-9.3.24.v20180605.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/jsp-api-2.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/hadoop-auth-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/lib/metrics-core-3.2.4.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/hadoop-nfs-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/hadoop-kms-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/hadoop-common-3.1.2-tests.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/common/hadoop-common-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/json-simple-1.1.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/curator-framework-2.13.0.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/kerby-asn1-1.0.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/jackson-databind-2.7.8.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/paranamer-2.3.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/okio-1.6.0.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/commons-net-3.6.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/commons-codec-1.11.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/jettison-1.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/audience-annotations-0.5.0.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/commons-math3-3.1.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/jersey-core-1.19.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/kerby-pkix-1.0.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/log4j-1.2.17.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/jcip-annotations-1.0-1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/jersey-servlet-1.19.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/commons-daemon-1.0.13.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/woodstox-core-5.0.3.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/jsr311-api-1.1.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/accessors-smart-1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/commons-collections-3.2.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/protobuf-java-2.5.0.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/jsch-0.1.54.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/kerb-identity-1.0.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/commons-compress-1.18.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/asm-5.0.4.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/jetty-io-9.3.24.v20180605.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/kerb-simplekdc-1.0.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/jackson-xc-1.9.13.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/snappy-java-1.0.5.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/kerb-crypto-1.0.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/zookeeper-3.4.13.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/curator-client-2.13.0.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/jackson-annotations-2.7.8.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/kerby-util-1.0.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/stax2-api-3.1.4.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/gson-2.2.4.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/jetty-http-9.3.24.v20180605.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/kerb-client-1.0.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/token-provider-1.0.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/commons-lang-2.6.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/jackson-jaxrs-1.9.13.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/curator-recipes-2.13.0.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/okhttp-2.7.5.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/commons-lang3-3.4.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/jaxb-impl-2.2.3-1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/json-smart-2.3.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/jackson-core-asl-1.9.13.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/kerb-common-1.0.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/kerby-xdr-1.0.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/javax.servlet-api-3.1.0.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/jetty-util-ajax-9.3.24.v20180605.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/jackson-core-2.7.8.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/leveldbjni-all-1.8.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/commons-beanutils-1.9.3.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/kerb-admin-1.0.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/netty-all-4.0.52.Final.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/commons-io-2.5.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/kerb-server-1.0.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/jersey-json-1.19.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/jackson-mapper-asl-1.9.13.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/nimbus-jose-jwt-4.41.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/jetty-security-9.3.24.v20180605.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/guava-11.0.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/hadoop-annotations-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/jsr305-3.0.0.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/netty-3.10.5.Final.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/commons-cli-1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/commons-logging-1.1.3.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/avro-1.7.7.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/jetty-servlet-9.3.24.v20180605.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/re2j-1.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/kerb-util-1.0.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/httpcore-4.4.4.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/jaxb-api-2.2.11.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/jetty-server-9.3.24.v20180605.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/httpclient-4.5.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/commons-configuration2-2.1.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/kerb-core-1.0.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/jersey-server-1.19.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/jetty-webapp-9.3.24.v20180605.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/kerby-config-1.0.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/htrace-core4-4.1.0-incubating.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/jetty-util-9.3.24.v20180605.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/jetty-xml-9.3.24.v20180605.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/lib/hadoop-auth-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/hadoop-hdfs-rbf-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/hadoop-hdfs-client-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/hadoop-hdfs-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/hadoop-hdfs-client-3.1.2-tests.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/hadoop-hdfs-httpfs-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/hadoop-hdfs-nfs-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/hadoop-hdfs-3.1.2-tests.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/hadoop-hdfs-rbf-3.1.2-tests.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/hadoop-hdfs-native-client-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/hadoop-hdfs-native-client-3.1.2-tests.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/mapreduce/lib/junit-4.11.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/mapreduce/lib/hamcrest-core-1.3.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/mapreduce/hadoop-mapreduce-client-app-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/mapreduce/hadoop-mapreduce-client-hs-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/mapreduce/hadoop-mapreduce-client-jobclient-3.1.2-tests.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/mapreduce/hadoop-mapreduce-client-nativetask-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/mapreduce/hadoop-mapreduce-client-shuffle-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/mapreduce/hadoop-mapreduce-client-jobclient-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/mapreduce/hadoop-mapreduce-client-core-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/mapreduce/hadoop-mapreduce-client-hs-plugins-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/mapreduce/hadoop-mapreduce-client-common-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/mapreduce/hadoop-mapreduce-client-uploader-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/lib/guice-servlet-4.0.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/lib/java-util-1.9.0.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/lib/jackson-jaxrs-base-2.7.8.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/lib/javax.inject-1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/lib/fst-2.50.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/lib/swagger-annotations-1.5.4.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/lib/jersey-guice-1.19.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/lib/mssql-jdbc-6.2.1.jre7.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/lib/aopalliance-1.0.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/lib/guice-4.0.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/lib/json-io-2.5.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/lib/jersey-client-1.19.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/lib/jackson-module-jaxb-annotations-2.7.8.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/lib/jackson-jaxrs-json-provider-2.7.8.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/lib/geronimo-jcache_1.0_spec-1.0-alpha-1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/lib/objenesis-1.0.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/lib/ehcache-3.3.1.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/lib/snakeyaml-1.16.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/lib/dnsjava-2.1.7.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/lib/HikariCP-java7-2.4.12.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/lib/metrics-core-3.2.4.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/hadoop-yarn-applications-unmanaged-am-launcher-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/hadoop-yarn-server-resourcemanager-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/hadoop-yarn-server-applicationhistoryservice-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/hadoop-yarn-server-sharedcachemanager-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/hadoop-yarn-services-core-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/hadoop-yarn-server-nodemanager-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/hadoop-yarn-server-timeline-pluginstorage-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/hadoop-yarn-api-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/hadoop-yarn-services-api-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/hadoop-yarn-client-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/hadoop-yarn-registry-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/hadoop-yarn-server-router-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/hadoop-yarn-applications-distributedshell-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/hadoop-yarn-server-web-proxy-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/hadoop-yarn-server-tests-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/hadoop-yarn-common-3.1.2.jar:/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/yarn/hadoop-yarn-server-common-3.1.2.jar
+STARTUP_MSG:   build = Unknown -r Unknown; compiled by 'root' on 2019-07-19T04:04Z
+STARTUP_MSG:   java = 1.8.0_212
+************************************************************/
+2019-09-15 08:25:19,664 INFO  datanode.DataNode LogAdapter.java:info:51 - registered UNIX signal handlers for [TERM, HUP, INT]
+2019-09-15 08:25:20,059 INFO  checker.ThrottledAsyncChecker ThrottledAsyncChecker.java:schedule:137 - Scheduling a check for [DISK]file:/root/hdfs-root/data
+2019-09-15 08:25:20,207 INFO  beanutils.FluentPropertyBeanIntrospector FluentPropertyBeanIntrospector.java:introspect:147 - Error when creating PropertyDescriptor for public final void org.apache.commons.configuration2.AbstractConfiguration.setProperty(java.lang.String,java.lang.Object)! Ignoring this property.
+2019-09-15 08:25:20,244 INFO  impl.MetricsConfig MetricsConfig.java:loadFirst:121 - loaded properties from hadoop-metrics2.properties
+2019-09-15 08:25:20,332 INFO  impl.MetricsSystemImpl MetricsSystemImpl.java:startTimer:374 - Scheduled Metric snapshot period at 10 second(s).
+2019-09-15 08:25:20,332 INFO  impl.MetricsSystemImpl MetricsSystemImpl.java:start:191 - DataNode metrics system started
+2019-09-15 08:25:20,535 INFO  common.Util Util.java:isDiskStatsEnabled:394 - dfs.datanode.fileio.profiling.sampling.percentage set to 0. Disabling file IO profiling
+2019-09-15 08:25:20,538 INFO  datanode.BlockScanner BlockScanner.java:<init>:184 - Initialized block scanner with targetBytesPerSec 1048576
+2019-09-15 08:25:20,543 INFO  datanode.DataNode DataNode.java:<init>:500 - Configured hostname is node-3-link-0
+2019-09-15 08:25:20,544 INFO  common.Util Util.java:isDiskStatsEnabled:394 - dfs.datanode.fileio.profiling.sampling.percentage set to 0. Disabling file IO profiling
+2019-09-15 08:25:20,547 INFO  datanode.DataNode DataNode.java:startDataNode:1400 - Starting DataNode with maxLockedMemory = 0
+2019-09-15 08:25:20,596 INFO  datanode.DataNode DataNode.java:initDataXceiver:1148 - Opened streaming server at /0.0.0.0:9866
+2019-09-15 08:25:20,599 INFO  datanode.DataNode DataXceiverServer.java:<init>:78 - Balancing bandwidth is 10485760 bytes/s
+2019-09-15 08:25:20,600 INFO  datanode.DataNode DataXceiverServer.java:<init>:79 - Number threads for balancing is 50
+2019-09-15 08:25:20,655 INFO  util.log Log.java:initialized:192 - Logging initialized @1536ms
+2019-09-15 08:25:20,748 INFO  server.AuthenticationFilter AuthenticationFilter.java:constructSecretProvider:240 - Unable to initialize FileSignerSecretProvider, falling back to use random secrets.
+2019-09-15 08:25:20,751 INFO  http.HttpRequestLog HttpRequestLog.java:getRequestLog:81 - Http request log for http.requests.datanode is not defined
+2019-09-15 08:25:20,756 INFO  http.HttpServer2 HttpServer2.java:addGlobalFilter:970 - Added global filter 'safety' (class=org.apache.hadoop.http.HttpServer2$QuotingInputFilter)
+2019-09-15 08:25:20,774 INFO  http.HttpServer2 HttpServer2.java:addFilter:943 - Added filter static_user_filter (class=org.apache.hadoop.http.lib.StaticUserWebFilter$StaticUserFilter) to context datanode
+2019-09-15 08:25:20,774 INFO  http.HttpServer2 HttpServer2.java:addFilter:953 - Added filter static_user_filter (class=org.apache.hadoop.http.lib.StaticUserWebFilter$StaticUserFilter) to context logs
+2019-09-15 08:25:20,774 INFO  http.HttpServer2 HttpServer2.java:addFilter:953 - Added filter static_user_filter (class=org.apache.hadoop.http.lib.StaticUserWebFilter$StaticUserFilter) to context static
+2019-09-15 08:25:20,798 INFO  http.HttpServer2 HttpServer2.java:bindListener:1186 - Jetty bound to port 37160
+2019-09-15 08:25:20,799 INFO  server.Server Server.java:doStart:351 - jetty-9.3.24.v20180605, build timestamp: 2018-06-05T13:11:56-04:00, git hash: 84205aa28f11a4f31f2a3b86d1bba2cc8ab69827
+2019-09-15 08:25:20,833 INFO  handler.ContextHandler ContextHandler.java:doStart:781 - Started o.e.j.s.ServletContextHandler@3fa247d1{/logs,file:///root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/logs/,AVAILABLE}
+2019-09-15 08:25:20,834 INFO  handler.ContextHandler ContextHandler.java:doStart:781 - Started o.e.j.s.ServletContextHandler@4f4c4b1a{/static,file:///root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/webapps/static/,AVAILABLE}
+2019-09-15 08:25:21,005 INFO  handler.ContextHandler ContextHandler.java:doStart:781 - Started o.e.j.w.WebAppContext@2d6c53fc{/,file:///root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2/share/hadoop/hdfs/webapps/datanode/,AVAILABLE}{/datanode}
+2019-09-15 08:25:21,014 INFO  server.AbstractConnector AbstractConnector.java:doStart:278 - Started ServerConnector@1cbf384{HTTP/1.1,[http/1.1]}{localhost:37160}
+2019-09-15 08:25:21,014 INFO  server.Server Server.java:doStart:419 - Started @1895ms
+2019-09-15 08:25:21,184 INFO  web.DatanodeHttpServer DatanodeHttpServer.java:start:255 - Listening HTTP traffic on /0.0.0.0:9864
+2019-09-15 08:25:21,196 INFO  datanode.DataNode DataNode.java:startDataNode:1428 - dnUserName = root
+2019-09-15 08:25:21,196 INFO  datanode.DataNode DataNode.java:startDataNode:1429 - supergroup = supergroup
+2019-09-15 08:25:21,210 INFO  util.JvmPauseMonitor JvmPauseMonitor.java:run:188 - Starting JVM pause monitor
+2019-09-15 08:25:21,248 INFO  ipc.CallQueueManager CallQueueManager.java:<init>:84 - Using callQueue: class java.util.concurrent.LinkedBlockingQueue queueCapacity: 1000 scheduler: class org.apache.hadoop.ipc.DefaultRpcScheduler
+2019-09-15 08:25:21,264 INFO  ipc.Server Server.java:run:1070 - Starting Socket Reader #1 for port 9867
+2019-09-15 08:25:21,446 INFO  datanode.DataNode DataNode.java:initIpcServer:1034 - Opened IPC server at /0.0.0.0:9867
+2019-09-15 08:25:21,465 INFO  datanode.DataNode BlockPoolManager.java:refreshNamenodes:149 - Refresh request received for nameservices: mycluster
+2019-09-15 08:25:21,476 INFO  datanode.DataNode BlockPoolManager.java:doRefreshNamenodes:210 - Starting BPOfferServices for nameservices: mycluster
+2019-09-15 08:25:21,487 INFO  datanode.DataNode BPServiceActor.java:run:810 - Block pool <registering> (Datanode Uuid unassigned) service to node-0-link-0/192.168.122.101:8020 starting to offer service
+2019-09-15 08:25:21,493 INFO  datanode.DataNode BPServiceActor.java:run:810 - Block pool <registering> (Datanode Uuid unassigned) service to node-1-link-0/192.168.122.148:8020 starting to offer service
+2019-09-15 08:25:21,499 INFO  ipc.Server Server.java:run:1310 - IPC Server Responder: starting
+2019-09-15 08:25:21,501 INFO  ipc.Server Server.java:run:1149 - IPC Server listener on 9867: starting
+2019-09-15 08:25:22,614 INFO  ipc.Client Client.java:handleConnectionFailure:948 - Retrying connect to server: node-0-link-0/192.168.122.101:8020. Already tried 0 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+2019-09-15 08:25:22,614 INFO  ipc.Client Client.java:handleConnectionFailure:948 - Retrying connect to server: node-1-link-0/192.168.122.148:8020. Already tried 0 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+2019-09-15 08:25:23,616 INFO  ipc.Client Client.java:handleConnectionFailure:948 - Retrying connect to server: node-0-link-0/192.168.122.101:8020. Already tried 1 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+2019-09-15 08:25:23,616 INFO  ipc.Client Client.java:handleConnectionFailure:948 - Retrying connect to server: node-1-link-0/192.168.122.148:8020. Already tried 1 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+2019-09-15 08:25:24,617 INFO  ipc.Client Client.java:handleConnectionFailure:948 - Retrying connect to server: node-0-link-0/192.168.122.101:8020. Already tried 2 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+2019-09-15 08:25:24,618 INFO  ipc.Client Client.java:handleConnectionFailure:948 - Retrying connect to server: node-1-link-0/192.168.122.148:8020. Already tried 2 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+2019-09-15 08:25:25,619 INFO  ipc.Client Client.java:handleConnectionFailure:948 - Retrying connect to server: node-0-link-0/192.168.122.101:8020. Already tried 3 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+2019-09-15 08:25:25,619 INFO  ipc.Client Client.java:handleConnectionFailure:948 - Retrying connect to server: node-1-link-0/192.168.122.148:8020. Already tried 3 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+2019-09-15 08:25:26,620 INFO  ipc.Client Client.java:handleConnectionFailure:948 - Retrying connect to server: node-0-link-0/192.168.122.101:8020. Already tried 4 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+2019-09-15 08:25:26,620 INFO  ipc.Client Client.java:handleConnectionFailure:948 - Retrying connect to server: node-1-link-0/192.168.122.148:8020. Already tried 4 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+2019-09-15 08:25:27,622 INFO  ipc.Client Client.java:handleConnectionFailure:948 - Retrying connect to server: node-0-link-0/192.168.122.101:8020. Already tried 5 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+2019-09-15 08:25:27,623 INFO  ipc.Client Client.java:handleConnectionFailure:948 - Retrying connect to server: node-1-link-0/192.168.122.148:8020. Already tried 5 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+2019-09-15 08:25:27,735 INFO  common.Storage DataStorage.java:getParallelVolumeLoadThreadsNum:354 - Using 1 threads to upgrade data directories (dfs.datanode.parallel.volumes.load.threads.num=1, dataDirs=1)
+2019-09-15 08:25:27,786 INFO  common.Storage Storage.java:tryLock:905 - Lock on /root/hdfs-root/data/in_use.lock acquired by nodename 30998@node-3-link-0
+2019-09-15 08:25:27,788 INFO  common.Storage DataStorage.java:loadStorageDirectory:282 - Storage directory with location [DISK]file:/root/hdfs-root/data is not formatted for namespace 2116986389. Formatting...
+2019-09-15 08:25:27,790 INFO  common.Storage DataStorage.java:createStorageID:160 - Generated new storageID DS-f651bff8-7cac-4883-bb79-524cff0f01d3 for directory /root/hdfs-root/data 
+2019-09-15 08:25:28,015 INFO  common.Storage BlockPoolSliceStorage.java:recoverTransitionRead:251 - Analyzing storage directories for bpid BP-1206764359-192.168.122.101-1568550288953
+2019-09-15 08:25:28,015 INFO  common.Storage Storage.java:lock:864 - Locking is disabled for /root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953
+2019-09-15 08:25:28,016 INFO  common.Storage BlockPoolSliceStorage.java:loadStorageDirectory:168 - Block pool storage directory for location [DISK]file:/root/hdfs-root/data and block pool id BP-1206764359-192.168.122.101-1568550288953 is not formatted. Formatting ...
+2019-09-15 08:25:28,017 INFO  common.Storage BlockPoolSliceStorage.java:format:280 - Formatting block pool BP-1206764359-192.168.122.101-1568550288953 directory /root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current
+2019-09-15 08:25:28,152 INFO  datanode.DataNode DataNode.java:initStorage:1722 - Setting up storage: nsid=2116986389;bpid=BP-1206764359-192.168.122.101-1568550288953;lv=-57;nsInfo=lv=-64;cid=CID-a87afe92-39a1-4359-9357-43529472a9d0;nsid=2116986389;c=1568550288953;bpid=BP-1206764359-192.168.122.101-1568550288953;dnuuid=null
+2019-09-15 08:25:28,205 INFO  datanode.DataNode DataNode.java:checkDatanodeUuid:1546 - Generated and persisted new Datanode UUID 9b9a87b1-5931-43c9-a4b5-54abd19589c9
+2019-09-15 08:25:28,341 INFO  impl.FsDatasetImpl FsVolumeList.java:addVolume:306 - Added new volume: DS-f651bff8-7cac-4883-bb79-524cff0f01d3
+2019-09-15 08:25:28,342 INFO  impl.FsDatasetImpl FsDatasetImpl.java:addVolume:450 - Added volume - [DISK]file:/root/hdfs-root/data, StorageType: DISK
+2019-09-15 08:25:28,347 INFO  impl.FsDatasetImpl FsDatasetImpl.java:registerMBean:2280 - Registered FSDatasetState MBean
+2019-09-15 08:25:28,356 INFO  checker.ThrottledAsyncChecker ThrottledAsyncChecker.java:schedule:137 - Scheduling a check for /root/hdfs-root/data
+2019-09-15 08:25:28,375 INFO  checker.DatasetVolumeChecker DatasetVolumeChecker.java:checkAllVolumes:221 - Scheduled health check for volume /root/hdfs-root/data
+2019-09-15 08:25:28,377 INFO  impl.FsDatasetImpl FsDatasetImpl.java:addBlockPool:2791 - Adding block pool BP-1206764359-192.168.122.101-1568550288953
+2019-09-15 08:25:28,378 INFO  impl.FsDatasetImpl FsVolumeList.java:run:409 - Scanning block pool BP-1206764359-192.168.122.101-1568550288953 on volume /root/hdfs-root/data...
+2019-09-15 08:25:28,417 INFO  impl.FsDatasetImpl FsVolumeList.java:run:414 - Time taken to scan block pool BP-1206764359-192.168.122.101-1568550288953 on /root/hdfs-root/data: 38ms
+2019-09-15 08:25:28,418 INFO  impl.FsDatasetImpl FsVolumeList.java:addBlockPool:440 - Total time to scan all replicas for block pool BP-1206764359-192.168.122.101-1568550288953: 40ms
+2019-09-15 08:25:28,420 INFO  impl.FsDatasetImpl FsVolumeList.java:run:198 - Adding replicas to map for block pool BP-1206764359-192.168.122.101-1568550288953 on volume /root/hdfs-root/data...
+2019-09-15 08:25:28,420 INFO  impl.BlockPoolSlice BlockPoolSlice.java:readReplicasFromCache:871 - Replica Cache file: /root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/replicas doesn't exist 
+2019-09-15 08:25:28,421 INFO  impl.FsDatasetImpl FsVolumeList.java:run:203 - Time to add replicas to map for block pool BP-1206764359-192.168.122.101-1568550288953 on volume /root/hdfs-root/data: 1ms
+2019-09-15 08:25:28,421 INFO  impl.FsDatasetImpl FsVolumeList.java:getAllVolumesMap:230 - Total time to add all replicas to map for block pool BP-1206764359-192.168.122.101-1568550288953: 2ms
+2019-09-15 08:25:28,423 INFO  datanode.VolumeScanner VolumeScanner.java:findNextUsableBlockIter:386 - Now scanning bpid BP-1206764359-192.168.122.101-1568550288953 on volume /root/hdfs-root/data
+2019-09-15 08:25:28,426 INFO  datanode.VolumeScanner VolumeScanner.java:runLoop:544 - VolumeScanner(/root/hdfs-root/data, DS-f651bff8-7cac-4883-bb79-524cff0f01d3): finished scanning block pool BP-1206764359-192.168.122.101-1568550288953
+2019-09-15 08:25:28,434 INFO  datanode.DirectoryScanner DirectoryScanner.java:start:283 - Periodic Directory Tree Verification scan starting at 9/15/19 10:49 AM with interval of 21600000ms
+2019-09-15 08:25:28,460 INFO  datanode.DataNode BPServiceActor.java:register:764 - Block pool BP-1206764359-192.168.122.101-1568550288953 (Datanode Uuid 9b9a87b1-5931-43c9-a4b5-54abd19589c9) service to node-0-link-0/192.168.122.101:8020 beginning handshake with NN
+2019-09-15 08:25:28,469 INFO  datanode.DataNode BPServiceActor.java:register:764 - Block pool BP-1206764359-192.168.122.101-1568550288953 (Datanode Uuid 9b9a87b1-5931-43c9-a4b5-54abd19589c9) service to node-1-link-0/192.168.122.148:8020 beginning handshake with NN
+2019-09-15 08:25:28,498 INFO  datanode.VolumeScanner VolumeScanner.java:findNextUsableBlockIter:403 - VolumeScanner(/root/hdfs-root/data, DS-f651bff8-7cac-4883-bb79-524cff0f01d3): no suitable block pools found to scan.  Waiting 1814399925 ms.
+2019-09-15 08:25:28,503 INFO  datanode.DataNode BPServiceActor.java:register:783 - Block pool Block pool BP-1206764359-192.168.122.101-1568550288953 (Datanode Uuid 9b9a87b1-5931-43c9-a4b5-54abd19589c9) service to node-0-link-0/192.168.122.101:8020 successfully registered with NN
+2019-09-15 08:25:28,504 INFO  datanode.DataNode BPServiceActor.java:offerService:612 - For namenode node-0-link-0/192.168.122.101:8020 using BLOCKREPORT_INTERVAL of 21600000msec CACHEREPORT_INTERVAL of 10000msec Initial delay: 0msec; heartBeatInterval=3000
+2019-09-15 08:25:28,505 INFO  datanode.DataNode BPServiceActor.java:register:783 - Block pool Block pool BP-1206764359-192.168.122.101-1568550288953 (Datanode Uuid 9b9a87b1-5931-43c9-a4b5-54abd19589c9) service to node-1-link-0/192.168.122.148:8020 successfully registered with NN
+2019-09-15 08:25:28,506 INFO  datanode.DataNode BPServiceActor.java:offerService:612 - For namenode node-1-link-0/192.168.122.148:8020 using BLOCKREPORT_INTERVAL of 21600000msec CACHEREPORT_INTERVAL of 10000msec Initial delay: 0msec; heartBeatInterval=3000
+2019-09-15 08:25:28,627 INFO  datanode.DataNode BPServiceActor.java:blockReport:422 - Successfully sent block report 0x4415437481b83956,  containing 1 storage report(s), of which we sent 1. The reports had 0 total blocks and used 1 RPC(s). This took 12 msec to generate and 43 msecs for RPC and NN processing. Got back no commands.
+2019-09-15 08:25:28,628 INFO  datanode.DataNode BPServiceActor.java:blockReport:422 - Successfully sent block report 0x6dca2a01f6c3bac3,  containing 1 storage report(s), of which we sent 1. The reports had 0 total blocks and used 1 RPC(s). This took 6 msec to generate and 49 msecs for RPC and NN processing. Got back no commands.
+2019-09-15 08:25:31,513 INFO  datanode.DataNode BPOfferService.java:updateActorStatesFromHeartbeat:576 - Namenode Block pool BP-1206764359-192.168.122.101-1568550288953 (Datanode Uuid 9b9a87b1-5931-43c9-a4b5-54abd19589c9) service to node-1-link-0/192.168.122.148:8020 trying to claim ACTIVE state with txid=1
+2019-09-15 08:25:31,514 INFO  datanode.DataNode BPOfferService.java:updateActorStatesFromHeartbeat:588 - Acknowledging ACTIVE Namenode Block pool BP-1206764359-192.168.122.101-1568550288953 (Datanode Uuid 9b9a87b1-5931-43c9-a4b5-54abd19589c9) service to node-1-link-0/192.168.122.148:8020
+2019-09-15 08:25:38,645 INFO  datanode.DataNode DataXceiver.java:writeBlock:738 - Receiving BP-1206764359-192.168.122.101-1568550288953:blk_1073741825_1001 src: /192.168.122.227:42078 dest: /192.168.122.235:9866
+2019-09-15 08:25:40,047 INFO  DataNode.clienttrace BlockReceiver.java:finalizeBlock:1533 - src: /192.168.122.227:42078, dest: /192.168.122.235:9866, bytes: 134217728, op: HDFS_WRITE, cliID: DFSClient_NONMAPREDUCE_-328234170_1, offset: 0, srvID: 9b9a87b1-5931-43c9-a4b5-54abd19589c9, blockid: BP-1206764359-192.168.122.101-1568550288953:blk_1073741825_1001, duration(ns): 1039419371
+2019-09-15 08:25:40,047 INFO  datanode.DataNode BlockReceiver.java:run:1506 - PacketResponder: BP-1206764359-192.168.122.101-1568550288953:blk_1073741825_1001, type=HAS_DOWNSTREAM_IN_PIPELINE, downstreams=2:[192.168.122.31:9866, 192.168.122.50:9866] terminating
+2019-09-15 08:25:44,790 INFO  datanode.DataNode DataXceiver.java:writeBlock:738 - Receiving BP-1206764359-192.168.122.101-1568550288953:blk_1073741826_1002 src: /192.168.122.227:42088 dest: /192.168.122.235:9866
+2019-09-15 08:25:46,022 INFO  DataNode.clienttrace BlockReceiver.java:finalizeBlock:1533 - src: /192.168.122.227:42088, dest: /192.168.122.235:9866, bytes: 134217728, op: HDFS_WRITE, cliID: DFSClient_NONMAPREDUCE_-2013676395_1, offset: 0, srvID: 9b9a87b1-5931-43c9-a4b5-54abd19589c9, blockid: BP-1206764359-192.168.122.101-1568550288953:blk_1073741826_1002, duration(ns): 1075373837
+2019-09-15 08:25:46,023 INFO  datanode.DataNode BlockReceiver.java:run:1506 - PacketResponder: BP-1206764359-192.168.122.101-1568550288953:blk_1073741826_1002, type=HAS_DOWNSTREAM_IN_PIPELINE, downstreams=2:[192.168.122.50:9866, 192.168.122.153:9866] terminating
+2019-09-15 08:26:05,459 INFO  datanode.DataNode DataXceiver.java:writeBlock:738 - Receiving BP-1206764359-192.168.122.101-1568550288953:blk_1073741828_1004 src: /192.168.122.153:49392 dest: /192.168.122.235:9866
+2019-09-15 08:26:06,419 INFO  DataNode.clienttrace BlockReceiver.java:finalizeBlock:1533 - src: /192.168.122.153:49392, dest: /192.168.122.235:9866, bytes: 134217728, op: HDFS_WRITE, cliID: DFSClient_NONMAPREDUCE_-927614400_1, offset: 0, srvID: 9b9a87b1-5931-43c9-a4b5-54abd19589c9, blockid: BP-1206764359-192.168.122.101-1568550288953:blk_1073741828_1004, duration(ns): 957169466
+2019-09-15 08:26:06,420 INFO  datanode.DataNode BlockReceiver.java:run:1506 - PacketResponder: BP-1206764359-192.168.122.101-1568550288953:blk_1073741828_1004, type=LAST_IN_PIPELINE terminating
+2019-09-15 08:26:22,516 WARN  datanode.DataNode BPServiceActor.java:offerService:728 - IOException in offerService
+java.io.EOFException: End of File Exception between local host is: "node-3-link-0/192.168.122.235"; destination host is: "node-0-link-0":8020; : java.io.EOFException; For more details see:  http://wiki.apache.org/hadoop/EOFException
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.apache.hadoop.net.NetUtils.wrapWithMessage(NetUtils.java:831)
+	at org.apache.hadoop.net.NetUtils.wrapException(NetUtils.java:789)
+	at org.apache.hadoop.ipc.Client.getRpcResponse(Client.java:1515)
+	at org.apache.hadoop.ipc.Client.call(Client.java:1457)
+	at org.apache.hadoop.ipc.Client.call(Client.java:1367)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Invoker.invoke(ProtobufRpcEngine.java:228)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Invoker.invoke(ProtobufRpcEngine.java:116)
+	at com.sun.proxy.$Proxy19.sendHeartbeat(Unknown Source)
+	at org.apache.hadoop.hdfs.protocolPB.DatanodeProtocolClientSideTranslatorPB.sendHeartbeat(DatanodeProtocolClientSideTranslatorPB.java:166)
+	at org.apache.hadoop.hdfs.server.datanode.BPServiceActor.sendHeartBeat(BPServiceActor.java:514)
+	at org.apache.hadoop.hdfs.server.datanode.BPServiceActor.offerService(BPServiceActor.java:645)
+	at org.apache.hadoop.hdfs.server.datanode.BPServiceActor.run(BPServiceActor.java:842)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.io.EOFException
+	at java.io.DataInputStream.readInt(DataInputStream.java:392)
+	at org.apache.hadoop.ipc.Client$IpcStreams.readResponse(Client.java:1816)
+	at org.apache.hadoop.ipc.Client$Connection.receiveRpcResponse(Client.java:1173)
+	at org.apache.hadoop.ipc.Client$Connection.run(Client.java:1069)
+2019-09-15 08:26:25,584 INFO  datanode.DataNode BPOfferService.java:processCommandFromActor:672 - DatanodeCommand action : DNA_REGISTER from node-0-link-0/192.168.122.101:8020 with standby state
+2019-09-15 08:26:25,597 INFO  datanode.DataNode BPServiceActor.java:register:764 - Block pool BP-1206764359-192.168.122.101-1568550288953 (Datanode Uuid 9b9a87b1-5931-43c9-a4b5-54abd19589c9) service to node-0-link-0/192.168.122.101:8020 beginning handshake with NN
+2019-09-15 08:26:25,633 INFO  datanode.DataNode BPServiceActor.java:register:783 - Block pool Block pool BP-1206764359-192.168.122.101-1568550288953 (Datanode Uuid 9b9a87b1-5931-43c9-a4b5-54abd19589c9) service to node-0-link-0/192.168.122.101:8020 successfully registered with NN
+2019-09-15 08:26:25,813 INFO  datanode.DataNode BPServiceActor.java:blockReport:422 - Successfully sent block report 0x4415437481b83957,  containing 1 storage report(s), of which we sent 1. The reports had 3 total blocks and used 1 RPC(s). This took 1 msec to generate and 171 msecs for RPC and NN processing. Got back no commands.
+2019-09-15 08:26:40,516 INFO  datanode.DataNode BPOfferService.java:updateActorStatesFromHeartbeat:596 - Namenode Block pool BP-1206764359-192.168.122.101-1568550288953 (Datanode Uuid 9b9a87b1-5931-43c9-a4b5-54abd19589c9) service to node-1-link-0/192.168.122.148:8020 relinquishing ACTIVE state with txid=32
+2019-09-15 08:26:40,637 INFO  datanode.DataNode BPOfferService.java:updateActorStatesFromHeartbeat:576 - Namenode Block pool BP-1206764359-192.168.122.101-1568550288953 (Datanode Uuid 9b9a87b1-5931-43c9-a4b5-54abd19589c9) service to node-0-link-0/192.168.122.101:8020 trying to claim ACTIVE state with txid=33
+2019-09-15 08:26:40,637 INFO  datanode.DataNode BPOfferService.java:updateActorStatesFromHeartbeat:588 - Acknowledging ACTIVE Namenode Block pool BP-1206764359-192.168.122.101-1568550288953 (Datanode Uuid 9b9a87b1-5931-43c9-a4b5-54abd19589c9) service to node-0-link-0/192.168.122.101:8020
+2019-09-15 08:27:04,516 WARN  datanode.DataNode BPServiceActor.java:offerService:728 - IOException in offerService
+java.io.EOFException: End of File Exception between local host is: "node-3-link-0/192.168.122.235"; destination host is: "node-1-link-0":8020; : java.io.EOFException; For more details see:  http://wiki.apache.org/hadoop/EOFException
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.apache.hadoop.net.NetUtils.wrapWithMessage(NetUtils.java:831)
+	at org.apache.hadoop.net.NetUtils.wrapException(NetUtils.java:789)
+	at org.apache.hadoop.ipc.Client.getRpcResponse(Client.java:1515)
+	at org.apache.hadoop.ipc.Client.call(Client.java:1457)
+	at org.apache.hadoop.ipc.Client.call(Client.java:1367)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Invoker.invoke(ProtobufRpcEngine.java:228)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Invoker.invoke(ProtobufRpcEngine.java:116)
+	at com.sun.proxy.$Proxy19.sendHeartbeat(Unknown Source)
+	at org.apache.hadoop.hdfs.protocolPB.DatanodeProtocolClientSideTranslatorPB.sendHeartbeat(DatanodeProtocolClientSideTranslatorPB.java:166)
+	at org.apache.hadoop.hdfs.server.datanode.BPServiceActor.sendHeartBeat(BPServiceActor.java:514)
+	at org.apache.hadoop.hdfs.server.datanode.BPServiceActor.offerService(BPServiceActor.java:645)
+	at org.apache.hadoop.hdfs.server.datanode.BPServiceActor.run(BPServiceActor.java:842)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.io.EOFException
+	at java.io.DataInputStream.readInt(DataInputStream.java:392)
+	at org.apache.hadoop.ipc.Client$IpcStreams.readResponse(Client.java:1816)
+	at org.apache.hadoop.ipc.Client$Connection.receiveRpcResponse(Client.java:1173)
+	at org.apache.hadoop.ipc.Client$Connection.run(Client.java:1069)
+2019-09-15 08:27:08,518 INFO  ipc.Client Client.java:handleConnectionFailure:948 - Retrying connect to server: node-1-link-0/192.168.122.148:8020. Already tried 0 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+2019-09-15 08:27:08,755 INFO  datanode.DataNode BPOfferService.java:processCommandFromActor:672 - DatanodeCommand action : DNA_REGISTER from node-1-link-0/192.168.122.148:8020 with standby state
+2019-09-15 08:27:08,763 INFO  datanode.DataNode BPServiceActor.java:register:764 - Block pool BP-1206764359-192.168.122.101-1568550288953 (Datanode Uuid 9b9a87b1-5931-43c9-a4b5-54abd19589c9) service to node-1-link-0/192.168.122.148:8020 beginning handshake with NN
+2019-09-15 08:27:08,784 INFO  datanode.DataNode BPServiceActor.java:register:783 - Block pool Block pool BP-1206764359-192.168.122.101-1568550288953 (Datanode Uuid 9b9a87b1-5931-43c9-a4b5-54abd19589c9) service to node-1-link-0/192.168.122.148:8020 successfully registered with NN
+2019-09-15 08:27:08,810 INFO  datanode.DataNode BPServiceActor.java:blockReport:422 - Successfully sent block report 0x6dca2a01f6c3bac4,  containing 1 storage report(s), of which we sent 1. The reports had 3 total blocks and used 1 RPC(s). This took 0 msec to generate and 20 msecs for RPC and NN processing. Got back no commands.
+2019-09-15 08:27:42,383 INFO  datanode.DataNode DataXceiver.java:writeBlock:738 - Receiving BP-1206764359-192.168.122.101-1568550288953:blk_1073741830_1006 src: /192.168.122.227:42154 dest: /192.168.122.235:9866
+2019-09-15 08:27:42,536 INFO  datanode.DataNode DataXceiver.java:writeBlock:738 - Receiving BP-1206764359-192.168.122.101-1568550288953:blk_1073741832_1008 src: /192.168.122.227:42156 dest: /192.168.122.235:9866
+2019-09-15 08:27:42,556 INFO  datanode.DataNode DataXceiver.java:writeBlock:738 - Receiving BP-1206764359-192.168.122.101-1568550288953:blk_1073741831_1007 src: /192.168.122.227:42158 dest: /192.168.122.235:9866
+2019-09-15 08:27:42,793 INFO  datanode.DataNode DataXceiver.java:writeBlock:738 - Receiving BP-1206764359-192.168.122.101-1568550288953:blk_1073741833_1009 src: /192.168.122.227:42160 dest: /192.168.122.235:9866
+2019-09-15 08:27:45,069 INFO  DataNode.clienttrace BlockReceiver.java:finalizeBlock:1533 - src: /192.168.122.227:42156, dest: /192.168.122.235:9866, bytes: 134217728, op: HDFS_WRITE, cliID: DFSClient_NONMAPREDUCE_276935424_1, offset: 0, srvID: 9b9a87b1-5931-43c9-a4b5-54abd19589c9, blockid: BP-1206764359-192.168.122.101-1568550288953:blk_1073741832_1008, duration(ns): 2520537451
+2019-09-15 08:27:45,069 INFO  datanode.DataNode BlockReceiver.java:run:1506 - PacketResponder: BP-1206764359-192.168.122.101-1568550288953:blk_1073741832_1008, type=HAS_DOWNSTREAM_IN_PIPELINE, downstreams=2:[192.168.122.153:9866, 192.168.122.31:9866] terminating
+2019-09-15 08:27:56,266 INFO  DataNode.clienttrace BlockReceiver.java:finalizeBlock:1533 - src: /192.168.122.227:42154, dest: /192.168.122.235:9866, bytes: 134217728, op: HDFS_WRITE, cliID: DFSClient_NONMAPREDUCE_-933170206_1, offset: 0, srvID: 9b9a87b1-5931-43c9-a4b5-54abd19589c9, blockid: BP-1206764359-192.168.122.101-1568550288953:blk_1073741830_1006, duration(ns): 13868398199
+2019-09-15 08:27:56,267 INFO  datanode.DataNode BlockReceiver.java:run:1506 - PacketResponder: BP-1206764359-192.168.122.101-1568550288953:blk_1073741830_1006, type=HAS_DOWNSTREAM_IN_PIPELINE, downstreams=2:[192.168.122.50:9866, 192.168.122.31:9866] terminating
+2019-09-15 08:27:56,272 INFO  DataNode.clienttrace BlockReceiver.java:finalizeBlock:1533 - src: /192.168.122.227:42158, dest: /192.168.122.235:9866, bytes: 134217728, op: HDFS_WRITE, cliID: DFSClient_NONMAPREDUCE_-146962922_1, offset: 0, srvID: 9b9a87b1-5931-43c9-a4b5-54abd19589c9, blockid: BP-1206764359-192.168.122.101-1568550288953:blk_1073741831_1007, duration(ns): 13691723262
+2019-09-15 08:27:56,272 INFO  datanode.DataNode BlockReceiver.java:run:1506 - PacketResponder: BP-1206764359-192.168.122.101-1568550288953:blk_1073741831_1007, type=HAS_DOWNSTREAM_IN_PIPELINE, downstreams=2:[192.168.122.153:9866, 192.168.122.50:9866] terminating
+2019-09-15 08:27:58,006 INFO  DataNode.clienttrace BlockReceiver.java:finalizeBlock:1533 - src: /192.168.122.227:42160, dest: /192.168.122.235:9866, bytes: 134217728, op: HDFS_WRITE, cliID: DFSClient_NONMAPREDUCE_-1037295928_1, offset: 0, srvID: 9b9a87b1-5931-43c9-a4b5-54abd19589c9, blockid: BP-1206764359-192.168.122.101-1568550288953:blk_1073741833_1009, duration(ns): 15200684426
+2019-09-15 08:27:58,007 INFO  datanode.DataNode BlockReceiver.java:run:1506 - PacketResponder: BP-1206764359-192.168.122.101-1568550288953:blk_1073741833_1009, type=HAS_DOWNSTREAM_IN_PIPELINE, downstreams=2:[192.168.122.50:9866, 192.168.122.31:9866] terminating
+2019-09-15 08:28:13,666 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:deleteAsync:225 - Scheduling blk_1073741830_1006 replica FinalizedReplica, blk_1073741830_1006, FINALIZED
+  getNumBytes()     = 134217728
+  getBytesOnDisk()  = 134217728
+  getVisibleLength()= 134217728
+  getVolume()       = /root/hdfs-root/data
+  getBlockURI()     = file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741830 for deletion
+2019-09-15 08:28:13,671 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:deleteAsync:225 - Scheduling blk_1073741831_1007 replica FinalizedReplica, blk_1073741831_1007, FINALIZED
+  getNumBytes()     = 134217728
+  getBytesOnDisk()  = 134217728
+  getVisibleLength()= 134217728
+  getVolume()       = /root/hdfs-root/data
+  getBlockURI()     = file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741831 for deletion
+2019-09-15 08:28:13,672 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:deleteAsync:225 - Scheduling blk_1073741832_1008 replica FinalizedReplica, blk_1073741832_1008, FINALIZED
+  getNumBytes()     = 134217728
+  getBytesOnDisk()  = 134217728
+  getVisibleLength()= 134217728
+  getVolume()       = /root/hdfs-root/data
+  getBlockURI()     = file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741832 for deletion
+2019-09-15 08:28:13,673 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:deleteAsync:225 - Scheduling blk_1073741833_1009 replica FinalizedReplica, blk_1073741833_1009, FINALIZED
+  getNumBytes()     = 134217728
+  getBytesOnDisk()  = 134217728
+  getVisibleLength()= 134217728
+  getVolume()       = /root/hdfs-root/data
+  getBlockURI()     = file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741833 for deletion
+2019-09-15 08:28:13,710 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:run:333 - Deleted BP-1206764359-192.168.122.101-1568550288953 blk_1073741830_1006 URI file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741830
+2019-09-15 08:28:13,740 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:run:333 - Deleted BP-1206764359-192.168.122.101-1568550288953 blk_1073741831_1007 URI file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741831
+2019-09-15 08:28:13,765 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:run:333 - Deleted BP-1206764359-192.168.122.101-1568550288953 blk_1073741832_1008 URI file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741832
+2019-09-15 08:28:13,785 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:run:333 - Deleted BP-1206764359-192.168.122.101-1568550288953 blk_1073741833_1009 URI file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741833
+2019-09-15 08:28:32,365 INFO  datanode.DataNode DataXceiver.java:writeBlock:738 - Receiving BP-1206764359-192.168.122.101-1568550288953:blk_1073741835_1011 src: /192.168.122.227:42214 dest: /192.168.122.235:9866
+2019-09-15 08:28:32,535 INFO  datanode.DataNode DataXceiver.java:writeBlock:738 - Receiving BP-1206764359-192.168.122.101-1568550288953:blk_1073741836_1012 src: /192.168.122.50:56162 dest: /192.168.122.235:9866
+2019-09-15 08:28:32,537 INFO  datanode.DataNode DataXceiver.java:writeBlock:738 - Receiving BP-1206764359-192.168.122.101-1568550288953:blk_1073741838_1014 src: /192.168.122.31:37944 dest: /192.168.122.235:9866
+2019-09-15 08:28:33,029 INFO  datanode.DataNode DataXceiver.java:writeBlock:738 - Receiving BP-1206764359-192.168.122.101-1568550288953:blk_1073741839_1015 src: /192.168.122.153:49412 dest: /192.168.122.235:9866
+2019-09-15 08:28:35,272 INFO  DataNode.clienttrace BlockReceiver.java:finalizeBlock:1533 - src: /192.168.122.227:42214, dest: /192.168.122.235:9866, bytes: 134217728, op: HDFS_WRITE, cliID: DFSClient_NONMAPREDUCE_1849682811_1, offset: 0, srvID: 9b9a87b1-5931-43c9-a4b5-54abd19589c9, blockid: BP-1206764359-192.168.122.101-1568550288953:blk_1073741835_1011, duration(ns): 2895384811
+2019-09-15 08:28:35,275 INFO  datanode.DataNode BlockReceiver.java:run:1506 - PacketResponder: BP-1206764359-192.168.122.101-1568550288953:blk_1073741835_1011, type=HAS_DOWNSTREAM_IN_PIPELINE, downstreams=2:[192.168.122.153:9866, 192.168.122.31:9866] terminating
+2019-09-15 08:28:35,311 INFO  DataNode.clienttrace BlockReceiver.java:finalizeBlock:1533 - src: /192.168.122.31:37944, dest: /192.168.122.235:9866, bytes: 134217728, op: HDFS_WRITE, cliID: DFSClient_NONMAPREDUCE_-721911801_1, offset: 0, srvID: 9b9a87b1-5931-43c9-a4b5-54abd19589c9, blockid: BP-1206764359-192.168.122.101-1568550288953:blk_1073741838_1014, duration(ns): 2771245534
+2019-09-15 08:28:35,311 INFO  datanode.DataNode BlockReceiver.java:run:1506 - PacketResponder: BP-1206764359-192.168.122.101-1568550288953:blk_1073741838_1014, type=LAST_IN_PIPELINE terminating
+2019-09-15 08:28:35,374 INFO  DataNode.clienttrace BlockReceiver.java:finalizeBlock:1533 - src: /192.168.122.50:56162, dest: /192.168.122.235:9866, bytes: 134217728, op: HDFS_WRITE, cliID: DFSClient_NONMAPREDUCE_-1362275366_1, offset: 0, srvID: 9b9a87b1-5931-43c9-a4b5-54abd19589c9, blockid: BP-1206764359-192.168.122.101-1568550288953:blk_1073741836_1012, duration(ns): 2833157191
+2019-09-15 08:28:35,374 INFO  datanode.DataNode BlockReceiver.java:run:1506 - PacketResponder: BP-1206764359-192.168.122.101-1568550288953:blk_1073741836_1012, type=HAS_DOWNSTREAM_IN_PIPELINE, downstreams=1:[192.168.122.153:9866] terminating
+2019-09-15 08:28:35,428 INFO  DataNode.clienttrace BlockReceiver.java:finalizeBlock:1533 - src: /192.168.122.153:49412, dest: /192.168.122.235:9866, bytes: 134217728, op: HDFS_WRITE, cliID: DFSClient_NONMAPREDUCE_288489065_1, offset: 0, srvID: 9b9a87b1-5931-43c9-a4b5-54abd19589c9, blockid: BP-1206764359-192.168.122.101-1568550288953:blk_1073741839_1015, duration(ns): 2395662595
+2019-09-15 08:28:35,428 INFO  datanode.DataNode BlockReceiver.java:run:1506 - PacketResponder: BP-1206764359-192.168.122.101-1568550288953:blk_1073741839_1015, type=LAST_IN_PIPELINE terminating
+2019-09-15 08:29:07,650 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:deleteAsync:225 - Scheduling blk_1073741835_1011 replica FinalizedReplica, blk_1073741835_1011, FINALIZED
+  getNumBytes()     = 134217728
+  getBytesOnDisk()  = 134217728
+  getVisibleLength()= 134217728
+  getVolume()       = /root/hdfs-root/data
+  getBlockURI()     = file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741835 for deletion
+2019-09-15 08:29:07,657 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:deleteAsync:225 - Scheduling blk_1073741836_1012 replica FinalizedReplica, blk_1073741836_1012, FINALIZED
+  getNumBytes()     = 134217728
+  getBytesOnDisk()  = 134217728
+  getVisibleLength()= 134217728
+  getVolume()       = /root/hdfs-root/data
+  getBlockURI()     = file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741836 for deletion
+2019-09-15 08:29:07,658 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:deleteAsync:225 - Scheduling blk_1073741838_1014 replica FinalizedReplica, blk_1073741838_1014, FINALIZED
+  getNumBytes()     = 134217728
+  getBytesOnDisk()  = 134217728
+  getVisibleLength()= 134217728
+  getVolume()       = /root/hdfs-root/data
+  getBlockURI()     = file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741838 for deletion
+2019-09-15 08:29:07,658 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:deleteAsync:225 - Scheduling blk_1073741839_1015 replica FinalizedReplica, blk_1073741839_1015, FINALIZED
+  getNumBytes()     = 134217728
+  getBytesOnDisk()  = 134217728
+  getVisibleLength()= 134217728
+  getVolume()       = /root/hdfs-root/data
+  getBlockURI()     = file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741839 for deletion
+2019-09-15 08:29:07,688 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:run:333 - Deleted BP-1206764359-192.168.122.101-1568550288953 blk_1073741835_1011 URI file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741835
+2019-09-15 08:29:07,717 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:run:333 - Deleted BP-1206764359-192.168.122.101-1568550288953 blk_1073741836_1012 URI file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741836
+2019-09-15 08:29:07,742 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:run:333 - Deleted BP-1206764359-192.168.122.101-1568550288953 blk_1073741838_1014 URI file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741838
+2019-09-15 08:29:07,765 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:run:333 - Deleted BP-1206764359-192.168.122.101-1568550288953 blk_1073741839_1015 URI file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741839
+2019-09-15 08:29:23,374 INFO  datanode.DataNode DataXceiver.java:writeBlock:738 - Receiving BP-1206764359-192.168.122.101-1568550288953:blk_1073741840_1016 src: /192.168.122.227:42266 dest: /192.168.122.235:9866
+2019-09-15 08:29:24,571 INFO  datanode.DataNode DataXceiver.java:writeBlock:738 - Receiving BP-1206764359-192.168.122.101-1568550288953:blk_1073741841_1017 src: /192.168.122.50:56170 dest: /192.168.122.235:9866
+2019-09-15 08:29:24,616 INFO  DataNode.clienttrace BlockReceiver.java:finalizeBlock:1533 - src: /192.168.122.227:42266, dest: /192.168.122.235:9866, bytes: 134217728, op: HDFS_WRITE, cliID: DFSClient_NONMAPREDUCE_168621030_1, offset: 0, srvID: 9b9a87b1-5931-43c9-a4b5-54abd19589c9, blockid: BP-1206764359-192.168.122.101-1568550288953:blk_1073741840_1016, duration(ns): 1223456763
+2019-09-15 08:29:24,618 INFO  datanode.DataNode BlockReceiver.java:run:1506 - PacketResponder: BP-1206764359-192.168.122.101-1568550288953:blk_1073741840_1016, type=HAS_DOWNSTREAM_IN_PIPELINE, downstreams=2:[192.168.122.50:9866, 192.168.122.153:9866] terminating
+2019-09-15 08:29:25,912 INFO  DataNode.clienttrace BlockReceiver.java:finalizeBlock:1533 - src: /192.168.122.50:56170, dest: /192.168.122.235:9866, bytes: 134217728, op: HDFS_WRITE, cliID: DFSClient_NONMAPREDUCE_-158237970_1, offset: 0, srvID: 9b9a87b1-5931-43c9-a4b5-54abd19589c9, blockid: BP-1206764359-192.168.122.101-1568550288953:blk_1073741841_1017, duration(ns): 1330715205
+2019-09-15 08:29:25,912 INFO  datanode.DataNode BlockReceiver.java:run:1506 - PacketResponder: BP-1206764359-192.168.122.101-1568550288953:blk_1073741841_1017, type=LAST_IN_PIPELINE terminating
+2019-09-15 08:29:26,530 INFO  datanode.DataNode DataXceiver.java:writeBlock:738 - Receiving BP-1206764359-192.168.122.101-1568550288953:blk_1073741842_1018 src: /192.168.122.31:37946 dest: /192.168.122.235:9866
+2019-09-15 08:29:29,131 INFO  DataNode.clienttrace BlockReceiver.java:finalizeBlock:1533 - src: /192.168.122.31:37946, dest: /192.168.122.235:9866, bytes: 134217728, op: HDFS_WRITE, cliID: DFSClient_NONMAPREDUCE_-510259873_1, offset: 0, srvID: 9b9a87b1-5931-43c9-a4b5-54abd19589c9, blockid: BP-1206764359-192.168.122.101-1568550288953:blk_1073741842_1018, duration(ns): 1575342476
+2019-09-15 08:29:29,131 INFO  datanode.DataNode BlockReceiver.java:run:1506 - PacketResponder: BP-1206764359-192.168.122.101-1568550288953:blk_1073741842_1018, type=HAS_DOWNSTREAM_IN_PIPELINE, downstreams=1:[192.168.122.50:9866] terminating
+2019-09-15 08:29:31,977 INFO  datanode.DataNode DataXceiver.java:writeBlock:738 - Receiving BP-1206764359-192.168.122.101-1568550288953:blk_1073741844_1020 src: /192.168.122.31:37952 dest: /192.168.122.235:9866
+2019-09-15 08:29:33,083 INFO  DataNode.clienttrace BlockReceiver.java:finalizeBlock:1533 - src: /192.168.122.31:37952, dest: /192.168.122.235:9866, bytes: 134217728, op: HDFS_WRITE, cliID: DFSClient_NONMAPREDUCE_1396579973_1, offset: 0, srvID: 9b9a87b1-5931-43c9-a4b5-54abd19589c9, blockid: BP-1206764359-192.168.122.101-1568550288953:blk_1073741844_1020, duration(ns): 1102427198
+2019-09-15 08:29:33,083 INFO  datanode.DataNode BlockReceiver.java:run:1506 - PacketResponder: BP-1206764359-192.168.122.101-1568550288953:blk_1073741844_1020, type=LAST_IN_PIPELINE terminating
+2019-09-15 08:29:37,651 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:deleteAsync:225 - Scheduling blk_1073741840_1016 replica FinalizedReplica, blk_1073741840_1016, FINALIZED
+  getNumBytes()     = 134217728
+  getBytesOnDisk()  = 134217728
+  getVisibleLength()= 134217728
+  getVolume()       = /root/hdfs-root/data
+  getBlockURI()     = file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741840 for deletion
+2019-09-15 08:29:39,993 INFO  datanode.DataNode BPServiceActor.java:offerService:679 - Took 2343ms to process 1 commands from NN
+2019-09-15 08:29:40,022 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:run:333 - Deleted BP-1206764359-192.168.122.101-1568550288953 blk_1073741840_1016 URI file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741840
+2019-09-15 08:29:43,651 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:deleteAsync:225 - Scheduling blk_1073741841_1017 replica FinalizedReplica, blk_1073741841_1017, FINALIZED
+  getNumBytes()     = 134217728
+  getBytesOnDisk()  = 134217728
+  getVisibleLength()= 134217728
+  getVolume()       = /root/hdfs-root/data
+  getBlockURI()     = file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741841 for deletion
+2019-09-15 08:29:43,652 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:deleteAsync:225 - Scheduling blk_1073741842_1018 replica FinalizedReplica, blk_1073741842_1018, FINALIZED
+  getNumBytes()     = 134217728
+  getBytesOnDisk()  = 134217728
+  getVisibleLength()= 134217728
+  getVolume()       = /root/hdfs-root/data
+  getBlockURI()     = file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741842 for deletion
+2019-09-15 08:29:43,685 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:run:333 - Deleted BP-1206764359-192.168.122.101-1568550288953 blk_1073741841_1017 URI file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741841
+2019-09-15 08:29:43,713 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:run:333 - Deleted BP-1206764359-192.168.122.101-1568550288953 blk_1073741842_1018 URI file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741842
+2019-09-15 08:29:55,651 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:deleteAsync:225 - Scheduling blk_1073741844_1020 replica FinalizedReplica, blk_1073741844_1020, FINALIZED
+  getNumBytes()     = 134217728
+  getBytesOnDisk()  = 134217728
+  getVisibleLength()= 134217728
+  getVolume()       = /root/hdfs-root/data
+  getBlockURI()     = file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741844 for deletion
+2019-09-15 08:29:55,690 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:run:333 - Deleted BP-1206764359-192.168.122.101-1568550288953 blk_1073741844_1020 URI file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741844
+2019-09-15 08:29:56,800 WARN  datanode.DataNode BPServiceActor.java:offerService:728 - IOException in offerService
+java.io.EOFException: End of File Exception between local host is: "node-3-link-0/192.168.122.235"; destination host is: "node-1-link-0":8020; : java.io.EOFException; For more details see:  http://wiki.apache.org/hadoop/EOFException
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.apache.hadoop.net.NetUtils.wrapWithMessage(NetUtils.java:831)
+	at org.apache.hadoop.net.NetUtils.wrapException(NetUtils.java:789)
+	at org.apache.hadoop.ipc.Client.getRpcResponse(Client.java:1515)
+	at org.apache.hadoop.ipc.Client.call(Client.java:1457)
+	at org.apache.hadoop.ipc.Client.call(Client.java:1367)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Invoker.invoke(ProtobufRpcEngine.java:228)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Invoker.invoke(ProtobufRpcEngine.java:116)
+	at com.sun.proxy.$Proxy19.sendHeartbeat(Unknown Source)
+	at org.apache.hadoop.hdfs.protocolPB.DatanodeProtocolClientSideTranslatorPB.sendHeartbeat(DatanodeProtocolClientSideTranslatorPB.java:166)
+	at org.apache.hadoop.hdfs.server.datanode.BPServiceActor.sendHeartBeat(BPServiceActor.java:514)
+	at org.apache.hadoop.hdfs.server.datanode.BPServiceActor.offerService(BPServiceActor.java:645)
+	at org.apache.hadoop.hdfs.server.datanode.BPServiceActor.run(BPServiceActor.java:842)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.io.EOFException
+	at java.io.DataInputStream.readInt(DataInputStream.java:392)
+	at org.apache.hadoop.ipc.Client$IpcStreams.readResponse(Client.java:1816)
+	at org.apache.hadoop.ipc.Client$Connection.receiveRpcResponse(Client.java:1173)
+	at org.apache.hadoop.ipc.Client$Connection.run(Client.java:1069)
+2019-09-15 08:30:00,802 INFO  ipc.Client Client.java:handleConnectionFailure:948 - Retrying connect to server: node-1-link-0/192.168.122.148:8020. Already tried 0 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+2019-09-15 08:30:01,804 INFO  ipc.Client Client.java:handleConnectionFailure:948 - Retrying connect to server: node-1-link-0/192.168.122.148:8020. Already tried 1 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+2019-09-15 08:30:02,054 INFO  datanode.DataNode BPOfferService.java:processCommandFromActor:672 - DatanodeCommand action : DNA_REGISTER from node-1-link-0/192.168.122.148:8020 with standby state
+2019-09-15 08:30:02,065 INFO  datanode.DataNode BPServiceActor.java:register:764 - Block pool BP-1206764359-192.168.122.101-1568550288953 (Datanode Uuid 9b9a87b1-5931-43c9-a4b5-54abd19589c9) service to node-1-link-0/192.168.122.148:8020 beginning handshake with NN
+2019-09-15 08:30:02,085 INFO  datanode.DataNode BPServiceActor.java:register:783 - Block pool Block pool BP-1206764359-192.168.122.101-1568550288953 (Datanode Uuid 9b9a87b1-5931-43c9-a4b5-54abd19589c9) service to node-1-link-0/192.168.122.148:8020 successfully registered with NN
+2019-09-15 08:30:02,115 INFO  datanode.DataNode BPServiceActor.java:blockReport:422 - Successfully sent block report 0x6dca2a01f6c3bac5,  containing 1 storage report(s), of which we sent 1. The reports had 3 total blocks and used 1 RPC(s). This took 0 msec to generate and 24 msecs for RPC and NN processing. Got back no commands.
+2019-09-15 08:30:13,650 INFO  datanode.DataNode BPOfferService.java:updateActorStatesFromHeartbeat:596 - Namenode Block pool BP-1206764359-192.168.122.101-1568550288953 (Datanode Uuid 9b9a87b1-5931-43c9-a4b5-54abd19589c9) service to node-0-link-0/192.168.122.101:8020 relinquishing ACTIVE state with txid=141
+2019-09-15 08:30:14,453 INFO  datanode.DataNode BPOfferService.java:updateActorStatesFromHeartbeat:576 - Namenode Block pool BP-1206764359-192.168.122.101-1568550288953 (Datanode Uuid 9b9a87b1-5931-43c9-a4b5-54abd19589c9) service to node-1-link-0/192.168.122.148:8020 trying to claim ACTIVE state with txid=142
+2019-09-15 08:30:14,454 INFO  datanode.DataNode BPOfferService.java:updateActorStatesFromHeartbeat:588 - Acknowledging ACTIVE Namenode Block pool BP-1206764359-192.168.122.101-1568550288953 (Datanode Uuid 9b9a87b1-5931-43c9-a4b5-54abd19589c9) service to node-1-link-0/192.168.122.148:8020
+2019-09-15 08:30:40,649 WARN  datanode.DataNode BPServiceActor.java:offerService:728 - IOException in offerService
+java.io.EOFException: End of File Exception between local host is: "node-3-link-0/192.168.122.235"; destination host is: "node-0-link-0":8020; : java.io.EOFException; For more details see:  http://wiki.apache.org/hadoop/EOFException
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.apache.hadoop.net.NetUtils.wrapWithMessage(NetUtils.java:831)
+	at org.apache.hadoop.net.NetUtils.wrapException(NetUtils.java:789)
+	at org.apache.hadoop.ipc.Client.getRpcResponse(Client.java:1515)
+	at org.apache.hadoop.ipc.Client.call(Client.java:1457)
+	at org.apache.hadoop.ipc.Client.call(Client.java:1367)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Invoker.invoke(ProtobufRpcEngine.java:228)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Invoker.invoke(ProtobufRpcEngine.java:116)
+	at com.sun.proxy.$Proxy19.sendHeartbeat(Unknown Source)
+	at org.apache.hadoop.hdfs.protocolPB.DatanodeProtocolClientSideTranslatorPB.sendHeartbeat(DatanodeProtocolClientSideTranslatorPB.java:166)
+	at org.apache.hadoop.hdfs.server.datanode.BPServiceActor.sendHeartBeat(BPServiceActor.java:514)
+	at org.apache.hadoop.hdfs.server.datanode.BPServiceActor.offerService(BPServiceActor.java:645)
+	at org.apache.hadoop.hdfs.server.datanode.BPServiceActor.run(BPServiceActor.java:842)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.io.EOFException
+	at java.io.DataInputStream.readInt(DataInputStream.java:392)
+	at org.apache.hadoop.ipc.Client$IpcStreams.readResponse(Client.java:1816)
+	at org.apache.hadoop.ipc.Client$Connection.receiveRpcResponse(Client.java:1173)
+	at org.apache.hadoop.ipc.Client$Connection.run(Client.java:1069)
+2019-09-15 08:30:44,650 INFO  ipc.Client Client.java:handleConnectionFailure:948 - Retrying connect to server: node-0-link-0/192.168.122.101:8020. Already tried 0 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+2019-09-15 08:30:44,952 INFO  datanode.DataNode BPOfferService.java:processCommandFromActor:672 - DatanodeCommand action : DNA_REGISTER from node-0-link-0/192.168.122.101:8020 with standby state
+2019-09-15 08:30:44,970 INFO  datanode.DataNode BPServiceActor.java:register:764 - Block pool BP-1206764359-192.168.122.101-1568550288953 (Datanode Uuid 9b9a87b1-5931-43c9-a4b5-54abd19589c9) service to node-0-link-0/192.168.122.101:8020 beginning handshake with NN
+2019-09-15 08:30:45,007 INFO  datanode.DataNode BPServiceActor.java:register:783 - Block pool Block pool BP-1206764359-192.168.122.101-1568550288953 (Datanode Uuid 9b9a87b1-5931-43c9-a4b5-54abd19589c9) service to node-0-link-0/192.168.122.101:8020 successfully registered with NN
+2019-09-15 08:30:45,067 INFO  datanode.DataNode BPServiceActor.java:blockReport:422 - Successfully sent block report 0x4415437481b83958,  containing 1 storage report(s), of which we sent 1. The reports had 3 total blocks and used 1 RPC(s). This took 0 msec to generate and 46 msecs for RPC and NN processing. Got back no commands.
+2019-09-15 08:31:12,410 INFO  datanode.DataNode DataXceiver.java:writeBlock:738 - Receiving BP-1206764359-192.168.122.101-1568550288953:blk_1073741846_1022 src: /192.168.122.227:42356 dest: /192.168.122.235:9866
+2019-09-15 08:31:12,430 INFO  datanode.DataNode DataXceiver.java:writeBlock:738 - Receiving BP-1206764359-192.168.122.101-1568550288953:blk_1073741845_1021 src: /192.168.122.227:42354 dest: /192.168.122.235:9866
+2019-09-15 08:31:13,002 INFO  datanode.DataNode DataXceiver.java:writeBlock:738 - Receiving BP-1206764359-192.168.122.101-1568550288953:blk_1073741847_1023 src: /192.168.122.227:42358 dest: /192.168.122.235:9866
+2019-09-15 08:31:14,265 INFO  datanode.DataNode DataXceiver.java:writeBlock:738 - Receiving BP-1206764359-192.168.122.101-1568550288953:blk_1073741849_1025 src: /192.168.122.31:37966 dest: /192.168.122.235:9866
+2019-09-15 08:31:15,332 INFO  DataNode.clienttrace BlockReceiver.java:finalizeBlock:1533 - src: /192.168.122.227:42356, dest: /192.168.122.235:9866, bytes: 134217728, op: HDFS_WRITE, cliID: DFSClient_NONMAPREDUCE_-1630996388_1, offset: 0, srvID: 9b9a87b1-5931-43c9-a4b5-54abd19589c9, blockid: BP-1206764359-192.168.122.101-1568550288953:blk_1073741846_1022, duration(ns): 2907317463
+2019-09-15 08:31:15,333 INFO  datanode.DataNode BlockReceiver.java:run:1506 - PacketResponder: BP-1206764359-192.168.122.101-1568550288953:blk_1073741846_1022, type=HAS_DOWNSTREAM_IN_PIPELINE, downstreams=2:[192.168.122.153:9866, 192.168.122.31:9866] terminating
+2019-09-15 08:31:15,925 INFO  DataNode.clienttrace BlockReceiver.java:finalizeBlock:1533 - src: /192.168.122.227:42354, dest: /192.168.122.235:9866, bytes: 134217728, op: HDFS_WRITE, cliID: DFSClient_NONMAPREDUCE_-50515134_1, offset: 0, srvID: 9b9a87b1-5931-43c9-a4b5-54abd19589c9, blockid: BP-1206764359-192.168.122.101-1568550288953:blk_1073741845_1021, duration(ns): 3480447935
+2019-09-15 08:31:15,925 INFO  datanode.DataNode BlockReceiver.java:run:1506 - PacketResponder: BP-1206764359-192.168.122.101-1568550288953:blk_1073741845_1021, type=HAS_DOWNSTREAM_IN_PIPELINE, downstreams=2:[192.168.122.31:9866, 192.168.122.153:9866] terminating
+2019-09-15 08:31:21,736 WARN  datanode.DataNode BlockReceiver.java:receivePacket:733 - Slow BlockReceiver write data to disk cost:5397ms (threshold=300ms), volume=file:/root/hdfs-root/data/, blockId=1073741849
+2019-09-15 08:31:21,739 WARN  datanode.DataNode BlockReceiver.java:receivePacket:733 - Slow BlockReceiver write data to disk cost:5425ms (threshold=300ms), volume=file:/root/hdfs-root/data/, blockId=1073741847
+2019-09-15 08:31:22,499 INFO  DataNode.clienttrace BlockReceiver.java:finalizeBlock:1533 - src: /192.168.122.227:42358, dest: /192.168.122.235:9866, bytes: 134217728, op: HDFS_WRITE, cliID: DFSClient_NONMAPREDUCE_-994600772_1, offset: 0, srvID: 9b9a87b1-5931-43c9-a4b5-54abd19589c9, blockid: BP-1206764359-192.168.122.101-1568550288953:blk_1073741847_1023, duration(ns): 9486333807
+2019-09-15 08:31:22,500 INFO  datanode.DataNode BlockReceiver.java:run:1506 - PacketResponder: BP-1206764359-192.168.122.101-1568550288953:blk_1073741847_1023, type=HAS_DOWNSTREAM_IN_PIPELINE, downstreams=2:[192.168.122.50:9866, 192.168.122.31:9866] terminating
+2019-09-15 08:31:22,699 INFO  DataNode.clienttrace BlockReceiver.java:finalizeBlock:1533 - src: /192.168.122.31:37966, dest: /192.168.122.235:9866, bytes: 134217728, op: HDFS_WRITE, cliID: DFSClient_NONMAPREDUCE_1834962223_1, offset: 0, srvID: 9b9a87b1-5931-43c9-a4b5-54abd19589c9, blockid: BP-1206764359-192.168.122.101-1568550288953:blk_1073741849_1025, duration(ns): 8431021798
+2019-09-15 08:31:22,700 INFO  datanode.DataNode BlockReceiver.java:run:1506 - PacketResponder: BP-1206764359-192.168.122.101-1568550288953:blk_1073741849_1025, type=LAST_IN_PIPELINE terminating
+2019-09-15 08:31:47,093 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:deleteAsync:225 - Scheduling blk_1073741845_1021 replica FinalizedReplica, blk_1073741845_1021, FINALIZED
+  getNumBytes()     = 134217728
+  getBytesOnDisk()  = 134217728
+  getVisibleLength()= 134217728
+  getVolume()       = /root/hdfs-root/data
+  getBlockURI()     = file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741845 for deletion
+2019-09-15 08:31:47,099 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:deleteAsync:225 - Scheduling blk_1073741846_1022 replica FinalizedReplica, blk_1073741846_1022, FINALIZED
+  getNumBytes()     = 134217728
+  getBytesOnDisk()  = 134217728
+  getVisibleLength()= 134217728
+  getVolume()       = /root/hdfs-root/data
+  getBlockURI()     = file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741846 for deletion
+2019-09-15 08:31:47,099 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:deleteAsync:225 - Scheduling blk_1073741847_1023 replica FinalizedReplica, blk_1073741847_1023, FINALIZED
+  getNumBytes()     = 134217728
+  getBytesOnDisk()  = 134217728
+  getVisibleLength()= 134217728
+  getVolume()       = /root/hdfs-root/data
+  getBlockURI()     = file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741847 for deletion
+2019-09-15 08:31:47,100 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:deleteAsync:225 - Scheduling blk_1073741849_1025 replica FinalizedReplica, blk_1073741849_1025, FINALIZED
+  getNumBytes()     = 134217728
+  getBytesOnDisk()  = 134217728
+  getVisibleLength()= 134217728
+  getVolume()       = /root/hdfs-root/data
+  getBlockURI()     = file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741849 for deletion
+2019-09-15 08:31:47,132 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:run:333 - Deleted BP-1206764359-192.168.122.101-1568550288953 blk_1073741845_1021 URI file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741845
+2019-09-15 08:31:47,159 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:run:333 - Deleted BP-1206764359-192.168.122.101-1568550288953 blk_1073741846_1022 URI file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741846
+2019-09-15 08:31:47,185 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:run:333 - Deleted BP-1206764359-192.168.122.101-1568550288953 blk_1073741847_1023 URI file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741847
+2019-09-15 08:31:47,205 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:run:333 - Deleted BP-1206764359-192.168.122.101-1568550288953 blk_1073741849_1025 URI file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741849
+2019-09-15 08:32:01,651 INFO  datanode.DataNode DataXceiver.java:writeBlock:738 - Receiving BP-1206764359-192.168.122.101-1568550288953:blk_1073741850_1026 src: /192.168.122.50:56192 dest: /192.168.122.235:9866
+2019-09-15 08:32:01,827 INFO  datanode.DataNode DataXceiver.java:writeBlock:738 - Receiving BP-1206764359-192.168.122.101-1568550288953:blk_1073741853_1029 src: /192.168.122.50:56196 dest: /192.168.122.235:9866
+2019-09-15 08:32:01,860 INFO  datanode.DataNode DataXceiver.java:writeBlock:738 - Receiving BP-1206764359-192.168.122.101-1568550288953:blk_1073741852_1028 src: /192.168.122.31:37972 dest: /192.168.122.235:9866
+2019-09-15 08:32:02,140 INFO  datanode.DataNode DataXceiver.java:writeBlock:738 - Receiving BP-1206764359-192.168.122.101-1568550288953:blk_1073741854_1030 src: /192.168.122.50:56198 dest: /192.168.122.235:9866
+2019-09-15 08:32:04,158 INFO  DataNode.clienttrace BlockReceiver.java:finalizeBlock:1533 - src: /192.168.122.31:37972, dest: /192.168.122.235:9866, bytes: 134217728, op: HDFS_WRITE, cliID: DFSClient_NONMAPREDUCE_-1058128766_1, offset: 0, srvID: 9b9a87b1-5931-43c9-a4b5-54abd19589c9, blockid: BP-1206764359-192.168.122.101-1568550288953:blk_1073741852_1028, duration(ns): 2286557144
+2019-09-15 08:32:04,158 INFO  datanode.DataNode BlockReceiver.java:run:1506 - PacketResponder: BP-1206764359-192.168.122.101-1568550288953:blk_1073741852_1028, type=HAS_DOWNSTREAM_IN_PIPELINE, downstreams=1:[192.168.122.153:9866] terminating
+2019-09-15 08:32:04,846 INFO  DataNode.clienttrace BlockReceiver.java:finalizeBlock:1533 - src: /192.168.122.50:56192, dest: /192.168.122.235:9866, bytes: 134217728, op: HDFS_WRITE, cliID: DFSClient_NONMAPREDUCE_-1594233176_1, offset: 0, srvID: 9b9a87b1-5931-43c9-a4b5-54abd19589c9, blockid: BP-1206764359-192.168.122.101-1568550288953:blk_1073741850_1026, duration(ns): 3192058535
+2019-09-15 08:32:04,847 INFO  datanode.DataNode BlockReceiver.java:run:1506 - PacketResponder: BP-1206764359-192.168.122.101-1568550288953:blk_1073741850_1026, type=LAST_IN_PIPELINE terminating
+2019-09-15 08:32:05,352 INFO  DataNode.clienttrace BlockReceiver.java:finalizeBlock:1533 - src: /192.168.122.50:56198, dest: /192.168.122.235:9866, bytes: 134217728, op: HDFS_WRITE, cliID: DFSClient_NONMAPREDUCE_-82273464_1, offset: 0, srvID: 9b9a87b1-5931-43c9-a4b5-54abd19589c9, blockid: BP-1206764359-192.168.122.101-1568550288953:blk_1073741854_1030, duration(ns): 3204025116
+2019-09-15 08:32:05,353 INFO  datanode.DataNode BlockReceiver.java:run:1506 - PacketResponder: BP-1206764359-192.168.122.101-1568550288953:blk_1073741854_1030, type=HAS_DOWNSTREAM_IN_PIPELINE, downstreams=1:[192.168.122.31:9866] terminating
+2019-09-15 08:32:07,118 INFO  DataNode.clienttrace BlockReceiver.java:finalizeBlock:1533 - src: /192.168.122.50:56196, dest: /192.168.122.235:9866, bytes: 134217728, op: HDFS_WRITE, cliID: DFSClient_NONMAPREDUCE_-439724091_1, offset: 0, srvID: 9b9a87b1-5931-43c9-a4b5-54abd19589c9, blockid: BP-1206764359-192.168.122.101-1568550288953:blk_1073741853_1029, duration(ns): 5280701839
+2019-09-15 08:32:07,118 INFO  datanode.DataNode BlockReceiver.java:run:1506 - PacketResponder: BP-1206764359-192.168.122.101-1568550288953:blk_1073741853_1029, type=HAS_DOWNSTREAM_IN_PIPELINE, downstreams=1:[192.168.122.153:9866] terminating
+2019-09-15 08:32:35,095 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:deleteAsync:225 - Scheduling blk_1073741850_1026 replica FinalizedReplica, blk_1073741850_1026, FINALIZED
+  getNumBytes()     = 134217728
+  getBytesOnDisk()  = 134217728
+  getVisibleLength()= 134217728
+  getVolume()       = /root/hdfs-root/data
+  getBlockURI()     = file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741850 for deletion
+2019-09-15 08:32:35,096 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:deleteAsync:225 - Scheduling blk_1073741852_1028 replica FinalizedReplica, blk_1073741852_1028, FINALIZED
+  getNumBytes()     = 134217728
+  getBytesOnDisk()  = 134217728
+  getVisibleLength()= 134217728
+  getVolume()       = /root/hdfs-root/data
+  getBlockURI()     = file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741852 for deletion
+2019-09-15 08:32:35,096 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:deleteAsync:225 - Scheduling blk_1073741853_1029 replica FinalizedReplica, blk_1073741853_1029, FINALIZED
+  getNumBytes()     = 134217728
+  getBytesOnDisk()  = 134217728
+  getVisibleLength()= 134217728
+  getVolume()       = /root/hdfs-root/data
+  getBlockURI()     = file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741853 for deletion
+2019-09-15 08:32:35,097 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:deleteAsync:225 - Scheduling blk_1073741854_1030 replica FinalizedReplica, blk_1073741854_1030, FINALIZED
+  getNumBytes()     = 134217728
+  getBytesOnDisk()  = 134217728
+  getVisibleLength()= 134217728
+  getVolume()       = /root/hdfs-root/data
+  getBlockURI()     = file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741854 for deletion
+2019-09-15 08:32:35,130 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:run:333 - Deleted BP-1206764359-192.168.122.101-1568550288953 blk_1073741850_1026 URI file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741850
+2019-09-15 08:32:35,159 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:run:333 - Deleted BP-1206764359-192.168.122.101-1568550288953 blk_1073741852_1028 URI file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741852
+2019-09-15 08:32:35,185 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:run:333 - Deleted BP-1206764359-192.168.122.101-1568550288953 blk_1073741853_1029 URI file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741853
+2019-09-15 08:32:35,207 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:run:333 - Deleted BP-1206764359-192.168.122.101-1568550288953 blk_1073741854_1030 URI file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741854
+2019-09-15 08:32:52,222 INFO  datanode.DataNode DataXceiver.java:writeBlock:738 - Receiving BP-1206764359-192.168.122.101-1568550288953:blk_1073741856_1032 src: /192.168.122.31:37982 dest: /192.168.122.235:9866
+2019-09-15 08:33:06,778 INFO  DataNode.clienttrace BlockReceiver.java:finalizeBlock:1533 - src: /192.168.122.31:37982, dest: /192.168.122.235:9866, bytes: 134217728, op: HDFS_WRITE, cliID: DFSClient_NONMAPREDUCE_562879091_1, offset: 0, srvID: 9b9a87b1-5931-43c9-a4b5-54abd19589c9, blockid: BP-1206764359-192.168.122.101-1568550288953:blk_1073741856_1032, duration(ns): 14548167624
+2019-09-15 08:33:06,779 INFO  datanode.DataNode BlockReceiver.java:run:1506 - PacketResponder: BP-1206764359-192.168.122.101-1568550288953:blk_1073741856_1032, type=HAS_DOWNSTREAM_IN_PIPELINE, downstreams=1:[192.168.122.50:9866] terminating
+2019-09-15 08:33:35,870 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:deleteAsync:225 - Scheduling blk_1073741856_1032 replica FinalizedReplica, blk_1073741856_1032, FINALIZED
+  getNumBytes()     = 134217728
+  getBytesOnDisk()  = 134217728
+  getVisibleLength()= 134217728
+  getVolume()       = /root/hdfs-root/data
+  getBlockURI()     = file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741856 for deletion
+2019-09-15 08:33:35,905 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:run:333 - Deleted BP-1206764359-192.168.122.101-1568550288953 blk_1073741856_1032 URI file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741856
+2019-09-15 08:34:00,020 WARN  datanode.DataNode BPServiceActor.java:offerService:728 - IOException in offerService
+java.io.EOFException: End of File Exception between local host is: "node-3-link-0/192.168.122.235"; destination host is: "node-0-link-0":8020; : java.io.EOFException; For more details see:  http://wiki.apache.org/hadoop/EOFException
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.apache.hadoop.net.NetUtils.wrapWithMessage(NetUtils.java:831)
+	at org.apache.hadoop.net.NetUtils.wrapException(NetUtils.java:789)
+	at org.apache.hadoop.ipc.Client.getRpcResponse(Client.java:1515)
+	at org.apache.hadoop.ipc.Client.call(Client.java:1457)
+	at org.apache.hadoop.ipc.Client.call(Client.java:1367)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Invoker.invoke(ProtobufRpcEngine.java:228)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Invoker.invoke(ProtobufRpcEngine.java:116)
+	at com.sun.proxy.$Proxy19.sendHeartbeat(Unknown Source)
+	at org.apache.hadoop.hdfs.protocolPB.DatanodeProtocolClientSideTranslatorPB.sendHeartbeat(DatanodeProtocolClientSideTranslatorPB.java:166)
+	at org.apache.hadoop.hdfs.server.datanode.BPServiceActor.sendHeartBeat(BPServiceActor.java:514)
+	at org.apache.hadoop.hdfs.server.datanode.BPServiceActor.offerService(BPServiceActor.java:645)
+	at org.apache.hadoop.hdfs.server.datanode.BPServiceActor.run(BPServiceActor.java:842)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.io.EOFException
+	at java.io.DataInputStream.readInt(DataInputStream.java:392)
+	at org.apache.hadoop.ipc.Client$IpcStreams.readResponse(Client.java:1816)
+	at org.apache.hadoop.ipc.Client$Connection.receiveRpcResponse(Client.java:1173)
+	at org.apache.hadoop.ipc.Client$Connection.run(Client.java:1069)
+2019-09-15 08:34:04,020 INFO  ipc.Client Client.java:handleConnectionFailure:948 - Retrying connect to server: node-0-link-0/192.168.122.101:8020. Already tried 0 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+2019-09-15 08:34:04,316 INFO  datanode.DataNode BPOfferService.java:processCommandFromActor:672 - DatanodeCommand action : DNA_REGISTER from node-0-link-0/192.168.122.101:8020 with standby state
+2019-09-15 08:34:04,332 INFO  datanode.DataNode BPServiceActor.java:register:764 - Block pool BP-1206764359-192.168.122.101-1568550288953 (Datanode Uuid 9b9a87b1-5931-43c9-a4b5-54abd19589c9) service to node-0-link-0/192.168.122.101:8020 beginning handshake with NN
+2019-09-15 08:34:04,367 INFO  datanode.DataNode BPServiceActor.java:register:783 - Block pool Block pool BP-1206764359-192.168.122.101-1568550288953 (Datanode Uuid 9b9a87b1-5931-43c9-a4b5-54abd19589c9) service to node-0-link-0/192.168.122.101:8020 successfully registered with NN
+2019-09-15 08:34:04,406 INFO  datanode.DataNode BPServiceActor.java:blockReport:422 - Successfully sent block report 0x4415437481b83959,  containing 1 storage report(s), of which we sent 1. The reports had 3 total blocks and used 1 RPC(s). This took 0 msec to generate and 31 msecs for RPC and NN processing. Got back no commands.
+2019-09-15 08:34:17,870 INFO  datanode.DataNode BPOfferService.java:updateActorStatesFromHeartbeat:596 - Namenode Block pool BP-1206764359-192.168.122.101-1568550288953 (Datanode Uuid 9b9a87b1-5931-43c9-a4b5-54abd19589c9) service to node-1-link-0/192.168.122.148:8020 relinquishing ACTIVE state with txid=250
+2019-09-15 08:34:19,369 INFO  datanode.DataNode BPOfferService.java:updateActorStatesFromHeartbeat:576 - Namenode Block pool BP-1206764359-192.168.122.101-1568550288953 (Datanode Uuid 9b9a87b1-5931-43c9-a4b5-54abd19589c9) service to node-0-link-0/192.168.122.101:8020 trying to claim ACTIVE state with txid=251
+2019-09-15 08:34:19,370 INFO  datanode.DataNode BPOfferService.java:updateActorStatesFromHeartbeat:588 - Acknowledging ACTIVE Namenode Block pool BP-1206764359-192.168.122.101-1568550288953 (Datanode Uuid 9b9a87b1-5931-43c9-a4b5-54abd19589c9) service to node-0-link-0/192.168.122.101:8020
+2019-09-15 08:34:44,871 WARN  datanode.DataNode BPServiceActor.java:offerService:728 - IOException in offerService
+java.io.EOFException: End of File Exception between local host is: "node-3-link-0/192.168.122.235"; destination host is: "node-1-link-0":8020; : java.io.EOFException; For more details see:  http://wiki.apache.org/hadoop/EOFException
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.apache.hadoop.net.NetUtils.wrapWithMessage(NetUtils.java:831)
+	at org.apache.hadoop.net.NetUtils.wrapException(NetUtils.java:789)
+	at org.apache.hadoop.ipc.Client.getRpcResponse(Client.java:1515)
+	at org.apache.hadoop.ipc.Client.call(Client.java:1457)
+	at org.apache.hadoop.ipc.Client.call(Client.java:1367)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Invoker.invoke(ProtobufRpcEngine.java:228)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Invoker.invoke(ProtobufRpcEngine.java:116)
+	at com.sun.proxy.$Proxy19.sendHeartbeat(Unknown Source)
+	at org.apache.hadoop.hdfs.protocolPB.DatanodeProtocolClientSideTranslatorPB.sendHeartbeat(DatanodeProtocolClientSideTranslatorPB.java:166)
+	at org.apache.hadoop.hdfs.server.datanode.BPServiceActor.sendHeartBeat(BPServiceActor.java:514)
+	at org.apache.hadoop.hdfs.server.datanode.BPServiceActor.offerService(BPServiceActor.java:645)
+	at org.apache.hadoop.hdfs.server.datanode.BPServiceActor.run(BPServiceActor.java:842)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.io.EOFException
+	at java.io.DataInputStream.readInt(DataInputStream.java:392)
+	at org.apache.hadoop.ipc.Client$IpcStreams.readResponse(Client.java:1816)
+	at org.apache.hadoop.ipc.Client$Connection.receiveRpcResponse(Client.java:1173)
+	at org.apache.hadoop.ipc.Client$Connection.run(Client.java:1069)
+2019-09-15 08:34:48,023 INFO  datanode.DataNode BPOfferService.java:processCommandFromActor:672 - DatanodeCommand action : DNA_REGISTER from node-1-link-0/192.168.122.148:8020 with standby state
+2019-09-15 08:34:48,032 INFO  datanode.DataNode BPServiceActor.java:register:764 - Block pool BP-1206764359-192.168.122.101-1568550288953 (Datanode Uuid 9b9a87b1-5931-43c9-a4b5-54abd19589c9) service to node-1-link-0/192.168.122.148:8020 beginning handshake with NN
+2019-09-15 08:34:48,050 INFO  datanode.DataNode BPServiceActor.java:register:783 - Block pool Block pool BP-1206764359-192.168.122.101-1568550288953 (Datanode Uuid 9b9a87b1-5931-43c9-a4b5-54abd19589c9) service to node-1-link-0/192.168.122.148:8020 successfully registered with NN
+2019-09-15 08:34:48,078 INFO  datanode.DataNode BPServiceActor.java:blockReport:422 - Successfully sent block report 0x6dca2a01f6c3bac6,  containing 1 storage report(s), of which we sent 1. The reports had 3 total blocks and used 1 RPC(s). This took 0 msec to generate and 23 msecs for RPC and NN processing. Got back no commands.
+2019-09-15 08:35:15,227 INFO  datanode.DataNode DataXceiver.java:writeBlock:738 - Receiving BP-1206764359-192.168.122.101-1568550288953:blk_1073741860_1036 src: /192.168.122.227:42644 dest: /192.168.122.235:9866
+2019-09-15 08:35:16,103 INFO  datanode.DataNode DataXceiver.java:writeBlock:738 - Receiving BP-1206764359-192.168.122.101-1568550288953:blk_1073741861_1037 src: /192.168.122.50:56220 dest: /192.168.122.235:9866
+2019-09-15 08:35:17,296 INFO  datanode.DataNode DataXceiver.java:writeBlock:738 - Receiving BP-1206764359-192.168.122.101-1568550288953:blk_1073741864_1040 src: /192.168.122.227:42658 dest: /192.168.122.235:9866
+2019-09-15 08:35:17,385 INFO  datanode.DataNode DataXceiver.java:writeBlock:738 - Receiving BP-1206764359-192.168.122.101-1568550288953:blk_1073741863_1039 src: /192.168.122.227:42656 dest: /192.168.122.235:9866
+2019-09-15 08:35:18,055 INFO  DataNode.clienttrace BlockReceiver.java:finalizeBlock:1533 - src: /192.168.122.227:42644, dest: /192.168.122.235:9866, bytes: 134217728, op: HDFS_WRITE, cliID: DFSClient_NONMAPREDUCE_-1051985930_1, offset: 0, srvID: 9b9a87b1-5931-43c9-a4b5-54abd19589c9, blockid: BP-1206764359-192.168.122.101-1568550288953:blk_1073741860_1036, duration(ns): 2816381690
+2019-09-15 08:35:18,056 INFO  datanode.DataNode BlockReceiver.java:run:1506 - PacketResponder: BP-1206764359-192.168.122.101-1568550288953:blk_1073741860_1036, type=HAS_DOWNSTREAM_IN_PIPELINE, downstreams=2:[192.168.122.50:9866, 192.168.122.153:9866] terminating
+2019-09-15 08:35:18,158 INFO  DataNode.clienttrace BlockReceiver.java:finalizeBlock:1533 - src: /192.168.122.50:56220, dest: /192.168.122.235:9866, bytes: 134217728, op: HDFS_WRITE, cliID: DFSClient_NONMAPREDUCE_-817224991_1, offset: 0, srvID: 9b9a87b1-5931-43c9-a4b5-54abd19589c9, blockid: BP-1206764359-192.168.122.101-1568550288953:blk_1073741861_1037, duration(ns): 2052612714
+2019-09-15 08:35:18,158 INFO  datanode.DataNode BlockReceiver.java:run:1506 - PacketResponder: BP-1206764359-192.168.122.101-1568550288953:blk_1073741861_1037, type=LAST_IN_PIPELINE terminating
+2019-09-15 08:35:22,256 INFO  DataNode.clienttrace BlockReceiver.java:finalizeBlock:1533 - src: /192.168.122.227:42656, dest: /192.168.122.235:9866, bytes: 134217728, op: HDFS_WRITE, cliID: DFSClient_NONMAPREDUCE_259325191_1, offset: 0, srvID: 9b9a87b1-5931-43c9-a4b5-54abd19589c9, blockid: BP-1206764359-192.168.122.101-1568550288953:blk_1073741863_1039, duration(ns): 4853728919
+2019-09-15 08:35:22,256 INFO  datanode.DataNode BlockReceiver.java:run:1506 - PacketResponder: BP-1206764359-192.168.122.101-1568550288953:blk_1073741863_1039, type=HAS_DOWNSTREAM_IN_PIPELINE, downstreams=2:[192.168.122.31:9866, 192.168.122.153:9866] terminating
+2019-09-15 08:35:32,627 INFO  DataNode.clienttrace BlockReceiver.java:finalizeBlock:1533 - src: /192.168.122.227:42658, dest: /192.168.122.235:9866, bytes: 134217728, op: HDFS_WRITE, cliID: DFSClient_NONMAPREDUCE_245175727_1, offset: 0, srvID: 9b9a87b1-5931-43c9-a4b5-54abd19589c9, blockid: BP-1206764359-192.168.122.101-1568550288953:blk_1073741864_1040, duration(ns): 15315535124
+2019-09-15 08:35:32,628 INFO  datanode.DataNode BlockReceiver.java:run:1506 - PacketResponder: BP-1206764359-192.168.122.101-1568550288953:blk_1073741864_1040, type=HAS_DOWNSTREAM_IN_PIPELINE, downstreams=2:[192.168.122.31:9866, 192.168.122.50:9866] terminating
+2019-09-15 08:35:46,385 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:deleteAsync:225 - Scheduling blk_1073741860_1036 replica FinalizedReplica, blk_1073741860_1036, FINALIZED
+  getNumBytes()     = 134217728
+  getBytesOnDisk()  = 134217728
+  getVisibleLength()= 134217728
+  getVolume()       = /root/hdfs-root/data
+  getBlockURI()     = file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741860 for deletion
+2019-09-15 08:35:46,386 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:deleteAsync:225 - Scheduling blk_1073741861_1037 replica FinalizedReplica, blk_1073741861_1037, FINALIZED
+  getNumBytes()     = 134217728
+  getBytesOnDisk()  = 134217728
+  getVisibleLength()= 134217728
+  getVolume()       = /root/hdfs-root/data
+  getBlockURI()     = file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741861 for deletion
+2019-09-15 08:35:46,386 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:deleteAsync:225 - Scheduling blk_1073741863_1039 replica FinalizedReplica, blk_1073741863_1039, FINALIZED
+  getNumBytes()     = 134217728
+  getBytesOnDisk()  = 134217728
+  getVisibleLength()= 134217728
+  getVolume()       = /root/hdfs-root/data
+  getBlockURI()     = file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741863 for deletion
+2019-09-15 08:35:46,387 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:deleteAsync:225 - Scheduling blk_1073741864_1040 replica FinalizedReplica, blk_1073741864_1040, FINALIZED
+  getNumBytes()     = 134217728
+  getBytesOnDisk()  = 134217728
+  getVisibleLength()= 134217728
+  getVolume()       = /root/hdfs-root/data
+  getBlockURI()     = file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741864 for deletion
+2019-09-15 08:35:46,418 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:run:333 - Deleted BP-1206764359-192.168.122.101-1568550288953 blk_1073741860_1036 URI file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741860
+2019-09-15 08:35:46,445 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:run:333 - Deleted BP-1206764359-192.168.122.101-1568550288953 blk_1073741861_1037 URI file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741861
+2019-09-15 08:35:46,469 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:run:333 - Deleted BP-1206764359-192.168.122.101-1568550288953 blk_1073741863_1039 URI file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741863
+2019-09-15 08:35:46,488 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:run:333 - Deleted BP-1206764359-192.168.122.101-1568550288953 blk_1073741864_1040 URI file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741864
+2019-09-15 08:36:05,791 INFO  datanode.DataNode DataXceiver.java:writeBlock:738 - Receiving BP-1206764359-192.168.122.101-1568550288953:blk_1073741867_1043 src: /192.168.122.31:37998 dest: /192.168.122.235:9866
+2019-09-15 08:36:05,968 INFO  datanode.DataNode DataXceiver.java:writeBlock:738 - Receiving BP-1206764359-192.168.122.101-1568550288953:blk_1073741866_1042 src: /192.168.122.50:56230 dest: /192.168.122.235:9866
+2019-09-15 08:36:06,065 INFO  datanode.DataNode DataXceiver.java:writeBlock:738 - Receiving BP-1206764359-192.168.122.101-1568550288953:blk_1073741868_1044 src: /192.168.122.153:49452 dest: /192.168.122.235:9866
+2019-09-15 08:36:06,113 INFO  datanode.DataNode DataXceiver.java:writeBlock:738 - Receiving BP-1206764359-192.168.122.101-1568550288953:blk_1073741869_1045 src: /192.168.122.50:56232 dest: /192.168.122.235:9866
+2019-09-15 08:36:09,253 WARN  datanode.DataNode BlockReceiver.java:receivePacket:733 - Slow BlockReceiver write data to disk cost:1688ms (threshold=300ms), volume=file:/root/hdfs-root/data/, blockId=1073741867
+2019-09-15 08:36:09,267 INFO  DataNode.clienttrace BlockReceiver.java:finalizeBlock:1533 - src: /192.168.122.50:56230, dest: /192.168.122.235:9866, bytes: 134217728, op: HDFS_WRITE, cliID: DFSClient_NONMAPREDUCE_1099498751_1, offset: 0, srvID: 9b9a87b1-5931-43c9-a4b5-54abd19589c9, blockid: BP-1206764359-192.168.122.101-1568550288953:blk_1073741866_1042, duration(ns): 3286856868
+2019-09-15 08:36:09,268 INFO  datanode.DataNode BlockReceiver.java:run:1506 - PacketResponder: BP-1206764359-192.168.122.101-1568550288953:blk_1073741866_1042, type=HAS_DOWNSTREAM_IN_PIPELINE, downstreams=1:[192.168.122.153:9866] terminating
+2019-09-15 08:36:09,910 INFO  DataNode.clienttrace BlockReceiver.java:finalizeBlock:1533 - src: /192.168.122.153:49452, dest: /192.168.122.235:9866, bytes: 134217728, op: HDFS_WRITE, cliID: DFSClient_NONMAPREDUCE_-1000147198_1, offset: 0, srvID: 9b9a87b1-5931-43c9-a4b5-54abd19589c9, blockid: BP-1206764359-192.168.122.101-1568550288953:blk_1073741868_1044, duration(ns): 3841105549
+2019-09-15 08:36:09,911 INFO  datanode.DataNode BlockReceiver.java:run:1506 - PacketResponder: BP-1206764359-192.168.122.101-1568550288953:blk_1073741868_1044, type=LAST_IN_PIPELINE terminating
+2019-09-15 08:36:13,444 INFO  DataNode.clienttrace BlockReceiver.java:finalizeBlock:1533 - src: /192.168.122.50:56232, dest: /192.168.122.235:9866, bytes: 134217728, op: HDFS_WRITE, cliID: DFSClient_NONMAPREDUCE_1879654551_1, offset: 0, srvID: 9b9a87b1-5931-43c9-a4b5-54abd19589c9, blockid: BP-1206764359-192.168.122.101-1568550288953:blk_1073741869_1045, duration(ns): 7320057704
+2019-09-15 08:36:13,444 INFO  datanode.DataNode BlockReceiver.java:run:1506 - PacketResponder: BP-1206764359-192.168.122.101-1568550288953:blk_1073741869_1045, type=HAS_DOWNSTREAM_IN_PIPELINE, downstreams=1:[192.168.122.153:9866] terminating
+2019-09-15 08:36:16,363 INFO  DataNode.clienttrace BlockReceiver.java:finalizeBlock:1533 - src: /192.168.122.31:37998, dest: /192.168.122.235:9866, bytes: 134217728, op: HDFS_WRITE, cliID: DFSClient_NONMAPREDUCE_-1690208400_1, offset: 0, srvID: 9b9a87b1-5931-43c9-a4b5-54abd19589c9, blockid: BP-1206764359-192.168.122.101-1568550288953:blk_1073741867_1043, duration(ns): 10569360877
+2019-09-15 08:36:16,363 INFO  datanode.DataNode BlockReceiver.java:run:1506 - PacketResponder: BP-1206764359-192.168.122.101-1568550288953:blk_1073741867_1043, type=LAST_IN_PIPELINE terminating
+2019-09-15 08:36:34,378 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:deleteAsync:225 - Scheduling blk_1073741866_1042 replica FinalizedReplica, blk_1073741866_1042, FINALIZED
+  getNumBytes()     = 134217728
+  getBytesOnDisk()  = 134217728
+  getVisibleLength()= 134217728
+  getVolume()       = /root/hdfs-root/data
+  getBlockURI()     = file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741866 for deletion
+2019-09-15 08:36:34,381 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:deleteAsync:225 - Scheduling blk_1073741867_1043 replica FinalizedReplica, blk_1073741867_1043, FINALIZED
+  getNumBytes()     = 134217728
+  getBytesOnDisk()  = 134217728
+  getVisibleLength()= 134217728
+  getVolume()       = /root/hdfs-root/data
+  getBlockURI()     = file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741867 for deletion
+2019-09-15 08:36:34,381 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:deleteAsync:225 - Scheduling blk_1073741868_1044 replica FinalizedReplica, blk_1073741868_1044, FINALIZED
+  getNumBytes()     = 134217728
+  getBytesOnDisk()  = 134217728
+  getVisibleLength()= 134217728
+  getVolume()       = /root/hdfs-root/data
+  getBlockURI()     = file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741868 for deletion
+2019-09-15 08:36:34,382 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:deleteAsync:225 - Scheduling blk_1073741869_1045 replica FinalizedReplica, blk_1073741869_1045, FINALIZED
+  getNumBytes()     = 134217728
+  getBytesOnDisk()  = 134217728
+  getVisibleLength()= 134217728
+  getVolume()       = /root/hdfs-root/data
+  getBlockURI()     = file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741869 for deletion
+2019-09-15 08:36:34,412 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:run:333 - Deleted BP-1206764359-192.168.122.101-1568550288953 blk_1073741866_1042 URI file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741866
+2019-09-15 08:36:34,441 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:run:333 - Deleted BP-1206764359-192.168.122.101-1568550288953 blk_1073741867_1043 URI file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741867
+2019-09-15 08:36:34,466 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:run:333 - Deleted BP-1206764359-192.168.122.101-1568550288953 blk_1073741868_1044 URI file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741868
+2019-09-15 08:36:34,489 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:run:333 - Deleted BP-1206764359-192.168.122.101-1568550288953 blk_1073741869_1045 URI file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741869
+2019-09-15 08:36:52,779 INFO  datanode.DataNode DataXceiver.java:writeBlock:738 - Receiving BP-1206764359-192.168.122.101-1568550288953:blk_1073741870_1046 src: /192.168.122.50:56234 dest: /192.168.122.235:9866
+2019-09-15 08:36:53,111 INFO  datanode.DataNode DataXceiver.java:writeBlock:738 - Receiving BP-1206764359-192.168.122.101-1568550288953:blk_1073741871_1047 src: /192.168.122.227:42770 dest: /192.168.122.235:9866
+2019-09-15 08:36:53,785 INFO  datanode.DataNode DataXceiver.java:writeBlock:738 - Receiving BP-1206764359-192.168.122.101-1568550288953:blk_1073741872_1048 src: /192.168.122.31:38008 dest: /192.168.122.235:9866
+2019-09-15 08:36:53,941 INFO  datanode.DataNode DataXceiver.java:writeBlock:738 - Receiving BP-1206764359-192.168.122.101-1568550288953:blk_1073741873_1049 src: /192.168.122.31:38010 dest: /192.168.122.235:9866
+2019-09-15 08:36:55,798 INFO  DataNode.clienttrace BlockReceiver.java:finalizeBlock:1533 - src: /192.168.122.50:56234, dest: /192.168.122.235:9866, bytes: 134217728, op: HDFS_WRITE, cliID: DFSClient_NONMAPREDUCE_1797720096_1, offset: 0, srvID: 9b9a87b1-5931-43c9-a4b5-54abd19589c9, blockid: BP-1206764359-192.168.122.101-1568550288953:blk_1073741870_1046, duration(ns): 3016163558
+2019-09-15 08:36:55,799 INFO  datanode.DataNode BlockReceiver.java:run:1506 - PacketResponder: BP-1206764359-192.168.122.101-1568550288953:blk_1073741870_1046, type=LAST_IN_PIPELINE terminating
+2019-09-15 08:36:59,328 INFO  DataNode.clienttrace BlockReceiver.java:finalizeBlock:1533 - src: /192.168.122.227:42770, dest: /192.168.122.235:9866, bytes: 134217728, op: HDFS_WRITE, cliID: DFSClient_NONMAPREDUCE_-527898891_1, offset: 0, srvID: 9b9a87b1-5931-43c9-a4b5-54abd19589c9, blockid: BP-1206764359-192.168.122.101-1568550288953:blk_1073741871_1047, duration(ns): 6197241047
+2019-09-15 08:36:59,329 INFO  datanode.DataNode BlockReceiver.java:run:1506 - PacketResponder: BP-1206764359-192.168.122.101-1568550288953:blk_1073741871_1047, type=HAS_DOWNSTREAM_IN_PIPELINE, downstreams=2:[192.168.122.31:9866, 192.168.122.50:9866] terminating
+2019-09-15 08:37:02,625 WARN  datanode.DataNode BlockReceiver.java:receivePacket:733 - Slow BlockReceiver write data to disk cost:400ms (threshold=300ms), volume=file:/root/hdfs-root/data/, blockId=1073741872
+2019-09-15 08:37:03,421 WARN  datanode.DataNode BlockReceiver.java:receivePacket:733 - Slow BlockReceiver write data to disk cost:800ms (threshold=300ms), volume=file:/root/hdfs-root/data/, blockId=1073741873
+2019-09-15 08:37:03,425 WARN  datanode.DataNode BlockReceiver.java:receivePacket:733 - Slow BlockReceiver write data to disk cost:800ms (threshold=300ms), volume=file:/root/hdfs-root/data/, blockId=1073741872
+2019-09-15 08:37:03,456 INFO  DataNode.clienttrace BlockReceiver.java:finalizeBlock:1533 - src: /192.168.122.31:38008, dest: /192.168.122.235:9866, bytes: 134217728, op: HDFS_WRITE, cliID: DFSClient_NONMAPREDUCE_-1492273378_1, offset: 0, srvID: 9b9a87b1-5931-43c9-a4b5-54abd19589c9, blockid: BP-1206764359-192.168.122.101-1568550288953:blk_1073741872_1048, duration(ns): 9656254679
+2019-09-15 08:37:03,456 INFO  datanode.DataNode BlockReceiver.java:run:1506 - PacketResponder: BP-1206764359-192.168.122.101-1568550288953:blk_1073741872_1048, type=HAS_DOWNSTREAM_IN_PIPELINE, downstreams=1:[192.168.122.50:9866] terminating
+2019-09-15 08:37:03,959 INFO  DataNode.clienttrace BlockReceiver.java:finalizeBlock:1533 - src: /192.168.122.31:38010, dest: /192.168.122.235:9866, bytes: 134217728, op: HDFS_WRITE, cliID: DFSClient_NONMAPREDUCE_-821199362_1, offset: 0, srvID: 9b9a87b1-5931-43c9-a4b5-54abd19589c9, blockid: BP-1206764359-192.168.122.101-1568550288953:blk_1073741873_1049, duration(ns): 10007322446
+2019-09-15 08:37:03,960 INFO  datanode.DataNode BlockReceiver.java:run:1506 - PacketResponder: BP-1206764359-192.168.122.101-1568550288953:blk_1073741873_1049, type=HAS_DOWNSTREAM_IN_PIPELINE, downstreams=1:[192.168.122.153:9866] terminating
+2019-09-15 08:37:28,380 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:deleteAsync:225 - Scheduling blk_1073741872_1048 replica FinalizedReplica, blk_1073741872_1048, FINALIZED
+  getNumBytes()     = 134217728
+  getBytesOnDisk()  = 134217728
+  getVisibleLength()= 134217728
+  getVolume()       = /root/hdfs-root/data
+  getBlockURI()     = file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741872 for deletion
+2019-09-15 08:37:28,381 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:deleteAsync:225 - Scheduling blk_1073741873_1049 replica FinalizedReplica, blk_1073741873_1049, FINALIZED
+  getNumBytes()     = 134217728
+  getBytesOnDisk()  = 134217728
+  getVisibleLength()= 134217728
+  getVolume()       = /root/hdfs-root/data
+  getBlockURI()     = file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741873 for deletion
+2019-09-15 08:37:28,382 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:deleteAsync:225 - Scheduling blk_1073741870_1046 replica FinalizedReplica, blk_1073741870_1046, FINALIZED
+  getNumBytes()     = 134217728
+  getBytesOnDisk()  = 134217728
+  getVisibleLength()= 134217728
+  getVolume()       = /root/hdfs-root/data
+  getBlockURI()     = file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741870 for deletion
+2019-09-15 08:37:28,383 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:deleteAsync:225 - Scheduling blk_1073741871_1047 replica FinalizedReplica, blk_1073741871_1047, FINALIZED
+  getNumBytes()     = 134217728
+  getBytesOnDisk()  = 134217728
+  getVisibleLength()= 134217728
+  getVolume()       = /root/hdfs-root/data
+  getBlockURI()     = file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741871 for deletion
+2019-09-15 08:37:28,414 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:run:333 - Deleted BP-1206764359-192.168.122.101-1568550288953 blk_1073741872_1048 URI file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741872
+2019-09-15 08:37:28,444 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:run:333 - Deleted BP-1206764359-192.168.122.101-1568550288953 blk_1073741873_1049 URI file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741873
+2019-09-15 08:37:28,470 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:run:333 - Deleted BP-1206764359-192.168.122.101-1568550288953 blk_1073741870_1046 URI file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741870
+2019-09-15 08:37:28,493 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:run:333 - Deleted BP-1206764359-192.168.122.101-1568550288953 blk_1073741871_1047 URI file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741871
+2019-09-15 08:37:33,061 WARN  datanode.DataNode BPServiceActor.java:offerService:728 - IOException in offerService
+java.io.EOFException: End of File Exception between local host is: "node-3-link-0/192.168.122.235"; destination host is: "node-1-link-0":8020; : java.io.EOFException; For more details see:  http://wiki.apache.org/hadoop/EOFException
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.apache.hadoop.net.NetUtils.wrapWithMessage(NetUtils.java:831)
+	at org.apache.hadoop.net.NetUtils.wrapException(NetUtils.java:789)
+	at org.apache.hadoop.ipc.Client.getRpcResponse(Client.java:1515)
+	at org.apache.hadoop.ipc.Client.call(Client.java:1457)
+	at org.apache.hadoop.ipc.Client.call(Client.java:1367)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Invoker.invoke(ProtobufRpcEngine.java:228)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Invoker.invoke(ProtobufRpcEngine.java:116)
+	at com.sun.proxy.$Proxy19.sendHeartbeat(Unknown Source)
+	at org.apache.hadoop.hdfs.protocolPB.DatanodeProtocolClientSideTranslatorPB.sendHeartbeat(DatanodeProtocolClientSideTranslatorPB.java:166)
+	at org.apache.hadoop.hdfs.server.datanode.BPServiceActor.sendHeartBeat(BPServiceActor.java:514)
+	at org.apache.hadoop.hdfs.server.datanode.BPServiceActor.offerService(BPServiceActor.java:645)
+	at org.apache.hadoop.hdfs.server.datanode.BPServiceActor.run(BPServiceActor.java:842)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.io.EOFException
+	at java.io.DataInputStream.readInt(DataInputStream.java:392)
+	at org.apache.hadoop.ipc.Client$IpcStreams.readResponse(Client.java:1816)
+	at org.apache.hadoop.ipc.Client$Connection.receiveRpcResponse(Client.java:1173)
+	at org.apache.hadoop.ipc.Client$Connection.run(Client.java:1069)
+2019-09-15 08:37:37,061 INFO  ipc.Client Client.java:handleConnectionFailure:948 - Retrying connect to server: node-1-link-0/192.168.122.148:8020. Already tried 0 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+2019-09-15 08:37:37,066 INFO  datanode.DataNode BPOfferService.java:processCommandFromActor:672 - DatanodeCommand action : DNA_REGISTER from node-1-link-0/192.168.122.148:8020 with standby state
+2019-09-15 08:37:37,069 INFO  datanode.DataNode BPServiceActor.java:register:764 - Block pool BP-1206764359-192.168.122.101-1568550288953 (Datanode Uuid 9b9a87b1-5931-43c9-a4b5-54abd19589c9) service to node-1-link-0/192.168.122.148:8020 beginning handshake with NN
+2019-09-15 08:37:37,076 INFO  datanode.DataNode BPServiceActor.java:register:783 - Block pool Block pool BP-1206764359-192.168.122.101-1568550288953 (Datanode Uuid 9b9a87b1-5931-43c9-a4b5-54abd19589c9) service to node-1-link-0/192.168.122.148:8020 successfully registered with NN
+2019-09-15 08:37:37,085 INFO  datanode.DataNode BPServiceActor.java:blockReport:422 - Successfully sent block report 0x6dca2a01f6c3bac7,  containing 1 storage report(s), of which we sent 1. The reports had 3 total blocks and used 1 RPC(s). This took 0 msec to generate and 6 msecs for RPC and NN processing. Got back no commands.
+2019-09-15 08:37:49,381 INFO  datanode.DataNode BPOfferService.java:updateActorStatesFromHeartbeat:596 - Namenode Block pool BP-1206764359-192.168.122.101-1568550288953 (Datanode Uuid 9b9a87b1-5931-43c9-a4b5-54abd19589c9) service to node-0-link-0/192.168.122.101:8020 relinquishing ACTIVE state with txid=359
+2019-09-15 08:37:52,079 INFO  datanode.DataNode BPOfferService.java:updateActorStatesFromHeartbeat:576 - Namenode Block pool BP-1206764359-192.168.122.101-1568550288953 (Datanode Uuid 9b9a87b1-5931-43c9-a4b5-54abd19589c9) service to node-1-link-0/192.168.122.148:8020 trying to claim ACTIVE state with txid=360
+2019-09-15 08:37:52,080 INFO  datanode.DataNode BPOfferService.java:updateActorStatesFromHeartbeat:588 - Acknowledging ACTIVE Namenode Block pool BP-1206764359-192.168.122.101-1568550288953 (Datanode Uuid 9b9a87b1-5931-43c9-a4b5-54abd19589c9) service to node-1-link-0/192.168.122.148:8020
+2019-09-15 08:38:16,383 WARN  datanode.DataNode BPServiceActor.java:offerService:728 - IOException in offerService
+java.io.EOFException: End of File Exception between local host is: "node-3-link-0/192.168.122.235"; destination host is: "node-0-link-0":8020; : java.io.EOFException; For more details see:  http://wiki.apache.org/hadoop/EOFException
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.apache.hadoop.net.NetUtils.wrapWithMessage(NetUtils.java:831)
+	at org.apache.hadoop.net.NetUtils.wrapException(NetUtils.java:789)
+	at org.apache.hadoop.ipc.Client.getRpcResponse(Client.java:1515)
+	at org.apache.hadoop.ipc.Client.call(Client.java:1457)
+	at org.apache.hadoop.ipc.Client.call(Client.java:1367)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Invoker.invoke(ProtobufRpcEngine.java:228)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Invoker.invoke(ProtobufRpcEngine.java:116)
+	at com.sun.proxy.$Proxy19.sendHeartbeat(Unknown Source)
+	at org.apache.hadoop.hdfs.protocolPB.DatanodeProtocolClientSideTranslatorPB.sendHeartbeat(DatanodeProtocolClientSideTranslatorPB.java:166)
+	at org.apache.hadoop.hdfs.server.datanode.BPServiceActor.sendHeartBeat(BPServiceActor.java:514)
+	at org.apache.hadoop.hdfs.server.datanode.BPServiceActor.offerService(BPServiceActor.java:645)
+	at org.apache.hadoop.hdfs.server.datanode.BPServiceActor.run(BPServiceActor.java:842)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.io.EOFException
+	at java.io.DataInputStream.readInt(DataInputStream.java:392)
+	at org.apache.hadoop.ipc.Client$IpcStreams.readResponse(Client.java:1816)
+	at org.apache.hadoop.ipc.Client$Connection.receiveRpcResponse(Client.java:1173)
+	at org.apache.hadoop.ipc.Client$Connection.run(Client.java:1069)
+2019-09-15 08:38:20,384 INFO  ipc.Client Client.java:handleConnectionFailure:948 - Retrying connect to server: node-0-link-0/192.168.122.101:8020. Already tried 0 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+2019-09-15 08:38:20,389 INFO  datanode.DataNode BPOfferService.java:processCommandFromActor:672 - DatanodeCommand action : DNA_REGISTER from node-0-link-0/192.168.122.101:8020 with standby state
+2019-09-15 08:38:20,393 INFO  datanode.DataNode BPServiceActor.java:register:764 - Block pool BP-1206764359-192.168.122.101-1568550288953 (Datanode Uuid 9b9a87b1-5931-43c9-a4b5-54abd19589c9) service to node-0-link-0/192.168.122.101:8020 beginning handshake with NN
+2019-09-15 08:38:20,397 INFO  datanode.DataNode BPServiceActor.java:register:783 - Block pool Block pool BP-1206764359-192.168.122.101-1568550288953 (Datanode Uuid 9b9a87b1-5931-43c9-a4b5-54abd19589c9) service to node-0-link-0/192.168.122.101:8020 successfully registered with NN
+2019-09-15 08:38:20,406 INFO  datanode.DataNode BPServiceActor.java:blockReport:422 - Successfully sent block report 0x4415437481b8395a,  containing 1 storage report(s), of which we sent 1. The reports had 3 total blocks and used 1 RPC(s). This took 1 msec to generate and 4 msecs for RPC and NN processing. Got back no commands.
+2019-09-15 08:38:53,189 INFO  datanode.DataNode DataXceiver.java:writeBlock:738 - Receiving BP-1206764359-192.168.122.101-1568550288953:blk_1073741877_1053 src: /192.168.122.31:38022 dest: /192.168.122.235:9866
+2019-09-15 08:38:53,354 INFO  datanode.DataNode DataXceiver.java:writeBlock:738 - Receiving BP-1206764359-192.168.122.101-1568550288953:blk_1073741876_1052 src: /192.168.122.31:38024 dest: /192.168.122.235:9866
+2019-09-15 08:38:53,825 INFO  datanode.DataNode DataXceiver.java:writeBlock:738 - Receiving BP-1206764359-192.168.122.101-1568550288953:blk_1073741878_1054 src: /192.168.122.31:38026 dest: /192.168.122.235:9866
+2019-09-15 08:38:54,543 INFO  datanode.DataNode DataXceiver.java:writeBlock:738 - Receiving BP-1206764359-192.168.122.101-1568550288953:blk_1073741879_1055 src: /192.168.122.227:42868 dest: /192.168.122.235:9866
+2019-09-15 08:38:55,370 INFO  DataNode.clienttrace BlockReceiver.java:finalizeBlock:1533 - src: /192.168.122.31:38024, dest: /192.168.122.235:9866, bytes: 134217728, op: HDFS_WRITE, cliID: DFSClient_NONMAPREDUCE_176185137_1, offset: 0, srvID: 9b9a87b1-5931-43c9-a4b5-54abd19589c9, blockid: BP-1206764359-192.168.122.101-1568550288953:blk_1073741876_1052, duration(ns): 2003283320
+2019-09-15 08:38:55,370 INFO  datanode.DataNode BlockReceiver.java:run:1506 - PacketResponder: BP-1206764359-192.168.122.101-1568550288953:blk_1073741876_1052, type=LAST_IN_PIPELINE terminating
+2019-09-15 08:38:55,696 INFO  DataNode.clienttrace BlockReceiver.java:finalizeBlock:1533 - src: /192.168.122.31:38026, dest: /192.168.122.235:9866, bytes: 134217728, op: HDFS_WRITE, cliID: DFSClient_NONMAPREDUCE_-1508545339_1, offset: 0, srvID: 9b9a87b1-5931-43c9-a4b5-54abd19589c9, blockid: BP-1206764359-192.168.122.101-1568550288953:blk_1073741878_1054, duration(ns): 1866655442
+2019-09-15 08:38:55,696 INFO  datanode.DataNode BlockReceiver.java:run:1506 - PacketResponder: BP-1206764359-192.168.122.101-1568550288953:blk_1073741878_1054, type=LAST_IN_PIPELINE terminating
+2019-09-15 08:39:00,980 WARN  datanode.DataNode BlockReceiver.java:receivePacket:733 - Slow BlockReceiver write data to disk cost:2362ms (threshold=300ms), volume=file:/root/hdfs-root/data/, blockId=1073741879
+2019-09-15 08:39:02,207 INFO  DataNode.clienttrace BlockReceiver.java:finalizeBlock:1533 - src: /192.168.122.227:42868, dest: /192.168.122.235:9866, bytes: 134217728, op: HDFS_WRITE, cliID: DFSClient_NONMAPREDUCE_-1135566039_1, offset: 0, srvID: 9b9a87b1-5931-43c9-a4b5-54abd19589c9, blockid: BP-1206764359-192.168.122.101-1568550288953:blk_1073741879_1055, duration(ns): 7646929665
+2019-09-15 08:39:02,209 INFO  datanode.DataNode BlockReceiver.java:run:1506 - PacketResponder: BP-1206764359-192.168.122.101-1568550288953:blk_1073741879_1055, type=HAS_DOWNSTREAM_IN_PIPELINE, downstreams=2:[192.168.122.50:9866, 192.168.122.153:9866] terminating
+2019-09-15 08:39:03,089 INFO  DataNode.clienttrace BlockReceiver.java:finalizeBlock:1533 - src: /192.168.122.31:38022, dest: /192.168.122.235:9866, bytes: 134217728, op: HDFS_WRITE, cliID: DFSClient_NONMAPREDUCE_-2057491395_1, offset: 0, srvID: 9b9a87b1-5931-43c9-a4b5-54abd19589c9, blockid: BP-1206764359-192.168.122.101-1568550288953:blk_1073741877_1053, duration(ns): 9891881447
+2019-09-15 08:39:03,090 INFO  datanode.DataNode BlockReceiver.java:run:1506 - PacketResponder: BP-1206764359-192.168.122.101-1568550288953:blk_1073741877_1053, type=HAS_DOWNSTREAM_IN_PIPELINE, downstreams=1:[192.168.122.153:9866] terminating
+2019-09-15 08:39:25,084 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:deleteAsync:225 - Scheduling blk_1073741876_1052 replica FinalizedReplica, blk_1073741876_1052, FINALIZED
+  getNumBytes()     = 134217728
+  getBytesOnDisk()  = 134217728
+  getVisibleLength()= 134217728
+  getVolume()       = /root/hdfs-root/data
+  getBlockURI()     = file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741876 for deletion
+2019-09-15 08:39:25,085 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:deleteAsync:225 - Scheduling blk_1073741877_1053 replica FinalizedReplica, blk_1073741877_1053, FINALIZED
+  getNumBytes()     = 134217728
+  getBytesOnDisk()  = 134217728
+  getVisibleLength()= 134217728
+  getVolume()       = /root/hdfs-root/data
+  getBlockURI()     = file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741877 for deletion
+2019-09-15 08:39:25,093 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:deleteAsync:225 - Scheduling blk_1073741878_1054 replica FinalizedReplica, blk_1073741878_1054, FINALIZED
+  getNumBytes()     = 134217728
+  getBytesOnDisk()  = 134217728
+  getVisibleLength()= 134217728
+  getVolume()       = /root/hdfs-root/data
+  getBlockURI()     = file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741878 for deletion
+2019-09-15 08:39:25,093 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:deleteAsync:225 - Scheduling blk_1073741879_1055 replica FinalizedReplica, blk_1073741879_1055, FINALIZED
+  getNumBytes()     = 134217728
+  getBytesOnDisk()  = 134217728
+  getVisibleLength()= 134217728
+  getVolume()       = /root/hdfs-root/data
+  getBlockURI()     = file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741879 for deletion
+2019-09-15 08:39:25,119 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:run:333 - Deleted BP-1206764359-192.168.122.101-1568550288953 blk_1073741876_1052 URI file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741876
+2019-09-15 08:39:25,149 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:run:333 - Deleted BP-1206764359-192.168.122.101-1568550288953 blk_1073741877_1053 URI file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741877
+2019-09-15 08:39:25,175 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:run:333 - Deleted BP-1206764359-192.168.122.101-1568550288953 blk_1073741878_1054 URI file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741878
+2019-09-15 08:39:25,196 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:run:333 - Deleted BP-1206764359-192.168.122.101-1568550288953 blk_1073741879_1055 URI file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741879
+2019-09-15 08:39:46,888 INFO  datanode.DataNode DataXceiver.java:writeBlock:738 - Receiving BP-1206764359-192.168.122.101-1568550288953:blk_1073741881_1057 src: /192.168.122.227:42944 dest: /192.168.122.235:9866
+2019-09-15 08:39:48,031 INFO  DataNode.clienttrace BlockReceiver.java:finalizeBlock:1533 - src: /192.168.122.227:42944, dest: /192.168.122.235:9866, bytes: 134217728, op: HDFS_WRITE, cliID: DFSClient_NONMAPREDUCE_217817983_1, offset: 0, srvID: 9b9a87b1-5931-43c9-a4b5-54abd19589c9, blockid: BP-1206764359-192.168.122.101-1568550288953:blk_1073741881_1057, duration(ns): 1129783682
+2019-09-15 08:39:48,031 INFO  datanode.DataNode BlockReceiver.java:run:1506 - PacketResponder: BP-1206764359-192.168.122.101-1568550288953:blk_1073741881_1057, type=HAS_DOWNSTREAM_IN_PIPELINE, downstreams=2:[192.168.122.31:9866, 192.168.122.50:9866] terminating
+2019-09-15 08:39:48,300 INFO  datanode.DataNode DataXceiver.java:writeBlock:738 - Receiving BP-1206764359-192.168.122.101-1568550288953:blk_1073741882_1058 src: /192.168.122.50:56258 dest: /192.168.122.235:9866
+2019-09-15 08:39:49,838 INFO  DataNode.clienttrace BlockReceiver.java:finalizeBlock:1533 - src: /192.168.122.50:56258, dest: /192.168.122.235:9866, bytes: 134217728, op: HDFS_WRITE, cliID: DFSClient_NONMAPREDUCE_1340962371_1, offset: 0, srvID: 9b9a87b1-5931-43c9-a4b5-54abd19589c9, blockid: BP-1206764359-192.168.122.101-1568550288953:blk_1073741882_1058, duration(ns): 1527395979
+2019-09-15 08:39:49,838 INFO  datanode.DataNode BlockReceiver.java:run:1506 - PacketResponder: BP-1206764359-192.168.122.101-1568550288953:blk_1073741882_1058, type=HAS_DOWNSTREAM_IN_PIPELINE, downstreams=1:[192.168.122.31:9866] terminating
+2019-09-15 08:39:54,023 INFO  datanode.DataNode DataXceiver.java:writeBlock:738 - Receiving BP-1206764359-192.168.122.101-1568550288953:blk_1073741884_1060 src: /192.168.122.153:49470 dest: /192.168.122.235:9866
+2019-09-15 08:39:54,059 INFO  datanode.DataNode DataXceiver.java:writeBlock:738 - Receiving BP-1206764359-192.168.122.101-1568550288953:blk_1073741883_1059 src: /192.168.122.227:42966 dest: /192.168.122.235:9866
+2019-09-15 08:39:55,277 INFO  DataNode.clienttrace BlockReceiver.java:finalizeBlock:1533 - src: /192.168.122.227:42966, dest: /192.168.122.235:9866, bytes: 134217728, op: HDFS_WRITE, cliID: DFSClient_NONMAPREDUCE_-759336511_1, offset: 0, srvID: 9b9a87b1-5931-43c9-a4b5-54abd19589c9, blockid: BP-1206764359-192.168.122.101-1568550288953:blk_1073741883_1059, duration(ns): 1054240320
+2019-09-15 08:39:55,278 INFO  datanode.DataNode BlockReceiver.java:run:1506 - PacketResponder: BP-1206764359-192.168.122.101-1568550288953:blk_1073741883_1059, type=HAS_DOWNSTREAM_IN_PIPELINE, downstreams=2:[192.168.122.50:9866, 192.168.122.31:9866] terminating
+2019-09-15 08:39:55,284 INFO  DataNode.clienttrace BlockReceiver.java:finalizeBlock:1533 - src: /192.168.122.153:49470, dest: /192.168.122.235:9866, bytes: 134217728, op: HDFS_WRITE, cliID: DFSClient_NONMAPREDUCE_357728696_1, offset: 0, srvID: 9b9a87b1-5931-43c9-a4b5-54abd19589c9, blockid: BP-1206764359-192.168.122.101-1568550288953:blk_1073741884_1060, duration(ns): 1258866398
+2019-09-15 08:39:55,284 INFO  datanode.DataNode BlockReceiver.java:run:1506 - PacketResponder: BP-1206764359-192.168.122.101-1568550288953:blk_1073741884_1060, type=LAST_IN_PIPELINE terminating
+2019-09-15 08:40:01,088 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:deleteAsync:225 - Scheduling blk_1073741881_1057 replica FinalizedReplica, blk_1073741881_1057, FINALIZED
+  getNumBytes()     = 134217728
+  getBytesOnDisk()  = 134217728
+  getVisibleLength()= 134217728
+  getVolume()       = /root/hdfs-root/data
+  getBlockURI()     = file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741881 for deletion
+2019-09-15 08:40:01,143 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:deleteAsync:225 - Scheduling blk_1073741882_1058 replica FinalizedReplica, blk_1073741882_1058, FINALIZED
+  getNumBytes()     = 134217728
+  getBytesOnDisk()  = 134217728
+  getVisibleLength()= 134217728
+  getVolume()       = /root/hdfs-root/data
+  getBlockURI()     = file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741882 for deletion
+2019-09-15 08:40:01,187 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:run:333 - Deleted BP-1206764359-192.168.122.101-1568550288953 blk_1073741881_1057 URI file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741881
+2019-09-15 08:40:01,215 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:run:333 - Deleted BP-1206764359-192.168.122.101-1568550288953 blk_1073741882_1058 URI file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741882
+2019-09-15 08:40:13,090 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:deleteAsync:225 - Scheduling blk_1073741884_1060 replica FinalizedReplica, blk_1073741884_1060, FINALIZED
+  getNumBytes()     = 134217728
+  getBytesOnDisk()  = 134217728
+  getVisibleLength()= 134217728
+  getVolume()       = /root/hdfs-root/data
+  getBlockURI()     = file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741884 for deletion
+2019-09-15 08:40:13,125 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:run:333 - Deleted BP-1206764359-192.168.122.101-1568550288953 blk_1073741884_1060 URI file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741884
+2019-09-15 08:40:16,090 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:deleteAsync:225 - Scheduling blk_1073741883_1059 replica FinalizedReplica, blk_1073741883_1059, FINALIZED
+  getNumBytes()     = 134217728
+  getBytesOnDisk()  = 134217728
+  getVisibleLength()= 134217728
+  getVolume()       = /root/hdfs-root/data
+  getBlockURI()     = file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741883 for deletion
+2019-09-15 08:40:16,124 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:run:333 - Deleted BP-1206764359-192.168.122.101-1568550288953 blk_1073741883_1059 URI file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741883
+2019-09-15 08:41:11,410 WARN  datanode.DataNode BPServiceActor.java:offerService:728 - IOException in offerService
+java.io.EOFException: End of File Exception between local host is: "node-3-link-0/192.168.122.235"; destination host is: "node-0-link-0":8020; : java.io.EOFException; For more details see:  http://wiki.apache.org/hadoop/EOFException
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.apache.hadoop.net.NetUtils.wrapWithMessage(NetUtils.java:831)
+	at org.apache.hadoop.net.NetUtils.wrapException(NetUtils.java:789)
+	at org.apache.hadoop.ipc.Client.getRpcResponse(Client.java:1515)
+	at org.apache.hadoop.ipc.Client.call(Client.java:1457)
+	at org.apache.hadoop.ipc.Client.call(Client.java:1367)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Invoker.invoke(ProtobufRpcEngine.java:228)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Invoker.invoke(ProtobufRpcEngine.java:116)
+	at com.sun.proxy.$Proxy19.sendHeartbeat(Unknown Source)
+	at org.apache.hadoop.hdfs.protocolPB.DatanodeProtocolClientSideTranslatorPB.sendHeartbeat(DatanodeProtocolClientSideTranslatorPB.java:166)
+	at org.apache.hadoop.hdfs.server.datanode.BPServiceActor.sendHeartBeat(BPServiceActor.java:514)
+	at org.apache.hadoop.hdfs.server.datanode.BPServiceActor.offerService(BPServiceActor.java:645)
+	at org.apache.hadoop.hdfs.server.datanode.BPServiceActor.run(BPServiceActor.java:842)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.io.EOFException
+	at java.io.DataInputStream.readInt(DataInputStream.java:392)
+	at org.apache.hadoop.ipc.Client$IpcStreams.readResponse(Client.java:1816)
+	at org.apache.hadoop.ipc.Client$Connection.receiveRpcResponse(Client.java:1173)
+	at org.apache.hadoop.ipc.Client$Connection.run(Client.java:1069)
+2019-09-15 08:41:15,411 INFO  ipc.Client Client.java:handleConnectionFailure:948 - Retrying connect to server: node-0-link-0/192.168.122.101:8020. Already tried 0 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+2019-09-15 08:41:15,773 INFO  datanode.DataNode BPOfferService.java:processCommandFromActor:672 - DatanodeCommand action : DNA_REGISTER from node-0-link-0/192.168.122.101:8020 with standby state
+2019-09-15 08:41:15,782 INFO  datanode.DataNode BPServiceActor.java:register:764 - Block pool BP-1206764359-192.168.122.101-1568550288953 (Datanode Uuid 9b9a87b1-5931-43c9-a4b5-54abd19589c9) service to node-0-link-0/192.168.122.101:8020 beginning handshake with NN
+2019-09-15 08:41:15,802 INFO  datanode.DataNode BPServiceActor.java:register:783 - Block pool Block pool BP-1206764359-192.168.122.101-1568550288953 (Datanode Uuid 9b9a87b1-5931-43c9-a4b5-54abd19589c9) service to node-0-link-0/192.168.122.101:8020 successfully registered with NN
+2019-09-15 08:41:15,826 INFO  datanode.DataNode BPServiceActor.java:blockReport:422 - Successfully sent block report 0x4415437481b8395b,  containing 1 storage report(s), of which we sent 1. The reports had 3 total blocks and used 1 RPC(s). This took 0 msec to generate and 19 msecs for RPC and NN processing. Got back no commands.
+2019-09-15 08:41:28,096 INFO  datanode.DataNode BPOfferService.java:updateActorStatesFromHeartbeat:596 - Namenode Block pool BP-1206764359-192.168.122.101-1568550288953 (Datanode Uuid 9b9a87b1-5931-43c9-a4b5-54abd19589c9) service to node-1-link-0/192.168.122.148:8020 relinquishing ACTIVE state with txid=475
+2019-09-15 08:41:30,806 INFO  datanode.DataNode BPOfferService.java:updateActorStatesFromHeartbeat:576 - Namenode Block pool BP-1206764359-192.168.122.101-1568550288953 (Datanode Uuid 9b9a87b1-5931-43c9-a4b5-54abd19589c9) service to node-0-link-0/192.168.122.101:8020 trying to claim ACTIVE state with txid=476
+2019-09-15 08:41:30,806 INFO  datanode.DataNode BPOfferService.java:updateActorStatesFromHeartbeat:588 - Acknowledging ACTIVE Namenode Block pool BP-1206764359-192.168.122.101-1568550288953 (Datanode Uuid 9b9a87b1-5931-43c9-a4b5-54abd19589c9) service to node-0-link-0/192.168.122.101:8020
+2019-09-15 08:41:55,096 WARN  datanode.DataNode BPServiceActor.java:offerService:728 - IOException in offerService
+java.io.EOFException: End of File Exception between local host is: "node-3-link-0/192.168.122.235"; destination host is: "node-1-link-0":8020; : java.io.EOFException; For more details see:  http://wiki.apache.org/hadoop/EOFException
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.apache.hadoop.net.NetUtils.wrapWithMessage(NetUtils.java:831)
+	at org.apache.hadoop.net.NetUtils.wrapException(NetUtils.java:789)
+	at org.apache.hadoop.ipc.Client.getRpcResponse(Client.java:1515)
+	at org.apache.hadoop.ipc.Client.call(Client.java:1457)
+	at org.apache.hadoop.ipc.Client.call(Client.java:1367)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Invoker.invoke(ProtobufRpcEngine.java:228)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Invoker.invoke(ProtobufRpcEngine.java:116)
+	at com.sun.proxy.$Proxy19.sendHeartbeat(Unknown Source)
+	at org.apache.hadoop.hdfs.protocolPB.DatanodeProtocolClientSideTranslatorPB.sendHeartbeat(DatanodeProtocolClientSideTranslatorPB.java:166)
+	at org.apache.hadoop.hdfs.server.datanode.BPServiceActor.sendHeartBeat(BPServiceActor.java:514)
+	at org.apache.hadoop.hdfs.server.datanode.BPServiceActor.offerService(BPServiceActor.java:645)
+	at org.apache.hadoop.hdfs.server.datanode.BPServiceActor.run(BPServiceActor.java:842)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.io.EOFException
+	at java.io.DataInputStream.readInt(DataInputStream.java:392)
+	at org.apache.hadoop.ipc.Client$IpcStreams.readResponse(Client.java:1816)
+	at org.apache.hadoop.ipc.Client$Connection.receiveRpcResponse(Client.java:1173)
+	at org.apache.hadoop.ipc.Client$Connection.run(Client.java:1069)
+2019-09-15 08:41:59,097 INFO  ipc.Client Client.java:handleConnectionFailure:948 - Retrying connect to server: node-1-link-0/192.168.122.148:8020. Already tried 0 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+2019-09-15 08:41:59,301 INFO  datanode.DataNode BPOfferService.java:processCommandFromActor:672 - DatanodeCommand action : DNA_REGISTER from node-1-link-0/192.168.122.148:8020 with standby state
+2019-09-15 08:41:59,311 INFO  datanode.DataNode BPServiceActor.java:register:764 - Block pool BP-1206764359-192.168.122.101-1568550288953 (Datanode Uuid 9b9a87b1-5931-43c9-a4b5-54abd19589c9) service to node-1-link-0/192.168.122.148:8020 beginning handshake with NN
+2019-09-15 08:41:59,330 INFO  datanode.DataNode BPServiceActor.java:register:783 - Block pool Block pool BP-1206764359-192.168.122.101-1568550288953 (Datanode Uuid 9b9a87b1-5931-43c9-a4b5-54abd19589c9) service to node-1-link-0/192.168.122.148:8020 successfully registered with NN
+2019-09-15 08:41:59,369 INFO  datanode.DataNode BPServiceActor.java:blockReport:422 - Successfully sent block report 0x6dca2a01f6c3bac8,  containing 1 storage report(s), of which we sent 1. The reports had 3 total blocks and used 1 RPC(s). This took 1 msec to generate and 26 msecs for RPC and NN processing. Got back no commands.
+2019-09-15 08:42:28,310 INFO  datanode.DataNode DataXceiver.java:writeBlock:738 - Receiving BP-1206764359-192.168.122.101-1568550288953:blk_1073741892_1068 src: /192.168.122.227:43136 dest: /192.168.122.235:9866
+2019-09-15 08:42:28,350 INFO  datanode.DataNode DataXceiver.java:writeBlock:738 - Receiving BP-1206764359-192.168.122.101-1568550288953:blk_1073741891_1067 src: /192.168.122.50:56286 dest: /192.168.122.235:9866
+2019-09-15 08:42:31,695 INFO  DataNode.clienttrace BlockReceiver.java:finalizeBlock:1533 - src: /192.168.122.50:56286, dest: /192.168.122.235:9866, bytes: 134217728, op: HDFS_WRITE, cliID: DFSClient_NONMAPREDUCE_1329547199_1, offset: 0, srvID: 9b9a87b1-5931-43c9-a4b5-54abd19589c9, blockid: BP-1206764359-192.168.122.101-1568550288953:blk_1073741891_1067, duration(ns): 3335764091
+2019-09-15 08:42:31,695 INFO  datanode.DataNode BlockReceiver.java:run:1506 - PacketResponder: BP-1206764359-192.168.122.101-1568550288953:blk_1073741891_1067, type=HAS_DOWNSTREAM_IN_PIPELINE, downstreams=1:[192.168.122.153:9866] terminating
+2019-09-15 08:42:41,878 INFO  DataNode.clienttrace BlockReceiver.java:finalizeBlock:1533 - src: /192.168.122.227:43136, dest: /192.168.122.235:9866, bytes: 134217728, op: HDFS_WRITE, cliID: DFSClient_NONMAPREDUCE_531086540_1, offset: 0, srvID: 9b9a87b1-5931-43c9-a4b5-54abd19589c9, blockid: BP-1206764359-192.168.122.101-1568550288953:blk_1073741892_1068, duration(ns): 13541145997
+2019-09-15 08:42:41,878 INFO  datanode.DataNode BlockReceiver.java:run:1506 - PacketResponder: BP-1206764359-192.168.122.101-1568550288953:blk_1073741892_1068, type=HAS_DOWNSTREAM_IN_PIPELINE, downstreams=2:[192.168.122.50:9866, 192.168.122.31:9866] terminating
+2019-09-15 08:43:00,824 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:deleteAsync:225 - Scheduling blk_1073741891_1067 replica FinalizedReplica, blk_1073741891_1067, FINALIZED
+  getNumBytes()     = 134217728
+  getBytesOnDisk()  = 134217728
+  getVisibleLength()= 134217728
+  getVolume()       = /root/hdfs-root/data
+  getBlockURI()     = file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741891 for deletion
+2019-09-15 08:43:00,825 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:deleteAsync:225 - Scheduling blk_1073741892_1068 replica FinalizedReplica, blk_1073741892_1068, FINALIZED
+  getNumBytes()     = 134217728
+  getBytesOnDisk()  = 134217728
+  getVisibleLength()= 134217728
+  getVolume()       = /root/hdfs-root/data
+  getBlockURI()     = file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741892 for deletion
+2019-09-15 08:43:00,861 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:run:333 - Deleted BP-1206764359-192.168.122.101-1568550288953 blk_1073741891_1067 URI file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741891
+2019-09-15 08:43:00,891 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:run:333 - Deleted BP-1206764359-192.168.122.101-1568550288953 blk_1073741892_1068 URI file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741892
+2019-09-15 08:43:18,498 INFO  datanode.DataNode DataXceiver.java:writeBlock:738 - Receiving BP-1206764359-192.168.122.101-1568550288953:blk_1073741897_1073 src: /192.168.122.50:56288 dest: /192.168.122.235:9866
+2019-09-15 08:43:18,729 INFO  datanode.DataNode DataXceiver.java:writeBlock:738 - Receiving BP-1206764359-192.168.122.101-1568550288953:blk_1073741896_1072 src: /192.168.122.153:49496 dest: /192.168.122.235:9866
+2019-09-15 08:43:20,136 INFO  datanode.DataNode DataXceiver.java:writeBlock:738 - Receiving BP-1206764359-192.168.122.101-1568550288953:blk_1073741898_1074 src: /192.168.122.50:56290 dest: /192.168.122.235:9866
+2019-09-15 08:43:20,744 INFO  DataNode.clienttrace BlockReceiver.java:finalizeBlock:1533 - src: /192.168.122.153:49496, dest: /192.168.122.235:9866, bytes: 134217728, op: HDFS_WRITE, cliID: DFSClient_NONMAPREDUCE_517619809_1, offset: 0, srvID: 9b9a87b1-5931-43c9-a4b5-54abd19589c9, blockid: BP-1206764359-192.168.122.101-1568550288953:blk_1073741896_1072, duration(ns): 2013247658
+2019-09-15 08:43:20,744 INFO  datanode.DataNode BlockReceiver.java:run:1506 - PacketResponder: BP-1206764359-192.168.122.101-1568550288953:blk_1073741896_1072, type=LAST_IN_PIPELINE terminating
+2019-09-15 08:43:22,491 WARN  datanode.DataNode BlockReceiver.java:receivePacket:733 - Slow BlockReceiver write data to disk cost:1689ms (threshold=300ms), volume=file:/root/hdfs-root/data/, blockId=1073741898
+2019-09-15 08:43:22,498 WARN  datanode.DataNode BlockReceiver.java:receivePacket:733 - Slow BlockReceiver write data to disk cost:1695ms (threshold=300ms), volume=file:/root/hdfs-root/data/, blockId=1073741897
+2019-09-15 08:43:22,761 INFO  DataNode.clienttrace BlockReceiver.java:finalizeBlock:1533 - src: /192.168.122.50:56288, dest: /192.168.122.235:9866, bytes: 134217728, op: HDFS_WRITE, cliID: DFSClient_NONMAPREDUCE_1576659098_1, offset: 0, srvID: 9b9a87b1-5931-43c9-a4b5-54abd19589c9, blockid: BP-1206764359-192.168.122.101-1568550288953:blk_1073741897_1073, duration(ns): 4260574568
+2019-09-15 08:43:22,761 INFO  datanode.DataNode BlockReceiver.java:run:1506 - PacketResponder: BP-1206764359-192.168.122.101-1568550288953:blk_1073741897_1073, type=LAST_IN_PIPELINE terminating
+2019-09-15 08:43:22,960 INFO  datanode.DataNode DataXceiver.java:writeBlock:738 - Receiving BP-1206764359-192.168.122.101-1568550288953:blk_1073741899_1075 src: /192.168.122.50:56292 dest: /192.168.122.235:9866
+2019-09-15 08:43:23,285 INFO  DataNode.clienttrace BlockReceiver.java:finalizeBlock:1533 - src: /192.168.122.50:56290, dest: /192.168.122.235:9866, bytes: 134217728, op: HDFS_WRITE, cliID: DFSClient_NONMAPREDUCE_1153070783_1, offset: 0, srvID: 9b9a87b1-5931-43c9-a4b5-54abd19589c9, blockid: BP-1206764359-192.168.122.101-1568550288953:blk_1073741898_1074, duration(ns): 3144963187
+2019-09-15 08:43:23,286 INFO  datanode.DataNode BlockReceiver.java:run:1506 - PacketResponder: BP-1206764359-192.168.122.101-1568550288953:blk_1073741898_1074, type=LAST_IN_PIPELINE terminating
+2019-09-15 08:43:25,654 INFO  DataNode.clienttrace BlockReceiver.java:finalizeBlock:1533 - src: /192.168.122.50:56292, dest: /192.168.122.235:9866, bytes: 134217728, op: HDFS_WRITE, cliID: DFSClient_NONMAPREDUCE_-1915331615_1, offset: 0, srvID: 9b9a87b1-5931-43c9-a4b5-54abd19589c9, blockid: BP-1206764359-192.168.122.101-1568550288953:blk_1073741899_1075, duration(ns): 2686104776
+2019-09-15 08:43:25,654 INFO  datanode.DataNode BlockReceiver.java:run:1506 - PacketResponder: BP-1206764359-192.168.122.101-1568550288953:blk_1073741899_1075, type=HAS_DOWNSTREAM_IN_PIPELINE, downstreams=1:[192.168.122.31:9866] terminating
+2019-09-15 08:43:30,154 INFO  datanode.DataNode DataXceiver.java:writeBlock:738 - Receiving BP-1206764359-192.168.122.101-1568550288953:blk_1073741900_1076 src: /192.168.122.227:43198 dest: /192.168.122.235:9866
+2019-09-15 08:43:35,747 INFO  DataNode.clienttrace BlockReceiver.java:finalizeBlock:1533 - src: /192.168.122.227:43198, dest: /192.168.122.235:9866, bytes: 134217728, op: HDFS_WRITE, cliID: DFSClient_NONMAPREDUCE_863499597_1, offset: 0, srvID: 9b9a87b1-5931-43c9-a4b5-54abd19589c9, blockid: BP-1206764359-192.168.122.101-1568550288953:blk_1073741900_1076, duration(ns): 5578874667
+2019-09-15 08:43:35,747 INFO  datanode.DataNode BlockReceiver.java:run:1506 - PacketResponder: BP-1206764359-192.168.122.101-1568550288953:blk_1073741900_1076, type=HAS_DOWNSTREAM_IN_PIPELINE, downstreams=2:[192.168.122.50:9866, 192.168.122.153:9866] terminating
+2019-09-15 08:43:39,813 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:deleteAsync:225 - Scheduling blk_1073741896_1072 replica FinalizedReplica, blk_1073741896_1072, FINALIZED
+  getNumBytes()     = 134217728
+  getBytesOnDisk()  = 134217728
+  getVisibleLength()= 134217728
+  getVolume()       = /root/hdfs-root/data
+  getBlockURI()     = file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741896 for deletion
+2019-09-15 08:43:39,848 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:run:333 - Deleted BP-1206764359-192.168.122.101-1568550288953 blk_1073741896_1072 URI file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741896
+2019-09-15 08:43:45,815 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:deleteAsync:225 - Scheduling blk_1073741897_1073 replica FinalizedReplica, blk_1073741897_1073, FINALIZED
+  getNumBytes()     = 134217728
+  getBytesOnDisk()  = 134217728
+  getVisibleLength()= 134217728
+  getVolume()       = /root/hdfs-root/data
+  getBlockURI()     = file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741897 for deletion
+2019-09-15 08:43:45,815 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:deleteAsync:225 - Scheduling blk_1073741898_1074 replica FinalizedReplica, blk_1073741898_1074, FINALIZED
+  getNumBytes()     = 134217728
+  getBytesOnDisk()  = 134217728
+  getVisibleLength()= 134217728
+  getVolume()       = /root/hdfs-root/data
+  getBlockURI()     = file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741898 for deletion
+2019-09-15 08:43:45,816 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:deleteAsync:225 - Scheduling blk_1073741899_1075 replica FinalizedReplica, blk_1073741899_1075, FINALIZED
+  getNumBytes()     = 134217728
+  getBytesOnDisk()  = 134217728
+  getVisibleLength()= 134217728
+  getVolume()       = /root/hdfs-root/data
+  getBlockURI()     = file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741899 for deletion
+2019-09-15 08:43:45,816 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:deleteAsync:225 - Scheduling blk_1073741900_1076 replica FinalizedReplica, blk_1073741900_1076, FINALIZED
+  getNumBytes()     = 134217728
+  getBytesOnDisk()  = 134217728
+  getVisibleLength()= 134217728
+  getVolume()       = /root/hdfs-root/data
+  getBlockURI()     = file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741900 for deletion
+2019-09-15 08:43:45,851 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:run:333 - Deleted BP-1206764359-192.168.122.101-1568550288953 blk_1073741897_1073 URI file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741897
+2019-09-15 08:43:45,880 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:run:333 - Deleted BP-1206764359-192.168.122.101-1568550288953 blk_1073741898_1074 URI file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741898
+2019-09-15 08:43:45,905 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:run:333 - Deleted BP-1206764359-192.168.122.101-1568550288953 blk_1073741899_1075 URI file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741899
+2019-09-15 08:43:45,934 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:run:333 - Deleted BP-1206764359-192.168.122.101-1568550288953 blk_1073741900_1076 URI file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741900
+2019-09-15 08:44:03,178 INFO  datanode.DataNode DataXceiver.java:writeBlock:738 - Receiving BP-1206764359-192.168.122.101-1568550288953:blk_1073741902_1078 src: /192.168.122.227:43248 dest: /192.168.122.235:9866
+2019-09-15 08:44:03,533 INFO  datanode.DataNode DataXceiver.java:writeBlock:738 - Receiving BP-1206764359-192.168.122.101-1568550288953:blk_1073741903_1079 src: /192.168.122.31:38062 dest: /192.168.122.235:9866
+2019-09-15 08:44:03,683 INFO  datanode.DataNode DataXceiver.java:writeBlock:738 - Receiving BP-1206764359-192.168.122.101-1568550288953:blk_1073741904_1080 src: /192.168.122.153:49502 dest: /192.168.122.235:9866
+2019-09-15 08:44:03,957 INFO  datanode.DataNode DataXceiver.java:writeBlock:738 - Receiving BP-1206764359-192.168.122.101-1568550288953:blk_1073741905_1081 src: /192.168.122.227:43254 dest: /192.168.122.235:9866
+2019-09-15 08:44:05,355 INFO  DataNode.clienttrace BlockReceiver.java:finalizeBlock:1533 - src: /192.168.122.31:38062, dest: /192.168.122.235:9866, bytes: 134217728, op: HDFS_WRITE, cliID: DFSClient_NONMAPREDUCE_812851354_1, offset: 0, srvID: 9b9a87b1-5931-43c9-a4b5-54abd19589c9, blockid: BP-1206764359-192.168.122.101-1568550288953:blk_1073741903_1079, duration(ns): 1806653657
+2019-09-15 08:44:05,355 INFO  datanode.DataNode BlockReceiver.java:run:1506 - PacketResponder: BP-1206764359-192.168.122.101-1568550288953:blk_1073741903_1079, type=HAS_DOWNSTREAM_IN_PIPELINE, downstreams=1:[192.168.122.50:9866] terminating
+2019-09-15 08:44:05,745 INFO  DataNode.clienttrace BlockReceiver.java:finalizeBlock:1533 - src: /192.168.122.227:43248, dest: /192.168.122.235:9866, bytes: 134217728, op: HDFS_WRITE, cliID: DFSClient_NONMAPREDUCE_-1961658053_1, offset: 0, srvID: 9b9a87b1-5931-43c9-a4b5-54abd19589c9, blockid: BP-1206764359-192.168.122.101-1568550288953:blk_1073741902_1078, duration(ns): 2554669592
+2019-09-15 08:44:05,746 INFO  datanode.DataNode BlockReceiver.java:run:1506 - PacketResponder: BP-1206764359-192.168.122.101-1568550288953:blk_1073741902_1078, type=HAS_DOWNSTREAM_IN_PIPELINE, downstreams=2:[192.168.122.50:9866, 192.168.122.153:9866] terminating
+2019-09-15 08:44:06,078 INFO  DataNode.clienttrace BlockReceiver.java:finalizeBlock:1533 - src: /192.168.122.227:43254, dest: /192.168.122.235:9866, bytes: 134217728, op: HDFS_WRITE, cliID: DFSClient_NONMAPREDUCE_-385616225_1, offset: 0, srvID: 9b9a87b1-5931-43c9-a4b5-54abd19589c9, blockid: BP-1206764359-192.168.122.101-1568550288953:blk_1073741905_1081, duration(ns): 2109257024
+2019-09-15 08:44:06,078 INFO  datanode.DataNode BlockReceiver.java:run:1506 - PacketResponder: BP-1206764359-192.168.122.101-1568550288953:blk_1073741905_1081, type=HAS_DOWNSTREAM_IN_PIPELINE, downstreams=2:[192.168.122.153:9866, 192.168.122.31:9866] terminating
+2019-09-15 08:44:06,346 INFO  DataNode.clienttrace BlockReceiver.java:finalizeBlock:1533 - src: /192.168.122.153:49502, dest: /192.168.122.235:9866, bytes: 134217728, op: HDFS_WRITE, cliID: DFSClient_NONMAPREDUCE_1414294855_1, offset: 0, srvID: 9b9a87b1-5931-43c9-a4b5-54abd19589c9, blockid: BP-1206764359-192.168.122.101-1568550288953:blk_1073741904_1080, duration(ns): 2659510933
+2019-09-15 08:44:06,346 INFO  datanode.DataNode BlockReceiver.java:run:1506 - PacketResponder: BP-1206764359-192.168.122.101-1568550288953:blk_1073741904_1080, type=LAST_IN_PIPELINE terminating
+2019-09-15 08:44:39,814 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:deleteAsync:225 - Scheduling blk_1073741904_1080 replica FinalizedReplica, blk_1073741904_1080, FINALIZED
+  getNumBytes()     = 134217728
+  getBytesOnDisk()  = 134217728
+  getVisibleLength()= 134217728
+  getVolume()       = /root/hdfs-root/data
+  getBlockURI()     = file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741904 for deletion
+2019-09-15 08:44:39,817 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:deleteAsync:225 - Scheduling blk_1073741905_1081 replica FinalizedReplica, blk_1073741905_1081, FINALIZED
+  getNumBytes()     = 134217728
+  getBytesOnDisk()  = 134217728
+  getVisibleLength()= 134217728
+  getVolume()       = /root/hdfs-root/data
+  getBlockURI()     = file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741905 for deletion
+2019-09-15 08:44:39,817 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:deleteAsync:225 - Scheduling blk_1073741902_1078 replica FinalizedReplica, blk_1073741902_1078, FINALIZED
+  getNumBytes()     = 134217728
+  getBytesOnDisk()  = 134217728
+  getVisibleLength()= 134217728
+  getVolume()       = /root/hdfs-root/data
+  getBlockURI()     = file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741902 for deletion
+2019-09-15 08:44:39,818 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:deleteAsync:225 - Scheduling blk_1073741903_1079 replica FinalizedReplica, blk_1073741903_1079, FINALIZED
+  getNumBytes()     = 134217728
+  getBytesOnDisk()  = 134217728
+  getVisibleLength()= 134217728
+  getVolume()       = /root/hdfs-root/data
+  getBlockURI()     = file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741903 for deletion
+2019-09-15 08:44:39,849 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:run:333 - Deleted BP-1206764359-192.168.122.101-1568550288953 blk_1073741904_1080 URI file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741904
+2019-09-15 08:44:39,878 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:run:333 - Deleted BP-1206764359-192.168.122.101-1568550288953 blk_1073741905_1081 URI file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741905
+2019-09-15 08:44:39,903 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:run:333 - Deleted BP-1206764359-192.168.122.101-1568550288953 blk_1073741902_1078 URI file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741902
+2019-09-15 08:44:39,926 INFO  impl.FsDatasetAsyncDiskService FsDatasetAsyncDiskService.java:run:333 - Deleted BP-1206764359-192.168.122.101-1568550288953 blk_1073741903_1079 URI file:/root/hdfs-root/data/current/BP-1206764359-192.168.122.101-1568550288953/current/finalized/subdir0/subdir0/blk_1073741903
