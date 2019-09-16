@@ -7,7 +7,7 @@ if [ -z "$TEST_HOME" ]; then
 fi
 
 . $TEST_HOME/sbin/global_var.sh
-. $TEST_HOME/sbin/util/subsetof.sh
+. $TEST_HOME/sbin/util/system_error_subsetof.sh
 
 if [ $# -lt 1 ]; then
     echo "${ERRORS[$COMMAND]}[wrong_arguments]"

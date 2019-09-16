@@ -7,7 +7,7 @@ if [ -z "$TEST_HOME" ]; then
 fi
 
 . $TEST_HOME/sbin/global_var.sh
-. $TEST_HOME/sbin/util/subsetof.sh
+. $TEST_HOME/sbin/util/system_error_subsetof.sh
 
 samples=()
 #output_file=merged.txt
