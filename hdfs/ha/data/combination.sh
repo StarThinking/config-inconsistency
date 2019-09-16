@@ -7,13 +7,13 @@ fi
 
 values=('true' 'false')
 component=$1
-duration=300
+duration=120
 #parameters=$(cat $file)
 
 while IFS= read -r parameter
 do
-    echo $component $parameter false true
-    echo $component $parameter true false
+    echo $component $parameter true true
+    echo $component $parameter false false
 done
 
 

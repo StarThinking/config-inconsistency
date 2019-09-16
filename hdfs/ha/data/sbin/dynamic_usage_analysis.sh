@@ -2,16 +2,16 @@
 
 dir=$1
 
-functions+=('Configuration.java:get:1196')
-functions+=('Configuration.java:get:1457')
+#functions+=('Configuration.java:get:1196')
+#functions+=('Configuration.java:get:1457')
 functions+=('Configuration.java:getBoolean:1668')
-functions+=('Configuration.java:getDouble:1640')
-functions+=('Configuration.java:getFloat:1610')
-functions+=('Configuration.java:getHexDigits:1569')
-functions+=('Configuration.java:getInt:1480')
-functions+=('Configuration.java:getInts:1502')
-functions+=('Configuration.java:getLong:1535')
-functions+=('Configuration.java:getLongBytes:1561')
+#functions+=('Configuration.java:getDouble:1640')
+#functions+=('Configuration.java:getFloat:1610')
+#functions+=('Configuration.java:getHexDigits:1569')
+#functions+=('Configuration.java:getInt:1480')
+#functions+=('Configuration.java:getInts:1502')
+#functions+=('Configuration.java:getLong:1535')
+#functions+=('Configuration.java:getLongBytes:1561')
 
 for component in namenodes journalnodes datanodes
 do
