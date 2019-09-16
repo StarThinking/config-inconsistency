@@ -19,6 +19,9 @@ reconfigurable=1
 # return 0 if no errors
 function check_reconfig_fatal_errors {
     test=$1
+    if [ "$(generate_reconfig_errors $test)" != '' ]; then
+	echo "[RECONFIG_ERROR_WARN]"
+    fi
     if [ "$(generate_reconfig_errors $test)" != '' ] || [ "$(generate_fatal_errors $test)" != '' ]; then
         echo "reconfig error:"
 	generate_reconfig_errors $test
@@ -47,7 +50,7 @@ function procedure {
     if [ $? -ne 0 ]; then
         echo "command error:"
 	generate_reconfig_errors $test_12
-	echo "command error in test_12, quit"
+	echo "[COMMAND_ERROR_WARN]command error in test_12, quit"
 	return 1
     fi
 
@@ -67,7 +70,7 @@ function procedure {
     if [ $ret -eq 0 ]; then
         echo "command error:"
 	generate_reconfig_errors $test_22
-	echo "command error in test_22, quit"
+	echo "[COMMAND_ERROR_WARN]command error in test_22, quit"
 	return 1
     fi
     # make sure no reconfig and fatal error
@@ -86,7 +89,7 @@ function procedure {
     if [ $ret -eq 0 ]; then
         echo "command error:"
 	generate_reconfig_errors $test_11
-	echo "command error in test_11, quit"
+	echo "[COMMAND_ERROR_WARN]command error in test_11, quit"
 	return 1
     fi
     # make sure no reconfig and fatal error
@@ -102,7 +105,7 @@ function procedure {
     # check reconfig and fatal error
     check_reconfig_fatal_errors $test_12
     if [ $? -ne 0 ]; then
-	echo "reconfig or fatal errors in test_12 --> NOT $reconfig_mode reconfigurable, quit"
+	echo "[NOT_RECONF_WARN]reconfig or fatal errors in test_12 --> NOT $reconfig_mode reconfigurable, quit"
 	reconfigurable=0
 	return 0
     fi
@@ -111,7 +114,7 @@ function procedure {
     if [ $? -eq 0 ]; then
         echo "test_12 is subset of union (test_c, test_22, test_11) --> MAYBE $reconfig_mode reconfigurable, quit."
     else
-	echo "test_12 is NOT subset of union(test_c, test_22, test_11) --> NOT $reconfig_mode reconfigurable, quit"
+	echo "[NOT_RECONF_WARN]test_12 is NOT subset of union(test_c, test_22, test_11) --> NOT $reconfig_mode reconfigurable, quit"
 	reconfigurable=0
     fi
     
