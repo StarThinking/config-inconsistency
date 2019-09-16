@@ -14,6 +14,16 @@ function generate_command_errors {
     grep -r "${ERRORS[$COMMAND]}" $dir | awk -F "[\]\[]" '{print $2}' 2>/dev/null
 }
 
+function generate_reconfig_errors {
+    if [ $# -lt 1 ]; then
+        echo "${ERRORS[$RECONFIG]}[wrong_arguments]"
+        exit 1
+    fi
+    dir=$1
+    grep -r "${ERRORS[$RECONFIG]}" $dir | awk -F "[\]\[]" '{print $2}' 2>/dev/null
+}
+
+
 function generate_fatal_errors {
     if [ $# -lt 1 ]; then
         echo "${ERRORS[$COMMAND]}[wrong_arguments]"

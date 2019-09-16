@@ -91,7 +91,7 @@ retv=$?
 if [ $retv -eq 0 ]; then
     echo "init client succeed"
 else
-    echo "${ERRORS[$FATAL]}[run_hdfs_test:init_client_failure]: init client timeout: $retv"
+    echo "${ERRORS[$COMMAND]}[run_hdfs_test:init_client_failure]: init client timeout: $retv"
 fi
 
 
@@ -101,7 +101,7 @@ if [ $reconfig_mode = "online_reconfig" ]; then
     echo "performing $reconfig_mode ..."
     $TEST_HOME/sbin/reconf.sh $component $parameter_from $testdir/"$parameter_from"-site.xml.2
     if [ $? -ne 0 ]; then
-        echo "${ERRORS[$FATAL]}[run_hdfs_test:reconfig_component_failure]: $reconfig_mode reconfiguration $component failed"
+        echo "${ERRORS[$RECONFIG]}[run_hdfs_test:reconfig_component_failure]: $reconfig_mode reconfiguration $component failed"
     fi
 elif [ $reconfig_mode = "cluster_stop" ]; then
     echo "performing $reconfig_mode ..."
@@ -125,7 +125,7 @@ do
         echo "performing $reconfig_mode ..."
         $TEST_HOME/sbin/reconf.sh $component $parameter_from $testdir/"$parameter_from"-site.xml.1
         if [ $? -ne 0 ]; then
-            echo "${ERRORS[$FATAL]}[run_hdfs_test:reconfig_component_failure]: $reconfig_mode reconfiguration $component failed"
+            echo "${ERRORS[$RECONFIG]}[run_hdfs_test:reconfig_component_failure]: $reconfig_mode reconfiguration $component failed"
         fi
     elif [ $reconfig_mode = "cluster_stop" ]; then
         echo "performing $reconfig_mode ..."
@@ -144,7 +144,7 @@ do
         echo "performing $reconfig_mode ..."
         $TEST_HOME/sbin/reconf.sh $component $parameter_from $testdir/"$parameter_from"-site.xml.2
         if [ $? -ne 0 ]; then
-            echo "${ERRORS[$FATAL]}[run_hdfs_test:reconfig_component_failure]: $reconfig_mode reconfiguration $component failed"
+            echo "${ERRORS[$RECONFIG]}[run_hdfs_test:reconfig_component_failure]: $reconfig_mode reconfiguration $component failed"
         fi
     elif [ $reconfig_mode = "cluster_stop" ]; then
         echo "performing $reconfig_mode ..."
@@ -167,14 +167,3 @@ $TEST_HOME/sbin/cluster_cmd.sh collectlog $testdir
 $TEST_HOME/sbin/cluster_cmd.sh stop
 
 exit 0
-
-#function insert_time_barrier_wrapper {
-#    echo time_barrier:$1 
-#    $TEST_HOME/sbin/cluster_cmd.sh insert_time_barrier $1
-#    if [ $? -ne 0 ]; then
-#        echo "${ERRORS[$FATAL]}[run_hdfs_test:insert_time_barrier_failure]: insert time barrier failed"
-#        $TEST_HOME/sbin/cluster_cmd.sh stop_client_gracefully
-#        $TEST_HOME/sbin/cluster_cmd.sh collectlog $testdir
-#        $TEST_HOME/sbin/cluster_cmd.sh stop
-#        exit 1
-#    fi

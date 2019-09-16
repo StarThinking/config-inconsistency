@@ -38,7 +38,7 @@ benchmark_threads=5 # default value
 points=()
 
 # error types
-ERRORS=(COMMAND FATAL SYSTEM)
+ERRORS=(COMMAND RECONFIG FATAL SYSTEM)
 ERRORS_NUM=${#ERRORS[@]}
 for ((i=0; i < $ERRORS_NUM; i++)); do
     name=${ERRORS[i]}

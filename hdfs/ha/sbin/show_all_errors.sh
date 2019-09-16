@@ -21,6 +21,10 @@ echo ${ERRORS[$COMMAND]}:
 generate_command_errors $dir
 echo ""
 
+echo ${ERRORS[$RECONFIG]}:
+generate_reconfig_errors $dir
+echo ""
+
 echo ${ERRORS[$FATAL]}:
 generate_fatal_errors $dir
 echo ""
