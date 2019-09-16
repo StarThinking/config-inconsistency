@@ -81,7 +81,6 @@ function subsetof {
     rm system_errors_not_found.tmp.txt
 
     echo "subsetof returns $ret" 
-    echo ""
 
     return $ret
 }

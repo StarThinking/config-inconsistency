@@ -102,16 +102,16 @@ function procedure {
     # check reconfig and fatal error
     check_reconfig_fatal_errors $test_12
     if [ $? -ne 0 ]; then
-	echo "reconfig or fatal errors in test_12 --> NOT online reconfigurable, quit"
+	echo "reconfig or fatal errors in test_12 --> NOT $reconfig_mode reconfigurable, quit"
 	reconfigurable=0
 	return 0
     fi
     # check system error
     subsetof $reconfig_mode $test_12 $test_22 $test_11
     if [ $? -eq 0 ]; then
-        echo "test_12 is subset of union (test_c, test_22, test_11) --> MAYBE online reconfigurable, quit."
+        echo "test_12 is subset of union (test_c, test_22, test_11) --> MAYBE $reconfig_mode reconfigurable, quit."
     else
-	echo "test_12 is NOT subset of union(test_c, test_22, test_11) --> NOT online reconfigurable, quit"
+	echo "test_12 is NOT subset of union(test_c, test_22, test_11) --> NOT $reconfig_mode reconfigurable, quit"
 	reconfigurable=0
     fi
     
@@ -140,7 +140,19 @@ do
     if [ $? -ne 0 ]; then
 	echo "command error in the test, exit"
     fi 
-    
+
+    if [ $reconfigurable -ne 1 ]; then # not online reconfigurable  
+	echo "" 
+	echo "not online reconfigurable, continue"
+	reconfig_mode=cluster_stop
+	component=cluster
+	reconfigurable=1 # global variable
+	procedure $component $parameter $value1 $value2 $reconfig_mode
+	if [ $? -ne 0 ]; then
+            echo "command error in the test, exit"
+        fi
+    fi 
+
     cd ..
     echo "---------------------------------------------------------"
 done
