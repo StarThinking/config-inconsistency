@@ -49,7 +49,7 @@ function procedure {
     # make sure no command error
     if [ $? -ne 0 ]; then
         echo "command error:"
-	generate_reconfig_errors $test_12
+	generate_command_errors $test_12
 	echo "[COMMAND_ERROR_WARN]command error in test_12, quit"
 	return 1
     fi
@@ -69,7 +69,7 @@ function procedure {
     # make sure no command error
     if [ $ret -eq 0 ]; then
         echo "command error:"
-	generate_reconfig_errors $test_22
+	generate_command_errors $test_22
 	echo "[COMMAND_ERROR_WARN]command error in test_22, quit"
 	return 1
     fi
@@ -88,7 +88,7 @@ function procedure {
     # make sure no command error
     if [ $ret -eq 0 ]; then
         echo "command error:"
-	generate_reconfig_errors $test_11
+	generate_command_errors $test_11
 	echo "[COMMAND_ERROR_WARN]command error in test_11, quit"
 	return 1
     fi
