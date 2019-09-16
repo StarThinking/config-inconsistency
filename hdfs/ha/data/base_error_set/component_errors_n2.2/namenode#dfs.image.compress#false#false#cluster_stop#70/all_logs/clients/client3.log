@@ -1,0 +1,233 @@
+get myfile3 for 0 times success
+put myfile3.remotecopy for 0 times success
+Deleted /myfile3.remotecopy
+remove myfile3.remotecopy for 0 times success
+
+get myfile3 for 1 times success
+put myfile3.remotecopy for 1 times success
+sub_benchmark 3 is handling signal TERM
+clean up for sub_benchmark 3
+let's try to exit gracefully
+Deleted /myfile3.remotecopy
+clean up finished
+get myfile3 for 0 times success
+put myfile3.remotecopy for 0 times success
+Deleted /myfile3.remotecopy
+remove myfile3.remotecopy for 0 times success
+
+get myfile3 for 1 times success
+sub_benchmark 3 is handling signal TERM
+clean up for sub_benchmark 3
+let's try to exit gracefully
+Deleted /myfile3.remotecopy
+clean up finished
+get myfile3 for 0 times success
+2019-09-15 03:52:01,898 INFO  retry.RetryInvocationHandler RetryInvocationHandler.java:log:411 - org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.ipc.RetriableException): org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot create file/myfile3.remotecopy._COPYING_. Name node is in safe mode.
+The reported blocks 5 has reached the threshold 0.9990 of total blocks 5. The number of live datanodes 4 has reached the minimum number 0. In safe mode extension. Safe mode will be turned off automatically in 0 seconds. NamenodeHostName:node-1-link-0
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1452)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.startFileInt(FSNamesystem.java:2412)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.startFile(FSNamesystem.java:2358)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.create(NameNodeRpcServer.java:774)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.create(ClientNamenodeProtocolServerSideTranslatorPB.java:462)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:523)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:991)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:872)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:818)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.security.auth.Subject.doAs(Subject.java:422)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1729)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2678)
+Caused by: org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot create file/myfile3.remotecopy._COPYING_. Name node is in safe mode.
+The reported blocks 5 has reached the threshold 0.9990 of total blocks 5. The number of live datanodes 4 has reached the minimum number 0. In safe mode extension. Safe mode will be turned off automatically in 0 seconds. NamenodeHostName:node-1-link-0
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.newSafemodeException(FSNamesystem.java:1461)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1448)
+	... 13 more
+, while invoking ClientNamenodeProtocolTranslatorPB.create over node-1-link-0/192.168.122.163:8020. Retrying immediately.
+2019-09-15 03:52:01,906 INFO  retry.RetryInvocationHandler RetryInvocationHandler.java:log:411 - org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.ipc.RetriableException): org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot create file/myfile3.remotecopy._COPYING_. Name node is in safe mode.
+The reported blocks 5 has reached the threshold 0.9990 of total blocks 5. The number of live datanodes 4 has reached the minimum number 0. In safe mode extension. Safe mode will be turned off automatically in 0 seconds. NamenodeHostName:node-1-link-0
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1452)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.startFileInt(FSNamesystem.java:2412)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.startFile(FSNamesystem.java:2358)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.create(NameNodeRpcServer.java:774)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.create(ClientNamenodeProtocolServerSideTranslatorPB.java:462)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:523)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:991)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:872)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:818)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.security.auth.Subject.doAs(Subject.java:422)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1729)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2678)
+Caused by: org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot create file/myfile3.remotecopy._COPYING_. Name node is in safe mode.
+The reported blocks 5 has reached the threshold 0.9990 of total blocks 5. The number of live datanodes 4 has reached the minimum number 0. In safe mode extension. Safe mode will be turned off automatically in 0 seconds. NamenodeHostName:node-1-link-0
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.newSafemodeException(FSNamesystem.java:1461)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1448)
+	... 13 more
+, while invoking ClientNamenodeProtocolTranslatorPB.create over node-1-link-0/192.168.122.163:8020. Retrying after sleeping for 559ms.
+put myfile3.remotecopy for 0 times success
+Deleted /myfile3.remotecopy
+remove myfile3.remotecopy for 0 times success
+
+get myfile3 for 1 times success
+sub_benchmark 3 is handling signal TERM
+clean up for sub_benchmark 3
+let's try to exit gracefully
+Deleted /myfile3.remotecopy
+clean up finished
+get myfile3 for 0 times success
+2019-09-15 03:54:18,440 INFO  retry.RetryInvocationHandler RetryInvocationHandler.java:log:411 - org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.ipc.RetriableException): org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot create file/myfile3.remotecopy._COPYING_. Name node is in safe mode.
+The reported blocks 5 has reached the threshold 0.9990 of total blocks 5. The number of live datanodes 4 has reached the minimum number 0. In safe mode extension. Safe mode will be turned off automatically in 1 seconds. NamenodeHostName:node-1-link-0
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1452)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.startFileInt(FSNamesystem.java:2412)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.startFile(FSNamesystem.java:2358)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.create(NameNodeRpcServer.java:774)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.create(ClientNamenodeProtocolServerSideTranslatorPB.java:462)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:523)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:991)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:872)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:818)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.security.auth.Subject.doAs(Subject.java:422)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1729)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2678)
+Caused by: org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot create file/myfile3.remotecopy._COPYING_. Name node is in safe mode.
+The reported blocks 5 has reached the threshold 0.9990 of total blocks 5. The number of live datanodes 4 has reached the minimum number 0. In safe mode extension. Safe mode will be turned off automatically in 1 seconds. NamenodeHostName:node-1-link-0
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.newSafemodeException(FSNamesystem.java:1461)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1448)
+	... 13 more
+, while invoking ClientNamenodeProtocolTranslatorPB.create over node-1-link-0/192.168.122.163:8020. Retrying immediately.
+2019-09-15 03:54:18,487 INFO  retry.RetryInvocationHandler RetryInvocationHandler.java:log:411 - org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.ipc.RetriableException): org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot create file/myfile3.remotecopy._COPYING_. Name node is in safe mode.
+The reported blocks 5 has reached the threshold 0.9990 of total blocks 5. The number of live datanodes 4 has reached the minimum number 0. In safe mode extension. Safe mode will be turned off automatically in 1 seconds. NamenodeHostName:node-1-link-0
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1452)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.startFileInt(FSNamesystem.java:2412)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.startFile(FSNamesystem.java:2358)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.create(NameNodeRpcServer.java:774)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.create(ClientNamenodeProtocolServerSideTranslatorPB.java:462)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:523)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:991)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:872)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:818)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.security.auth.Subject.doAs(Subject.java:422)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1729)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2678)
+Caused by: org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot create file/myfile3.remotecopy._COPYING_. Name node is in safe mode.
+The reported blocks 5 has reached the threshold 0.9990 of total blocks 5. The number of live datanodes 4 has reached the minimum number 0. In safe mode extension. Safe mode will be turned off automatically in 1 seconds. NamenodeHostName:node-1-link-0
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.newSafemodeException(FSNamesystem.java:1461)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1448)
+	... 13 more
+, while invoking ClientNamenodeProtocolTranslatorPB.create over node-1-link-0/192.168.122.163:8020. Retrying after sleeping for 895ms.
+2019-09-15 03:54:19,387 INFO  retry.RetryInvocationHandler RetryInvocationHandler.java:log:411 - org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.ipc.RetriableException): org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot create file/myfile3.remotecopy._COPYING_. Name node is in safe mode.
+The reported blocks 5 has reached the threshold 0.9990 of total blocks 5. The number of live datanodes 4 has reached the minimum number 0. In safe mode extension. Safe mode will be turned off automatically in 0 seconds. NamenodeHostName:node-1-link-0
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1452)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.startFileInt(FSNamesystem.java:2412)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.startFile(FSNamesystem.java:2358)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.create(NameNodeRpcServer.java:774)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.create(ClientNamenodeProtocolServerSideTranslatorPB.java:462)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:523)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:991)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:872)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:818)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.security.auth.Subject.doAs(Subject.java:422)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1729)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2678)
+Caused by: org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot create file/myfile3.remotecopy._COPYING_. Name node is in safe mode.
+The reported blocks 5 has reached the threshold 0.9990 of total blocks 5. The number of live datanodes 4 has reached the minimum number 0. In safe mode extension. Safe mode will be turned off automatically in 0 seconds. NamenodeHostName:node-1-link-0
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.newSafemodeException(FSNamesystem.java:1461)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1448)
+	... 13 more
+, while invoking ClientNamenodeProtocolTranslatorPB.create over node-1-link-0/192.168.122.163:8020. Retrying after sleeping for 2591ms.
+put myfile3.remotecopy for 0 times success
+Deleted /myfile3.remotecopy
+remove myfile3.remotecopy for 0 times success
+
+get myfile3 for 1 times success
+put myfile3.remotecopy for 1 times success
+Deleted /myfile3.remotecopy
+sub_benchmark 3 is handling signal TERM
+clean up for sub_benchmark 3
+let's try to exit gracefully
+clean up finished
+get myfile3 for 0 times success
+2019-09-15 03:56:36,678 INFO  retry.RetryInvocationHandler RetryInvocationHandler.java:log:411 - org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.ipc.RetriableException): org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot create file/myfile3.remotecopy._COPYING_. Name node is in safe mode.
+The reported blocks 5 has reached the threshold 0.9990 of total blocks 5. The number of live datanodes 4 has reached the minimum number 0. In safe mode extension. Safe mode will be turned off automatically in 1 seconds. NamenodeHostName:node-1-link-0
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1452)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.startFileInt(FSNamesystem.java:2412)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.startFile(FSNamesystem.java:2358)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.create(NameNodeRpcServer.java:774)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.create(ClientNamenodeProtocolServerSideTranslatorPB.java:462)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:523)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:991)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:872)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:818)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.security.auth.Subject.doAs(Subject.java:422)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1729)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2678)
+Caused by: org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot create file/myfile3.remotecopy._COPYING_. Name node is in safe mode.
+The reported blocks 5 has reached the threshold 0.9990 of total blocks 5. The number of live datanodes 4 has reached the minimum number 0. In safe mode extension. Safe mode will be turned off automatically in 1 seconds. NamenodeHostName:node-1-link-0
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.newSafemodeException(FSNamesystem.java:1461)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1448)
+	... 13 more
+, while invoking ClientNamenodeProtocolTranslatorPB.create over node-1-link-0/192.168.122.163:8020. Retrying immediately.
+2019-09-15 03:56:36,691 INFO  retry.RetryInvocationHandler RetryInvocationHandler.java:log:411 - org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.ipc.RetriableException): org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot create file/myfile3.remotecopy._COPYING_. Name node is in safe mode.
+The reported blocks 5 has reached the threshold 0.9990 of total blocks 5. The number of live datanodes 4 has reached the minimum number 0. In safe mode extension. Safe mode will be turned off automatically in 1 seconds. NamenodeHostName:node-1-link-0
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1452)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.startFileInt(FSNamesystem.java:2412)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.startFile(FSNamesystem.java:2358)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.create(NameNodeRpcServer.java:774)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.create(ClientNamenodeProtocolServerSideTranslatorPB.java:462)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:523)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:991)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:872)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:818)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.security.auth.Subject.doAs(Subject.java:422)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1729)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2678)
+Caused by: org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot create file/myfile3.remotecopy._COPYING_. Name node is in safe mode.
+The reported blocks 5 has reached the threshold 0.9990 of total blocks 5. The number of live datanodes 4 has reached the minimum number 0. In safe mode extension. Safe mode will be turned off automatically in 1 seconds. NamenodeHostName:node-1-link-0
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.newSafemodeException(FSNamesystem.java:1461)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1448)
+	... 13 more
+, while invoking ClientNamenodeProtocolTranslatorPB.create over node-1-link-0/192.168.122.163:8020. Retrying after sleeping for 936ms.
+2019-09-15 03:56:37,633 INFO  retry.RetryInvocationHandler RetryInvocationHandler.java:log:411 - org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.ipc.RetriableException): org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot create file/myfile3.remotecopy._COPYING_. Name node is in safe mode.
+The reported blocks 5 has reached the threshold 0.9990 of total blocks 5. The number of live datanodes 4 has reached the minimum number 0. In safe mode extension. Safe mode will be turned off automatically in 0 seconds. NamenodeHostName:node-1-link-0
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1452)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.startFileInt(FSNamesystem.java:2412)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.startFile(FSNamesystem.java:2358)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.create(NameNodeRpcServer.java:774)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.create(ClientNamenodeProtocolServerSideTranslatorPB.java:462)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:523)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:991)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:872)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:818)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.security.auth.Subject.doAs(Subject.java:422)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1729)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2678)
+Caused by: org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot create file/myfile3.remotecopy._COPYING_. Name node is in safe mode.
+The reported blocks 5 has reached the threshold 0.9990 of total blocks 5. The number of live datanodes 4 has reached the minimum number 0. In safe mode extension. Safe mode will be turned off automatically in 0 seconds. NamenodeHostName:node-1-link-0
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.newSafemodeException(FSNamesystem.java:1461)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1448)
+	... 13 more
+, while invoking ClientNamenodeProtocolTranslatorPB.create over node-1-link-0/192.168.122.163:8020. Retrying after sleeping for 2367ms.
+put myfile3.remotecopy for 0 times success
+Deleted /myfile3.remotecopy
+remove myfile3.remotecopy for 0 times success
+
+get myfile3 for 1 times success
+sub_benchmark 3 is handling signal TERM
+clean up for sub_benchmark 3
+let's try to exit gracefully
+Deleted /myfile3.remotecopy
+clean up finished
