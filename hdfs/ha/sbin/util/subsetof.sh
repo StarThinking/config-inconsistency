@@ -7,7 +7,7 @@
 errorset_names=('component' 'test_22' 'test_11' 'test_12')
 
 function subsetof {
-    if [ $# -ne 2 ]; then
+    if [ $# -lt 2 ]; then
         echo "${ERRORS[$COMMAND]}[wrong_arguments]"
 	return 1
     fi
