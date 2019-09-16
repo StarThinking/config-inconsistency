@@ -18,7 +18,7 @@ function subsetof {
     ret=0
 
     # generate system errors for test_12
-    test_12_system_errors=$(generate_system_errors $test_1)
+    test_12_system_errors=$(generate_system_errors $test_12)
     
     set_size=0
     component=$(echo $test_12 | awk -F "$split" 'NR==1 {print $1}')
