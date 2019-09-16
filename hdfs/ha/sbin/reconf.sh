@@ -19,7 +19,7 @@ function check_nn_health {
     if [ $health_nn1 -eq 0 ] && [ $health_nn2 -eq 0 ]; then
 	echo "namenodes are healthy"
     else
-        echo "${ERRORS[$FATAL]}[namenode_unhealth]: namenode1 $health_nn1, namenode2 $health_nn2"
+        echo "${ERRORS[$RECONFIG]}[namenode_unhealth]: namenode1 $health_nn1, namenode2 $health_nn2"
 	ret=1
     fi
     
@@ -45,7 +45,7 @@ function online_reconfig_namenode { # return 0 if success, 1 if error
     if [ $? -eq 0 ]; then
 	echo "standby0 has been reconfigured succesfully"
     else
-        echo "${ERRORS[$FATAL]}[standby0_reconfig_failure]: failed to reconfigure standby0"
+        echo "${ERRORS[$RECONFIG]}[standby0_reconfig_failure]: failed to reconfigure standby0"
 	ret=1
         return $ret
     fi
@@ -60,14 +60,14 @@ function online_reconfig_namenode { # return 0 if success, 1 if error
     if [ $failover_ret -eq 0 ]; then
 	echo "$failover_msg"
     else
-        echo "${ERRORS[$FATAL]}[failover_failure]: failed to failover between active0 and standby0"
+        echo "${ERRORS[$RECONFIG]}[failover_failure]: failed to failover between active0 and standby0"
         ret=2
 	return $ret
     fi
     sleep 20
     check_nn_health
     if [ $? -ne 0 ]; then
-        echo "${ERRORS[$FATAL]}[nn_unhealth_aftere_failover]: namenode unhealthy"
+        echo "${ERRORS[$RECONFIG]}[nn_unhealth_aftere_failover]: namenode unhealthy"
         ret=3
         return $ret
     fi
@@ -76,7 +76,7 @@ function online_reconfig_namenode { # return 0 if success, 1 if error
     active1=$($HADOOP_HOME/bin/hdfs haadmin -getAllServiceState | grep active | cut -d':' -f1)
     standby1=$($HADOOP_HOME/bin/hdfs haadmin -getAllServiceState | grep standby | cut -d':' -f1)
     if [ "$active1" != "$standby0" ] || [ "$standby1" != "$active0" ]; then
-	echo "${ERRORS[$FATAL]}[nn_switch_verify_failure]: namenode switch verification failed"
+	echo "${ERRORS[$RECONFIG]}[nn_switch_verify_failure]: namenode switch verification failed"
 	ret=4
 	return $ret
     fi
@@ -92,7 +92,7 @@ function online_reconfig_namenode { # return 0 if success, 1 if error
     if [ $? -eq 0 ]; then
 	echo "standby1 has been reconfigured succesfully"
     else
-        echo "${ERRORS[$FATAL]}[standby1_reconfig_failure]: failed to reconfigure standby1"
+        echo "${ERRORS[$RECONFIG]}[standby1_reconfig_failure]: failed to reconfigure standby1"
 	ret=5
         return $ret
     fi
