@@ -115,7 +115,7 @@ sleep $waittime
 # stop benchmark running on client
 $TEST_HOME/sbin/cluster_cmd.sh stop_client_gracefully
 
-n=1
+n=2
 i=0
 while [ $i -lt $n ]
 do
