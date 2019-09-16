@@ -67,7 +67,7 @@ function procedure {
     echo "run $reconfig_mode v2-v2 test"
     $TEST_HOME/sbin/sub_test.sh $component $parameter $value2 $value2 $reconfig_mode $waittime 
     # make sure no command error
-    if [ $ret -eq 0 ]; then
+    if [ $ret -ne 0 ]; then
         echo "command error:"
 	generate_command_errors $test_22
 	echo "[COMMAND_ERROR_WARN]command error in test_22, quit"
@@ -83,23 +83,23 @@ function procedure {
     fi
    
     #### v1-v1 ####
-    echo "run $reconfig_mode v1-v1 test"
-    $TEST_HOME/sbin/sub_test.sh $component $parameter $value1 $value1 $reconfig_mode $waittime 
-    # make sure no command error
-    if [ $ret -eq 0 ]; then
-        echo "command error:"
-	generate_command_errors $test_11
-	echo "[COMMAND_ERROR_WARN]command error in test_11, quit"
-	return 1
-    fi
-    # make sure no reconfig and fatal error
-    check_reconfig_fatal_errors $test_11
-    if [ $? -eq 0 ]; then
-	echo "no reconfig and fatal errors in test_11, continue"	
-    else
-	echo "reconfig or fatal errors in test_11, quit"
-	return 0
-    fi
+#    echo "run $reconfig_mode v1-v1 test"
+#    $TEST_HOME/sbin/sub_test.sh $component $parameter $value1 $value1 $reconfig_mode $waittime 
+#    # make sure no command error
+#    if [ $ret -ne 0 ]; then
+#        echo "command error:"
+#	generate_command_errors $test_11
+#	echo "[COMMAND_ERROR_WARN]command error in test_11, quit"
+#	return 1
+#    fi
+#    # make sure no reconfig and fatal error
+#    check_reconfig_fatal_errors $test_11
+#    if [ $? -eq 0 ]; then
+#	echo "no reconfig and fatal errors in test_11, continue"	
+#    else
+#	echo "reconfig or fatal errors in test_11, quit"
+#	return 0
+#    fi
    
     #### final check ####
     # check reconfig and fatal error
@@ -110,11 +110,14 @@ function procedure {
 	return 0
     fi
     # check system error
-    subsetof $reconfig_mode $test_12 $test_22 $test_11
+    #subsetof $reconfig_mode $test_12 $test_22 $test_11
+    subsetof $reconfig_mode $test_12 $test_22
     if [ $? -eq 0 ]; then
-        echo "test_12 is subset of union (test_c, test_22, test_11) --> MAYBE $reconfig_mode reconfigurable, quit."
+        #echo "test_12 is subset of union (test_c, test_22, test_11) --> MAYBE $reconfig_mode reconfigurable, quit."
+        echo "test_12 is subset of union (test_c, test_22) --> MAYBE $reconfig_mode reconfigurable, quit."
     else
-	echo "[NOT_RECONF_WARN]test_12 is NOT subset of union(test_c, test_22, test_11) --> NOT $reconfig_mode reconfigurable, quit"
+	#echo "[NOT_RECONF_WARN]test_12 is NOT subset of union(test_c, test_22, test_11) --> NOT $reconfig_mode reconfigurable, quit"
+	echo "[NOT_RECONF_WARN]test_12 is NOT subset of union(test_c, test_22) --> NOT $reconfig_mode reconfigurable, quit"
 	reconfigurable=0
     fi
     
