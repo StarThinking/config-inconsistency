@@ -12,8 +12,8 @@ duration=120
 
 while IFS= read -r parameter
 do
-    echo $component $parameter true true
-    echo $component $parameter false false
+    echo $component $parameter true TRUE
+    echo $component $parameter false FALSE
 done
 
 

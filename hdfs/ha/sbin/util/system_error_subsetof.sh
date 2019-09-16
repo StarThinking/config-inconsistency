@@ -6,7 +6,7 @@
 
 errorset_names=('component' 'test_22' 'test_11' 'test_12')
 
-function subsetof {
+function system_error_subsetof {
     if [ $# -lt 2 ]; then
         echo "${ERRORS[$COMMAND]}[wrong_arguments]"
 	return 1
@@ -80,7 +80,7 @@ function subsetof {
     rm system_errors_found.tmp.txt
     rm system_errors_not_found.tmp.txt
 
-    echo "subsetof returns $ret" 
+    echo "system_error_subsetof returns $ret" 
 
     return $ret
 }

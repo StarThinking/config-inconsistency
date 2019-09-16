@@ -4,7 +4,7 @@ set -u
 # if a script wants to be executed by itself, 
 # it needs to load global variables
 . $TEST_HOME/sbin/global_var.sh
-. $TEST_HOME/sbin/util/subsetof.sh
+. $TEST_HOME/sbin/util/system_error_subsetof.sh
 . $TEST_HOME/sbin/util/error_helper.sh
 
 if [ $# -ne 2 ]; then
@@ -55,12 +55,16 @@ function procedure {
     fi
 
     #### component ####
-    subsetof $reconfig_mode $test_12 
-    if [ $? -eq 0 ]; then
-        echo "test_12 is subset of test_c, quit."
+    system_error_subsetof $reconfig_mode $test_12 
+    ret1=$?
+    # make sure no reconfig and fatal error
+    check_reconfig_fatal_errors $test_12
+    ret2=$?
+    if [ $ret1 -eq 0 ] && [ $ret2 -eq 0 ]; then
+        echo "system error of test_12 is subset of test_c and there's no fatal error --> MAYBE $reconfig_mode reconfigurable, quit."
         return 0
     else
-	echo "test_12 is NOT subset of test_c, continue."
+	echo "system error of test_12 is NOT subset of test_c or it has fatal error, continue."
     fi
 
     #### v2-v2 ####
@@ -70,7 +74,7 @@ function procedure {
     if [ $ret -ne 0 ]; then
         echo "command error:"
 	generate_command_errors $test_22
-	echo "[COMMAND_ERROR_WARN]command error in test_22, quit"
+	echo "[COMMAND_ERROR_WARN]command error in test_22 --> NO CONCLUSION, quit"
 	return 1
     fi
     # make sure no reconfig and fatal error
@@ -78,7 +82,7 @@ function procedure {
     if [ $? -eq 0 ]; then
 	echo "no reconfig and fatal errors in test_22, continue"	
     else
-	echo "reconfig or fatal errors in test_22, quit"
+	echo "reconfig or fatal errors in test_22 --> NO CONCLUSION, quit"
 	return 0
     fi
    
@@ -89,7 +93,7 @@ function procedure {
     if [ $ret -ne 0 ]; then
         echo "command error:"
 	generate_command_errors $test_11
-	echo "[COMMAND_ERROR_WARN]command error in test_11, quit"
+	echo "[COMMAND_ERROR_WARN]command error in test_11 --> NO CONCLUSION, quit"
 	return 1
     fi
     # make sure no reconfig and fatal error
@@ -97,7 +101,7 @@ function procedure {
     if [ $? -eq 0 ]; then
 	echo "no reconfig and fatal errors in test_11, continue"	
     else
-	echo "reconfig or fatal errors in test_11, quit"
+	echo "reconfig or fatal errors in test_11 --> NO CONCLUSION, quit"
 	return 0
     fi
    
@@ -110,11 +114,11 @@ function procedure {
 	return 0
     fi
     # check system error
-    subsetof $reconfig_mode $test_12 $test_22 $test_11
+    system_error_subsetof $reconfig_mode $test_12 $test_22 $test_11
     if [ $? -eq 0 ]; then
-        echo "test_12 is subset of union (test_c, test_22, test_11) --> MAYBE $reconfig_mode reconfigurable, quit."
+        echo "system error of test_12 is subset of union (test_c, test_22, test_11) --> MAYBE $reconfig_mode reconfigurable, quit."
     else
-	echo "[NOT_RECONF_WARN]test_12 is NOT subset of union(test_c, test_22, test_11) --> NOT $reconfig_mode reconfigurable, quit"
+	echo "[NOT_RECONF_WARN]system error of test_12 is NOT subset of union(test_c, test_22, test_11) --> NOT $reconfig_mode reconfigurable, quit"
 	reconfigurable=0
     fi
     
