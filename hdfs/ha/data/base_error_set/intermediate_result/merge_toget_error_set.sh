@@ -1,0 +1,1 @@
+node=namenode; for i in 0 1 2 ; do ./analyze_occ.sh online_"$node"_n"$i".txt | awk -F " " '{print $1}'; done >> online_"$node".txt.tmp; sort -u online_"$node".txt.tmp >> online_"$node".txt; rm online_"$node".txt.tmp

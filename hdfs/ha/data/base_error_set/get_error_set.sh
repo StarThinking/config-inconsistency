@@ -11,8 +11,9 @@ fi
 
 samples=()
 #output_file=merged.txt
-res_file=merged.txt.tmp
-occ_file=occ.txt.tmp
+res_file_tmp=merged.txt.tmp
+res_file=merged.txt
+occ_file=occ.txt
 shift
 
 while [ $# -ne 0 ]
@@ -28,29 +29,33 @@ errors=('command' 'fatal' 'system')
 for i in $(seq 0 $(( ${#errors[@]} - 1 )))
 do 
     echo > $res_file
+    echo > $res_file_tmp
     echo > $occ_file
-    echo "${errors[$i]}"
+    #echo "${errors[$i]}"
     
     for j in ${samples[@]}
     do
-        echo ""$j":"
-        generate_"${errors[$i]}"_errors $j | tee -a $res_file
-        echo ""
+        #echo ""$j":"
+        #generate_"${errors[$i]}"_errors $j | tee -a $res_file
+        generate_"${errors[$i]}"_errors $j >> $res_file_tmp
+        #echo ""
     done
+    awk NF $res_file_tmp > $res_file
     
-    echo "merged result for ${errors[$i]}:"
-    error_set=$(sort -u $res_file)
-    #echo "error set: ${error_set[@]}"
-    echo "occurance of each error:"
-    for e in ${error_set[@]}
-    do
-        occ=$(cat $res_file | grep $e | wc -l)
-	echo "$occ $e" >> $occ_file
-    done
-    cat $occ_file | sort -u -r
+    if [ "$(cat $res_file)" != '' ]; then 
+        #echo "merged ioccurance result for ${errors[$i]}:"
+        error_set=$(sort -u $res_file)
+        for e in ${error_set[@]}
+        do
+            occ=$(cat $res_file | grep $e | wc -l)
+	    echo "$e $occ" >> $occ_file
+        done
+        cat $occ_file | sort -u | sort -rn -k 2   
+    fi
 
     rm $occ_file
     rm $res_file
+    rm $res_file_tmp
 done
 
 #sort -u $res_file >> $output_file
