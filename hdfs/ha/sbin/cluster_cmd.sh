@@ -41,7 +41,7 @@ function start {
         scp $TEST_HOME/sbin/* node-"$i"-link-0:$TEST_HOME/sbin
 
         # override all jars
-        scp -r $HADOOP_HOME/share node-"$i"-link-0:$HADOOP_HOME
+        #scp -r $HADOOP_HOME/share node-"$i"-link-0:$HADOOP_HOME
     done
     
     ### START MANUAL FAILOVER ###
@@ -150,11 +150,11 @@ function stop_client_gracefully {
     for i in ${clients[@]}
     do
         count=0
-        while [ $count -le 2 ]
+        while [ $count -le 6 ]
         do
             ssh node-"$i"-link-0 "ps aux | grep bench | awk -F ' ' '{print \$2}' | xargs kill "
-            echo "sleep 30 seconds to wait benchmark to quit itself"
-            sleep 30
+            echo "sleep 10 seconds to wait benchmark to quit itself"
+            sleep 10
 
             #check
             echo "check if client benchmark has been killed"

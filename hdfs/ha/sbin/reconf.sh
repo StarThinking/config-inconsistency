@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -u
 if [ -z "$TEST_HOME" ]; then 
     echo "TEST_HOME not set."
     exit 1
@@ -9,9 +9,16 @@ fi
 # it needs to load global variables
 . $TEST_HOME/sbin/global_var.sh
 
-function check_nn_health {
-    ret=0
+if [ $# -ne 3 ]; then
+    echo "${ERRORS[$COMMAND]}[wrong_args] ./reconf.sh [component] [parameter_from] [config_file]"
+    exit 1
+fi
 
+component=$1
+parameter_from=$2
+new_conf=$3
+
+function check_nn_health {
     $HADOOP_HOME/bin/hdfs haadmin -checkHealth nn1
     health_nn1=$?
     $HADOOP_HOME/bin/hdfs haadmin -checkHealth nn2
@@ -20,87 +27,108 @@ function check_nn_health {
 	echo "namenodes are healthy"
     else
         echo "${ERRORS[$RECONFIG]}[namenode_unhealth]: namenode1 $health_nn1, namenode2 $health_nn2"
-	ret=1
+	return 1
     fi
     
-    return $ret
+    return 0
 }
 
-function online_reconfig_namenode { # return 0 if success, 1 if error
-    ret=0
+function failover {
+    if [ $# -ne 2 ]; then
+	echo "${ERRORS[$COMMAND]}[wrong_arguments]: failover"
+    fi 
+    active0=$1
+    standby0=$2
+    
+    # failover between active0 and standby0
+    # node-0-link-0: nn1, node-1-link-0: nn2
+    if [ "$active0" == 'node-0-link-0' ]; then # nn1 is active, and nn2 is standby
+        failover_msg=$($HADOOP_HOME/bin/hdfs haadmin -failover nn1 nn2)
+    else
+        failover_msg=$($HADOOP_HOME/bin/hdfs haadmin -failover nn2 nn1)
+    fi
+    sleep 2
+    
+    # check failover return value
+    if [ $? -ne 0 ]; then
+        echo "${ERRORS[$RECONFIG]}[failover_failure]: failed to failover between active0 and standby0"
+        return 1
+    fi 
+    
+    # verify active and standby namenodes have been switched
+    $HADOOP_HOME/bin/hdfs haadmin -getAllServiceState
+    active1=$($HADOOP_HOME/bin/hdfs haadmin -getAllServiceState | grep active | cut -d':' -f1)
+    standby1=$($HADOOP_HOME/bin/hdfs haadmin -getAllServiceState | grep standby | cut -d':' -f1)
+    if [ "$active1" != "$standby0" ] || [ "$standby1" != "$active0" ]; then
+        echo "${ERRORS[$RECONFIG]}[nn_switch_verify_failure]: namenode switch verification failed"
+        return 2
+    fi
+    
+    # check namenode health
+    if ! check_nn_health; then
+        echo "${ERRORS[$RECONFIG]}[nn_unhealth_aftere_failover]: namenode unhealthy"
+        return 3
+    fi
+    echo "$failover_msg"
+    return 0
+}
 
-    # find avtive and standby namenode nodes
+function reconfig_standby_namenode { # return 0 if success, 1 if error
+    if [ $# -eq 1 ]; then
+	standby=$1
+    elif [ $# -eq 0 ]; then # find standby namenode node
+        standby=$($HADOOP_HOME/bin/hdfs haadmin -getAllServiceState | grep standby | cut -d':' -f1)
+    else
+	echo "${ERRORS[$COMMAND]}[wrong_arguments]: reconfig_standby_namenode"
+	return 1
+    fi
+ 
+    ssh $standby "$HADOOP_HOME/bin/hdfs --daemon stop namenode"
+    scp $new_conf $standby:$HADOOP_HOME/etc/hadoop/"$parameter_from"-site.xml
+    ssh $standby "$HADOOP_HOME/bin/hdfs --daemon start namenode"
+    if ! check_nn_health; then
+        echo "${ERRORS[$RECONFIG]}[reconfig_standby_namenode_failure]: failed"
+	return 2
+    fi
+    echo "finished reconfig for standby namenode on $standby"
+    return 0
+}
+
+function reconfig_active_namenode { # return 0 if success, 1 if error
+    # find avtive0 and standby0 
     active0=$($HADOOP_HOME/bin/hdfs haadmin -getAllServiceState | grep active | cut -d':' -f1)
     standby0=$($HADOOP_HOME/bin/hdfs haadmin -getAllServiceState | grep standby | cut -d':' -f1)
     echo "active0 is $active0"
     echo "standby0 is $standby0"
-    
-    # online reconfig standby0
-    echo "stop standby0 and reconfig standby0"
-    ssh $standby0 "$HADOOP_HOME/bin/hdfs --daemon stop namenode"
-    scp $new_conf $standby0:$HADOOP_HOME/etc/hadoop/"$parameter_from"-site.xml
-    ssh $standby0 "$HADOOP_HOME/bin/hdfs --daemon start namenode"
-    sleep 10
-    check_nn_health
-    if [ $? -eq 0 ]; then
-	echo "standby0 has been reconfigured succesfully"
-    else
-        echo "${ERRORS[$RECONFIG]}[standby0_reconfig_failure]: failed to reconfigure standby0"
-	ret=1
-        return $ret
-    fi
 
-    # failover between active0 and standby0
-    if [ $active0 == 'node-0-link-0' ]; then # nn1 is active, and nn2 is standby
-	failover_msg=$($HADOOP_HOME/bin/hdfs haadmin -failover nn1 nn2)
+    # first failover
+    if ! failover $active0 $standby0; then
+	echo "${ERRORS[$RECONFIG]}[first_failover_failed]: failover failed"
+	return 1
     else
-	failover_msg=$($HADOOP_HOME/bin/hdfs haadmin -failover nn2 nn1)
+	active1=$standby0
+	standby1=$active0
     fi
-    failover_ret=$?
-    if [ $failover_ret -eq 0 ]; then
-	echo "$failover_msg"
-    else
-        echo "${ERRORS[$RECONFIG]}[failover_failure]: failed to failover between active0 and standby0"
-        ret=2
-	return $ret
-    fi
-    sleep 20
-    check_nn_health
-    if [ $? -ne 0 ]; then
-        echo "${ERRORS[$RECONFIG]}[nn_unhealth_aftere_failover]: namenode unhealthy"
-        ret=3
-        return $ret
+ 
+    # reconfig standby1
+    if ! reconfig_standby_namenode $standby1; then
+	return 2
     fi
     
-    # verify active and standby namenodes are switched
-    active1=$($HADOOP_HOME/bin/hdfs haadmin -getAllServiceState | grep active | cut -d':' -f1)
-    standby1=$($HADOOP_HOME/bin/hdfs haadmin -getAllServiceState | grep standby | cut -d':' -f1)
-    if [ "$active1" != "$standby0" ] || [ "$standby1" != "$active0" ]; then
-	echo "${ERRORS[$RECONFIG]}[nn_switch_verify_failure]: namenode switch verification failed"
-	ret=4
-	return $ret
+    # second failover
+    if ! failover $active1 $standby1; then
+	echo "${ERRORS[$RECONFIG]}[second_failover_failed]: failover failed"
+	return 3
     fi
-    
-    # online reconfig standby1
-    echo "stop standby1 and reconfig standby1"
-    ssh $standby1 "$HADOOP_HOME/bin/hdfs --daemon stop namenode"
-    scp $new_conf $standby1:$HADOOP_HOME/etc/hadoop/"$parameter_from"-site.xml
-    echo "reconfigued "$parameter_from"-site.xml on standby1"
-    ssh $standby1 "$HADOOP_HOME/bin/hdfs --daemon start namenode"
-    sleep 10
-    check_nn_health
-    if [ $? -eq 0 ]; then
-	echo "standby1 has been reconfigured succesfully"
-    else
-        echo "${ERRORS[$RECONFIG]}[standby1_reconfig_failure]: failed to reconfigure standby1"
-	ret=5
-        return $ret
-    fi
-    
-    return $ret
+    echo "finisheded reconfig for standby namenode on $active0"
+    active2=$($HADOOP_HOME/bin/hdfs haadmin -getAllServiceState | grep active | cut -d':' -f1)
+    standby2=$($HADOOP_HOME/bin/hdfs haadmin -getAllServiceState | grep standby | cut -d':' -f1)
+    echo "active2 is $active2"
+    echo "standby2 is $standby2"
+    return 0
 }
 
-function online_reconfig_datanode {
+function reconfig_datanode {
     # stop one datanode
     ssh node-"$reconf_datanode"-link-0 "$HADOOP_HOME/bin/hdfs --daemon stop datanode"
        
@@ -114,7 +142,7 @@ function online_reconfig_datanode {
     return 0
 }
 
-function online_reconfig_journalnode {
+function reconfig_journalnode {
     # stop one journalnode
     ssh node-"$reconf_journalnode"-link-0 "$HADOOP_HOME/bin/hdfs --daemon stop journalnode"
        
@@ -138,23 +166,9 @@ function reconfig_cluster {
     $HADOOP_HOME/sbin/start-dfs.sh
     $HADOOP_HOME/bin/hdfs haadmin -getAllServiceState
     sleep 10
+    check_nn_health
+    return $?
 }
 
-if [ $# -ne 3 ]; then
-    echo "${ERRORS[$COMMAND]}[wrong_args] ./reconf.sh [cluster|namenode|datanode|journalnode] [parameter_from] [config_file]"
-    exit 1
-fi
-
-
-type=$1
-parameter_from=$2
-new_conf=$3
-
-if [ $type = "namenode" ] || [ $type = "datanode" ] || [ $type = "journalnode" ]; then
-    online_reconfig_$type
-elif [ $type = "cluster" ]; then
-    reconfig_cluster
-else
-    echo "${ERRORS[$COMMAND]}[wrong_args]"
-fi
+reconfig_$component
 exit $?
