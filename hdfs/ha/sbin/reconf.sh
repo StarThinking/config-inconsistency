@@ -8,6 +8,7 @@ fi
 # if a script wants to be executed by itself, 
 # it needs to load global variables
 . $TEST_HOME/sbin/global_var.sh
+. $TEST_HOME/sbin/util/argument_checker.sh
 
 if [ $# -ne 3 ]; then
     echo "${ERRORS[$COMMAND]}[wrong_args] ./reconf.sh [component] [parameter_from] [config_file]"
@@ -56,8 +57,8 @@ function failover {
     fi 
     
     # verify active and standby namenodes have been switched
-    active1=$($HADOOP_HOME/bin/hdfs haadmin -getAllServiceState | grep active | cut -d':' -f1)
-    standby1=$($HADOOP_HOME/bin/hdfs haadmin -getAllServiceState | grep standby | cut -d':' -f1)
+    active1=$(get_namenode_ip active)
+    standby1=$(get_namenode_ip standby)
     if [ "$active1" != "$standby0" ] || [ "$standby1" != "$active0" ]; then
         echo "${ERRORS[$RECONFIG]}[nn_switch_verify_failure]: namenode switch verification failed"
         return 2
@@ -76,14 +77,16 @@ function reconfig_standby_namenode { # return 0 if success, 1 if error
     if [ $# -eq 1 ]; then
 	standby=$1
     elif [ $# -eq 0 ]; then # find standby namenode node
-        standby=$($HADOOP_HOME/bin/hdfs haadmin -getAllServiceState | grep standby | cut -d':' -f1)
+        standby=$(get_namenode_ip standby)
     else
 	echo "${ERRORS[$COMMAND]}[wrong_arguments]: reconfig_standby_namenode"
 	return 1
     fi
- 
+    echo "stopping standby namenode $standby ..." 
     ssh $standby "$HADOOP_HOME/bin/hdfs --daemon stop namenode"
     scp $new_conf $standby:$HADOOP_HOME/etc/hadoop/"$parameter_from"-site.xml
+    sleep 5
+    echo "starting standby namenode $standby ..." 
     ssh $standby "$HADOOP_HOME/bin/hdfs --daemon start namenode"
     if ! check_nn_health; then
         echo "${ERRORS[$RECONFIG]}[reconfig_standby_namenode_failure]: failed"
@@ -95,8 +98,8 @@ function reconfig_standby_namenode { # return 0 if success, 1 if error
 
 function reconfig_active_namenode { # return 0 if success, 1 if error
     # find avtive0 and standby0 
-    active0=$($HADOOP_HOME/bin/hdfs haadmin -getAllServiceState | grep active | cut -d':' -f1)
-    standby0=$($HADOOP_HOME/bin/hdfs haadmin -getAllServiceState | grep standby | cut -d':' -f1)
+    active0=$(get_namenode_ip active)
+    standby0=$(get_namenode_ip standby)
     echo "active0 is $active0"
     echo "standby0 is $standby0"
 
@@ -119,8 +122,8 @@ function reconfig_active_namenode { # return 0 if success, 1 if error
 	echo "${ERRORS[$RECONFIG]}[second_failover_failed]: failover failed"
 	return 3
     fi
-    active2=$($HADOOP_HOME/bin/hdfs haadmin -getAllServiceState | grep active | cut -d':' -f1)
-    standby2=$($HADOOP_HOME/bin/hdfs haadmin -getAllServiceState | grep standby | cut -d':' -f1)
+    active2=$(get_namenode_ip active)
+    standby2=$(get_namenode_ip standby)
     echo "active2 is $active2"
     echo "standby2 is $standby2"
     return 0

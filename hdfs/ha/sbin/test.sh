@@ -144,6 +144,7 @@ else
     echo "${ERRORS[$COMMAND]}[test:init_client_failure]: init client timeout"
     clean_up_when_errors $testdir
 fi
+sleep 5
 
 round=0
 while [ $round -lt $round_n ]; do
@@ -152,6 +153,7 @@ while [ $round -lt $round_n ]; do
 
     # perform v1-v2 reconfiguration
     echo performing v1-v2 "$value1"-"$value2" reconfiguration
+    sleep 5
     if ! reconf $component $hdfs_or_core_parameter $v2_conf_file; then
         clean_up_when_errors $testdir
     fi
@@ -161,6 +163,7 @@ while [ $round -lt $round_n ]; do
     
     # perform v2-v1 reconfiguration
     echo performing v2-v1 "$value2"-"$value1" reconfiguration
+    sleep 5
     if ! reconf $component $hdfs_or_core_parameter $v1_conf_file; then
         clean_up_when_errors $testdir
     fi
