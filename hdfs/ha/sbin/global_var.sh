@@ -16,8 +16,8 @@
 namenodes=(0 1)
 datanodes=(2 3 4 5) # make sure sdb is formatted
 reconf_datanode=5
-reconf_journalnode=4
-journalnodes=(2 3 4) # modify hdfs-site.xml as well
+journalnodes=(0 1 6) # modify hdfs-site.xml as well
+reconf_journalnode=6
 znodes=(0 1 6) # core-site.xml?
 znode_ids=(1 2 3)
 clients=(6)
