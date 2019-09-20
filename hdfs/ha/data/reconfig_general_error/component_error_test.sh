@@ -5,14 +5,14 @@ if [ -z "$TEST_HOME" ]; then
     exit 3
 fi
 
-for i in 60 61 70 80 100 120
+#for i in 30 60 70 80 120 180
+for i in 60
 do
-$TEST_HOME/sbin/run_hdfs_test.sh namenode dfs.image.compress false false online_reconfig $i
-$TEST_HOME/sbin/run_hdfs_test.sh namenode dfs.image.compress false false cluster_stop $i
-$TEST_HOME/sbin/run_hdfs_test.sh datanode dfs.image.compress false false online_reconfig $i
-$TEST_HOME/sbin/run_hdfs_test.sh datanode dfs.image.compress false false cluster_stop $i
-$TEST_HOME/sbin/run_hdfs_test.sh journalnode dfs.image.compress false false online_reconfig $i
-$TEST_HOME/sbin/run_hdfs_test.sh journalnode dfs.image.compress false false cluster_stop $i
+$TEST_HOME/sbin/run_hdfs_test.sh active_namenode dfs.image.compress false false $i
+$TEST_HOME/sbin/run_hdfs_test.sh standby_namenode dfs.image.compress false false $i
+$TEST_HOME/sbin/run_hdfs_test.sh datanode dfs.image.compress false false $i
+$TEST_HOME/sbin/run_hdfs_test.sh journalnode dfs.image.compress false false $i
+$TEST_HOME/sbin/run_hdfs_test.sh cluster dfs.image.compress false false $i
 done 
 
 #for i in 50 100 200 400 1000
