@@ -47,7 +47,7 @@ function failover {
     else
         failover_msg=$($HADOOP_HOME/bin/hdfs haadmin -failover nn2 nn1)
     fi
-    sleep 10
+    sleep 20
     
     # check failover return value
     if [ $? -ne 0 ]; then

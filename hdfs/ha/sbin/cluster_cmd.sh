@@ -151,7 +151,8 @@ function stop_client_gracefully {
     for i in ${clients[@]}
     do
         count=0
-        while [ $count -le 6 ]
+	max_try=6
+        while [ $count -le $max_try ]
         do
             ssh node-"$i"-link-0 "ps aux | grep bench | awk -F ' ' '{print \$2}' | xargs kill "
             echo "sleep 10 seconds to wait benchmark to quit itself"
@@ -168,7 +169,7 @@ function stop_client_gracefully {
         done
 
         # cannot wait too long
-        if [ $count -gt 2 ]; then
+        if [ $count -gt $max_try ]; then
             echo "${ERRORS[$FATAL]}[cluster_cmd:benchmark_hanging] benchamrk seems to be hanging. kill it forcefully."
             stop_client
         fi
