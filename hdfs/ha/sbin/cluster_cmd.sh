@@ -31,17 +31,18 @@ function start {
     # copy configuration to all nodes
     for i in ${allnodes[@]}
     do
-        scp $TEST_HOME/etc/* node-"$i"-link-0:$HADOOP_HOME/etc/hadoop
-	if [ "$init_conf" != "" ]
-	then
+ 	# sync on node other than node-0
+	if [ $i -ne 0 ]; then
+            ssh node-"$i"-link-0 "cd $TEST_HOME; git checkout .; git clean -fd; git pull"
+	fi
+	if [ "$init_conf" != "" ]; then
+  	    # send default hdfs and core configuration files
+  	    echo "send default hdfs and core configuration files"
+	    scp $TEST_HOME/etc/core-site.xml node-"$i"-link-0:$HADOOP_HOME/etc/hadoop
+	    scp $TEST_HOME/etc/hdfs-site.xml node-"$i"-link-0:$HADOOP_HOME/etc/hadoop
  	    echo "send $init_conf as default "$from"-site.xml"
 	    scp $init_conf node-"$i"-link-0:$HADOOP_HOME/etc/hadoop/"$from"-site.xml
 	fi
-        # override sbin
-        scp $TEST_HOME/sbin/* node-"$i"-link-0:$TEST_HOME/sbin
-
-        # override all jars
-        #scp -r $HADOOP_HOME/share node-"$i"-link-0:$HADOOP_HOME
     done
     
     ### START MANUAL FAILOVER ###
@@ -261,13 +262,13 @@ if [ $command = "start" ]; then
     if [ "$#" -eq 2 ]; then
         start $1 $2
     else
-	echo "wrong arguments"
+	echo "${ERRORS[$COMMAND]}[wrong_args]: wrong arguments"
     fi
 elif [ $command = "stop" ]; then
     stop
 elif [ $command = "collectlog" ]; then
     if [ "$#" -ne 1 ]; then
-        echo "wrong command, e.g., ./cluster_cmd.sh collectlog TEST_DIR"
+        echo "${ERRORS[$COMMAND]}[wrong_args]: e.g., ./cluster_cmd.sh collectlog TEST_DIR"
     else
         collectlog $1
     fi
@@ -276,7 +277,7 @@ elif [ $command = "init_client" ]; then
     exit $?
 elif [ $command = "start_client" ]; then
     if [ "$#" -ne 2 ]; then
-	echo "wrong arguments"
+	echo "${ERRORS[$COMMAND]}[wrong_args]: wrong arguments"
     else
         start_client $1 $2
     fi
@@ -285,5 +286,5 @@ elif [ $command = "stop_client" ]; then
 elif [ $command = "stop_client_gracefully" ]; then
     stop_client_gracefully
 else
-    echo "wrong command, e.g., ./cluster_cmd.sh [start|stop|collectlog]"
+    echo "${ERRORS[$COMMAND]}[wrong_args]: e.g., ./cluster_cmd.sh [start|stop|collectlog]"
 fi

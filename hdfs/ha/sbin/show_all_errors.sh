@@ -7,6 +7,7 @@ if [ -z "$TEST_HOME" ]; then
 fi
 
 . $TEST_HOME/sbin/global_var.sh
+. $TEST_HOME/sbin/util/error_helper.sh
 . $TEST_HOME/sbin/util/system_error_subsetof.sh
 
 if [ $# -lt 1 ]; then
@@ -32,3 +33,4 @@ echo ""
 echo ${ERRORS[$SYSTEM]}:
 generate_system_errors $dir
 echo ""
+

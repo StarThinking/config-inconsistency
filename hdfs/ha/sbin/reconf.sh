@@ -56,7 +56,6 @@ function failover {
     fi 
     
     # verify active and standby namenodes have been switched
-    $HADOOP_HOME/bin/hdfs haadmin -getAllServiceState
     active1=$($HADOOP_HOME/bin/hdfs haadmin -getAllServiceState | grep active | cut -d':' -f1)
     standby1=$($HADOOP_HOME/bin/hdfs haadmin -getAllServiceState | grep standby | cut -d':' -f1)
     if [ "$active1" != "$standby0" ] || [ "$standby1" != "$active0" ]; then
@@ -120,7 +119,6 @@ function reconfig_active_namenode { # return 0 if success, 1 if error
 	echo "${ERRORS[$RECONFIG]}[second_failover_failed]: failover failed"
 	return 3
     fi
-    echo "finisheded reconfig for standby namenode on $active0"
     active2=$($HADOOP_HOME/bin/hdfs haadmin -getAllServiceState | grep active | cut -d':' -f1)
     standby2=$($HADOOP_HOME/bin/hdfs haadmin -getAllServiceState | grep standby | cut -d':' -f1)
     echo "active2 is $active2"
