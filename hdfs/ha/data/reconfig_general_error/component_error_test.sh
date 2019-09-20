@@ -6,8 +6,7 @@ if [ -z "$TEST_HOME" ]; then
 fi
 
 cmd=$TEST_HOME/sbin/test.sh
-#for i in 30 60 70 80 120 180
-for i in 60
+for i in 30 60 70 80 120 180
 do
 $cmd active_namenode dfs.image.compress false false $i
 $cmd standby_namenode dfs.image.compress false false $i
