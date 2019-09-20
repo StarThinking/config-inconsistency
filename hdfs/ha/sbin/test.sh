@@ -151,7 +151,7 @@ while [ $round -lt $round_n ]; do
     echo "do the $round v1-v2-v1 reconfiguration test"
 
     # perform v1-v2 reconfiguration
-    echo performing v1("$value1")-v2("$value2") reconfiguration
+    echo performing v1-v2 "$value1"-"$value2" reconfiguration
     if ! reconf $component $hdfs_or_core_parameter $v2_conf_file; then
         clean_up_when_errors $testdir
     fi
@@ -160,7 +160,7 @@ while [ $round -lt $round_n ]; do
     $TEST_HOME/sbin/cluster_cmd.sh stop_client_gracefully
     
     # perform v2-v1 reconfiguration
-    echo performing v2("$value2")-v1("$value1") reconfiguration
+    echo performing v2-v1 "$value2"-"$value1" reconfiguration
     if ! reconf $component $hdfs_or_core_parameter $v1_conf_file; then
         clean_up_when_errors $testdir
     fi
