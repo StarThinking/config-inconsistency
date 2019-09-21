@@ -7,12 +7,11 @@
 errorset_names=('component' 'test_22' 'test_11' 'test_12')
 
 function system_error_subsetof {
-    if [ $# -lt 2 ]; then
+    if [ $# -lt 1 ]; then
         echo "${ERRORS[$COMMAND]}[wrong_arguments]"
 	return 1
     fi
-    reconfig_mode=$1
-    test_12=$2
+    test_12=$1
     shift 2
 
     ret=0
@@ -22,7 +21,7 @@ function system_error_subsetof {
     
     set_size=0
     component=$(echo $test_12 | awk -F "$split" 'NR==1 {print $1}')
-    root_base_dir=$TEST_HOME/data/reconfig_general_error
+    root_base_dir=$TEST_HOME/data/reconfig_general_error/system_error
     component_errors=$root_base_dir/"$component".txt
     if [ ! -f $component_errors ]; then
 	echo "${ERRORS[$COMMAND]}[no_component_errors_file]"

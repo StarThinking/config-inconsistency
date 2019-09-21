@@ -39,14 +39,13 @@ function procedure {
     parameter=$2
     value1=$3
     value2=$4
-    reconfig_mode=$5
-    test_12="$component""$split""$parameter""$split""$value1""$split""$value2""$split""$reconfig_mode""$split""$waittime"
-    test_22="$component""$split""$parameter""$split""$value2""$split""$value2""$split""$reconfig_mode""$split""$waittime"
-    test_11="$component""$split""$parameter""$split""$value1""$split""$value1""$split""$reconfig_mode""$split""$waittime"
+    test_12="$component""$split""$parameter""$split""$value1""$split""$value2""$split""$waittime"
+    test_22="$component""$split""$parameter""$split""$value2""$split""$value2""$split""$waittime"
+    test_11="$component""$split""$parameter""$split""$value1""$split""$value1""$split""$waittime"
 
     #### v1-v2 ####   
-    echo "run $reconfig_mode v1-v2 test"
-    $TEST_HOME/sbin/sub_test.sh $component $parameter $value1 $value2 $reconfig_mode $waittime 
+    echo "run $component v1-v2 reconfig test"
+    $TEST_HOME/sbin/sub_test.sh $component $parameter $value1 $value2 $waittime 
     # make sure no command error
     if [ $? -ne 0 ]; then
         echo "command error:"
@@ -56,22 +55,22 @@ function procedure {
     fi
 
     #### component ####
-    system_error_subsetof $reconfig_mode $test_12 
+    system_error_subsetof $test_12 
     ret1=$?
     # check reconfig and fatal error
     check_reconfig_fatal_errors $test_12
     ret2=$?
     if [ $ret1 -eq 0 ] && [ $ret2 -eq 0 ]; then
         echo "system error of test_12 is subset of test_c and there's no fatal error."
-	echo "--> MAYBE $reconfig_mode reconfigurable, quit."
+	echo "--> MAYBE $component reconfigurable, quit."
         return 0
     else
 	echo "system error of test_12 is NOT subset of test_c or it has fatal error, continue."
     fi
 
     #### v2-v2 ####
-    echo "run $reconfig_mode v2-v2 test"
-    $TEST_HOME/sbin/sub_test.sh $component $parameter $value2 $value2 $reconfig_mode $waittime 
+    echo "run $component v2-v2 reconfig test"
+    $TEST_HOME/sbin/sub_test.sh $component $parameter $value2 $value2 $waittime 
     # make sure no command error
     if [ $? -ne 0 ]; then
         echo "command error:"
@@ -91,8 +90,8 @@ function procedure {
     fi
    
     #### v1-v1 ####
-    echo "run $reconfig_mode v1-v1 test"
-    $TEST_HOME/sbin/sub_test.sh $component $parameter $value1 $value1 $reconfig_mode $waittime 
+    echo "run $component v1-v1 reconfig test"
+    $TEST_HOME/sbin/sub_test.sh $component $parameter $value1 $value1 $waittime 
     # make sure no command error
     if [ $? -ne 0 ]; then
         echo "command error:"
@@ -116,18 +115,18 @@ function procedure {
     check_reconfig_fatal_errors $test_12
     if [ $? -ne 0 ]; then
 	echo "[NOT_RECONF_WARN]reconfig or fatal errors in test_12."
-	echo "--> NOT $reconfig_mode reconfigurable, quit."
+	echo "--> NOT $component reconfigurable, quit."
 	reconfigurable=0
 	return 0
     fi
     # check system error
-    system_error_subsetof $reconfig_mode $test_12 $test_22 $test_11
+    system_error_subsetof $test_12 $test_22 $test_11
     if [ $? -eq 0 ]; then
         echo "system error of test_12 is subset of union (test_c, test_22, test_11)."
-	echo "--> MAYBE $reconfig_mode reconfigurable, quit."
+	echo "--> MAYBE $component reconfigurable, quit."
     else
 	echo "[NOT_RECONF_WARN]system error of test_12 is NOT subset of union(test_c, test_22, test_11)."
-	echo "--> NOT $reconfig_mode reconfigurable, quit."
+	echo "--> NOT $component reconfigurable, quit."
 	reconfigurable=0
     fi
     
@@ -150,9 +149,8 @@ do
     mkdir $test_dir 
     cd $test_dir
 
-    reconfig_mode=online_reconfig
     reconfigurable=1 # global variable
-    procedure $component $parameter $value1 $value2 $reconfig_mode  
+    procedure $component $parameter $value1 $value2
     if [ $? -ne 0 ]; then
 	echo "command error in the test, exit"
     fi 
@@ -160,10 +158,9 @@ do
     if [ $reconfigurable -ne 1 ]; then # not online reconfigurable  
 	echo "" 
 	echo "not online reconfigurable, continue"
-	reconfig_mode=cluster_stop
 	component=cluster
 	reconfigurable=1 # global variable
-	procedure $component $parameter $value1 $value2 $reconfig_mode
+	procedure $component $parameter $value1 $value2
 	if [ $? -ne 0 ]; then
             echo "command error in the test, exit"
         fi
