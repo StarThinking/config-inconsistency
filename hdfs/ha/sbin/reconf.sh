@@ -94,10 +94,10 @@ function reconfig_standby_namenode { # return 0 if success, 1 if error
     fi
     
     echo "stopping standby namenode $standby ..." 
-    ssh $standby "$HADOOP_HOME/bin/hdfs --daemon stop namenode"
-    
+    ssh $standby "$HADOOP_HOME/bin/hdfs --daemon stop namenode"    
     scp $new_conf $standby:$HADOOP_HOME/etc/hadoop/"$parameter_from"-site.xml
-    
+    sleep 5
+
     echo "starting standby namenode $standby ..." 
     ssh $standby "$HADOOP_HOME/bin/hdfs --daemon start namenode"
     sleep 5
