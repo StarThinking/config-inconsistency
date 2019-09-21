@@ -24,14 +24,14 @@ done
 
 #echo > $output_file
 
-errors=('command' 'fatal' 'system')
+errors=('command' 'reconfig' 'fatal' 'system')
 
 for i in $(seq 0 $(( ${#errors[@]} - 1 )))
 do 
     echo > $res_file
     echo > $res_file_tmp
     echo > $occ_file
-    #echo "${errors[$i]}"
+    echo "${errors[$i]}":
     
     for j in ${samples[@]}
     do
@@ -53,6 +53,7 @@ do
         cat $occ_file | sort -u | sort -rn -k 2   
     fi
 
+    echo ""
     rm $occ_file
     rm $res_file
     rm $res_file_tmp
