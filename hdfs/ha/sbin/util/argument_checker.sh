@@ -20,16 +20,14 @@ function get_namenode_ip {
 	return 1
     fi
     max_try=5
-    i=0
     ip=""
     avtive_standby=$1
-    
-    while [ $i -lt $max_try ]; do
-        i=$(( i + 1 )) 
+
+    for (( i=0; i<=max_try; i++ ))    
+    do    
 	raw=$($HADOOP_HOME/bin/hdfs haadmin -getAllServiceState | grep $avtive_standby)
 	if [ $? -ne 0 ]; then
 	    sleep 5
-	    continue
 	else
             ip=$(echo $raw | cut -d':' -f1) 
 	    break

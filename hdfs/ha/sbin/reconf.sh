@@ -20,17 +20,27 @@ parameter_from=$2
 new_conf=$3
 
 function check_nn_health {
-    $HADOOP_HOME/bin/hdfs haadmin -checkHealth nn1
-    health_nn1=$?
-    $HADOOP_HOME/bin/hdfs haadmin -checkHealth nn2
-    health_nn2=$?
-    if [ $health_nn1 -eq 0 ] && [ $health_nn2 -eq 0 ]; then
-	echo "namenodes are healthy"
-    else
-        echo "${ERRORS[$RECONFIG]}[namenode_unhealth]: namenode1 $health_nn1, namenode2 $health_nn2"
-	return 1
-    fi
+    max_try=5
+    i=0
+    for (( i=0; i<=max_try; i++ ))    
+    do
+        $HADOOP_HOME/bin/hdfs haadmin -checkHealth nn1
+        health_nn1=$?
+        $HADOOP_HOME/bin/hdfs haadmin -checkHealth nn2
+        health_nn2=$?
+        if [ $health_nn1 -eq 0 ] && [ $health_nn2 -eq 0 ]; then
+	    echo "namenodes are healthy"
+	    break
+        else
+	    echo "namenodes are not healthy, wait for 5 seconds and recheck."
+	    sleep 5
+        fi
+    done
     
+    if [ $i -ge $max_try ]; then
+        echo "${ERRORS[$RECONFIG]}[namenode_unhealth]: namenode1 $health_nn1, namenode2 $health_nn2"
+    	return 1
+    fi
     return 0
 }
 
@@ -82,12 +92,16 @@ function reconfig_standby_namenode { # return 0 if success, 1 if error
 	echo "${ERRORS[$COMMAND]}[wrong_arguments]: reconfig_standby_namenode"
 	return 1
     fi
+    
     echo "stopping standby namenode $standby ..." 
     ssh $standby "$HADOOP_HOME/bin/hdfs --daemon stop namenode"
+    
     scp $new_conf $standby:$HADOOP_HOME/etc/hadoop/"$parameter_from"-site.xml
-    sleep 5
+    
     echo "starting standby namenode $standby ..." 
     ssh $standby "$HADOOP_HOME/bin/hdfs --daemon start namenode"
+    sleep 5
+    
     if ! check_nn_health; then
         echo "${ERRORS[$RECONFIG]}[reconfig_standby_namenode_failure]: failed"
 	return 2
@@ -136,7 +150,7 @@ function reconfig_datanode {
     # change configuration to file xxx
     scp $new_conf node-"$reconf_datanode"-link-0:$HADOOP_HOME/etc/hadoop/"$parameter_from"-site.xml
     echo "change "$parameter_from"-site.xml configuration as $new_conf"
-    
+    sleep 5 
     # reboot datanode
     ssh node-"$reconf_datanode"-link-0 "$HADOOP_HOME/bin/hdfs --daemon start datanode"
     
@@ -150,7 +164,7 @@ function reconfig_journalnode {
     # change configuration to file xxx
     scp $new_conf node-"$reconf_journalnode"-link-0:$HADOOP_HOME/etc/hadoop/"$parameter_from"-site.xml
     echo "change "$parameter_from"-site.xml configuration as $new_conf"
-    
+    sleep 5
     # reboot journalnode
     ssh node-"$reconf_journalnode"-link-0 "$HADOOP_HOME/bin/hdfs --daemon start journalnode"
     
