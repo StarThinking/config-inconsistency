@@ -48,7 +48,7 @@ do
         for e in ${error_set[@]}
         do
             occ=$(cat $res_file | grep $e | wc -l)
-	    echo "$e $occ" >> $occ_file
+	    echo "$e" >> $occ_file
         done
         cat $occ_file | sort -u | sort -rn -k 2   
     fi
