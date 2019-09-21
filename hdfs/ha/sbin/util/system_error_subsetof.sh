@@ -12,7 +12,7 @@ function system_error_subsetof {
 	return 1
     fi
     test_12=$1
-    shift 2
+    shift 1
 
     ret=0
 

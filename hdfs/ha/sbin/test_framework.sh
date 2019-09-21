@@ -15,6 +15,7 @@ fi
 task_file=$1
 waittime=$2
 reconfigurable=1
+test_cmd=$TEST_HOME/sbin/test.sh
 
 # return 0 if no errors
 # return 1 if errors
@@ -45,7 +46,7 @@ function procedure {
 
     #### v1-v2 ####   
     echo "run $component v1-v2 reconfig test"
-    $TEST_HOME/sbin/sub_test.sh $component $parameter $value1 $value2 $waittime 
+    $test_cmd $component $parameter $value1 $value2 $waittime 
     # make sure no command error
     if [ $? -ne 0 ]; then
         echo "command error:"
@@ -70,7 +71,7 @@ function procedure {
 
     #### v2-v2 ####
     echo "run $component v2-v2 reconfig test"
-    $TEST_HOME/sbin/sub_test.sh $component $parameter $value2 $value2 $waittime 
+    $test_cmd $component $parameter $value2 $value2 $waittime 
     # make sure no command error
     if [ $? -ne 0 ]; then
         echo "command error:"
@@ -91,7 +92,7 @@ function procedure {
    
     #### v1-v1 ####
     echo "run $component v1-v1 reconfig test"
-    $TEST_HOME/sbin/sub_test.sh $component $parameter $value1 $value1 $waittime 
+    $test_cmd $component $parameter $value1 $value1 $waittime 
     # make sure no command error
     if [ $? -ne 0 ]; then
         echo "command error:"
