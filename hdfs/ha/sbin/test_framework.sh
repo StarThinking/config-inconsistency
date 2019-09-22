@@ -154,7 +154,6 @@ do
     procedure $component $parameter $value1 $value2
     if [ $? -ne 0 ]; then
 	echo "[COMMAND_ERROR_WARN]command error in the test, quit"
-        continue
     fi 
 
     if [ $reconfigurable -ne 1 ]; then # not online reconfigurable  
@@ -165,7 +164,6 @@ do
 	procedure $component $parameter $value1 $value2
 	if [ $? -ne 0 ]; then
 	    echo "[COMMAND_ERROR_WARN]command error in the test, quit"
-            continue
         fi
     fi 
 
