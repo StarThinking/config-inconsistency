@@ -127,7 +127,7 @@ function procedure {
 	echo "--> MAYBE $component reconfigurable, quit."
     else
 	echo "[NOT_RECONF_WARN]system error of test_12 is NOT subset of union(test_c, test_22, test_11)."
-	echo "--> NOT $component reconfigurable, quit."
+	echo "--> NOT $component reconfigurable, continue."
 	reconfigurable=0
     fi
     
@@ -159,7 +159,7 @@ do
 
     if [ $reconfigurable -ne 1 ]; then # not online reconfigurable  
 	echo "" 
-	echo "not online reconfigurable, continue"
+	echo "not online $component reconfigurable, continue"
 	component=cluster
 	reconfigurable=1 # global variable
 	procedure $component $parameter $value1 $value2
