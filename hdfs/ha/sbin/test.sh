@@ -12,12 +12,12 @@ fi
 . $TEST_HOME/sbin/global_var.sh
 . $TEST_HOME/sbin/util/argument_checker.sh
 
+hdfs_para_list=parameter_hdfs.txt
+core_para_list=parameter_core.txt
 # check which configuration file this parameter belongs to, hdfs or core
 function find_parameter { 
     parameter=$1
     hdfs_or_core=""
-    hdfs_para_list=parameter_hdfs.txt
-    core_para_list=parameter_core.txt
     for p in $(cat $root_etc/$hdfs_para_list)
     do
         if [ "$p" == "$parameter" ] ; then
@@ -31,9 +31,7 @@ function find_parameter {
     	    hdfs_or_core="core"
         fi
     done
-    
     if [ "$hdfs_or_core" != "hdfs" ] && [ "$hdfs_or_core" != "core" ]; then
-        echo "${ERRORS[$COMMAND]}[cannot_find_parameter]: $parameter not in $hdfs_para_list nor $core_para_list"
 	return 1
     fi
 
@@ -44,8 +42,7 @@ function find_parameter {
 # perform reconfiguration 
 function reconf {
     if [ $# -ne 3 ]; then
-	echo "${ERRORS[$COMMAND]}[wrong_args_reconf]"
-	return 1
+	echo "${ERRORS[$COMMAND_ERROR]}[wrong_args_reconf]"
     fi
     local component=$1
     local hdfs_or_core_parameter=$2
@@ -54,7 +51,7 @@ function reconf {
     echo "performing reconfig_$component ..."
     $TEST_HOME/sbin/reconf.sh $component $hdfs_or_core_parameter $conf_file
     if [ $? -ne 0 ]; then
-        echo "${ERRORS[$RECONFIG]}[test:reconfig_component_failure]: reconfig $component failed"
+        echo "${ERRORS[$RECONFIG_ERROR]}[test:reconfig_component_failure]: reconfig $component failed"
 	return 2
     fi
     echo "reconfig_$component done"
@@ -63,7 +60,7 @@ function reconf {
 
 function clean_up_when_errors {
     if [ $# -ne 1 ]; then
-	echo "${ERRORS[$COMMAND]}[wrong_args_clean_up]"
+	echo "${ERRORS[$COMMAND_ERROR]}[wrong_args_clean_up]"
 	return 1
     fi
     local testdir=$1
@@ -76,7 +73,7 @@ function clean_up_when_errors {
 argument_num=5
 argument_num_optional=7
 if [ $# -lt $argument_num ]; then
-    echo "${ERRORS[$COMMAND]}[wrong_arguments]: ./test.sh [component: <${valid_components[@]}>] [parameter] [value1] [value2] [waittime] optional: [read_times] [benchmark_threads]"
+    echo "${ERRORS[$COMMAND_ERROR]}[wrong_arguments]: ./test.sh [component: <${valid_components[@]}>] [parameter] [value1] [value2] [waittime] optional: [read_times] [benchmark_threads]"
     exit 1
 fi
 
@@ -96,14 +93,14 @@ if [ $# -eq $argument_num_optional ]; then
 fi
 
 if ! validate_argument $component ${valid_components[@]}; then
-    echo "${ERRORS[$COMMAND]}[wrong_component]: component: ${valid_components[@]}"
+    echo "${ERRORS[$COMMAND_ERROR]}[wrong_component]: component: ${valid_components[@]}"
     exit 1
 fi
 
 # create test dir
 testdir=./"$component""$split""$parameter""$split""$value1""$split""$value2""$split""$waittime"
-if ! mkdir $testdir; then
-    echo "${ERRORS[$COMMAND]}[cannot_mkdir]"
+if ! mkdir $testdir ; then
+    echo "${ERRORS[$COMMAND_ERROR]}[mkdir_failed]"
     exit 1
 fi
 
@@ -113,6 +110,7 @@ exec &> $testdir/run.log
 # find out which xml file this parameter comes from
 hdfs_or_core_parameter=$(find_parameter $parameter)
 if [ $? -ne 0 ]; then
+    echo "${ERRORS[$COMMAND_ERROR]}[cannot_find_parameter]: $parameter not in $hdfs_para_list nor $core_para_list"
     exit 1
 fi
 echo "$parameter is from "$hdfs_or_core_parameter"-site.xml"
@@ -141,7 +139,7 @@ timeout $wait_client_init_timeout $TEST_HOME/sbin/cluster_cmd.sh init_client $re
 if [ $? -eq 0 ]; then
     echo "init client succeed"
 else
-    echo "${ERRORS[$COMMAND]}[test:init_client_failure]: init client timeout"
+    echo "${ERRORS[$COMMAND_ERROR]}[test:init_client_failure]: init client timeout"
     clean_up_when_errors $testdir
 fi
 sleep 5

@@ -39,7 +39,7 @@ benchmark_threads=5 # default value
 valid_components=('cluster' 'active_namenode' 'standby_namenode' 'datanode' 'journalnode')
 
 # error types
-ERRORS=(COMMAND RECONFIG FATAL SYSTEM)
+ERRORS=(COMMAND_ERROR RECONFIG_ERROR FATAL_ERROR SYSTEM_ERROR)
 ERRORS_NUM=${#ERRORS[@]}
 for ((i=0; i < $ERRORS_NUM; i++)); do
     name=${ERRORS[i]}

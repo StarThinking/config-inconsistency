@@ -46,7 +46,7 @@ function procedure {
 
     #### v1-v2 ####   
     echo "run $component v1-v2 reconfig test"
-    $test_cmd $component $parameter $value1 $value2 $waittime 
+    $test_cmd $component $parameter $value1 $value2 $waittime
     # make sure no command error
     if [ $? -ne 0 ]; then
         echo "command error:"
@@ -92,7 +92,7 @@ function procedure {
    
     #### v1-v1 ####
     echo "run $component v1-v1 reconfig test"
-    $test_cmd $component $parameter $value1 $value1 $waittime 
+    $test_cmd $component $parameter $value1 $value1 $waittime
     # make sure no command error
     if [ $? -ne 0 ]; then
         echo "command error:"
@@ -153,7 +153,8 @@ do
     reconfigurable=1 # global variable
     procedure $component $parameter $value1 $value2
     if [ $? -ne 0 ]; then
-	echo "command error in the test, exit"
+	echo "[COMMAND_ERROR_WARN]command error in the test, exit"
+	exit 1
     fi 
 
     if [ $reconfigurable -ne 1 ]; then # not online reconfigurable  
@@ -163,7 +164,8 @@ do
 	reconfigurable=1 # global variable
 	procedure $component $parameter $value1 $value2
 	if [ $? -ne 0 ]; then
-            echo "command error in the test, exit"
+	    echo "[COMMAND_ERROR_WARN]command error in the test, exit"
+	    exit 1
         fi
     fi 
 

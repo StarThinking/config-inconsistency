@@ -170,7 +170,7 @@ function stop_client_gracefully {
 
         # cannot wait too long
         if [ $count -gt $max_try ]; then
-            echo "${ERRORS[$FATAL]}[cluster_cmd:benchmark_hanging] benchamrk seems to be hanging. kill it forcefully."
+            echo "${ERRORS[$FATAL_ERROR]}[cluster_cmd:benchmark_hanging] benchamrk seems to be hanging. kill it forcefully."
             stop_client
         fi
     done
@@ -263,13 +263,13 @@ if [ $command = "start" ]; then
     if [ "$#" -eq 2 ]; then
         start $1 $2
     else
-	echo "${ERRORS[$COMMAND]}[wrong_args]: wrong arguments"
+	echo "${ERRORS[$COMMAND_ERROR]}[wrong_args]: wrong arguments"
     fi
 elif [ $command = "stop" ]; then
     stop
 elif [ $command = "collectlog" ]; then
     if [ "$#" -ne 1 ]; then
-        echo "${ERRORS[$COMMAND]}[wrong_args]: e.g., ./cluster_cmd.sh collectlog TEST_DIR"
+        echo "${ERRORS[$COMMAND_ERROR]}[wrong_args]: e.g., ./cluster_cmd.sh collectlog TEST_DIR"
     else
         collectlog $1
     fi
@@ -278,7 +278,7 @@ elif [ $command = "init_client" ]; then
     exit $?
 elif [ $command = "start_client" ]; then
     if [ "$#" -ne 2 ]; then
-	echo "${ERRORS[$COMMAND]}[wrong_args]: wrong arguments"
+	echo "${ERRORS[$COMMAND_ERROR]}[wrong_args]: wrong arguments"
     else
         start_client $1 $2
     fi
@@ -287,5 +287,5 @@ elif [ $command = "stop_client" ]; then
 elif [ $command = "stop_client_gracefully" ]; then
     stop_client_gracefully
 else
-    echo "${ERRORS[$COMMAND]}[wrong_args]: e.g., ./cluster_cmd.sh [start|stop|collectlog]"
+    echo "${ERRORS[$COMMAND_ERROR]}[wrong_args]: e.g., ./cluster_cmd.sh [start|stop|collectlog]"
 fi

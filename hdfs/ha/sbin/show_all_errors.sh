@@ -11,26 +11,26 @@ fi
 . $TEST_HOME/sbin/util/system_error_subsetof.sh
 
 if [ $# -lt 1 ]; then
-    echo "${ERRORS[$COMMAND]}[wrong_arguments]"
+    echo "${ERRORS[$COMMAND_ERROR]}[wrong_arguments]"
     exit 1
 fi
 
 dir=$1
 echo "show ${ERRORS[@]} in $dir"
 
-echo ${ERRORS[$COMMAND]}:
+echo ${ERRORS[$COMMAND_ERROR]}:
 generate_command_errors $dir
 echo ""
 
-echo ${ERRORS[$RECONFIG]}:
+echo ${ERRORS[$RECONFIG_ERROR]}:
 generate_reconfig_errors $dir
 echo ""
 
-echo ${ERRORS[$FATAL]}:
+echo ${ERRORS[$FATAL_ERROR]}:
 generate_fatal_errors $dir
 echo ""
 
-echo ${ERRORS[$SYSTEM]}:
+echo ${ERRORS[$SYSTEM_ERROR]}:
 generate_system_errors $dir
 echo ""
 

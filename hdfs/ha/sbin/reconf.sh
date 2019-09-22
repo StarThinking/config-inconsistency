@@ -11,7 +11,7 @@ fi
 . $TEST_HOME/sbin/util/argument_checker.sh
 
 if [ $# -ne 3 ]; then
-    echo "${ERRORS[$COMMAND]}[wrong_args] ./reconf.sh [component] [parameter_from] [config_file]"
+    echo "${ERRORS[$COMMAND_ERROR]}[wrong_args] ./reconf.sh [component] [parameter_from] [config_file]"
     exit 1
 fi
 
@@ -38,7 +38,7 @@ function check_nn_health {
     done
     
     if [ $i -ge $max_try ]; then
-        echo "${ERRORS[$RECONFIG]}[namenode_unhealth]: namenode1 $health_nn1, namenode2 $health_nn2"
+        echo "${ERRORS[$RECONFIG_ERROR]}[namenode_unhealth]: namenode1 $health_nn1, namenode2 $health_nn2"
     	return 1
     fi
     return 0
@@ -46,7 +46,7 @@ function check_nn_health {
 
 function failover {
     if [ $# -ne 2 ]; then
-	echo "${ERRORS[$COMMAND]}[wrong_arguments]: failover"
+	echo "${ERRORS[$COMMAND_ERROR]}[wrong_arguments]: failover"
     fi 
     active0=$1
     standby0=$2
@@ -62,7 +62,7 @@ function failover {
     
     # check failover return value
     if [ $? -ne 0 ]; then
-        echo "${ERRORS[$RECONFIG]}[failover_failure]: failed to failover between active0 and standby0"
+        echo "${ERRORS[$RECONFIG_ERROR]}[failover_failure]: failed to failover between active0 and standby0"
         return 1
     fi 
     
@@ -70,13 +70,13 @@ function failover {
     active1=$(get_namenode_ip active)
     standby1=$(get_namenode_ip standby)
     if [ "$active1" != "$standby0" ] || [ "$standby1" != "$active0" ]; then
-        echo "${ERRORS[$RECONFIG]}[nn_switch_verify_failure]: namenode switch verification failed"
+        echo "${ERRORS[$RECONFIG_ERROR]}[nn_switch_verify_failure]: namenode switch verification failed"
         return 2
     fi
     
     # check namenode health
     if ! check_nn_health; then
-        echo "${ERRORS[$RECONFIG]}[nn_unhealth_aftere_failover]: namenode unhealthy"
+        echo "${ERRORS[$RECONFIG_ERROR]}[nn_unhealth_aftere_failover]: namenode unhealthy"
         return 3
     fi
     echo "$failover_msg"
@@ -89,7 +89,7 @@ function reconfig_standby_namenode { # return 0 if success, 1 if error
     elif [ $# -eq 0 ]; then # find standby namenode node
         standby=$(get_namenode_ip standby)
     else
-	echo "${ERRORS[$COMMAND]}[wrong_arguments]: reconfig_standby_namenode"
+	echo "${ERRORS[$COMMAND_ERROR]}[wrong_arguments]: reconfig_standby_namenode"
 	return 1
     fi
     
@@ -103,7 +103,7 @@ function reconfig_standby_namenode { # return 0 if success, 1 if error
     sleep 5
     
     if ! check_nn_health; then
-        echo "${ERRORS[$RECONFIG]}[reconfig_standby_namenode_failure]: failed"
+        echo "${ERRORS[$RECONFIG_ERROR]}[reconfig_standby_namenode_failure]: failed"
 	return 2
     fi
     echo "finished reconfig for standby namenode on $standby"
@@ -119,7 +119,7 @@ function reconfig_active_namenode { # return 0 if success, 1 if error
 
     # first failover
     if ! failover $active0 $standby0; then
-	echo "${ERRORS[$RECONFIG]}[first_failover_failed]: failover failed"
+	echo "${ERRORS[$RECONFIG_ERROR]}[first_failover_failed]: failover failed"
 	return 1
     else
 	active1=$standby0
@@ -133,7 +133,7 @@ function reconfig_active_namenode { # return 0 if success, 1 if error
     
     # second failover
     if ! failover $active1 $standby1; then
-	echo "${ERRORS[$RECONFIG]}[second_failover_failed]: failover failed"
+	echo "${ERRORS[$RECONFIG_ERROR]}[second_failover_failed]: failover failed"
 	return 3
     fi
     active2=$(get_namenode_ip active)

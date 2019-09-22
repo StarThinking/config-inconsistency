@@ -16,7 +16,7 @@ function validate_argument {
 
 function get_namenode_ip {
     if [ $# -ne 1 ]; then
-        echo "${ERRORS[$COMMAND]}[wrong_arguments]: get_namenode_ip"
+        echo "${ERRORS[$COMMAND_ERROR]}[wrong_arguments]: get_namenode_ip"
 	return 1
     fi
     max_try=5
@@ -35,7 +35,7 @@ function get_namenode_ip {
     done
     
     if [ $i -ge $max_try ]; then
-	echo "${ERRORS[$RECONFIG]}[get_namenode_ip_failure]: getAllServiceState for $avtive_standby failed after $max_try tries"
+	echo "${ERRORS[$RECONFIG_ERROR]}[get_namenode_ip_failure]: getAllServiceState for $avtive_standby failed after $max_try tries"
 	return 1
     fi
     # return this value to caller
