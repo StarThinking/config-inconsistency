@@ -151,7 +151,7 @@ function stop_client_gracefully {
     for i in ${clients[@]}
     do
         count=0
-	max_try=6
+	max_try=10
         while [ $count -le $max_try ]
         do
             ssh node-"$i"-link-0 "ps aux | grep bench | awk -F ' ' '{print \$2}' | xargs kill "
