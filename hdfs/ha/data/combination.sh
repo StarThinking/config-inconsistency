@@ -5,10 +5,7 @@ if [ $# -ne 1 ]; then
     exit 1
 fi
 
-values=('true' 'false')
 component=$1
-duration=120
-#parameters=$(cat $file)
 
 while IFS= read -r parameter
 do
