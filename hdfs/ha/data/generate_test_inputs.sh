@@ -52,6 +52,44 @@ function call_getInt {
     done
 }
 
+function call_getLong {
+    for (( i=0; i<para_num; i++ ))
+    do
+        parameter=${parameter_array[$i]}
+        v1=${default_value_array[$i]}
+	v2_array_raw=()
+        v2_array_raw+=( $(( v1 * 2 )) )
+        v2_array_raw+=( $(( v1 * 16 )) )
+        v2_array_raw+=( $(( v1 / 2 )) )
+        v2_array_raw+=( $(( v1 / 16 )) )
+        v2_array_raw+=( 0 )
+        v2_array_raw+=( 1 )
+        v2_array_raw+=( -1 )
+        v2_array=( $(echo ${v2_array_raw[@]} | tr ' ' '\n' | sort -u | tr '\n' ' ') )
+
+        for v2 in ${v2_array[@]}
+        do
+    	    if [ $v1 -ne $v2 ]; then
+                echo $component $parameter $v1 $v2
+    	    fi
+        done
+    done
+}
+
+function call_getFloat {
+    for (( i=0; i<para_num; i++ ))
+    do
+        parameter=${parameter_array[$i]}
+        v1=${default_value_array[$i]}
+        for v2 in 0.01 0.1 0.5 0.9 0.99
+        do
+    	    if [ $(bc <<< "$v1 != $v2") -eq 1 ]; then
+                echo $component $parameter $v1 $v2
+    	    fi
+        done
+    done
+}
+
 function call_getBoolean {
     for (( i=0; i<para_num; i++ ))
     do
