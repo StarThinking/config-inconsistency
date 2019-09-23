@@ -34,6 +34,7 @@ function start {
  	# sync on node other than node-0
 	if [ $i -ne 0 ]; then
             ssh node-"$i"-link-0 "cd $TEST_HOME; git checkout .; git clean -fd; git pull"
+	    scp $TEST_HOME/etc/* node-"$i"-link-0:$HADOOP_HOME/etc/hadoop
 	fi
 	if [ "$init_conf" != "" ]; then
   	    # send default hdfs and core configuration files
