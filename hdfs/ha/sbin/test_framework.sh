@@ -22,7 +22,7 @@ test_cmd=$TEST_HOME/sbin/test.sh
 function check_reconfig_fatal_errors {
     test=$1
     if [ "$(generate_reconfig_errors $test)" != '' ]; then
-	echo "[RECONFIG_ERROR_WARN]"
+	echo "[MARK_RECONFIG_ERROR]"
     fi
     if [ "$(generate_reconfig_errors $test)" != '' ] || [ "$(generate_fatal_errors $test)" != '' ]; then
         echo "reconfig error:"
@@ -48,10 +48,10 @@ function procedure {
     echo "run $component v1-v2 reconfig test"
     $test_cmd $component $parameter $value1 $value2 $waittime
     # make sure no command error
-    if [ $? -ne 0 ]; then
+    if [ "$(generate_command_errors $test_12)" != '' ]; then
         echo "command error:"
 	generate_command_errors $test_12
-	echo "[COMMAND_ERROR_WARN]command error in test_12, quit"
+	echo "[MARK_COMMAND_ERROR]command error in test_12, quit"
 	return 1
     fi
 
@@ -73,10 +73,10 @@ function procedure {
     echo "run $component v2-v2 reconfig test"
     $test_cmd $component $parameter $value2 $value2 $waittime 
     # make sure no command error
-    if [ $? -ne 0 ]; then
+    if [ "$(generate_command_errors $test_22)" != '' ]; then
         echo "command error:"
 	generate_command_errors $test_22
-	echo "[COMMAND_ERROR_WARN]command error in test_22."
+	echo "[MARK_COMMAND_ERROR]command error in test_22."
 	echo "--> NO CONCLUSION, quit."
 	return 1
     fi
@@ -85,7 +85,7 @@ function procedure {
     if [ $? -eq 0 ]; then
 	echo "no reconfig and fatal errors in test_22, continue."	
     else
-	echo "reconfig or fatal errors in test_22."
+	echo "Reconfig or Fatal errors in test_22."
 	echo " --> NO CONCLUSION, quit."
 	return 0
     fi
@@ -94,10 +94,10 @@ function procedure {
     echo "run $component v1-v1 reconfig test"
     $test_cmd $component $parameter $value1 $value1 $waittime
     # make sure no command error
-    if [ $? -ne 0 ]; then
+    if [ "$(generate_command_errors $test_11)" != '' ]; then    
         echo "command error:"
 	generate_command_errors $test_11
-	echo "[COMMAND_ERROR_WARN]command error in test_11."
+	echo "[MARK_COMMAND_ERROR]command error in test_11."
 	echo "--> NO CONCLUSION, quit."
 	return 1
     fi
@@ -106,7 +106,7 @@ function procedure {
     if [ $? -eq 0 ]; then
 	echo "no reconfig and fatal errors in test_11, continue."	
     else
-	echo "reconfig or fatal errors in test_11."
+	echo "Reconfig or Fatal errors in test_11."
 	echo "--> NO CONCLUSION, quit."
 	return 0
     fi
@@ -115,7 +115,7 @@ function procedure {
     # check reconfig and fatal error
     check_reconfig_fatal_errors $test_12
     if [ $? -ne 0 ]; then
-	echo "[NOT_RECONF_WARN]reconfig or fatal errors in test_12."
+	echo "[MARK_NOT_RECONFIGURABLE]reconfig or fatal errors in test_12."
 	echo "--> NOT $component reconfigurable, quit."
 	reconfigurable=0
 	return 0
@@ -126,7 +126,7 @@ function procedure {
         echo "system error of test_12 is subset of union (test_c, test_22, test_11)."
 	echo "--> MAYBE $component reconfigurable, quit."
     else
-	echo "[NOT_RECONF_WARN]system error of test_12 is NOT subset of union(test_c, test_22, test_11)."
+	echo "[MARK_NOT_RECONFIGURABLE]system error of test_12 is NOT subset of union(test_c, test_22, test_11)."
 	echo "--> NOT $component reconfigurable, continue."
 	reconfigurable=0
     fi
@@ -153,7 +153,7 @@ do
     reconfigurable=1 # global variable
     procedure $component $parameter $value1 $value2
     if [ $? -ne 0 ]; then
-	echo "[COMMAND_ERROR_WARN]command error in the test, quit"
+	echo "[MARK_COMMAND_ERROR]command error in the test, quit"
     fi 
 
     if [ $reconfigurable -ne 1 ]; then # not online reconfigurable  
@@ -163,7 +163,7 @@ do
 	reconfigurable=1 # global variable
 	procedure $component $parameter $value1 $value2
 	if [ $? -ne 0 ]; then
-	    echo "[COMMAND_ERROR_WARN]command error in the test, quit"
+	    echo "[MARK_COMMAND_ERROR]command error in the test, quit"
         fi
     fi 
 
