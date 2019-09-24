@@ -94,6 +94,7 @@ function call_getBoolean {
     for (( i=0; i<para_num; i++ ))
     do
         echo $component ${parameter_array[$i]} false true
+        echo $component ${parameter_array[$i]} true false
     done
 }
 
