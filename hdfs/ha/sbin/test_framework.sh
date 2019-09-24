@@ -7,13 +7,14 @@ set -u
 . $TEST_HOME/sbin/util/system_error_subsetof.sh
 . $TEST_HOME/sbin/util/error_helper.sh
 
-if [ $# -ne 2 ]; then
-    echo "wrong arguments: [task_file] [waittime]"
+if [ $# -ne 3 ]; then
+    echo "wrong arguments: [task_file] [waittime] [repeat]"
     exit 1
 fi
 
 task_file=$1
 waittime=$2
+repeat=$3
 reconfigurable=1
 test_cmd=$TEST_HOME/sbin/test.sh
 
@@ -40,93 +41,111 @@ function procedure {
     parameter=$2
     value1=$3
     value2=$4
-    test_12="$component""$split""$parameter""$split""$value1""$split""$value2""$split""$waittime"
-    test_22="$component""$split""$parameter""$split""$value2""$split""$value2""$split""$waittime"
-    test_11="$component""$split""$parameter""$split""$value1""$split""$value1""$split""$waittime"
+    test_12_prefix="$component""$split""$parameter""$split""$value1""$split""$value2""$split"
+    test_12_all="$test_12_prefix"*
+    test_22_prefix="$component""$split""$parameter""$split""$value2""$split""$value2""$split"
+    test_22_all="$test_22_prefix"*
+    test_11_prefix="$component""$split""$parameter""$split""$value1""$split""$value1""$split"
+    test_11_all="$test_11_prefix"*
 
     #### v1-v2 ####   
-    echo "run $component v1-v2 reconfig test"
-    $test_cmd $component $parameter $value1 $value2 $waittime
-    # make sure no command error
-    if [ "$(generate_command_errors $test_12)" != '' ]; then
-        echo "command error:"
-	generate_command_errors $test_12
-	echo "[MARK_COMMAND_ERROR]command error in test_12, quit"
-	return 1
-    fi
-
-    #### component ####
-    system_error_subsetof $test_12 
+    for (( i=0; i<repeat; i++ ))
+    do
+        echo "run $component v1-v2 reconfig test as $i repeat"
+	waittime_repeat=$(( waittime + i ))
+        test_12_repeat="$test_12_prefix""$waittime_repeat"
+        $test_cmd $component $parameter $value1 $value2 $waittime_repeat
+        # make sure no command error
+        if [ "$(generate_command_errors $test_12_repeat)" != '' ]; then
+            echo "command error:"
+            generate_command_errors $test_12_repeat
+            echo "[MARK_COMMAND_ERROR]command error in $test_12_repeat."
+            echo "--> ERROR, quit."
+            return 1
+        fi
+    done
+    # general component error check
+    system_error_subsetof $test_12_all
     ret1=$?
     # check reconfig and fatal error
-    check_reconfig_fatal_errors $test_12
+    check_reconfig_fatal_errors $test_12_all
     ret2=$?
     if [ $ret1 -eq 0 ] && [ $ret2 -eq 0 ]; then
-        echo "system error of test_12 is subset of test_c and there's no fatal error."
+        echo "system error of test_12_all is subset of test_c and there's no fatal error."
 	echo "--> MAYBE $component reconfigurable, quit."
         return 0
     else
-	echo "system error of test_12 is NOT subset of test_c or it has fatal error, continue."
+	echo "system error of test_12_all is NOT subset of test_c or it has fatal error, continue."
     fi
 
     #### v2-v2 ####
-    echo "run $component v2-v2 reconfig test"
-    $test_cmd $component $parameter $value2 $value2 $waittime 
-    # make sure no command error
-    if [ "$(generate_command_errors $test_22)" != '' ]; then
-        echo "command error:"
-	generate_command_errors $test_22
-	echo "[MARK_COMMAND_ERROR]command error in test_22."
-	echo "--> NO CONCLUSION, quit."
-	return 1
-    fi
+    for (( i=0; i<repeat; i++ ))
+    do
+        echo "run $component v2-v2 reconfig test as $i repeat"
+	waittime_repeat=$(( waittime + i ))
+        test_22_repeat="$test_22_prefix""$waittime_repeat"
+        $test_cmd $component $parameter $value2 $value2 $waittime_repeat 
+        # make sure no command error
+        if [ "$(generate_command_errors $test_22_repeat)" != '' ]; then
+            echo "command error:"
+            generate_command_errors $test_22_repeat
+            echo "[MARK_COMMAND_ERROR]command error in $test_22_repeat."
+            echo "--> ERROR, quit."
+            return 1
+        fi
+    done
     # make sure no reconfig and fatal error
-    check_reconfig_fatal_errors $test_22
+    check_reconfig_fatal_errors $test_22_all
     if [ $? -eq 0 ]; then
-	echo "no reconfig and fatal errors in test_22, continue."	
+	echo "no reconfig and fatal errors in test_22_all, continue."	
     else
-	echo "Reconfig or Fatal errors in test_22."
+	echo "Reconfig or Fatal errors in test_22_all."
 	echo " --> NO CONCLUSION, quit."
 	return 0
     fi
    
     #### v1-v1 ####
-    echo "run $component v1-v1 reconfig test"
-    $test_cmd $component $parameter $value1 $value1 $waittime
-    # make sure no command error
-    if [ "$(generate_command_errors $test_11)" != '' ]; then    
-        echo "command error:"
-	generate_command_errors $test_11
-	echo "[MARK_COMMAND_ERROR]command error in test_11."
-	echo "--> NO CONCLUSION, quit."
-	return 1
-    fi
+    for (( i=0; i<repeat; i++ ))
+    do
+        echo "run $component v1-v1 reconfig test as $i repeat"
+        waittime_repeat=$(( waittime + i ))
+	test_11_repeat="$test_11_prefix""$waittime_repeat"
+        $test_cmd $component $parameter $value1 $value1 $waittime_repeat
+        # make sure no command error
+        if [ "$(generate_command_errors $test_11_repeat)" != '' ]; then    
+            echo "command error:"
+            generate_command_errors $test_11_repeat
+            echo "[MARK_COMMAND_ERROR]command error in $test_11_repeat."
+            echo "--> NO CONCLUSION, quit."
+            return 1
+        fi
+    done
     # make sure no reconfig and fatal error
-    check_reconfig_fatal_errors $test_11
+    check_reconfig_fatal_errors $test_11_all
     if [ $? -eq 0 ]; then
-	echo "no reconfig and fatal errors in test_11, continue."	
+	echo "no reconfig and fatal errors in test_11_all, continue."	
     else
-	echo "Reconfig or Fatal errors in test_11."
+	echo "Reconfig or Fatal errors in test_11_all."
 	echo "--> NO CONCLUSION, quit."
 	return 0
     fi
    
     #### final check ####
     # check reconfig and fatal error
-    check_reconfig_fatal_errors $test_12
+    check_reconfig_fatal_errors $test_12_all
     if [ $? -ne 0 ]; then
-	echo "[MARK_NOT_RECONFIGURABLE]reconfig or fatal errors in test_12."
+	echo "[MARK_NOT_RECONFIGURABLE]reconfig or fatal errors in test_12_all."
 	echo "--> NOT $component reconfigurable, quit."
 	reconfigurable=0
 	return 0
     fi
     # check system error
-    system_error_subsetof $test_12 $test_22 $test_11
+    system_error_subsetof $test_12_all $test_22_all $test_11_all
     if [ $? -eq 0 ]; then
-        echo "system error of test_12 is subset of union (test_c, test_22, test_11)."
+        echo "system error of test_12_all is subset of union (test_c, test_22_all, test_11_all)."
 	echo "--> MAYBE $component reconfigurable, quit."
     else
-	echo "[MARK_NOT_RECONFIGURABLE]system error of test_12 is NOT subset of union(test_c, test_22, test_11)."
+	echo "[MARK_NOT_RECONFIGURABLE]system error of test_12 is NOT subset of union(test_c, test_22_all, test_11_all)."
 	echo "--> NOT $component reconfigurable, continue."
 	reconfigurable=0
     fi
@@ -144,9 +163,9 @@ do
     parameter=$(echo $line | awk -F '[#| ]' '{print $2}')
     value1=$(echo $line | awk -F '[#| ]' '{print $3}')
     value2=$(echo $line | awk -F '[#| ]' '{print $4}')
-    test_dir="$component""$split""$parameter""$split""$value1""$split""$value2"
+    test_dir="$component""$split""$parameter""$split""$value1""$split""$value2""$split""$repeat"
 
-    echo "start test procedure for component=$component parameter=$parameter value1=$value1 value2=$value2"
+    echo "start test procedure for component=$component parameter=$parameter value1=$value1 value2=$value2 repeat=$repeat"
     mkdir $test_dir 
     cd $test_dir
 
