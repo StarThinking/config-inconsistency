@@ -21,15 +21,15 @@ test_cmd=$TEST_HOME/sbin/test.sh
 # return 0 if no errors
 # return 1 if errors
 function check_reconfig_fatal_errors {
-    test="$1"
-    if [ "$(generate_reconfig_errors "$test")" != '' ]; then
+    test=$1
+    if [ "$(generate_reconfig_errors $test)" != '' ]; then
 	echo "[MARK_RECONFIG_ERROR]"
     fi
-    if [ "$(generate_reconfig_errors "$test")" != '' ] || [ "$(generate_fatal_errors "$test")" != '' ]; then
+    if [ "$(generate_reconfig_errors $test)" != '' ] || [ "$(generate_fatal_errors $test)" != '' ]; then
         echo "reconfig error:"
-	generate_reconfig_errors "$test"
+	generate_reconfig_errors $test
         echo "fatal error:"
-	generate_fatal_errors "$test"
+	generate_fatal_errors $test
 	return 1
     fi
     return 0
@@ -65,10 +65,10 @@ function procedure {
         fi
     done
     # general component error check
-    system_error_subsetof "$test_12_all"
+    system_error_subsetof $test_12_all
     ret1=$?
     # check reconfig and fatal error
-    check_reconfig_fatal_errors "$test_12_all"
+    check_reconfig_fatal_errors $test_12_all
     ret2=$?
     if [ $ret1 -eq 0 ] && [ $ret2 -eq 0 ]; then
         echo "system error of test_12_all is subset of test_c and there's no fatal error."
@@ -95,7 +95,7 @@ function procedure {
         fi
     done
     # make sure no reconfig and fatal error
-    check_reconfig_fatal_errors "$test_22_all"
+    check_reconfig_fatal_errors $test_22_all
     if [ $? -eq 0 ]; then
 	echo "no reconfig and fatal errors in test_22_all, continue."	
     else
@@ -121,7 +121,7 @@ function procedure {
         fi
     done
     # make sure no reconfig and fatal error
-    check_reconfig_fatal_errors "$test_11_all"
+    check_reconfig_fatal_errors $test_11_all
     if [ $? -eq 0 ]; then
 	echo "no reconfig and fatal errors in test_11_all, continue."	
     else
@@ -132,7 +132,7 @@ function procedure {
    
     #### final check ####
     # check reconfig and fatal error
-    check_reconfig_fatal_errors "$test_12_all"
+    check_reconfig_fatal_errors $test_12_all
     if [ $? -ne 0 ]; then
 	echo "[MARK_NOT_RECONFIGURABLE]reconfig or fatal errors in test_12_all."
 	echo "--> NOT $component reconfigurable, quit."
@@ -140,7 +140,7 @@ function procedure {
 	return 0
     fi
     # check system error
-    system_error_subsetof "$test_12_all" "$test_22_all" "$test_11_all"
+    system_error_subsetof $test_12_all $test_22_all $test_11_all
     if [ $? -eq 0 ]; then
         echo "system error of test_12_all is subset of union (test_c, test_22_all, test_11_all)."
 	echo "--> MAYBE $component reconfigurable, quit."
@@ -159,10 +159,10 @@ for line in $(cat < "$task_file")
 do
     echo "---------------------------------------------------------"
     
-    component=$(echo $line | awk -F '[#| ]' '{print $1}')
-    parameter=$(echo $line | awk -F '[#| ]' '{print $2}')
-    value1=$(echo $line | awk -F '[#| ]' '{print $3}')
-    value2=$(echo $line | awk -F '[#| ]' '{print $4}')
+    component=$(echo $line | awk -F '[%| ]' '{print $1}')
+    parameter=$(echo $line | awk -F '[%| ]' '{print $2}')
+    value1=$(echo $line | awk -F '[%| ]' '{print $3}')
+    value2=$(echo $line | awk -F '[%| ]' '{print $4}')
     test_dir="$component""$split""$parameter""$split""$value1""$split""$value2""$split""$repeat"
 
     echo "start test procedure for component=$component parameter=$parameter value1=$value1 value2=$value2 repeat=$repeat"

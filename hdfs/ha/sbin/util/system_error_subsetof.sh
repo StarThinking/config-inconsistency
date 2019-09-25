@@ -11,7 +11,7 @@ function system_error_subsetof {
         echo "${ERRORS[$COMMAND_ERROR]}[wrong_arguments]"
 	return 1
     fi
-    test_12="$1"
+    test_12=$1
     shift 1
 
     ret=0
