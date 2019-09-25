@@ -159,15 +159,15 @@ while [ $round -lt $round_n ]; do
     sleep $waittime
     $TEST_HOME/sbin/cluster_cmd.sh stop_client_gracefully
     
-    # perform v2-v1 reconfiguration
-    echo performing v2-v1 "$value2"-"$value1" reconfiguration
-    sleep 5
-    if ! reconf $component $hdfs_or_core_parameter $v1_conf_file; then
-        clean_up_when_errors $testdir
-    fi
-    $TEST_HOME/sbin/cluster_cmd.sh start_client $read_times $benchmark_threads
-    sleep $waittime
-    $TEST_HOME/sbin/cluster_cmd.sh stop_client_gracefully
+#    # perform v2-v1 reconfiguration
+#    echo performing v2-v1 "$value2"-"$value1" reconfiguration
+#    sleep 5
+#    if ! reconf $component $hdfs_or_core_parameter $v1_conf_file; then
+#        clean_up_when_errors $testdir
+#    fi
+#    $TEST_HOME/sbin/cluster_cmd.sh start_client $read_times $benchmark_threads
+#    sleep $waittime
+#    $TEST_HOME/sbin/cluster_cmd.sh stop_client_gracefully
 done
 
 # collect logs for this test 
