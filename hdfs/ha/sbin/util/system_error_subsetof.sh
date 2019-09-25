@@ -11,13 +11,13 @@ function system_error_subsetof {
         echo "${ERRORS[$COMMAND_ERROR]}[wrong_arguments]"
 	return 1
     fi
-    test_12=$1
+    test_12="$1"
     shift 1
 
     ret=0
 
     # generate system errors for test_12
-    test_12_system_errors=$(generate_system_errors $test_12)
+    test_12_system_errors=$(generate_system_errors "$test_12")
     
     set_size=0
     component=$(echo $test_12 | awk -F "$split" 'NR==1 {print $1}')
@@ -32,8 +32,8 @@ function system_error_subsetof {
     # generate system error sets for set 1 2 3
     while [ $# -ge 1 ]; do
 	set_size=$(( set_size + 1 ))
-        dir=$1
-	system_error_sets[$set_size]=$(generate_system_errors $dir)
+        dir="$1"
+	system_error_sets[$set_size]=$(generate_system_errors "$dir")
         shift 1
     done	
 
