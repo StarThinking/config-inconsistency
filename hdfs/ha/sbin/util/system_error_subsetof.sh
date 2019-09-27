@@ -29,12 +29,12 @@ function system_error_subsetof {
     fi
     system_error_sets[0]=$(cat $component_errors)
 
-    # generate system error sets for set 1 2 3
+    # generate system error sets for set v2_v2 v1_v1
     while [ $# -ge 1 ]; do
 	set_size=$(( set_size + 1 ))
-        dir="$1"
-	system_error_sets[$set_size]=$(generate_system_errors "$dir")
+        dir=$1
         shift 1
+	system_error_sets[$set_size]=$(generate_system_errors $dir)
     done	
 
     touch system_errors_found.tmp.txt
