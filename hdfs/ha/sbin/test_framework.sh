@@ -43,15 +43,13 @@ function procedure {
     value2=$4
     test_12_prefix="$component""$split""$parameter""$split""$value1""$split""$value2""$split"
     test_12_all=""$test_12_prefix"all"
-    mkdir $test_12_all
     test_22_prefix="$component""$split""$parameter""$split""$value2""$split""$value2""$split"
     test_22_all=""$test_22_prefix"all"
-    mkdir $test_22_all
     test_11_prefix="$component""$split""$parameter""$split""$value1""$split""$value1""$split"
     test_11_all=""$test_11_prefix"all"
-    mkdir $test_11_all
 
     #### v1-v2 ####   
+    mkdir $test_12_all
     for (( i=0; i<repeat; i++ ))
     do
         echo "run $component v1-v2 reconfig test as $i repeat"
@@ -82,6 +80,7 @@ function procedure {
     fi
 
     #### v2-v2 ####
+    mkdir $test_22_all
     for (( i=0; i<repeat; i++ ))
     do
         echo "run $component v2-v2 reconfig test as $i repeat"
@@ -108,6 +107,7 @@ function procedure {
     fi
    
     #### v1-v1 ####
+    mkdir $test_11_all
     for (( i=0; i<repeat; i++ ))
     do
         echo "run $component v1-v1 reconfig test as $i repeat"
