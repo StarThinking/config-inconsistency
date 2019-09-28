@@ -70,10 +70,10 @@ function clean_up_when_errors {
     exit 1
 }
 
-argument_num=5
-argument_num_optional=7
+argument_num=6
+argument_num_optional=8
 if [ $# -lt $argument_num ]; then
-    echo "${ERRORS[$COMMAND_ERROR]}[wrong_arguments]: ./test.sh [component: <${valid_components[@]}>] [parameter] [value1] [value2] [waittime] optional: [read_times] [benchmark_threads]"
+    echo "${ERRORS[$COMMAND_ERROR]}[wrong_arguments]: ./test.sh [component: <${valid_components[@]}>] [parameter] [value1] [value2] [waittime] [root_dir] optional: [read_times] [benchmark_threads]"
     exit 1
 fi
 
@@ -82,6 +82,7 @@ parameter=$2
 value1=$3
 value2=$4
 waittime=$5
+root_dir=$6
 read_times=10 # default value
 benchmark_threads=5 # default value
 round_n=1 # round of v1-v2-v1 test
@@ -98,7 +99,7 @@ if ! validate_argument $component ${valid_components[@]}; then
 fi
 
 # create test dir
-testdir=./"$component""$split""$parameter""$split""$value1""$split""$value2""$split""$waittime"
+testdir=$root_dir/"$component""$split""$parameter""$split""$value1""$split""$value2""$split""$waittime"
 if ! mkdir $testdir ; then
     echo "${ERRORS[$COMMAND_ERROR]}[mkdir_failed]"
     exit 1

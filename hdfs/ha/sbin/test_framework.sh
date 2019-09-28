@@ -42,19 +42,20 @@ function procedure {
     value1=$3
     value2=$4
     test_12_prefix="$component""$split""$parameter""$split""$value1""$split""$value2""$split"
-    test_12_all=""$test_12_prefix"*"
+    test_12_all=""$test_12_prefix"all"
     test_22_prefix="$component""$split""$parameter""$split""$value2""$split""$value2""$split"
-    test_22_all=""$test_22_prefix"*"
+    test_22_all=""$test_22_prefix"all"
     test_11_prefix="$component""$split""$parameter""$split""$value1""$split""$value1""$split"
-    test_11_all=""$test_11_prefix"*"
+    test_11_all=""$test_11_prefix"all"
 
     #### v1-v2 ####   
+    mkdir $test_12_all
     for (( i=0; i<repeat; i++ ))
     do
         echo "run $component v1-v2 reconfig test as $i repeat"
 	waittime_repeat=$(( waittime + i ))
-        test_12_repeat="$test_12_prefix""$waittime_repeat"
-        $test_cmd $component $parameter $value1 $value2 $waittime_repeat
+        test_12_repeat=$test_12_all/"$test_12_prefix""$waittime_repeat"
+        $test_cmd $component $parameter $value1 $value2 $waittime_repeat $test_12_all
         # make sure no command error
         if [ "$(generate_command_errors $test_12_repeat)" != '' ]; then
             echo "command error:"
@@ -79,12 +80,13 @@ function procedure {
     fi
 
     #### v2-v2 ####
+    mkdir $test_22_all
     for (( i=0; i<repeat; i++ ))
     do
         echo "run $component v2-v2 reconfig test as $i repeat"
 	waittime_repeat=$(( waittime + i ))
-        test_22_repeat="$test_22_prefix""$waittime_repeat"
-        $test_cmd $component $parameter $value2 $value2 $waittime_repeat 
+        test_22_repeat=$test_22_all/"$test_22_prefix""$waittime_repeat"
+        $test_cmd $component $parameter $value2 $value2 $waittime_repeat $test_22_all
         # make sure no command error
         if [ "$(generate_command_errors $test_22_repeat)" != '' ]; then
             echo "command error:"
@@ -105,12 +107,13 @@ function procedure {
     fi
    
     #### v1-v1 ####
+    mkdir $test_11_all
     for (( i=0; i<repeat; i++ ))
     do
         echo "run $component v1-v1 reconfig test as $i repeat"
         waittime_repeat=$(( waittime + i ))
-	test_11_repeat="$test_11_prefix""$waittime_repeat"
-        $test_cmd $component $parameter $value1 $value1 $waittime_repeat
+	test_11_repeat=$test_11_all/"$test_11_prefix""$waittime_repeat"
+        $test_cmd $component $parameter $value1 $value1 $waittime_repeat $test_11_all
         # make sure no command error
         if [ "$(generate_command_errors $test_11_repeat)" != '' ]; then    
             echo "command error:"
