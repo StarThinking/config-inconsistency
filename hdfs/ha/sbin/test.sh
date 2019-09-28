@@ -156,6 +156,8 @@ while [ $round -lt $round_n ]; do
     if ! reconf $component $hdfs_or_core_parameter $v2_conf_file; then
         clean_up_when_errors $testdir
     fi
+    echo "reconfiguration is done at time"
+    date
     $TEST_HOME/sbin/cluster_cmd.sh start_client $read_times $benchmark_threads
     sleep $waittime
     $TEST_HOME/sbin/cluster_cmd.sh stop_client_gracefully
