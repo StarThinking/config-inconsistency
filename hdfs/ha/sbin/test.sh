@@ -150,15 +150,17 @@ while [ $round -lt $round_n ]; do
     round=$(( round + 1 ))
     echo "do the $round v1-v2-v1 reconfiguration test"
 
+    $TEST_HOME/sbin/cluster_cmd.sh start_client $read_times $benchmark_threads
+    sleep 5 
+    
     # perform v1-v2 reconfiguration
     echo performing v1-v2 "$value1"-"$value2" reconfiguration
-    sleep 5
     if ! reconf $component $hdfs_or_core_parameter $v2_conf_file; then
         clean_up_when_errors $testdir
     fi
     echo "reconfiguration is done at time"
     date
-    $TEST_HOME/sbin/cluster_cmd.sh start_client $read_times $benchmark_threads
+    
     sleep $waittime
     $TEST_HOME/sbin/cluster_cmd.sh stop_client_gracefully
     

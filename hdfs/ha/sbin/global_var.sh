@@ -15,9 +15,9 @@
 # 4 datanodes
 namenodes=(0 1)
 datanodes=(2 3 4 5) # make sure sdb is formatted
-reconf_datanode=5
+#reconf_datanode=5
 journalnodes=(0 1 6) # modify hdfs-site.xml as well
-reconf_journalnode=6
+#reconf_journalnode=6
 znodes=(0 1 6) # core-site.xml?
 znode_ids=(1 2 3)
 clients=(6)
@@ -36,7 +36,8 @@ split="%" # must sync with awk split
 read_times=10 # default value
 benchmark_threads=5 # default value
 #points=('endof_pre_stage' 'endof_reconfig_stage' 'endof_post_stage')
-valid_components=('cluster' 'active_namenode' 'standby_namenode' 'datanode' 'journalnode')
+#valid_components=('cluster' 'active_namenode' 'standby_namenode' 'datanode' 'journalnode')
+valid_components=('cluster' 'namenode' 'datanode' 'journalnode')
 
 # error types
 ERRORS=(COMMAND_ERROR RECONFIG_ERROR FATAL_ERROR SYSTEM_ERROR)

@@ -6,13 +6,12 @@ if [ -z "$TEST_HOME" ]; then
 fi
 
 cmd=$TEST_HOME/sbin/test.sh 
-for i in 30 31 32 33 34 60 61 62 63 64 70 80 120 180 200 300 500 600
+for i in 30 40 50 60 120 180 200 600
 do
-$cmd active_namenode dfs.image.compress false false $i .
-#$cmd standby_namenode dfs.image.compress false false $i
-#$cmd datanode dfs.image.compress false false $i
-#$cmd journalnode dfs.image.compress false false $i
-#$cmd cluster dfs.image.compress false false $i
+$cmd namenode dfs.image.compress false false $i .
+$cmd datanode dfs.image.compress false false $i .
+$cmd journalnode dfs.image.compress false false $i .
+$cmd cluster dfs.image.compress false false $i .
 done 
 
 #for i in 50 100 200 400 1000
