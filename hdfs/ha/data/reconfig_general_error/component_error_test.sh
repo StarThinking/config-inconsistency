@@ -5,10 +5,10 @@ if [ -z "$TEST_HOME" ]; then
     exit 3
 fi
 
-cmd=$TEST_HOME/sbin/test_nonstop.sh 
+cmd=$TEST_HOME/sbin/test.sh 
 for i in 30 31 32 33 34 60 61 62 63 64 70 80 120 180 200 300 500 600
 do
-$cmd active_namenode dfs.image.compress false false $i
+$cmd active_namenode dfs.image.compress false false $i .
 #$cmd standby_namenode dfs.image.compress false false $i
 #$cmd datanode dfs.image.compress false false $i
 #$cmd journalnode dfs.image.compress false false $i
