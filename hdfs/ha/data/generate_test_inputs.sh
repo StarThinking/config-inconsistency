@@ -12,8 +12,8 @@ if [ $# -ne 2 ]; then
     exit 1
 fi
 
-component=$1
-method=$2
+method=$1
+component=$2
 file=$TEST_HOME/data/$method/"$component".txt
 
 if [ ! -f $file ]; then
