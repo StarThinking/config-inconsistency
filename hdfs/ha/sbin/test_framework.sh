@@ -138,7 +138,7 @@ function procedure {
     check_reconfig_fatal_errors $test_12_all
     if [ $? -ne 0 ]; then
 	echo "[MARK_NOT_RECONFIGURABLE]reconfig or fatal errors in test_12_all."
-	echo "--> NOT $component reconfigurable, quit."
+	echo "--> NOT $component reconfigurable, continue."
 	reconfigurable=0
 	return 0
     fi
