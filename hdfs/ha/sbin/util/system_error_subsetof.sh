@@ -7,10 +7,12 @@
 errorset_names=('component' 'test_22' 'test_11' 'test_12')
 
 function system_error_subsetof {
-    if [ $# -lt 1 ]; then
+    if [ $# -lt 2 ]; then
         echo "${ERRORS[$COMMAND_ERROR]}[wrong_arguments]"
 	return 1
     fi
+    parameter=$1
+    shift 1
     test_12=$1
     shift 1
 
@@ -21,13 +23,23 @@ function system_error_subsetof {
     
     set_size=0
     component=$(echo $test_12 | awk -F "$split" 'NR==1 {print $1}')
-    root_base_dir=$TEST_HOME/data/reconfig_general_error/system_error
-    component_errors=$root_base_dir/"$component".txt
-    if [ ! -f $component_errors ]; then
-	echo "${ERRORS[$COMMAND_ERROR]}[no_component_errors_file]"
+    general_error_dir=$TEST_HOME/data/reconfig_general_error/system_error
+    specific_error_dir=$general_error_dir/specific
+    component_general_errors=$general_error_dir/"$component".txt
+    parameter_general_errors=$specific_error_dir/$component/"$parameter".txt
+    if [ ! -f $component_general_errors ]; then
+	echo "${ERRORS[$COMMAND_ERROR]}[no_component_general_errors_file]"
 	return 1
     fi
-    system_error_sets[0]=$(cat $component_errors)
+
+    # add parameter-specific general error if exist
+    if [ -f $parameter_general_errors ]; then
+        echo "parameter_general_errors:"
+	cat $parameter_general_errors
+        system_error_sets[0]=$(cat $component_errors $parameter_general_errors)
+    else
+        system_error_sets[0]=$(cat $component_errors)
+    fi
 
     # generate system error sets for set v2_v2 v1_v1
     while [ $# -ge 1 ]; do

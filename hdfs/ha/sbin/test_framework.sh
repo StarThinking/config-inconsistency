@@ -27,9 +27,9 @@ function check_reconfig_fatal_errors {
     fi
     if [ "$(generate_reconfig_errors $test)" != '' ] || [ "$(generate_fatal_errors $test)" != '' ]; then
         echo "reconfig error:"
-	generate_reconfig_errors $test
+	generate_reconfig_errors $test | sort -u
         echo "fatal error:"
-	generate_fatal_errors $test
+	generate_fatal_errors $test | sort -u
 	return 1
     fi
     return 0
@@ -66,7 +66,7 @@ function procedure {
         fi
     done
     # general component error check
-    system_error_subsetof $test_12_all
+    system_error_subsetof $parameter $test_12_all
     ret1=$?
     # check reconfig and fatal error
     check_reconfig_fatal_errors $test_12_all
@@ -143,7 +143,7 @@ function procedure {
 	return 0
     fi
     # check system error
-    system_error_subsetof $test_12_all $test_22_all $test_11_all
+    system_error_subsetof $parameter $test_12_all $test_22_all $test_11_all
     if [ $? -eq 0 ]; then
         echo "system error of test_12_all is subset of union (test_c, test_22_all, test_11_all)."
 	echo "--> MAYBE $component reconfigurable, quit."
