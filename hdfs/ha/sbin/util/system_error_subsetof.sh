@@ -36,9 +36,9 @@ function system_error_subsetof {
     if [ -f $parameter_general_errors ]; then
         echo "parameter_general_errors:"
 	cat $parameter_general_errors
-        system_error_sets[0]=$(cat $component_errors $parameter_general_errors)
+        system_error_sets[0]=$(cat $component_general_errors $parameter_general_errors)
     else
-        system_error_sets[0]=$(cat $component_errors)
+        system_error_sets[0]=$(cat $component_general_errors)
     fi
 
     # generate system error sets for set v2_v2 v1_v1
