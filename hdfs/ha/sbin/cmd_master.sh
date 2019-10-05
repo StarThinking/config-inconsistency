@@ -31,9 +31,8 @@ function start_test {
     for (( i=0; i<nodes_size; i++ ))
     do
         node_id=${nodes[i]}
-        ssh node-"$node_id" "cd $TEST_HOME; git pull"
+        ssh node-"$node_id" "cd $TEST_HOME; git pull > /dev/null"
     done
-    
     echo "finished node git pull"
     
     for (( i=0; i<nodes_size; i++ ))
@@ -57,12 +56,21 @@ function collect_result {
     test_id=$1 # based on date and time
     shift 1
     nodes=("$@")
+    nodes_size=${#nodes[@]}
+    echo "nodes are ${nodes[@]}, nodes_size is $nodes_size"
     
-    if [ ! -f ~/$test_id ]; then
+    if [ ! -d ~/$test_id ]; then
         echo "~/$test_id not existed"
         return 1
     fi
 
+    for (( i=0; i<nodes_size; i++ ))
+    do
+        node_id=${nodes[i]}
+        ssh node-"$node_id" "cd $TEST_HOME; git pull > /dev/null"
+    done
+    echo "finished node git pull"
+    
     for (( i=0; i<nodes_size; i++ ))
     do
         node_id=${nodes[i]}

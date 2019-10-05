@@ -40,8 +40,9 @@ function start_test {
     rm -rf $test_dir
     
     echo "git pull for vm0 on node-$node_id"
-    ssh $vm0 "cd $TEST_HOME; git pull"
-    
+    ssh $vm0 "cd $TEST_HOME; git pull > /dev/null"
+    echo "" 
+  
     echo "starting test_framework..."
     # hard-coded wait time and repeat times
     nohup ssh $vm0 "cd $test_dir; export wait_time=$wait_time; export repeat_times=$repeat_times; nohup bash --login $TEST_HOME/sbin/test_framework.sh ./task.txt $wait_time $repeat_times >> nohup.txt &" &
