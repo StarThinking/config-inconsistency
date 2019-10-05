@@ -9,7 +9,7 @@ fi
 function start_test {
     if [ $# -lt 5 ]; then
         echo "args are wrong: [test_id] [task_file] [wait_time] [repeat_times] [nodes..], exit"
-        exit 1
+        return 1
     fi
     
     test_id=$1
@@ -45,6 +45,28 @@ function start_test {
         ssh node-"$node_id" "$TEST_HOME/sbin/cmd_slave.sh 'start_test' $test_id $node_id $sub_task_file $wait_time $repeat_times"
         echo "cmd slave has been called for node-$node_id"  
         echo "" 
+    done
+}
+
+function collect_result {
+    if [ $# -lt 2 ]; then
+        echo "ERROR: wrong args"
+        return 1
+    fi
+
+    test_id=$1 # based on date and time
+    shift 1
+    nodes=("$@")
+    
+    if [ ! -f ~/$test_id ]; then
+        echo "~/$test_id not existed"
+        return 1
+    fi
+
+    for (( i=0; i<nodes_size; i++ ))
+    do
+        node_id=${nodes[i]}
+        ssh node-"$node_id" "$TEST_HOME/sbin/cmd_slave.sh 'collect_result' $test_id $node_id"
     done
 }
 
