@@ -3,6 +3,7 @@ set -u
 
 if [ -z "$TEST_HOME" ]; then
     echo "TEST_HOME not set."
+    echo "end_of_testframework"
     exit 3
 fi
 
@@ -14,6 +15,7 @@ fi
 
 if [ $# -ne 3 ]; then
     echo "wrong arguments: [task_file] [waittime] [repeat]"
+    echo "end_of_testframework"
     exit 1
 fi
 
@@ -197,3 +199,6 @@ do
     cd ..
     echo "---------------------------------------------------------"
 done
+
+echo "end_of_testframework"
+exit 0

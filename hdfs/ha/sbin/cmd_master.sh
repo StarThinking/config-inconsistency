@@ -48,6 +48,11 @@ function start_test {
     done
 }
 
+if [ $# -lt 2 ]; then
+    echo "ERROR: wrong args, quit"
+    exit 2
+fi
+
 cmd=$1
 shift 1
 if [ "$cmd" == 'start_test' ] || [ "$cmd" == 'collect_result' ]; then

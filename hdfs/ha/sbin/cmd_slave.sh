@@ -47,6 +47,17 @@ function start_test {
     nohup ssh $vm0 "cd $test_dir; export wait_time=$wait_time; export repeat_times=$repeat_times; nohup bash --login $TEST_HOME/sbin/test_framework.sh ./task.txt $wait_time $repeat_times >> nohup.txt &" &
 }
 
+function collect_result {
+    test_id=$1 # based on date and time
+    node_id=$2
+    test_dir=~/"$test_id"-node-$node_id
+    scp -r $vm0:$test_dir ~
+    echo "fetched test_dir $test_dir from vm0"   
+    sleep 2
+    scp -r $test_dir $cmd_master:~
+    echo "sent test_dir $test_dir from node-$node_id to $cmd_master"
+}
+
 if [ $# -lt 2 ]; then
     echo "ERROR: wrong args, quit"
     exit 2
