@@ -8,18 +8,19 @@ if [ -z "$TEST_HOME" ]; then
     exit 3
 fi
 
-if [ $# -ne 4 ]; then
+if [ $# -ne 5 ]; then
     echo "ERROR: wrong args, quit"
     exit 2
 fi
 
 cmd_master='node-0'
-task_file=$1
+test_id=$1 # based on date and time
 node_id=$2
-wait_time=$3
-repeat_times=$4
+task_file=$3
+wait_time=$4
+repeat_times=$5
 
-test_dir=~/"$(date +"%m-%d-%y-%H-%M")"-node-$node_id
+test_dir=~/"$test_id"-node-$node_id
 mkdir $test_dir
 
 vm0=$(virsh domifaddr node-0-link-0 | grep ipv4 | awk -F " " '{print $4}' | cut -d"/" -f1)
