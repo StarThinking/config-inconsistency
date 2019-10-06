@@ -10,7 +10,7 @@ fi
 
 cmd_master='node-0'
 
-function start_test {
+function start {
     if [ $# -ne 5 ]; then
         echo "ERROR: wrong args"
         return 1
@@ -50,7 +50,7 @@ function start_test {
     return 0
 }
 
-function collect_result {
+function collect {
     if [ $# -ne 2 ]; then
         echo "ERROR: wrong args"
         return 1
@@ -83,6 +83,28 @@ function collect_result {
     return 0
 }
 
+function list {
+    function collect_result {
+    if [ $# -ne 2 ]; then
+        echo "ERROR: wrong args"
+        return 1
+    fi
+
+    test_id=$1 # based on date and time
+    node_id=$2
+    test_dir=~/"$test_id"-node-$node_id
+    
+    vm0=$(virsh domifaddr node-0-link-0 | grep ipv4 | awk -F " " '{print $4}' | cut -d"/" -f1)
+    echo vm0 is $vm0
+
+    echo "$test_id"-node-$node_id :
+    ssh $vm0 "ls -l $test_dir"
+    ssh $vm0 "task.txt:"
+    ssh $vm0 "cat $test_dir/task.txt"
+    ssh $vm0 "a=$(grep -rn 'end_of_line' $test_dir | wc -l;); b=$(cat $test_dir/task.txt | wc -l); echo $a out of $b"
+    echo ""
+}
+
 if [ $# -lt 2 ]; then
     echo "ERROR: wrong args, quit"
     exit 2
@@ -90,7 +112,7 @@ fi
 
 cmd=$1
 shift 1
-if [ "$cmd" == 'start_test' ] || [ "$cmd" == 'collect_result' ]; then
+if [ "$cmd" == 'start' ] || [ "$cmd" == 'collect' ] || [ "$cmd" == 'list' ]; then
     $cmd $@
     exit $?
 else

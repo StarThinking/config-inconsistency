@@ -167,7 +167,7 @@ IFS=$'\n'
 #set -f         
 for line in $(cat < "$task_file")
 do
-    echo "---------------------------------------------------------"
+    echo "------------------------new_line_start--------------------------------"
     
     component=$(echo $line | awk -F '[%| ]' '{print $1}')
     parameter=$(echo $line | awk -F '[%| ]' '{print $2}')
@@ -197,7 +197,7 @@ do
     fi 
 
     cd ..
-    echo "---------------------------------------------------------"
+    echo "------------------------new_line_end--------------------------------"
 done
 
 echo "end_of_testframework"

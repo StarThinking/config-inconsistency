@@ -6,7 +6,7 @@ if [ -z "$TEST_HOME" ]; then
     exit 3
 fi
 
-function start_test {
+function start {
     if [ $# -lt 5 ]; then
         echo "args are wrong: [test_id] [task_file] [wait_time] [repeat_times] [nodes..], exit"
         return 1
@@ -47,7 +47,7 @@ function start_test {
     done
 }
 
-function collect_result {
+function collect {
     if [ $# -lt 2 ]; then
         echo "ERROR: wrong args"
         return 1
@@ -78,6 +78,33 @@ function collect_result {
     done
 }
 
+function list {
+    if [ $# -lt 2 ]; then
+        echo "ERROR: wrong args"
+        return 1
+    fi
+
+    test_id=$1 # based on date and time
+    shift 1
+    nodes=("$@")
+    nodes_size=${#nodes[@]}
+    echo "nodes are ${nodes[@]}, nodes_size is $nodes_size"
+    
+    for (( i=0; i<nodes_size; i++ ))
+    do
+        node_id=${nodes[i]}
+        ssh node-"$node_id" "cd $TEST_HOME; git pull > /dev/null"
+    done
+    echo "finished node git pull"
+    
+    for (( i=0; i<nodes_size; i++ ))
+    do
+        node_id=${nodes[i]}
+        ssh node-"$node_id" "$TEST_HOME/sbin/cmd_slave.sh 'list' $test_id $node_id"
+    done
+
+}
+
 if [ $# -lt 2 ]; then
     echo "ERROR: wrong args, quit"
     exit 2
@@ -85,7 +112,7 @@ fi
 
 cmd=$1
 shift 1
-if [ "$cmd" == 'start_test' ] || [ "$cmd" == 'collect_result' ]; then
+if [ "$cmd" == 'start' ] || [ "$cmd" == 'collect' ] || [ "$cmd" == 'list' ]; then
     $cmd $@
 else
     echo "ERROR: wrong cmd $cmd"
