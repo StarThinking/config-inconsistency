@@ -84,7 +84,6 @@ function collect {
 }
 
 function list {
-    function collect_result {
     if [ $# -ne 2 ]; then
         echo "ERROR: wrong args"
         return 1
