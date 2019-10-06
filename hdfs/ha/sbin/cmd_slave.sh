@@ -27,7 +27,10 @@ function start {
     
     vm0=$(virsh domifaddr node-0-link-0 | grep ipv4 | awk -F " " '{print $4}' | cut -d"/" -f1)
     echo vm0 is $vm0
-    
+    echo "git pull for vm0 on node-$node_id"
+    ssh $vm0 "cd $TEST_HOME; git pull > /dev/null"
+    echo "" 
+  
     # fetch task from cmd_master
     scp $cmd_master:$task_file $test_dir/task.txt
     if [ $? -ne 0 ]; then
@@ -39,10 +42,6 @@ function start {
     scp -r $test_dir $vm0:~
     rm -rf $test_dir
     
-    echo "git pull for vm0 on node-$node_id"
-    ssh $vm0 "cd $TEST_HOME; git pull > /dev/null"
-    echo "" 
-  
     echo "starting test_framework..."
     # hard-coded wait time and repeat times
     nohup ssh $vm0 "cd $test_dir; export wait_time=$wait_time; export repeat_times=$repeat_times; nohup bash --login $TEST_HOME/sbin/test_framework.sh ./task.txt $wait_time $repeat_times >> nohup.txt &" &
@@ -62,6 +61,9 @@ function collect {
     
     vm0=$(virsh domifaddr node-0-link-0 | grep ipv4 | awk -F " " '{print $4}' | cut -d"/" -f1)
     echo vm0 is $vm0
+    echo "git pull for vm0 on node-$node_id"
+    ssh $vm0 "cd $TEST_HOME; git pull > /dev/null"
+    echo "" 
     
     # fetech test_dir from vm0
     scp -r $vm0:$test_dir ~
@@ -95,12 +97,15 @@ function list {
     
     vm0=$(virsh domifaddr node-0-link-0 | grep ipv4 | awk -F " " '{print $4}' | cut -d"/" -f1)
     echo vm0 is $vm0
-
+    echo "git pull for vm0 on node-$node_id"
+    ssh $vm0 "cd $TEST_HOME; git pull > /dev/null"
+    echo "" 
+    
     echo "$test_id"-node-$node_id :
     ssh $vm0 "ls -l $test_dir"
-    ssh $vm0 "task.txt:"
+    echo "task.txt:"
     ssh $vm0 "cat $test_dir/task.txt"
-    ssh $vm0 "a=$(grep -rn 'end_of_line' $test_dir | wc -l;); b=$(cat $test_dir/task.txt | wc -l); echo $a out of $b"
+    ssh $vm0 "grep -rn 'new_line_end' $test_dir | wc -l; echo "/" b=$(cat $test_dir/task.txt | wc -l); echo $a out of $b"
     echo ""
 }
 
