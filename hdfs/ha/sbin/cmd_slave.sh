@@ -105,7 +105,7 @@ function list {
     ssh $vm0 "ls -l $test_dir"
     echo "task.txt:"
     ssh $vm0 "cat $test_dir/task.txt"
-    ssh $vm0 "grep -rn 'new_line_end' $test_dir | wc -l; echo "/";  cat $test_dir/task.txt | wc -l)"
+    ssh $vm0 "grep -rn 'new_line_end' $test_dir | wc -l; echo "/";  cat $test_dir/task.txt | wc -l"
     echo ""
 }
 
