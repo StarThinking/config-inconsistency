@@ -41,7 +41,7 @@ function start {
         sub_task_file=$(pwd)/${sub_task_files[i]}
         echo "sub_task_file for node-$node_id is:"
         cat $sub_task_file
-        ssh node-"$node_id" "$TEST_HOME/sbin/cmd_slave.sh 'start_test' $test_id $node_id $sub_task_file $wait_time $repeat_times"
+        ssh node-"$node_id" "$TEST_HOME/sbin/cmd_slave.sh 'start' $test_id $node_id $sub_task_file $wait_time $repeat_times"
         echo "cmd slave has been called for node-$node_id"  
         echo "" 
     done
@@ -74,7 +74,7 @@ function collect {
     for (( i=0; i<nodes_size; i++ ))
     do
         node_id=${nodes[i]}
-        ssh node-"$node_id" "$TEST_HOME/sbin/cmd_slave.sh 'collect_result' $test_id $node_id"
+        ssh node-"$node_id" "$TEST_HOME/sbin/cmd_slave.sh 'collect' $test_id $node_id"
     done
 }
 
