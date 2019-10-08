@@ -34,10 +34,10 @@ function call_getInt {
 	v2_array_raw=()
         v2_array_raw+=( $(( v1 + 1 )) )
         v2_array_raw+=( $(( v1 * 2 )) )
-        v2_array_raw+=( $(( v1 * 16 )) )
+        v2_array_raw+=( $(( v1 * 128 )) )
         v2_array_raw+=( $(( v1 - 1 )) )
         v2_array_raw+=( $(( v1 / 2 )) )
-        v2_array_raw+=( $(( v1 / 16 )) )
+        v2_array_raw+=( $(( v1 / 128 )) )
         v2_array_raw+=( 0 )
         v2_array_raw+=( 1 )
         v2_array_raw+=( -1 )
@@ -47,6 +47,7 @@ function call_getInt {
         do
     	    if [ $v1 -ne $v2 ]; then
                 echo $component $parameter $v1 $v2
+                echo $component $parameter $v2 $v1
     	    fi
         done
     done
