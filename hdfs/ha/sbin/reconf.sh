@@ -18,7 +18,7 @@ fi
 component=$1
 parameter_from=$2
 new_conf=$3
-namenode_reconf_interval=180
+namenode_reconf_interval=120
 datanode_reconf_interval=60
 journalnode_reconf_interval=60
 
@@ -90,18 +90,31 @@ function reconfig_namenodes {
     ret=0
 
     echo "reconfig namenodes ${namenodes[@]}"
+
+    # find avtive0 and standby0 
+    active0=$(get_namenode_ip active)
+    standby0=$(get_namenode_ip standby)
+    echo "active0 is $active0"
+    echo "standby0 is $standby0"
+
+    reconfig_standby_namenode $standby0
+    if [ $? -ne 0 ]; then
+        ret=1
+    fi
+  
+    sleep $namenode_reconf_interval
+
+    failover $active0 $standby0
+    if [ $? -ne 0 ]; then
+        ret=1
+    fi
     
-    reconfig_active_namenode
+    reconfig_standby_namenode $active0
     if [ $? -ne 0 ]; then
         ret=1
     fi
     
     sleep $namenode_reconf_interval
-    
-    reconfig_standby_namenode
-    if [ $? -ne 0 ]; then
-        ret=1
-    fi
   
     return $ret
 }
