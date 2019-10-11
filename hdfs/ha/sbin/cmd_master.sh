@@ -45,17 +45,18 @@ function start {
         echo "cmd slave has been called for node-$node_id"  
         echo "" 
     done
+    
+    echo "${nodes[@]}" >> ./nodes.txt
+    echo "$test_id" >> ./test_id.txt
 }
 
 function collect {
-    if [ $# -lt 2 ]; then
-        echo "ERROR: wrong args"
+    if [ ! -f test_id.txt ] || [ ! -f nodes.txt ]; then
+        echo "test_id.txt or nodes.txt not exist."
         return 1
     fi
-
-    test_id=$1 # based on date and time
-    shift 1
-    nodes=("$@")
+    test_id=$(cat test_id.txt) # based on date and time
+    nodes=($(cat nodes.txt))
     nodes_size=${#nodes[@]}
     echo "nodes are ${nodes[@]}, nodes_size is $nodes_size"
     
@@ -79,14 +80,12 @@ function collect {
 }
 
 function list {
-    if [ $# -lt 2 ]; then
-        echo "ERROR: wrong args"
+    if [ ! -f test_id.txt ] || [ ! -f nodes.txt ]; then
+        echo "test_id.txt or nodes.txt not exist."
         return 1
     fi
-
-    test_id=$1 # based on date and time
-    shift 1
-    nodes=("$@")
+    test_id=$(cat test_id.txt) # based on date and time
+    nodes=($(cat nodes.txt))
     nodes_size=${#nodes[@]}
     echo "nodes are ${nodes[@]}, nodes_size is $nodes_size"
     
@@ -105,7 +104,7 @@ function list {
 
 }
 
-if [ $# -lt 2 ]; then
+if [ $# -lt 1 ]; then
     echo "ERROR: wrong args, quit"
     exit 2
 fi
