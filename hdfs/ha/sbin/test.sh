@@ -12,8 +12,8 @@ fi
 . $TEST_HOME/sbin/global_var.sh
 . $TEST_HOME/sbin/util/argument_checker.sh
 
-hdfs_para_list=$roor_data/parameter_bank/parameter_hdfs.txt
-core_para_list=$roor_data/parameter_bank/parameter_core.txt
+hdfs_para_list=$root_data/parameter_bank/parameter_hdfs.txt
+core_para_list=$root_data/parameter_bank/parameter_core.txt
 # check which configuration file this parameter belongs to, hdfs or core
 function find_parameter { 
     parameter=$1
