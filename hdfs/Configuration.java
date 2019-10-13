@@ -1193,12 +1193,12 @@ public class Configuration implements Iterable<Map.Entry<String,String>>,
    *         or null if no such property exists.
    */
   public String get(String name) {
-    LOG.info("[msx] get1 " + name);
     String[] names = handleDeprecation(deprecationContext.get(), name);
     String result = null;
     for(String n : names) {
       result = substituteVars(getProps().getProperty(n));
     }
+    LOG.info("[msx] get1 " + name + " " + result);
     return result;
   }
 
