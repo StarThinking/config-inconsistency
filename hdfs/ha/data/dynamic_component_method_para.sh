@@ -7,7 +7,8 @@ if [ -z "$TEST_HOME" ]; then
     exit 3
 fi
 
-methods+=('Configuration.java:get:1196')
+#methods+=('Configuration.java:get:1196')
+methods+=('Configuration.java:get:1201')
 methods+=('Configuration.java:get:1457')
 methods+=('Configuration.java:getBoolean:1668')
 methods+=('Configuration.java:getDouble:1640')
@@ -17,15 +18,11 @@ methods+=('Configuration.java:getInt:1480')
 methods+=('Configuration.java:getInts:1502')
 methods+=('Configuration.java:getLong:1535')
 methods+=('Configuration.java:getLongBytes:1561')
-dir=$TEST_HOME/data/dynamic_result/namenode-dfs.image.compress-false-false-online_reconfig-600/
+#dir=$TEST_HOME/data/dynamic_result/namenode-dfs.image.compress-false-false-online_reconfig-600/
+#dir=~/config-inconsistency/hdfs/ha/none%dfs.image.compress%false%false%60/
 
-if [ ! -d $dir ]; then
-    echo "dir not exist"
-    exit 1
-fi
-
-if [ $# -ne 2 ]; then
-    echo "wrong args, quit. e.g., [component] [get_method]"
+if [ $# -ne 3 ]; then
+    echo "wrong args, quit. e.g., [component] [get_method] [dir]"
     echo "valid get methods:"
     echo "${methods[@]}"
     exit 1
@@ -33,6 +30,13 @@ fi
 
 component=$1
 get_method=$2
+dir=$3
+
+if [ ! -d $dir ]; then
+    echo "dir not exist"
+    exit 1
+fi
+
 found=0
 
 for f in ${methods[@]}

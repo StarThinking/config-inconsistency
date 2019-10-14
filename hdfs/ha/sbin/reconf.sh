@@ -153,6 +153,16 @@ function reconfig_journalnodes {
     return $ret
 }
 
+function reconfig_clusters {
+    reconfig_cluster
+    return $?
+}
+
+function reconfig_nones {
+    echo "reconfig_nones, do nothing, return 0"
+    return 0
+}
+
 function reconfig_standby_namenode { # return 0 if success, 1 if error
     if [ $# -eq 1 ]; then
 	standby=$1
@@ -241,11 +251,6 @@ function reconfig_journalnode {
     ssh node-"$reconf_journalnode"-link-0 "$HADOOP_HOME/bin/hdfs --daemon start journalnode"
     
     return 0
-}
-
-function reconfig_clusters {
-    reconfig_cluster
-    return $?
 }
 
 function reconfig_cluster {

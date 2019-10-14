@@ -12,20 +12,20 @@ fi
 . $TEST_HOME/sbin/global_var.sh
 . $TEST_HOME/sbin/util/argument_checker.sh
 
-hdfs_para_list=parameter_hdfs.txt
-core_para_list=parameter_core.txt
+hdfs_para_list=$root_data/parameter_bank/parameter_hdfs.txt
+core_para_list=$root_data/parameter_bank/parameter_core.txt
 # check which configuration file this parameter belongs to, hdfs or core
 function find_parameter { 
     parameter=$1
     hdfs_or_core=""
-    for p in $(cat $root_etc/$hdfs_para_list)
+    for p in $(cat $hdfs_para_list)
     do
         if [ "$p" == "$parameter" ] ; then
     	    hdfs_or_core="hdfs"
         fi
     done
     
-    for p in $(cat $root_etc/$core_para_list)
+    for p in $(cat $core_para_list)
     do
         if [ "$p" == "$parameter" ] ; then
     	    hdfs_or_core="core"

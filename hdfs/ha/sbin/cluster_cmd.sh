@@ -32,11 +32,11 @@ function start {
     for i in ${allnodes[@]}
     do
 	scp $TEST_HOME/etc/* node-"$i"-link-0:$HADOOP_HOME/etc/hadoop
+        # override hadoop common  jar
+        scp $TEST_HOME/lib/hadoop-common-3.1.2.jar node-"$i"-link-0:$HADOOP_HOME/share/hadoop/common/
  	# sync on node other than node-0
 	if [ $i -ne 0 ]; then
             ssh node-"$i"-link-0 "cd $TEST_HOME; git checkout .; git clean -fd; git pull"
-            # override all jars
-            #scp -r $HADOOP_HOME/share node-"$i"-link-0:$HADOOP_HOME
 	fi
 	if [ "$init_conf" != "" ]; then
   	    # send default hdfs and core configuration files
