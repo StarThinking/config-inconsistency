@@ -27,36 +27,37 @@ We call the reconfiguration methods that keep the system running during reconfig
 \subsection{Definition of Online Reconfigurability}
 In this section, we will derive the definition of online reconfigurability gradually. 
 
-\textbf{A reconfiguration operation} can be defined as a 5-tuple (\textit{p}, \textit{v1}, \textit{v2}, \textit{m}, \textit{t}), where
-\textit{p} is the parameter to be reconfigured, \textit{v1} and \textit{v2} are the values of \textit{p} before and after reconfiguration, \textit{m} is the given reconfiguration method, and \textit{t} is the reconfiguration timing relative to global states. To simplify the discussion, we assume there are only two reconfiguration methods (i.e., \textit{offline\_m} and \textit{online\_m}) and they are implemented correctly.
+\textbf{A reconfiguration operation} can be defined as a 5-tuple (\textit{m}, \textit{p}, \textit{v1}, \textit{v2}, \textit{t}), where \textit{m} is the given reconfiguration metho, \textit{p} is the parameter to be reconfigured, \textit{v1} and \textit{v2} are the values of \textit{p} before and after reconfiguration, and \textit{t} is the reconfiguration timing relative to global states. To simplify the discussion, we assume there are only two reconfiguration methods (i.e., \textit{offline\_m} and \textit{online\_m}) and they are implemented correctly.
 
 To facilitate the definition, we assume the existence of a perfect \textbf{test oracle} which has the power to verify system correctness completely and accurately, involving functionality, availability, consistency. The oracle will verify the reconfigurability of parameter \textit{p} by executing the given reconfiguration method \textit{m} with different \textit{v1}-\textit{v2} value pairs at different timing points \textit{t} until the oracle believes the verification is complete. If the oracle returns \textit{OK}, it indicates that the system is correct and no errors will occur in the future caused by the reconfiguration; otherwise, the oracle returns \textit{ERROR}.
 
-Now, we will give the definitions of different levels of parameter reconfigurability:
+Now, we will give the definitions of different levels of parameter reconfigurability. Parameter \textit{p} is 
 
 \begin{itemize}[leftmargin=*]
 \vspace{-.1in}
 \item 
-Parameter \textit{p} is online reconfigurable if: $\forall$ v1, v2, t, oracle(\textit{p}, \textit{v1}, \textit{v2}, \textit{offline\_m}, \textit{t}) == \textit{OK} $\Longrightarrow$ oracle(\textit{p}, \textit{v1}, \textit{v2}, \textit{online\_m}, \textit{t}) == \textit{OK}.
+%Parameter \textit{p} is online reconfigurable if: $\forall$ v1, v2, t, oracle(\textit{p}, \textit{v1}, \textit{v2}, \textit{offline\_m}, \textit{t}) == \textit{OK} $\Longrightarrow$ oracle(\textit{p}, \textit{v1}, \textit{v2}, \textit{online\_m}, \textit{t}) == \textit{OK}.
+
+Online reconfigurable if: $\forall$ v1, v2, t, oracle(\textit{offline\_m}, \textit{p}, \textit{v1}, \textit{v2}, \textit{t}) == \textit{OK} $\Longrightarrow$ oracle(\textit{online\_m}, \textit{p}, \textit{v1}, \textit{v2}, \textit{t}) == \textit{OK}.
 
 \vspace{-.1in}
 \item 
-Parameter \textit{p} is MAYBE offline reconfigurable but NOT online reconfigurable if: $\exists$ v1, v2, t such that oracle(\textit{p}, \textit{v1}, \textit{v2}, \textit{offline\_m}, \textit{t}) == \textit{OK} \&\& oracle(\textit{p}, \textit{v1}, \textit{v2}, \textit{online\_m}, \textit{t}) == \textit{ERROR}.
+MAYBE offline reconfigurable but NOT online reconfigurable if: $\exists$ v1, v2, t such that oracle(\textit{offline\_m}, \textit{p}, \textit{v1}, \textit{v2}, \textit{t}) == \textit{OK} \&\& oracle(\textit{online\_m}, \textit{p}, \textit{v1}, \textit{v2}, \textit{t}) == \textit{ERROR}.
 
 \vspace{-.1in}
 \item 
-Parameter \textit{p} is offline reconfigurable if: $\forall$ v1, v2, t, oracle(\textit{p}, \textit{v1}, \textit{v2}, \textit{boot\_m}, \textit{t}) == \textit{OK} $\Longrightarrow$ oracle(\textit{p}, \textit{v1}, \textit{v2}, \textit{offline\_m}, \textit{t}) == \textit{OK}. \textit{boot\_m} indicates that no reconfiguration method needs to be used. 
+Offline reconfigurable if: $\forall$ v1, v2, t, oracle(\textit{boot\_m}, \textit{p}, \textit{v1}, \textit{t}) == \textit{OK} \&\& oracle(\textit{boot\_m}, \textit{p}, \textit{v2}, \textit{t}) == \textit{OK} $\Longrightarrow$ oracle(\textit{offline\_m}, \textit{p}, \textit{v1}, \textit{v2}, \textit{t}) == \textit{OK}. \textit{boot\_m} indicates that no reconfiguration method needs to be used. 
 
 \vspace{-.1in}
 \item 
-Parameter \textit{p} is configurable(bootable) but NOT offline reconfigurable if: $\exists$ v1, v2, t such that oracle(\textit{p}, \textit{v1}, \textit{v2}, \textit{boot\_m}, \textit{t}) == \textit{OK} \&\& oracle(\textit{p}, \textit{v1}, \textit{v2}, \textit{offline\_m}, \textit{t}) == \textit{ERROR}.
+Configurable(bootable) but NOT offline reconfigurable if: $\exists$ v1, v2, t such that oracle(\textit{boot\_m}, \textit{p}, \textit{v1}, \textit{t}) == \textit{OK} \&\& oracle(\textit{boot\_m}, \textit{p}, \textit{v2}, \textit{t}) == \textit{OK} \&\& oracle(\textit{offline\_m}, \textit{p}, \textit{v1}, \textit{v2}, \textit{t}) == \textit{ERROR}.
 
 \vspace{-.1in}
 \item 
 Every parameter should be configurable(bootable).
 \end{itemize}
 
-People may argue why we have to define parameter reconfigurability in this way. For example, why not simply define online reconfigurable as $\forall$ v1, v2, t, oracle(\textit{p}, \textit{v1}, \textit{v2}, \textit{online\_m}, \textit{t}) == \textit{OK}, and offline reconfigurable as $\forall$ v1, v2, t, oracle(\textit{p}, \textit{v1}, \textit{v2}, \textit{offline\_m}, \textit{t}) == \textit{OK}?
+People may argue why we have to define parameter reconfigurability in this way. For example, why not simply define online reconfigurable as $\forall$ v1, v2, t, oracle(\textit{online\_m}, \textit{p}, \textit{v1}, \textit{v2}, \textit{t}) == \textit{OK}, and offline reconfigurable as $\forall$ v1, v2, t, oracle(\textit{offline\_m}, \textit{p}, \textit{v1}, \textit{v2}, \textit{t}) == \textit{OK}?
 
 It is because we are unable to verify whether the given parameter value is valid or not. With the definition above, as long as we could find one invalid value, then parameter \textit{p} will not be regarded as online/offline reconfigurable. Parameter values are invalid not only because the values are wrong but also may because the parameter value has conflict with other parameter configuration. Essentially, it is a configuration validation problem and, as far as we know, there is no tools that can validate configuration with high accuracy. 
 
