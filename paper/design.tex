@@ -1,0 +1,81 @@
+\section{Definition}
+
+
+%Before giving a formal definition, we need to define some other concepts first. 
+
+%We define two types of reconfiguration methods, cluster-wide reconfiguration and component-wide reconfiguration. Cluster reconfiguration shutdowns and reboot the whole system to perform reconfiguration, while component reconfiguration will shutdown and reboot the instances of a component once a time to sustain system availability.
+
+%We define two types of errors in the system, internal errors and external errors. Internal errors are warnings and errors in HDFS logs, and external errors are errors reported by benchmarks running as the clients. We assume that, by repeating tests enough number of times, all the errors can be caught. As external errors indicate explicit and significant system issues, we will check external errors first and do not distinguish external errors.
+
+%Given a reconfiguration method m, a parameter p, if there exists a value pair v1 and v2 such that $Test(v1,v2) \not\subseteq Test(v1,v1) \cup Test(v2,v2)$, then we say that parameter p is not m-reconfigurable.
+
+\subsection{Offline and Online Reconfiguration}
+Before giving the definition of \textit{Reconfigurability}, we need to first discuss how system administrators reconfigure systems in the real world. The systems that we focus in this paper are the distributed systems that are widely deployed in the cloud such as Hadoop and MySQL.
+
+Essentially, there are two methods to reconfigure such systems: offline and online.
+
+In regard to offline reconfiguration, system administrators shutdown the whole system, make whatever reconfiguration needed, and then restart the whole system. Although this method provides a relatively safer way to reconfigure the system, it hurts system availability during the reconfiguration period. We call reconfiguration methods of this type as offline reconfiguration.  
+
+As opposed to offline reconfiguration, system administrators might also be able to make reconfiguration in an online fashion which can keep the system running normally during reconfiguration. Some systems (e.g., HDFS) provide native support for online reconfiguration for limited parameters. In addition, for many distributed systems, because components are usually replicated for fault tolerance, they natually own the opportunity to achieve online reconfiguration by incrementally performing offline reconfiguration for only a portion of the replications.
+We call the reconfiguration methods that keep the system running during reconfiguration period as online reconfiguration. 
+
+%Intuitively, for any parameter reconfiguration, if it can be performed with online reconfiguration, it can be reconfigured with offline reconfiguration as well. However, the reserve will not always be true. Thus, the informal definition of \textit{Reconfiguration Errors} could be: 
+
+%For a given parameter \textit{p}, if it can be reconfigured offline but cannot be reconfigured online, we say that parameter \textit{p} is \textit{not online reconfigurable}.
+
+
+\subsection{Definition of Online Reconfigurability}
+In this section, we will derive the definition of online reconfigurability gradually. 
+
+\textbf{A reconfiguration operation} can be defined as a 5-tuple (\textit{p}, \textit{v1}, \textit{v2}, \textit{m}, \textit{t}), where
+\textit{p} is the parameter to be reconfigured, \textit{v1} and \textit{v2} are the values of \textit{p} before and after reconfiguration, \textit{m} is the given reconfiguration method, and \textit{t} is the reconfiguration timing relative to global states. To simplify the discussion, we assume there are only two reconfiguration methods (i.e., \textit{offline\_m} and \textit{online\_m}) and they are implemented correctly.
+
+To facilitate the definition, we assume the existence of a perfect \textbf{test oracle} which has the power to verify system correctness completely and accurately, involving functionality, availability, consistency. The oracle will verify the reconfigurability of parameter \textit{p} by executing the given reconfiguration method \textit{m} with different \textit{v1}-\textit{v2} value pairs at different timing points \textit{t} until the oracle believes the verification is complete. If the oracle returns \textit{OK}, it indicates that the system is correct and no errors will occur in the future caused by the reconfiguration; otherwise, the oracle returns \textit{ERROR}.
+
+Now, we will give the definitions of different levels of parameter reconfigurability:
+
+\begin{itemize}[leftmargin=*]
+\vspace{-.1in}
+\item 
+Parameter \textit{p} is online reconfigurable if: $\forall$ v1, v2, t, oracle(\textit{p}, \textit{v1}, \textit{v2}, \textit{offline\_m}, \textit{t}) == \textit{OK} $\Longrightarrow$ oracle(\textit{p}, \textit{v1}, \textit{v2}, \textit{online\_m}, \textit{t}) == \textit{OK}.
+
+\vspace{-.1in}
+\item 
+Parameter \textit{p} is MAYBE offline reconfigurable but NOT online reconfigurable if: $\exists$ v1, v2, t such that oracle(\textit{p}, \textit{v1}, \textit{v2}, \textit{offline\_m}, \textit{t}) == \textit{OK} \&\& oracle(\textit{p}, \textit{v1}, \textit{v2}, \textit{online\_m}, \textit{t}) == \textit{ERROR}.
+
+\vspace{-.1in}
+\item 
+Parameter \textit{p} is offline reconfigurable if: $\forall$ v1, v2, t, oracle(\textit{p}, \textit{v1}, \textit{v2}, \textit{boot\_m}, \textit{t}) == \textit{OK} $\Longrightarrow$ oracle(\textit{p}, \textit{v1}, \textit{v2}, \textit{boot\_m}, \textit{t}) == \textit{OK}.
+
+\vspace{-.1in}
+\item 
+Parameter \textit{p} is MAYBE configurable(bootable) but NOT offline reconfigurable if: $\exists$ v1, v2, t such that oracle(\textit{p}, \textit{v1}, \textit{v2}, \textit{boot\_m}, \textit{t}) == \textit{OK} \&\& oracle(\textit{p}, \textit{v1}, \textit{v2}, \textit{offline\_m}, \textit{t}) == \textit{ERROR}.
+\end{itemize}
+
+People may argue why we have to define parameter reconfigurability in this way. For example, why not simply define online reconfigurable as $\forall$ v1, v2, t, oracle(\textit{p}, \textit{v1}, \textit{v2}, \textit{online\_m}, \textit{t}) == \textit{OK}, and offline reconfigurable as $\forall$ v1, v2, t, oracle(\textit{p}, \textit{v1}, \textit{v2}, \textit{offline\_m}, \textit{t}) == \textit{OK}?
+
+It is because we are unable to verify whether the given parameter value is valid or not. With the definition above, as long as we could find one invalid value, then parameter \textit{p} will not be regarded as online/offline reconfigurable. Parameter values are invalid not only because the values are wrong but also may because the parameter value has conflict with other parameter configuration. Essentially, it is a configuration validation problem and, as far as we know, there is no tools that can validate configuration with high accuracy. 
+
+We did not make another assumption about the existence of an oracle that can always validate configuration correctly. Because this assumption is not necessary for the definitions of parameter reconfigurability.
+
+
+\subsection{Defition without Test Oracle}
+In this section, we will remove the assumption used in the former definition.
+
+%In pratice, there is not such magical oracle to verify system correctness. On the other hand, system correctness is tested by running benchmarks and observing logs. Thus, we change the term oracle to test. We now define that test(\textit{p, v1, v2, m}) returns \textit{OK} when no errors are observed by benchamarks and \textit{ERROR} otherwise.
+
+%Now, the informal definition can be transformed as:
+
+%Given a parameter \textit{p} and two reconfiguration methods \textit{m\_offline, m\_online}, if $\exists$ a value pair \textit{v1, v2} such that test(\textit{p, v1, v2, m\_online}) return \textit{ERROR} but test(\textit{p, v1, v2, m\_offline}) returns \textit{OK}, then parameter \textit{p} is \textit{not online reconfigurable}; otherwise, parameter \textit{p} is \textit{online reconfigurable}. 
+
+%So far, this definition is similar to the informal one except that we will have false negative because practical benchmarks cannot verify system correctness thoroughly and completely.  
+
+%\subsection{Issues with Our Informal Definition???}
+%Actually, there is a drawback in our informal definition given above. If some parameters do not support reconfiguration neither online nor offline, then they will not be regarded as \textit{not online reconfigurable} because test(\textit{p, v1, v2, m}) will always return \textit{ERROR}. However, intuitively, not offline reconfigurable should imply not onlone reconfigurable...
+
+
+
+
+
+
+
