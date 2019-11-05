@@ -31,7 +31,7 @@ sudo ldconfig
 echo "export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64" >> ~/.profile
 echo "export HADOOP_HOME=/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2" >> ~/.profile
 
-wget http://apache.claz.org/hadoop/common/hadoop-3.1.2/hadoop-3.1.2-src.tar.gz
+wget https://archive.apache.org/dist/hadoop/common/hadoop-3.1.2/hadoop-3.1.2-src.tar.gz
 tar zxvf hadoop-3.1.2-src.tar.gz
 
 cd hadoop-3.1.2-src
