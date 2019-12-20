@@ -6,7 +6,7 @@ ssh-keygen -t rsa
 # for this image
 ssh-keygen -f "/root/.ssh/known_hosts" -R node-1-link-0
 
-for i in $(seq 0 6)
+for i in $(seq 0 7)
 do
     $TEST_HOME/sbin/util/vm_autossh.sh root node-$i-link-0 "mkdir -p ~/.ssh"
     sleep 1
