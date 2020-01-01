@@ -16,10 +16,10 @@ sleep 5
 virsh net-destroy default
 virsh net-start default
 
-for i in $(seq 0 7)
+for i in $(seq 0 9)
 do
     cp $init_image ~/vm_images/node-"$i"-link-0.qcow2
-    sudo virt-install --name node-"$i"-link-0 --memory 8192 --vcpus 4 --disk ~/vm_images/node-"$i"-link-0.qcow2 --import --os-variant ubuntu16.04 &
+    sudo virt-install --name node-"$i"-link-0 --memory 8192 --vcpus 2 --disk ~/vm_images/node-"$i"-link-0.qcow2 --import --os-variant ubuntu16.04 &
     pids[$i]=$?
 done
 
