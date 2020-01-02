@@ -23,8 +23,8 @@ do
     pids[$i]=$?
 done
 
-echo "wait for 60s..."
-sleep 60
+echo "wait for 200s..."
+sleep 200
 
 for pid in ${pids[@]}
 do
