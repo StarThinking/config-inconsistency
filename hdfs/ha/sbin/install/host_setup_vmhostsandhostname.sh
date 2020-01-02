@@ -29,7 +29,7 @@ echo "ff02::2 ip6-allrouters" >> $TEST_HOME/sbin/hosts.tmp
 for i in $(seq 0 $node_num)
 do
     echo -e "${ips[i]}\t\thadoop-$i" >> $TEST_HOME/sbin/hosts.tmp
-    echo -e "${ips[i]}\t\thadoop-$i" >> /etc/sbin/hosts
+    echo -e "${ips[i]}\t\thadoop-$i" >> /etc/hosts
 done
 
 echo "hosts.tmp :"
