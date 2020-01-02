@@ -23,7 +23,7 @@ cp $TEST_HOME/etc/qemu.conf /etc/libvirt/qemu.conf
 service libvirtd restart
 
 #printf '%s\n' n '' '' '' '' w | sudo fdisk /dev/sdb
-sudo mkfs.ext4 /dev/sda4 
-mkdir /root/vm_images
-sudo mount /dev/sda4  /root/vm_images
+#sudo mkfs.ext4 /dev/sda4 
+#mkdir /root/vm_images
+#sudo mount /dev/sda4  /root/vm_images
 
