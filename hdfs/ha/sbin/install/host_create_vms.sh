@@ -18,8 +18,8 @@ virsh net-start default
 
 for i in $(seq 0 9)
 do
-    cp $init_image ~/vm_images/node-"$i"-link-0.qcow2
-    sudo virt-install --name node-"$i"-link-0 --memory 8192 --vcpus 2 --disk ~/vm_images/node-"$i"-link-0.qcow2 --import --os-variant ubuntu16.04 &
+    cp $init_image ~/vm_images/hadoop-"$i".qcow2
+    sudo virt-install --name hadoop-"$i" --memory 8192 --vcpus 2 --disk ~/vm_images/hadoop-"$i".qcow2 --import --os-variant ubuntu16.04 &
     pids[$i]=$?
 done
 
