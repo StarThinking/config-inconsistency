@@ -16,6 +16,9 @@ sleep 5
 virsh net-destroy default
 virsh net-start default
 
+for i in $(seq 0 9); do virsh destroy hadoop-$i; virsh undefine hadoop-$i; done
+sleep 10
+
 for i in $(seq 0 9)
 do
     cp $init_image ~/vm_images/hadoop-"$i".qcow2
