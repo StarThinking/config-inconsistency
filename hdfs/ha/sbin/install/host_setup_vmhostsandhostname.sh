@@ -5,6 +5,10 @@ if [ -z "$TEST_HOME" ]; then
     exit
 fi
 
+echo "!!!!!!!!!!!!!!!!"
+echo "check /etc/hosts: no duplicate of hadoop node"
+echo "!!!!!!!!!!!!!!!!"
+
 node_num=9 # 9+1=10
 
 for i in $(seq 0 $node_num)
