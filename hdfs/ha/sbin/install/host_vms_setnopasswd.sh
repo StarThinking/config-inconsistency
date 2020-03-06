@@ -6,7 +6,7 @@ if [ -z "$TEST_HOME" ]; then
     exit 3
 fi
 
-node_num=9
+node_num=14
 
 for i in $(seq 0 $node_num)
 do
