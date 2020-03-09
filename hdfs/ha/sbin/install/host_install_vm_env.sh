@@ -22,8 +22,11 @@ sudo apt-get -y install expect
 cp $TEST_HOME/etc/qemu.conf /etc/libvirt/qemu.conf
 service libvirtd restart
 
-#printf '%s\n' n '' '' '' '' w | sudo fdisk /dev/sdb
 sudo mkfs.ext4 /dev/sda4 
 mkdir /root/vm_images
 sudo mount /dev/sda4  /root/vm_images
 
+printf '%s\n' n '' '' '' '' w | sudo fdisk /dev/sdb
+sudo mkfs.ext4 /dev/sdb1
+mkdir /root/vm_images_sdb
+sudo mount /dev/sdb1  /root/vm_images_sdb
