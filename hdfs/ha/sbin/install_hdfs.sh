@@ -29,18 +29,18 @@ sudo apt-get -y install zstd
 
 sudo ldconfig
 echo "export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64" >> ~/.profile
-echo "export HADOOP_HOME=/root/hadoop-3.1.2-src/hadoop-dist/target/hadoop-3.1.2" >> ~/.profile
+echo "export HADOOP_HOME=/root/hadoop-3.2.1-src/hadoop-dist/target/hadoop-3.2.1" >> ~/.profile
 
-wget https://archive.apache.org/dist/hadoop/common/hadoop-3.1.2/hadoop-3.1.2-src.tar.gz
-tar zxvf hadoop-3.1.2-src.tar.gz
-
-cd hadoop-3.1.2-src
-mvn package -Pdist,native -DskipTests -Dtar
-
-# install zookeeper
-cd ~
-wget https://archive.apache.org/dist/zookeeper/zookeeper-3.4.13/zookeeper-3.4.13.tar.gz
-tar zxvf zookeeper-3.4.13.tar.gz 
-
-echo "export ZOOKEEPER_HOME=/root/zookeeper-3.4.13" >> ~/.profile
-echo "export TEST_HOME=/root/config-inconsistency/hdfs/ha" >> ~/.profile
+wget https://archive.apache.org/dist/hadoop/common/hadoop-3.2.1/hadoop-3.2.1-src.tar.gz
+#tar zxvf hadoop-3.2.1-src.tar.gz
+#
+#cd hadoop-3.2.1-src
+#mvn package -Pdist,native -DskipTests -Dtar
+#
+## install zookeeper
+#cd ~
+#wget https://archive.apache.org/dist/zookeeper/zookeeper-3.4.13/zookeeper-3.4.13.tar.gz
+#tar zxvf zookeeper-3.4.13.tar.gz 
+#
+#echo "export ZOOKEEPER_HOME=/root/zookeeper-3.4.13" >> ~/.profile
+#echo "export TEST_HOME=/root/config-inconsistency/hdfs/ha" >> ~/.profile
