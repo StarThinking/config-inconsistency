@@ -8,7 +8,7 @@ sudo apt-get -y install software-properties-common
 sudo apt-get -y install openjdk-8-jdk
 sudo apt-get update
 sudo apt-get -y install maven
-sudo apt-get -y install build-essential autoconf automake libtool cmake zlib1g-dev pkg-config libssl-dev
+sudo apt-get -y install build-essential autoconf automake libtool cmake zlib1g-dev pkg-config libssl-dev libsasl2-dev
 #
 sudo apt-get -y install libprotobuf-java
 wget https://github.com/protocolbuffers/protobuf/releases/download/v2.5.0/protobuf-2.5.0.tar.gz
