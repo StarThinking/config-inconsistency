@@ -26,4 +26,4 @@ for i in $(seq 1 15); do ./bin/hdfs dfs -put ./file.txt /file"$i".txt; done
 
 # summary
 1. When balancer uses the same hdfs-site.xml (dfs.namenode.upgrade.domain.factor = dfs.replication = 3 by default) as what the cluster uses, balancing took 4.19 minutes.
-2. When balancer uses the same hdfs-site-for-balancer.xml (dfs.namenode.upgrade.domain.factor = 2), balancing took minutes.
+2. When balancer uses the same hdfs-site-for-balancer.xml (dfs.namenode.upgrade.domain.factor = 2), balancing cannot finish (I kept it running for a day).
